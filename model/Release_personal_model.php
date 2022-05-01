@@ -1,5 +1,5 @@
 <?php 
-require_once "/var/www/html/development/WEB_PROJECT/model/Personal_model.php";
+require_once "/var/www/html/development/VillaDonq/model/Personal_model.php";
 
 	ini_set('display_errors', 1);
 
@@ -12,7 +12,7 @@ class Release_personal
 		
 	function __construct()
 	{
-		require_once "/var/www/html/development/WEB_PROJECT/model/Database.php";
+		require_once "/var/www/html/development/VillaDonq/model/Database.php";
 		$this->db=Database::Connect();
 		
 	}

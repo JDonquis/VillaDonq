@@ -1,6 +1,6 @@
 <?php 
 
-require_once "/var/www/html/development/WEB_PROJECT/model/Release_student_model.php";
+require_once "/var/www/html/development/VillaDonq/model/Release_student_model.php";
 
 	ini_set('display_errors', 1);
 
