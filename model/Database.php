@@ -1,6 +1,6 @@
 <?php 
 
-require_once "/var/www/html/development/VillaDonq/config.php";
+require_once "../config.php";
 
 class Database
 {

@@ -1,9 +1,5 @@
 <?php 
-require_once "/var/www/html/development/VillaDonq/model/Student_model.php";
-
-	ini_set('display_errors', 1);
-
-	ini_set('display_startup_errors', 1);
+require_once "../model/Student_model.php";
 
 class Release_student
 {	
@@ -13,7 +9,7 @@ class Release_student
 		
 	function __construct()
 	{
-		require_once "/var/www/html/development/VillaDonq/model/Database.php";
+		require_once "../model/Database.php";
 		$this->db=Database::Connect();
 		
 	}

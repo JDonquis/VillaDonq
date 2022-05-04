@@ -1,9 +1,6 @@
 <?php 
-require_once "/var/www/html/development/VillaDonq/model/Personal_model.php";
+require_once "../model/Personal_model.php";
 
-	ini_set('display_errors', 1);
-
-	ini_set('display_startup_errors', 1);
 
 class Release_personal
 {	
@@ -12,7 +9,7 @@ class Release_personal
 		
 	function __construct()
 	{
-		require_once "/var/www/html/development/VillaDonq/model/Database.php";
+		require_once "../model/Database.php";
 		$this->db=Database::Connect();
 		
 	}

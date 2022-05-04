@@ -1,11 +1,5 @@
 <?php 
 
-ini_set('display_errors', 1);
-
-ini_set('display_startup_errors', 1);
-
-error_reporting(E_ALL);
-
 class Login_users
 {	
 	
@@ -14,7 +8,7 @@ class Login_users
 		
 	function __construct()
 	{
-		require_once "/var/www/html/development/VillaDonq/model/Database.php";
+		require_once "../model/Database.php";
 		$this->db=Database::Connect();
 		
 	}

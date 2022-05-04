@@ -1,10 +1,7 @@
 <?php 
 
-require_once "/var/www/html/development/VillaDonq/model/Login_model.php";
+require_once "../model/Login_model.php";
 
-	ini_set('display_errors', 1);
-
-	ini_set('display_startup_errors', 1);
 
 class Login_controller{
 
@@ -32,13 +29,13 @@ class Login_controller{
 					$_SESSION['id']=$n[0];
 					$_SESSION['id_position']=$n[1];
 
-					header("location:/development/VillaDonq/views/workspace.php");
+					header("location:../views/workspace.php");
 					exit();
 
 			}
 			else{			
 
-				header("location:/development/VillaDonq/views/login.php");
+				header("location:../views/login.php");
 				exit();
 			}
 	
