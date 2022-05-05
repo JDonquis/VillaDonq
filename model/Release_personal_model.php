@@ -1,6 +1,5 @@
 <?php 
-require_once "../model/Personal_model.php";
-
+require_once "./model/Personal_model.php";
 
 class Release_personal
 {	
@@ -9,7 +8,7 @@ class Release_personal
 		
 	function __construct()
 	{
-		require_once "../model/Database.php";
+		require_once "./model/Database.php";
 		$this->db=Database::Connect();
 		
 	}

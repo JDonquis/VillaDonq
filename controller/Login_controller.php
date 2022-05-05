@@ -1,6 +1,6 @@
 <?php 
 
-require_once "../model/Login_model.php";
+require_once "./model/Login_model.php";
 
 
 class Login_controller{
@@ -29,13 +29,13 @@ class Login_controller{
 					$_SESSION['id']=$n[0];
 					$_SESSION['id_position']=$n[1];
 
-					header("location:../views/workspace.php");
+					header("location:./views/workspace.php");
 					exit();
 
 			}
 			else{			
 
-				header("location:../views/login.php");
+				header("location:./views/login.php");
 				exit();
 			}
 	

@@ -11,7 +11,7 @@
 
 if(isset($_POST['username']) and isset($_POST['password']))
 {
- require_once "../controller/Login_controller.php";
+ require_once "./controller/Login_controller.php";
 
 	$login=new Login_controller();
 	$login->verify($_POST['username'], $_POST['password']);

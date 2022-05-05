@@ -8,8 +8,8 @@
 
 	<?php 
 
-	require_once "/controller/Student_controller.php";
-	require_once "/controller/Personal_controller.php";
+	require_once "controller/Student_controller.php";
+	require_once "controller/Personal_controller.php";
 
 	ini_set('display_errors', 1);
 
