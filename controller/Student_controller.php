@@ -1,6 +1,6 @@
 <?php 
 
-require_once "../model/Release_student_model.php";
+require_once "./model/Release_student_model.php";
 
 
 class Students_controller

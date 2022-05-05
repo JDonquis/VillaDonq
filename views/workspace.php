@@ -1,5 +1,5 @@
 
-<?php require_once "../helpers/type_user.php"; ?>
+<?php require_once "./helpers/type_user.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">

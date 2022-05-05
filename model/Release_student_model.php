@@ -1,5 +1,5 @@
 <?php 
-require_once "../model/Student_model.php";
+require_once "./model/Student_model.php";
 
 class Release_student
 {	
@@ -9,7 +9,7 @@ class Release_student
 		
 	function __construct()
 	{
-		require_once "../model/Database.php";
+		require_once "./model/Database.php";
 		$this->db=Database::Connect();
 		
 	}
