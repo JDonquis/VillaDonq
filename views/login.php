@@ -8,7 +8,7 @@
 <body>
 
 <?php 
-
+ echo 'cualquier locura punto y coma';
 if(isset($_POST['username']) and isset($_POST['password']))
 {
  require_once "./controller/Login_controller.php";
