@@ -8,7 +8,7 @@ class Login_users
 		
 	function __construct()
 	{
-		require_once "./model/Database.php";
+		require_once "./model/database.php";
 		$this->db=Database::Connect();
 		
 	}
