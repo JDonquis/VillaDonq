@@ -3,9 +3,6 @@ const nav_section = document.querySelector(".nav-section")
 const btnNav = document.querySelector(".trigger_nav")
 const links = document.querySelectorAll(".nav_content a")
 
-
-
-
 const timeline = gsap.timeline({ paused: true, defaults: { duration: .5, ease: Expo.easeInOut } })
     .to('.path-1', { rotation: 40 })
     .to('.path-2', { opacity: 0 }, '<')
@@ -23,7 +20,12 @@ btnNav.onclick = () => {
     // nav-section.childNodes.forEach( e => e.classList == 'trigger_nav'? '' : e.style= 'opacity: 0')
     nav_section.style = 'z-index: 120'
 }
+// close with click esc
+document.addEventListener('keydown', (e) => {
+    timeline.reverse()
+})  
 
+// animation to go another page
 links.forEach(a => {
     a.onclick = (e) => {
         e.preventDefault()

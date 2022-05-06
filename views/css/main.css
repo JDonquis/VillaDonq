@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap");
 /* colores */
 .screenShow {
   position: fixed;
@@ -415,6 +416,6 @@ button:hover {
   color: white;
   background-position: 0;
 }
-.login_form fieldset .btn_guardar:hover .culo::after {
+.login_form fieldset .btn_guardar:hover .parent_login_btn_nav::after {
   left: 0;
 }/*# sourceMappingURL=main.css.map */
