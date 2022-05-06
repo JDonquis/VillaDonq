@@ -1,0 +1,90 @@
+@import '_base.scss';
+
+.slider {
+    width: 100%;
+    position: relative;
+    // overflow: hidden;
+    .slider_wrap {
+        display: grid;
+        transition: all .3s;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        & {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .each_slider_element {
+            height: 400px;
+            border: 1px solid white;
+            background: purple;
+            position: relative;
+            left: 0;
+            color: white;
+            // border: 3px solid blue;
+
+            text-align: center;
+        }
+    }
+
+    .arrow_buttons {
+        position: absolute;
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        button {
+            background: transparent;
+            font-size: 50px;
+
+            &.disable {
+                opacity: 0.4;
+
+                &:hover {
+                    cursor: auto;
+                }
+            }
+        }
+    }
+
+    .nav_slider {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+
+        li {
+            $square: 10px;
+            height: $square;
+            width: $square;
+            background: rgba(255, 255, 255, 0.658);
+            border-radius: 50%;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &.active {
+                background-color: white;
+            }
+        }
+    }
+
+    .progress_bar {
+
+        width: 100%;
+        height: 10px;
+        div {
+            height: 100%;
+            background: green;
+        }
+    }
+}

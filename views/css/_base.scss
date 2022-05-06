@@ -1,0 +1,98 @@
+// @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
+
+$bigFont: clamp(35px, 6vw, 50px);
+
+/* colores */
+$color1: #081f3d;
+$color2: #1F4287;
+$color3: #278EA5;
+$color4: #21E6C1;
+
+@mixin flex-center() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin full-screen($bg: black) {
+    position: fixed;
+    width: 100%;
+    background: $bg;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    
+ 
+}
+.screenShow {
+    @include full-screen(rgb(15, 6, 6));
+    @include flex-center();
+    overflow: hidden;
+    .shadowsLoader {
+        width: max(300px, 50%);
+        height: 360px;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 40px;
+        
+        span {
+            color: hsl(191, 80%, 33%);
+            animation: moveShadows 1.6s linear infinite;
+            @for $i from 1 through 7 {
+                &:nth-of-type(#{$i}) {
+                    animation-delay: #{$i / 10 + $i/10 - 0.2}s ;
+                }
+            }
+        }
+    }
+    @keyframes moveShadows {    
+        0% {
+            box-shadow: 0 0 0 $color4;
+            opacity: 0;
+            transform: translateX(-50px) scale(1);
+        }
+        50% {
+            box-shadow: 0 10px 50px $color4;
+            transform: translateX(0px) scale(1.2);
+            opacity: 1;
+        }
+        100% {
+            box-shadow: 0 0 0 $color4;
+            opacity: 0;
+            transform: translateX(50px) scale(1);
+        }
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    color: inherit;
+    padding: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Libre Baskerville', serif;
+}
+input {
+    outline: none;
+}
+button {
+    border: none;
+    &:hover {
+        cursor: pointer;
+    }
+}

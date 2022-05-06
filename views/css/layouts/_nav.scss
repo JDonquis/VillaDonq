@@ -1,0 +1,103 @@
+.main_nav {
+    background-color: $color1;
+    width: 100%;
+    padding-block: 10px;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo>* {
+        max-width: 250px;
+    }
+
+    .nav_content {
+        @include full-screen($color1);
+        top: -100%;
+
+        color: white;
+        padding-top: clamp(70px, 10vw, 90px);
+        padding-left: clamp(60px, 15vw, 160px);
+        z-index: 110;
+
+        span {
+            font-size: calc($bigFont - 16px);
+            opacity: 0.7;
+        }
+       
+        a {
+            font-size: $bigFont;
+            position: relative;
+            background-image: linear-gradient(to right, $color4, $color4 50%, white 50%);
+            background-size: 200% 100%;
+            background-position: -100%;
+            display: inline-block;
+            padding: 15px 0 0 0;
+            position: relative;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all .3s ease-in-out;
+
+            &:before {
+                content: '';
+                background: $color4;
+                display: block;
+                position: absolute;
+                bottom: -3px;
+                left: 0;
+                width: 0;
+                height: 3px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            &:hover {
+                background-position: 0;
+            }
+
+            &:hover::before {
+                width: 40px;
+            }
+        }
+    }
+
+    .nav-section {
+        .trigger_nav {
+            padding: 0px;
+            height: 30px;
+            background: none;
+            border: none;
+            
+            path {
+                stroke: $color3;
+            }
+
+            &:hover {
+                cursor: pointer;
+                path {
+                    stroke: $color4;
+                }
+            }
+        }
+
+        .entrar-btn {
+            height: 100% !important;
+            width: 60px;
+        }
+    }
+}
+
+.fadeTo {
+    animation: fadeTo 3s ease;
+}
+
+@keyframes fadeTo {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
