@@ -1,5 +1,6 @@
 <?php 
-require_once "./model/Student_model.php";
+
+require_once "model/Student_model.php";
 
 class Release_student
 {	
@@ -9,7 +10,7 @@ class Release_student
 		
 	function __construct()
 	{
-		require_once "./model/Database.php";
+		require_once "model/Database.php";
 		$this->db=Database::Connect();
 		
 	}
@@ -20,16 +21,19 @@ class Release_student
 		$students=array();
 		$c=0;
 
-		$sql="SELECT * FROM student ORDER BY id DESC";
+		$sql="SELECT student.id,student.id_user,student.id_course, user.DNI,user.name,user.last_name,user.email,user.password,user.phone,user.date_birth,user.photo
+FROM student INNER JOIN user ON student.id_user = user.id;  ORDER BY id DESC";
 
 		$result=$this->db->prepare($sql);
 		$result->execute(array());
+
 
 		while ($row=$result->fetch(PDO::FETCH_ASSOC))
 		{
 			$student=new Student();
 
 			$student->set_id($row['id']);
+			$student->set_id_user($row['id_user']);
 			$student->set_DNI($row['DNI']);
 			$student->set_name($row['name']);
 			$student->set_last_name($row['last_name']);
@@ -75,7 +79,7 @@ class Release_student
 		return $student;
 	}
 
-	/*function insert_student(Student $student)
+/*	function insert_student(Student $student)
 	{
 		$sql="INSERT INTO images (id_category,title,subject,date,image) VALUES (:id_cat,:title,:sub,:date,:image)";
 		$result=$this->db->prepare($sql);
@@ -90,7 +94,9 @@ class Release_student
         }
 
 	}
+
 	*/
+	
 
 	/*function get_allcategories()
 	{
@@ -113,8 +119,8 @@ class Release_student
 
 	}
 
-	
-*/
+	*/
+
 }
 
 

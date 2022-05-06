@@ -48,7 +48,7 @@ if (btnShow) {
         moveY('0')
     }
     btnClose.onclick = () => moveY('-100')
-    console.log('culo');
+    
 
 } else {
     fullScreen.style = 'transform: translateY(0vh); z-index: 1'

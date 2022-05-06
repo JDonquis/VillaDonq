@@ -1,7 +1,6 @@
 <?php 
 
-require_once "./model/Release_student_model.php";
-
+require_once "model/Release_student_model.php";
 
 class Students_controller
 {	
@@ -34,7 +33,7 @@ class Students_controller
 
 		return $student;
 	}
-/*
+	/*
 	function show_main(){
 
 		include_once "/var/www/html/development/php/BLOG/view/images.php";
@@ -67,8 +66,9 @@ class Students_controller
 		include "/var/www/html/development/php/BLOG/view/sectionBanner.php";
 
 	}
+	
+	*/
 
-*/
 }
 
 
