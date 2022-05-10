@@ -1,10 +1,10 @@
   <?php 
 
+
     session_start();
     if(isset($_SESSION['id']))
-    {
-       require_once "../controller/login_controller.php";
-
+    { 
+       require_once "../controller/login_controller.php"; 
         
         $type=$_SESSION['id_position'];
 
@@ -14,6 +14,8 @@
 
             $user=Students_controller::get_one($_SESSION['id']);
         }
+
+
         else if($type==1)
         {
             require_once "../controller/personal_controller.php";

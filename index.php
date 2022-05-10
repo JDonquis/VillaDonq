@@ -13,6 +13,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <div class="screenShow">
         <div class="shadowsLoader">
             <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
@@ -62,6 +63,10 @@
         
 
     </form>
+=======
+    
+    <?php require_once "views/form-login.php"; ?>
+>>>>>>> routes
 
 
     <nav class="main_nav">

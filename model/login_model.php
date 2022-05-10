@@ -8,7 +8,7 @@ class Login_users
 		
 	function __construct()
 	{
-		require_once "./model/database.php";
+		require_once "database.php";
 		$this->db=Database::Connect();
 		
 	}
@@ -17,7 +17,7 @@ class Login_users
 
 			try{
 
-			$sql="SELECT id,id_position,DNI,email,password FROM user WHERE DNI=:user OR email=:user and password=:password";
+			$sql="SELECT id,id_position,DNI,email,password FROM user WHERE DNI=:user and password=:password OR email=:user and password=:password";
 
 
 			$username=htmlentities(addslashes($user));
