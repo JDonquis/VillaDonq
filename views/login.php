@@ -8,24 +8,16 @@
 
     <title>VillaDonq</title>
 
-    <?php 
- 
-	if(isset($_POST['username']) and isset($_POST['password']))
-	{
-		 require_once "./controller/Login_controller.php";
-		$login=new Login_controller();
-		$login->verify($_POST['username'], $_POST['password']);
-	}
-
- ?>
-
 </head>
+
+<body>
+    
 <div class="screenShow">
     <div class="shadowsLoader">
         <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
 </div>
-<form class="login_form" action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="POST"> 
+<form class="login_form" action="../controller/login_controller.php" method="POST"> 
     <a class="close_btn" type="menu" href="index.html">
         <svg width="37" height="31" viewBox="0 0 37 31" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4.62216 29.6726L31 2.00003"  stroke-width="3" />
@@ -36,13 +28,13 @@
         
         <legend>LOGIN</legend>
         <span>
-            <input type="text" required id="CI_o_correo">
+            <input type="text" name="username" required id="CI_o_correo">
             <label for="CI_o_correo">C.I. o correo</label>
         </span>
         <?xml version="1.0" encoding="UTF-8"?>
 
         <span>
-            <input type="password" required id="contraseña">
+            <input type="password" name="password" required id="contraseña">
             <label for="contraseña">Contraseña</label>
             <i>
                 <svg class="closed_eye" xmlns="http://www.w3.org/2000/svg"

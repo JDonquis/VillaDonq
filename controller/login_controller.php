@@ -1,6 +1,8 @@
 <?php 
 
-require_once "./model/login_model.php";
+require_once "../model/login_model.php";
+
+
 
 
 class Login_controller{
@@ -29,13 +31,13 @@ class Login_controller{
 					$_SESSION['id']=$n[0];
 					$_SESSION['id_position']=$n[1];
 
-					header("location:./views/workspace.php");
+					header("location:../views/workspace.php");
 					exit();
 
 			}
 			else{			
 
-				header("location:./views/login.php");
+				header("location:../views/login.php");
 				exit();
 			}
 	
@@ -52,5 +54,17 @@ class Login_controller{
 
 }
 
+
+
+	if(isset($_POST['username']) and isset($_POST['password']))
+	{
+		
+		$login=new Login_controller();
+		$login->verify($_POST['username'], $_POST['password']);
+	}
+
+
+
+	
 
  ?>
