@@ -22,8 +22,6 @@ $color4: #21E6C1;
     top: 0;
     left: 0;
     z-index: 100;
-    
- 
 }
 .screenShow {
     @include full-screen(rgb(15, 6, 6));
@@ -95,4 +93,7 @@ button {
     &:hover {
         cursor: pointer;
     }
+}
+fieldset {
+    border: none;
 }

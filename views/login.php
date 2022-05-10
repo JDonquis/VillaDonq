@@ -32,7 +32,7 @@
             <path d="M31.5 29.5L5.34254 2.51347"  stroke-width="3" />
         </svg>
     </a>
-    <fieldset>
+    <fieldset class='card_form'>
         
         <legend>LOGIN</legend>
         <span>
@@ -63,7 +63,7 @@
                 </svg>
             </i>
         </span>
-        <span class="parent_login_btn_nav"><input type="submit" value="Iniciar sesión" class="btn_guardar"></span>
+        <span class="parent_btn_submit"><input type="submit" value="Iniciar sesión" class="btn_guardar btn_submit"></span>
     </fieldset>
     
 
@@ -73,7 +73,7 @@
 
 </body>
 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script>
 <script src="js/login.js"></script> 
 <script src="js/loader.js"></script>
 

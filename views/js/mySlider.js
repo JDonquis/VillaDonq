@@ -11,7 +11,6 @@ let per_move = 1
 
 slider_wrap.style.gridTemplateColumns = `repeat(${n_sliders}, ${100 / per_view}%)`
 
-
 const style = getComputedStyle(slider_wrap)
 let gap = style.gap.replace(/\D/g, '')
 
@@ -49,7 +48,8 @@ if (nav_slider) {
     })
 }
 
-if (next_btn) {
+if (next_btn || prev_btn) {
+    let level_of_opacity_btn = 0;
     function btnOpacity() {
         active_slider == 0 ? prev_btn.classList.add('disable') : prev_btn.classList.remove('disable')
         active_slider == n_sliders - per_view ? next_btn.classList.add('disable') : next_btn.classList.remove('disable')
@@ -60,34 +60,41 @@ if (next_btn) {
 if (progress_bar) {
     progress_bar.style.transition = '.4s all ease'
     function progress() {
-        progress_bar.style.width = `${((active_slider) / (formule)) * 100}%`
+        progress_bar.style.width = `${((active_slider + 1) / n_sliders) * 100}%`
     }
     progress()
 }
 
+
 let scroll_x_position = slider_wrap.scrollLeft;
 function translate(direction, times = 1) {
+    
+    function move() {
+        active_slider = times
+        slider_wrap.scrollLeft = each_width * times
+        scroll_x_position = slider_wrap.scrollLeft;
+    }
 
     if (direction == '>') {
-        if (active_slider < formule) {
-            active_slider = times
-            slider_wrap.scrollLeft = each_width * times
-            btnOpacity()
-            liActivate()
-            progress()
-            scroll_x_position = slider_wrap.scrollLeft;
-        }
+        if (active_slider < formule) move()
     }
 
     if (direction == '<') {
-        if (active_slider > 0) {
-            active_slider = times
-            slider_wrap.scrollLeft = each_width * times
-            btnOpacity()
-            liActivate()
-            progress()
-            scroll_x_position = slider_wrap.scrollLeft;
-        }
+        if (active_slider > 0) move()
+    }
+
+    if (opacity_effect_each) {
+        each_slider.forEach(e => e.style.opacity = '0')
+        each_slider[active_slider].style.opacity = '1'
+    }
+    btnOpacity?.()
+    liActivate?.()
+    progress?.()
+    if (active_slider == n_sliders-1) {
+        document.querySelector(".parent_btn_submit").style = 'display: block !important'
+    } else {
+        document.querySelector(".parent_btn_submit").style = 'display: none !important'
+
     }
 }
 
@@ -103,7 +110,7 @@ slider_wrap.addEventListener('touchstart', () => {
 })
 
 slider_wrap.addEventListener('touchend', e => {
-    if ( swift_scroll == false ){
+    if (swift_scroll == false) {
         startDebounce()
     }
     swift_move = false
@@ -114,13 +121,12 @@ slider_wrap.addEventListener('scroll', e => {
         swift_scroll = true;
         startDebounce()
     }
-    
 })
 
 
-function debounce(fn, delay=50) {
+function debounce(fn, delay = 50) {
     let time;
-    return function(...arg) {
+    return function (...arg) {
         clearTimeout(time)
         time = setTimeout(() => {
             fn(...arg)

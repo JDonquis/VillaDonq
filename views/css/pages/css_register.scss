@@ -1,0 +1,104 @@
+@import '../_components.scss';
+@import '../mySlider.scss';
+
+body {
+    background: $color3;
+}
+form.inscribe {
+    width: 100%;
+
+    .nav_slider {
+        position: absolute;
+        top: 20px;
+        left: 90px;
+        width: 100%;
+    }
+
+    .progress_bar {
+        position: absolute;
+        top: 0;
+        height: 20px;
+        left: 0;
+
+        div {
+            background: linear-gradient(to right, $color2, $color4);
+            border-radius: 5px;
+        }
+    }
+
+    @include card-form(500px);
+
+    .card_form {
+        padding-top: 40px;
+    }
+
+    fieldset {
+        transition: .4s all ease;
+
+        legend {
+            margin-top: 20px;
+        }
+
+    }
+
+    input[type=file] {
+        margin-bottom: 25px;
+        color: $color3;
+    }
+
+    ::-webkit-file-upload-button {
+
+        margin-top: 10px;
+        margin-bottom: 5px;
+        height: 30px;
+        width: 100%;
+        display: block;
+        background-color: $color3;
+        border: none;
+        color: white;
+
+        &:hover {
+            cursor: pointer;
+            background: $color4;
+            color: $color1;
+        }
+    }
+
+}
+
+.arrow_buttons {
+    transform: translateY(-8px);
+    align-items: center;
+    .next {
+        font-size: 18px !important;
+        clip-path: polygon(0 21%, 72% 20%, 100% 50%, 73% 80%, 0 80%);
+        background: $color2  !important;
+        padding: 20px 30px 20px 10px;
+
+    }
+
+    .prev {
+        font-size: 50px;
+        color: $color2;
+    }
+
+    button.disable {
+        opacity: 0 !important;
+    }
+    button:hover {
+        color: $color4;
+    }
+    .parent_btn_submit { 
+        display: none !important;
+        margin: 0 !important;
+    
+        .btn_submit {
+        margin: 0 !important;
+    
+            padding-inline: 45px !important;
+            font-size: 20px;
+            transform: translateX(-99px);
+    
+        }
+    }
+}
