@@ -127,6 +127,12 @@ fieldset {
   border: none;
 }
 
+.d-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  gap: 20px;
+}
+
 .slider {
   width: 100%;
   position: relative;
@@ -136,6 +142,9 @@ fieldset {
   transition: all 0.3s;
   overflow-x: scroll;
   scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+  gap: 0;
 }
 .slider .slider_wrap::-webkit-scrollbar {
   display: none;
@@ -152,6 +161,7 @@ fieldset {
 .slider .arrow_buttons {
   display: flex;
   justify-content: space-between;
+  z-index: 9;
 }
 .slider .arrow_buttons button {
   background: transparent;

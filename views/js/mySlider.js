@@ -9,6 +9,7 @@ const n_sliders = slider_wrap.childElementCount
 let per_view = 1
 let per_move = 1
 
+
 slider_wrap.style.gridTemplateColumns = `repeat(${n_sliders}, ${100 / per_view}%)`
 
 const style = getComputedStyle(slider_wrap)
@@ -84,18 +85,15 @@ function translate(direction, times = 1) {
     }
 
     if (opacity_effect_each) {
+        console.log(opacity_effect_each);
         each_slider.forEach(e => e.style.opacity = '0')
         each_slider[active_slider].style.opacity = '1'
     }
     btnOpacity?.()
     liActivate?.()
     progress?.()
-    if (active_slider == n_sliders-1) {
-        document.querySelector(".parent_btn_submit").style = 'display: block !important'
-    } else {
-        document.querySelector(".parent_btn_submit").style = 'display: none !important'
 
-    }
+    
 }
 
 next_btn.onclick = () => translate('>', active_slider + 1)

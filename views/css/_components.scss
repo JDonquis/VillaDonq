@@ -1,7 +1,7 @@
 $width_card_form: 289px;
 $height_card_form: 400px;
 $padding_card_form: 25px;
-@mixin card-form($height_card_form) { 
+@mixin card-form($height_card_form, $width_card_form) { 
 
     .card_form {
         color: white;
@@ -46,7 +46,8 @@ $padding_card_form: 25px;
 
         .cont_input_label, span {
             position: relative;
-            display: inline-block;
+            display: block;
+            width: 100%;  
             margin-bottom: 30px;
 
             &:hover {
@@ -57,11 +58,11 @@ $padding_card_form: 25px;
                 border: 0;
                 display: block;
                 border-bottom: 2px solid $color3;
-                background: $color1;
+                background: rgb(11, 38, 73);
+                border-radius: 3px;
                 transition: .3s all ease;
                 padding: 10px;
                 padding-bottom: 5px;
-
                 font-size: 18px;
                 width: 100%;
 
@@ -73,11 +74,12 @@ $padding_card_form: 25px;
             label {
                 position: absolute;
                 padding: 0;
+                display: block; 
                 padding-top: 5px;
                 bottom: 7px;
                 left: 0;
                 transition: all .3s ease;
-                background: $color1;
+                background: transparent;
                 z-index: 1;
 
                 &:hover {
@@ -92,18 +94,31 @@ $padding_card_form: 25px;
 
         }
 
+        textarea {
+            border: 0;
+                display: block;
+                border-bottom: 2px solid $color3;
+                background: rgb(11, 38, 73);
+                border-radius: 3px;
+                transition: .3s all ease;
+                padding: 10px;
+                padding-bottom: 5px;
+                font-size: 18px;
+                width: 100%;
+                outline: none;
+        }
         .btn_submit {
             border: 2px solid $color3;
             background: transparent;
             padding: 12px;
             margin-top: 70px;
             width: 100%;
-            position: relative;
+            
             background-image: linear-gradient(to right, $color3, $color1 50%);
             color: $color4;
             background-size: 200% 100%;
             background-position: -100%;
-
+            z-index: 10;
             &:hover {
                 cursor: pointer;
                 color: white;

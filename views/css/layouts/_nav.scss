@@ -1,4 +1,6 @@
+$nav_height : 90px;
 .main_nav {
+    height: $nav_height;
     background-color: $color1;
     width: 100%;
     padding-block: 10px;
@@ -8,7 +10,7 @@
         justify-content: space-between;
         align-items: center;
     }
-
+ 
     .logo>* {
         max-width: 250px;
     }
@@ -16,7 +18,7 @@
     .nav_content {
         @include full-screen($color1);
         top: -100%;
-
+ 
         color: white;
         padding-top: clamp(70px, 10vw, 90px);
         padding-left: clamp(60px, 15vw, 160px);

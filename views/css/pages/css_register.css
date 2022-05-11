@@ -127,6 +127,12 @@ fieldset {
   border: none;
 }
 
+.d-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  gap: 20px;
+}
+
 .slider {
   width: 100%;
   position: relative;
@@ -136,6 +142,9 @@ fieldset {
   transition: all 0.3s;
   overflow-x: scroll;
   scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+  gap: 0;
 }
 .slider .slider_wrap::-webkit-scrollbar {
   display: none;
@@ -152,6 +161,7 @@ fieldset {
 .slider .arrow_buttons {
   display: flex;
   justify-content: space-between;
+  z-index: 9;
 }
 .slider .arrow_buttons button {
   background: transparent;
@@ -186,32 +196,148 @@ fieldset {
   background: green;
 }
 
-body {
-  background: #278EA5;
+.main_nav {
+  height: 90px;
+  background-color: #081f3d;
+  width: 100%;
+  padding-block: 10px;
+}
+.main_nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main_nav .logo > * {
+  max-width: 250px;
+}
+.main_nav .nav_content {
+  position: fixed;
+  width: 100%;
+  background: #081f3d;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  top: -100%;
+  color: white;
+  padding-top: clamp(70px, 10vw, 90px);
+  padding-left: clamp(60px, 15vw, 160px);
+  z-index: 110;
+}
+.main_nav .nav_content span {
+  font-size: calc(clamp(35px, 6vw, 50px) - 16px);
+  opacity: 0.7;
+}
+.main_nav .nav_content a {
+  font-size: clamp(35px, 6vw, 50px);
+  position: relative;
+  background-image: linear-gradient(to right, #21E6C1, #21E6C1 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 15px 0 0 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+.main_nav .nav_content a:before {
+  content: "";
+  background: #21E6C1;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+}
+.main_nav .nav_content a:hover {
+  background-position: 0;
+}
+.main_nav .nav_content a:hover::before {
+  width: 40px;
+}
+.main_nav .nav-section .trigger_nav {
+  padding: 0px;
+  height: 30px;
+  background: none;
+  border: none;
+}
+.main_nav .nav-section .trigger_nav path {
+  stroke: #278EA5;
+}
+.main_nav .nav-section .trigger_nav:hover {
+  cursor: pointer;
+}
+.main_nav .nav-section .trigger_nav:hover path {
+  stroke: #21E6C1;
+}
+.main_nav .nav-section .entrar-btn {
+  height: 100% !important;
+  width: 60px;
 }
 
-form.inscribe {
-  width: 100%;
+.fadeTo {
+  -webkit-animation: fadeTo 3s ease;
+          animation: fadeTo 3s ease;
 }
-form.inscribe .nav_slider {
+
+@-webkit-keyframes fadeTo {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeTo {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.cont_h1_and_form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-rows: repeat(1, calc(100vh - 90px));
+}
+.cont_h1_and_form .h1_cont {
+  background-color: #21E6C1;
+  display: flex;
+  padding: 65px;
+  align-items: center;
+}
+.cont_h1_and_form .h1_cont h1 {
+  text-align: center;
+}
+.cont_h1_and_form form.inscribe {
+  background-color: #278EA5;
+  display: flex;
+  align-items: center;
+}
+.cont_h1_and_form form.inscribe .nav_slider {
   position: absolute;
   top: 20px;
   left: 90px;
   width: 100%;
 }
-form.inscribe .progress_bar {
+.cont_h1_and_form form.inscribe .progress_bar {
   position: absolute;
   top: 0;
   height: 20px;
   left: 0;
 }
-form.inscribe .progress_bar div {
+.cont_h1_and_form form.inscribe .progress_bar div {
   background: linear-gradient(to right, #1F4287, #21E6C1);
   border-radius: 5px;
 }
-form.inscribe .card_form {
+.cont_h1_and_form form.inscribe .card_form {
   color: white;
-  width: 289px;
+  width: 85%;
   height: 500px;
   background: #081f3d;
   display: block;
@@ -223,7 +349,7 @@ form.inscribe .card_form {
   border-radius: 5px;
   opacity: 1;
 }
-form.inscribe .card_form::before, form.inscribe .card_form::after {
+.cont_h1_and_form form.inscribe .card_form::before, .cont_h1_and_form form.inscribe .card_form::after {
   content: " ";
   position: absolute;
   bottom: 11px;
@@ -232,104 +358,132 @@ form.inscribe .card_form::before, form.inscribe .card_form::after {
   z-index: -10 !important;
   box-shadow: 0 11px 10px rgba(0, 0, 0, 0.6);
 }
-form.inscribe .card_form::after {
+.cont_h1_and_form form.inscribe .card_form::after {
   right: 0px;
   transform: rotate(3deg);
 }
-form.inscribe .card_form::before {
+.cont_h1_and_form form.inscribe .card_form::before {
   left: 0px;
   transform: rotate(-3deg);
 }
-form.inscribe .card_form legend {
+.cont_h1_and_form form.inscribe .card_form legend {
   margin-bottom: 23px;
   text-align: center;
 }
-form.inscribe .card_form .cont_input_label, form.inscribe .card_form span {
+.cont_h1_and_form form.inscribe .card_form .cont_input_label, .cont_h1_and_form form.inscribe .card_form span {
   position: relative;
-  display: inline-block;
+  display: block;
+  width: 100%;
   margin-bottom: 30px;
 }
-form.inscribe .card_form .cont_input_label:hover, form.inscribe .card_form span:hover {
+.cont_h1_and_form form.inscribe .card_form .cont_input_label:hover, .cont_h1_and_form form.inscribe .card_form span:hover {
   cursor: text;
 }
-form.inscribe .card_form .cont_input_label input, form.inscribe .card_form span input {
+.cont_h1_and_form form.inscribe .card_form .cont_input_label input, .cont_h1_and_form form.inscribe .card_form span input {
   border: 0;
   display: block;
   border-bottom: 2px solid #278EA5;
-  background: #081f3d;
+  background: rgb(11, 38, 73);
+  border-radius: 3px;
   transition: 0.3s all ease;
   padding: 10px;
   padding-bottom: 5px;
   font-size: 18px;
   width: 100%;
 }
-form.inscribe .card_form .cont_input_label input:focus, form.inscribe .card_form span input:focus {
+.cont_h1_and_form form.inscribe .card_form .cont_input_label input:focus, .cont_h1_and_form form.inscribe .card_form span input:focus {
   border-bottom: 2px solid #21E6C1;
 }
-form.inscribe .card_form .cont_input_label label, form.inscribe .card_form span label {
+.cont_h1_and_form form.inscribe .card_form .cont_input_label label, .cont_h1_and_form form.inscribe .card_form span label {
   position: absolute;
   padding: 0;
+  display: block;
   padding-top: 5px;
   bottom: 7px;
   left: 0;
   transition: all 0.3s ease;
-  background: #081f3d;
+  background: transparent;
   z-index: 1;
 }
-form.inscribe .card_form .cont_input_label label:hover, form.inscribe .card_form span label:hover {
+.cont_h1_and_form form.inscribe .card_form .cont_input_label label:hover, .cont_h1_and_form form.inscribe .card_form span label:hover {
   cursor: text;
 }
-form.inscribe .card_form .cont_input_label label.focus_valid, form.inscribe .card_form span label.focus_valid {
+.cont_h1_and_form form.inscribe .card_form .cont_input_label label.focus_valid, .cont_h1_and_form form.inscribe .card_form span label.focus_valid {
   transform: translateY(-24px);
   color: #21E6C1;
 }
-form.inscribe .card_form .btn_submit {
+.cont_h1_and_form form.inscribe .card_form textarea {
+  border: 0;
+  display: block;
+  border-bottom: 2px solid #278EA5;
+  background: rgb(11, 38, 73);
+  border-radius: 3px;
+  transition: 0.3s all ease;
+  padding: 10px;
+  padding-bottom: 5px;
+  font-size: 18px;
+  width: 100%;
+  outline: none;
+}
+.cont_h1_and_form form.inscribe .card_form .btn_submit {
   border: 2px solid #278EA5;
   background: transparent;
   padding: 12px;
   margin-top: 70px;
   width: 100%;
-  position: relative;
   background-image: linear-gradient(to right, #278EA5, #081f3d 50%);
   color: #21E6C1;
   background-size: 200% 100%;
   background-position: -100%;
+  z-index: 10;
 }
-form.inscribe .card_form .btn_submit:hover {
+.cont_h1_and_form form.inscribe .card_form .btn_submit:hover {
   cursor: pointer;
   color: white;
   background-position: 0;
 }
-form.inscribe .card_form .btn_submit:hover .parent_btn_submit::after {
+.cont_h1_and_form form.inscribe .card_form .btn_submit:hover .parent_btn_submit::after {
   left: 0;
 }
-form.inscribe .card_form {
+.cont_h1_and_form form.inscribe .card_form {
   padding-top: 40px;
 }
-form.inscribe fieldset {
+.cont_h1_and_form form.inscribe .card_form fieldset {
   transition: 0.4s all ease;
+  height: 100%;
 }
-form.inscribe fieldset legend {
+.cont_h1_and_form form.inscribe .card_form fieldset legend {
   margin-top: 20px;
 }
-form.inscribe input[type=file] {
+.cont_h1_and_form form.inscribe .card_form fieldset label {
+  transform: translateX(10px);
+}
+.cont_h1_and_form form.inscribe input[type=file] {
   margin-bottom: 25px;
   color: #278EA5;
+  display: block;
+  width: 100%;
 }
-form.inscribe ::-webkit-file-upload-button {
+.cont_h1_and_form form.inscribe ::-webkit-file-upload-button {
   margin-top: 10px;
   margin-bottom: 5px;
   height: 30px;
   width: 100%;
   display: block;
-  background-color: #278EA5;
+  background-color: #1F4287;
   border: none;
   color: white;
 }
-form.inscribe ::-webkit-file-upload-button:hover {
+.cont_h1_and_form form.inscribe ::-webkit-file-upload-button:hover {
   cursor: pointer;
   background: #21E6C1;
   color: #081f3d;
+}
+.cont_h1_and_form form.inscribe #ins_date_birth {
+  color: transparent;
+}
+.cont_h1_and_form form.inscribe #ins_date_birth.focus_valid {
+  color: white !important;
 }
 
 .arrow_buttons {
@@ -353,13 +507,15 @@ form.inscribe ::-webkit-file-upload-button:hover {
 .arrow_buttons button:hover {
   color: #21E6C1;
 }
-.arrow_buttons .parent_btn_submit {
-  display: none !important;
+
+.parent_btn_submit {
   margin: 0 !important;
 }
-.arrow_buttons .parent_btn_submit .btn_submit {
+.parent_btn_submit .btn_submit {
   margin: 0 !important;
   padding-inline: 45px !important;
   font-size: 20px;
-  transform: translateX(-99px);
+  position: absolute;
+  bottom: -100px;
+  right: 0;
 }/*# sourceMappingURL=css_register.css.map */

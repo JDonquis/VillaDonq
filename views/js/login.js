@@ -21,7 +21,6 @@ document.querySelectorAll('.login_form span input').forEach(element => {
 const btnClose = document.querySelector(".close_btn")
 const btnShow = document.querySelector(".entrar-btn")
 const fullScreen = btnClose.parentElement;
-
 const moveY = (sign) => gsap.to(fullScreen, { y: `${sign}vh`, duration: .5, ease: Expo.easeInOut })
 
 // focus firs input
@@ -29,6 +28,7 @@ const focusFirstInput = () => setTimeout(() =>  document.querySelector('#CI_o_co
 focusFirstInput()
 // si existe 
 if (btnShow) {
+    
     btnShow.onclick = () => {
         nav_section.style = 'z-index: 1'
         moveY('0')
@@ -47,11 +47,11 @@ if (btnShow) {
         screenShow.style = 'transform: translateX(0); z-index: 0'
 
         setTimeout(() => {
-            window.location.href = 'index.html'
+            window.location.href = '../index.php'
         }, 500);
     }
-
 }
+
 document.querySelectorAll(".card_form input").forEach(input => {
    
     if (input.type !== 'file' && input.type !== 'submit') {

@@ -1,16 +1,11 @@
-<div class="screenShow">
-    <div class="shadowsLoader">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-    </div>
-</div>
-<form class="login_form" action="controller/login_controller.php" method="POST"> 
-    <a class="close_btn" type="menu" href="index.php">
+<form class="login_form" action="../controller/login_controller.php" method="POST"> 
+    <a class="close_btn" type="menu" >
         <svg width="37" height="31" viewBox="0 0 37 31" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4.62216 29.6726L31 2.00003"  stroke-width="3" />
             <path d="M31.5 29.5L5.34254 2.51347"  stroke-width="3" />
         </svg>
     </a>
-    <fieldset>
+    <fieldset class='card_form'>
         
         <legend>LOGIN</legend>
         <span>
@@ -41,7 +36,7 @@
                 </svg>
             </i>
         </span>
-        <span class="parent_btn_submit"><input type="submit" value="Iniciar sesión" class="btn_guardar"></span>
+        <span class="parent_btn_submit"><input type="submit" value="Iniciar sesión" class="btn_guardar btn_submit"></span>
     </fieldset>
     
 

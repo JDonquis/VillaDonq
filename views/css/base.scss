@@ -97,3 +97,9 @@ button {
 fieldset {
     border: none;
 }
+
+.d-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    gap: 20px;
+} 

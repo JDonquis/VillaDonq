@@ -9,6 +9,9 @@
         transition: all .3s;
         overflow-x: scroll;
         scroll-behavior: smooth;
+        width: 100%;
+        height: 100%;
+        gap: 0;
         &::-webkit-scrollbar {
             display: none;
         }
@@ -20,12 +23,13 @@
             position: relative;
             left: 0;
             color: white;
-        }
+        } 
     }
 
     .arrow_buttons {
         display: flex;
         justify-content: space-between;
+        z-index: 9;
         // top: 50%;
         // left: 50%;
         // transform: translate(-50%, -50%);
