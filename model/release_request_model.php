@@ -1,9 +1,7 @@
 <?php 
-require_once "personal_model.php";
+require_once "request_model.php";
 
-
-
-class Release_personal
+class Release_request
 {	
 	
 	protected $db;
@@ -15,40 +13,78 @@ class Release_personal
 		
 	}
 
-	
-	function get_all_personal()
+	/*Recive a parameter: 
+	0 -> all request, dont matter status request
+	1 -> all request accepted
+	2 -> all request rejected 
+	3 -> all request no checks 
+	*/
+	function get_all_request($m)
 	{	
-		$personal=array();
+		$requests=array();
 		$c=0;
 
-		$sql="SELECT * FROM personal ORDER BY id DESC";
+		switch ($m) {
+			case 0:
+				$sql="SELECT * FROM request ORDER BY id DESC";
+				break;
+			case 1:
+			
+			$sql="SELECT * FROM request WHERE id_status=1 ORDER BY id DESC";
+
+			break;
+
+			case 2:
+
+			$sql="SELECT * FROM request WHERE id_status=2 ORDER BY id DESC";
+
+			break;
+
+			case 3:
+
+			$sql="SELECT * FROM request WHERE id_status=3 ORDER BY id DESC";
+
+			break;		
+			
+			default:
+				$sql="SELECT * FROM request ORDER BY id DESC";
+				break;
+		}
+		
 
 		$result=$this->db->prepare($sql);
 		$result->execute(array());
 
 		while ($row=$result->fetch(PDO::FETCH_ASSOC))
 		{
-			$person=new Personal();
+			$request=new Request();
 
-			$person->set_id($row['id']);
-			$person->set_id_position($row['id_position']);
-			$person->set_DNI($row['DNI']);
-			$person->set_name($row['name']);
-			$person->set_last_name($row['last_name']);
-			$person->set_email($row['email']);
-			$person->set_password($row['password']);
-			$person->set_phone($row['phone']);
-			$person->set_date_birth($row['date_birth']);
-			$person->set_photo($row['photo']);
+			$request->set_id($row['id']);
+			$request->set_id_status($row['id_status']);
+			$request->set_name($row['name']);
+			$request->set_last_name($row['last_name']);
+			$request->set_phone($row['phone_number']);
+			$request->set_email($row['email']);
+			$request->set_DNI($row['DNI']);
+			$request->set_address($row['address']);
+			$request->set_age($row['age']);
+			$request->set_date_birth($row['date_birth']);
+			$request->set_birth_certificate($row['birth_certificate']);
+			$request->set_report_card($row['report_card']);
+			$request->set_certified_notes($row['certified_notes']);
+			$request->set_certificate_conduct($row['certified_notes']);
+			$request->set_representative_name($row['representative_name']);
+			$request->set_representative_phone_number($row['representative_phone_number']);
 
-			$personal[$c]=$person;
+
+			$requests[$c]=$request;
 			$c++;
 
 		}
-		return $personal;
+		return $requests;
 	}
 
-		function get_one_personal($id_user)
+	/*	function get_one_request($id_user)
 	{	
 		$persona=new Personal();
 		$c=0;
@@ -75,6 +111,8 @@ class Release_personal
 		
 		return $persona;
 	}
+
+	*/
 
 
 	/*function insert_student(Student $student)

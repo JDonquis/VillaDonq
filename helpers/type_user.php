@@ -16,7 +16,13 @@
         }
 
 
-        else if($type==1)
+        else if($type==1 or $type==2)
+        {
+            require_once "../controller/personal_controller.php";
+            $user=Personal_controller::get_one($_SESSION['id']);
+        }
+
+            else if($type==3)
         {
             require_once "../controller/personal_controller.php";
             $user=Personal_controller::get_one($_SESSION['id']);
