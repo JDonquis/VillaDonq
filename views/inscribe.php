@@ -24,7 +24,7 @@
             <h1>Inscribete en VILLADONQ y recibe la mejor educación</h1>
         </div>
         <form class=" inscribe">
-            <div class="card_form slider">
+            <div class="card_form slider" id='up'>
                 <!-- <ul class="nav_slider">
                 </ul>  -->
                 <div class="progress_bar">
@@ -53,7 +53,7 @@
                                 <label for="ins_date_birth">Edad:</label>
                             </span>
                         </div>
-                        <div class="d-grid">
+                        <div class="d-grid"> 
                             <span>
                                 <input type="text" id="ins_DNI" pattern="[A-Za-z]{1}[0-9]{8}" required title="Debe escribir una letra seguida de 8 números" >
                                 <label for="ins_DNI">DNI: </label>
@@ -67,6 +67,10 @@
                             <input type="gmail" name="" id="ins_correo" required>
                             <label for="ins_correo">Correo: </label>
                         </span>
+                        <div class="arrow_buttons">
+                            <button class="prev" type="button" title="Volver" href="#up"> ← </button>
+                            <button class="next" type="button">Siguiente</button>
+                        </div>
                     </fieldset>
 
                     <fieldset class="each_slider_element">
@@ -88,7 +92,10 @@
                     
                             <label for="direccion_detallada">Dirección especifica</label>
                             <textarea name="" id="direccion_detallada" cols="30" rows="5"></textarea>
-                        
+                        <div class="arrow_buttons">
+                            <button class="prev" type="button" title="Volver"> ← </button>
+                            <button class="next" type="button">Siguiente</button>
+                        </div>
                     </fieldset>
 
                     <fieldset class="each_slider_element file">
@@ -97,6 +104,10 @@
                         <input type="file" id="ins_foto" required>
                         <label for="ins_partida_de_nacimiento">Partida de nacimiento: </label>
                         <input type="file" id="ins_partida_de_nacimiento" required>
+                        <div class="arrow_buttons">
+                            <button class="prev" type="button" title="Volver"> ← </button>
+                            <button class="next" type="button">Siguiente</button>
+                        </div>
                     </fieldset>
 
                     <fieldset class="each_slider_element file">
@@ -107,7 +118,10 @@
                         <input type="file" id="ins_notas" required>
                         <label for="ins_buena_conducta">Constancia de buena conducta</label>
                         <input type="file" name="" id="ins_buena_conducta">
-                        
+                        <div class="arrow_buttons">
+                            <button class="prev" type="button" title="Volver"> ← </button>
+                            <button class="next" type="button">Siguiente</button>
+                        </div>
                     </fieldset>
 
                     <fieldset class="each_slider_element">
@@ -125,16 +139,15 @@
                             <label for="ins_repre_tel">telefono: </label>
                         </span>
                         <span class="parent_btn_submit"><input type="submit" value="INSCRIBIR" class="inscribirse btn_submit"></span>
+                        <div class="arrow_buttons">
+                            <button class="prev" type="button" title="Volver" > ← </button>
+                            <button class="next" type="button">Siguiente</button>
+                        </div>
                     </fieldset>
                 </div>
         
-                <div class="arrow_buttons">
-                    <button class="prev" type="button"> ← </button>
-                    <button class="next" type="button">Siguiente</button>
-                    
-                </div>
+                
             </div>
-        
         </form>
     </div>
 
@@ -155,6 +168,7 @@
                     input.value = 'V'
                 }
                 input.nextElementSibling.classList.add('focus_valid')
+                
             }
             input.onblur = () => {
                 if (input.id == 'ins_date_birth') {
@@ -191,7 +205,12 @@
         }
         
     }
-    date_input.onblur = () => console.log('j');
+    function goUp() {
+        console.log('ay');
+        const form_ins = document.querySelector("form.inscribe")
+        form_ins.scrollIntoView(true)
+    }
+    
 </script>
 <script src="js/mySlider.js"></script>
     

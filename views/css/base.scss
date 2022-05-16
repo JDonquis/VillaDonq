@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap');
 
  
-$bigFont: clamp(35px, 6vw, 50px);
+$bigFont: clamp(28px, 7vw, 60px); 
 
-/* colores */
+/* colores */ 
 $color1: #081f3d;
-$color2: #1F4287;
+$color2: #1F4287; 
 $color3: #278EA5;
 $color4: #21E6C1;
 
@@ -20,19 +20,43 @@ $color4: #21E6C1;
     background: $bg;
     height: 100vh;
     top: 0;
-    left: 0;
+    left: 0; 
     z-index: 100;
 }
+@mixin container() {
+    width: clamp(300px, 85%, 1100px);   
+    margin: auto;
+}
+.container {
+    @include container();
+}
 .screenShow {
-    @include full-screen(rgb(15, 6, 6));
+    @include full-screen($color3); 
     @include flex-center();
     overflow: hidden;
+    z-index: 100;
+    &.hidden_screen_loader {
+        transition: .6s ease;
+        transition-delay: .3s;   
+        transform: translateX(-100%);
+    }
+    &.toUp {
+        animation: toUp .5s ease forwards;
+    }
+    @keyframes toUp {
+        0% {
+            transform: translateY(200vh);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
     .shadowsLoader {
         width: max(300px, 50%);
         height: 360px;
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        gap: 40px;
+        gap: 40px; 
         
         span {
             color: hsl(191, 80%, 33%);
@@ -68,7 +92,11 @@ $color4: #21E6C1;
     margin: 0;
     color: inherit;
     padding: 0;
+    color: white;
     font-family: 'Source Sans Pro', sans-serif;
+}
+body {
+    background: $color1;  
 }
 ul {
     list-style-type: none;
@@ -87,6 +115,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 input {
     outline: none;
+    border: NONE;
 }
 button {
     border: none;
@@ -98,8 +127,3 @@ fieldset {
     border: none;
 }
 
-.d-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-    gap: 20px;
-} 

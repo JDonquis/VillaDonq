@@ -1,0 +1,82 @@
+@import '../base.scss';
+@import '../layouts/_nav.scss';
+@import '../_components.scss';
+@import '../layouts/_login';
+@import '../mySlider.scss';
+$size_square : 400px; 
+ 
+.home_header {
+    display: flex;
+    justify-content: space-between;    
+    overflow: hidden;
+    align-items: center;        
+    gap: 20px;
+    height: calc(100vh - $nav_height);  
+    h1 {
+        font-size: $bigFont;   
+        border-left: 7.5px solid $color3;   
+        padding-left: 30px;     
+    }
+    .link_to_inscribe {
+        float: right;
+        max-width: 100px;
+        text-align: center;
+              
+    }
+    .circle_img_cont  {    
+        margin: 30px; 
+        height: $size_square;
+        width: $size_square;
+        position: relative;           
+        &:after {
+            box-sizing: border-box;   
+            content: '';
+            position: absolute;
+            width: calc($size_square + 45px);
+            height: calc($size_square + 45px);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);  
+            border: 1px solid $color3;
+   
+        } 
+        &:before {
+            box-sizing: border-box;
+            content: '';
+            position: absolute;
+            width: calc($size_square + 21px);
+            height: calc($size_square + 21px);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%); 
+            border: solid 5px ;
+            transform-origin: center;
+            border-color: $color4 $color1 $color4 $color1;             
+            // box-shadow: 0 0 0 50px red;
+            animation: rotateInfinite 15s ease-in-out infinite ;
+        }  
+        @keyframes rotateInfinite {
+            0% {
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(-405deg);
+            }
+        }
+        .slider_wrap {
+            height: 100%;    
+            .each_slider_element { 
+                overflow: hidden; 
+                border-radius: 50%;
+            }
+        }
+           img {
+            height: 100%;
+            object-fit: cover;
+           
+        }
+
+    }
+}

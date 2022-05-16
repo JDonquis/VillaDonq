@@ -1,29 +1,43 @@
+@import '../base.scss'; 
 @import '../_components.scss';
 @import '../mySlider.scss';
 @import '../layouts/nav.scss';
-
+body, html { 
+    scroll-behavior: smooth;
+}   
 // grid
 .cont_h1_and_form {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    grid-template-rows: repeat(1, calc(100vh - $nav_height));
-      
+    overflow: hidden;
+    @media (min-width: 800px) {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        grid-template-rows: repeat(1, calc(100vh - $nav_height));
+        
+    }
+    @media (min-width: 1060px) {
+        grid-template-columns: 50% 50%;
+    }
 
     .h1_cont {
         background-color: $color4;
-        display: flex; 
-        padding: 65px;
-        align-items: center; 
+        display: flex;
+        justify-content: center;
+        font-style: $bigFont;
+        align-items: center;
+        min-height: 250px;
         h1 {
             text-align: center;
+            width: 90%;
+            color: $color1;
         }
     }
-
+    
     // form and slider
     form.inscribe {
+        padding-block: 20px;
         background-color: $color3;
         display: flex;
-        align-items: center;
+        align-items: center; 
 
         .nav_slider {
             position: absolute;
@@ -31,45 +45,59 @@
             left: 90px;
             width: 100%;
         }
-     
+
         .progress_bar {
             position: absolute;
             top: 0;
             height: 20px;
             left: 0;
-    
+
             div {
                 background: linear-gradient(to right, $color2, $color4);
                 border-radius: 5px;
             }
         }
-    
-        @include card-form(500px, 85%);
-    
+        
+        @include card-form('', min(85%, 450px));     
+
         .card_form {
+            
             padding-top: 40px;
+
             fieldset {
                 transition: .4s all ease;
                 height: 100%;
+
                 legend {
                     margin-top: 20px;
                 }
+
                 label {
                     transform: translateX(10px);
                 }
             }
         }
-     
-        
+
+        // inputs
+        .d-grid {
+            @media (min-width: 400px) {
+                
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 20px;
+            }
+        } 
+
         input[type=file] {
             margin-bottom: 25px;
             color: $color3;
             display: block;
             width: 100%;
-        } 
-    
-        ::-webkit-file-upload-button {
-    
+        }
+        
+        ::-webkit-file-upload-button { 
+             
+            transition: all .4s ease;
             margin-top: 10px;
             margin-bottom: 5px;
             height: 30px;
@@ -78,61 +106,67 @@
             background-color: $color2;
             border: none;
             color: white;
-    
+
             &:hover {
                 cursor: pointer;
                 background: $color4;
                 color: $color1;
             }
         }
+
         #ins_date_birth {
             color: transparent;
+
             &.focus_valid {
-                color: white !important;  
+                color: white !important;
             }
         }
-       
-        
-    
-    }  
-    
-}
+
+        .parent_btn_submit {
+            margin: 0 !important;
+
+            .btn_submit {
+                margin: 0 !important;
+                padding-inline: 45px !important;
+                font-size: 20px;
+                
+            }
+        }
 
 
-.arrow_buttons {
-    transform: translateY(-8px);
-    align-items: center;
-    .next {
-        font-size: 18px !important;
-        clip-path: polygon(0 21%, 72% 20%, 100% 50%, 73% 80%, 0 80%);
-        background: $color2  !important;
-        padding: 20px 30px 20px 10px;
+        .arrow_buttons {
+            align-items: center; 
+            transition: all .3 ease;
  
-    }
-     
-    .prev {
-        font-size: 50px;
-        color: $color2;
+            .next {
+                font-size: 18px !important;
+                clip-path: polygon(0 21%, 72% 20%, 100% 50%, 73% 80%, 0 80%); 
+                background: $color4  !important;
+                padding: 20px 30px 20px 10px;
+                color: $color1;
+                font-weight: bold;
+                // position: absolute;
+                // bottom: $padding_card_form;
+                // right: $padding_card_form;
+            }
+
+            .prev {
+                font-size: 50px;  
+                color: $color3;
+                // position: absolute;
+                // bottom: $padding_card_form;
+                // left: $padding_card_form;
+            }
+
+            button.disable {
+                opacity: 0 !important;
+            }
+
+            button:hover {
+                color: $color2;
+                
+            }
+        }
     }
 
-    button.disable {
-        opacity: 0 !important;
-    }
-    button:hover {
-        color: $color4; 
-    }
 }
-
-.parent_btn_submit {  
-    margin: 0 !important;
-
-    .btn_submit {
-        margin: 0 !important;
-        padding-inline: 45px !important;
-        font-size: 20px;
-        position: absolute;
-        bottom: -100px;
-        right: 0;
-    }
-}
-

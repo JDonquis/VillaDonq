@@ -1,7 +1,7 @@
 const navContent = document.querySelector(".nav_content")
 const nav_section = document.querySelector(".nav-section")
 const btnNav = document.querySelector(".trigger_nav")
-const links = document.querySelectorAll(".nav_content a")
+const nav_links = document.querySelectorAll(".nav_content a")
 const timeline = gsap.timeline({ paused: true, defaults: { duration: .5, ease: Expo.easeInOut } })
     .to('.path-1', { rotation: 40 })
     .to('.path-2', { opacity: 0 }, '<')
@@ -25,7 +25,7 @@ document.addEventListener('keydown', (e) => {
 })  
 
 // animation to go another page
-links.forEach(a => {
+nav_links.forEach(a => {
     a.onclick = (e) => {
         e.preventDefault()
         nav_section.style = 'z-index:1'
@@ -39,3 +39,14 @@ links.forEach(a => {
 })
 
 
+const all_links = document.querySelectorAll("a")
+all_links.forEach(a => {
+    a.onclick = (e) => {
+        e.preventDefault()
+        screenShow.classList.add('toUp')
+        setTimeout(() => {
+            window.location.href = e.path.find( v => v.href).href
+        }, 500);
+     }
+    }
+)

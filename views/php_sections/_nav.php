@@ -1,12 +1,12 @@
 
 
 <nav class="main_nav">
-        <div class="container">
+        <div class="container">  
 
             <a href="index.php">
                 <picture class="logo">
-                    <source media="(min-width: 700px)" srcset="<?php echo $rute ?>img/big_logo.png">
-                    <img src="<?php echo $rute ?>img/small_logo.png" alt="">
+                    <source media="(min-width: 700px)" srcset="<?php echo $rute ?>img/logo_small.png">
+                    <img src="<?php echo $rute ?>img/logo.png" alt="">
                 </picture>
             </a>
             <div class="nav-section">
