@@ -1,9 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap");
 /* colores */
+.container {
+  width: clamp(300px, 85%, 1100px);
+  margin: auto;
+}
+
 .screenShow {
   position: fixed;
   width: 100%;
-  background: rgb(15, 6, 6);
+  background: #278EA5;
   height: 100vh;
   top: 0;
   left: 0;
@@ -12,6 +17,11 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+}
+.screenShow.hidden_screen_loader {
+  transition: 0.6s ease;
+  transition-delay: 0.3s;
+  transform: translateX(-100%) !important;
 }
 .screenShow .shadowsLoader {
   width: max(300px, 50%);
@@ -93,7 +103,12 @@
   margin: 0;
   color: inherit;
   padding: 0;
+  color: white;
   font-family: "Source Sans Pro", sans-serif;
+}
+
+body {
+  background: #081f3d;
 }
 
 ul {
@@ -114,6 +129,7 @@ h1, h2, h3, h4, h5, h6 {
 
 input {
   outline: none;
+  border: NONE;
 }
 
 button {
@@ -127,14 +143,71 @@ fieldset {
   border: none;
 }
 
-.d-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  gap: 20px;
+.btn_submit {
+  outline: none !important;
+  background: transparent;
+  padding: 12px;
+  display: block;
+  transition: all 0.4s ease;
+  margin-top: 70px;
+  width: 100%;
+  background-image: linear-gradient(to right, #278EA5, #21E6C1 50%);
+  color: #081f3d;
+  background-size: 200% 100%;
+  background-position: -100%;
+  font-weight: bold;
+  z-index: 10;
+}
+.btn_submit:hover {
+  cursor: pointer;
+  color: white;
+  background-position: 0;
+}
+.btn_submit:hover .parent_btn_submit::after {
+  left: 0;
+}
+
+.fade_effect .slider_wrap {
+  position: relative !important;
+}
+.fade_effect .slider_wrap .each_slider_element {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  height: 100% !important;
+  opacity: 0;
+  transition: 0.6s all ease;
+}
+.fade_effect .slider_wrap .each_slider_element.active_default {
+  opacity: 1;
+}
+
+.zoom_effect .each_slider_element.zoom_effect_act {
+  overflow: hidden;
+}
+.zoom_effect .each_slider_element.zoom_effect_act img {
+  transition: 11s all linear;
+  -webkit-animation: zoomAnimation 10s ease;
+          animation: zoomAnimation 10s ease;
+}
+@-webkit-keyframes zoomAnimation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+@keyframes zoomAnimation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
 }
 
 .slider {
-  width: 100%;
   position: relative;
 }
 .slider .slider_wrap {
@@ -143,7 +216,6 @@ fieldset {
   overflow-x: scroll;
   scroll-behavior: smooth;
   width: 100%;
-  height: 100%;
   gap: 0;
 }
 .slider .slider_wrap::-webkit-scrollbar {
@@ -157,6 +229,9 @@ fieldset {
   position: relative;
   left: 0;
   color: white;
+}
+.slider .slider_wrap .each_slider_element img {
+  transform: scale(1);
 }
 .slider .arrow_buttons {
   display: flex;
@@ -197,7 +272,7 @@ fieldset {
 }
 
 .main_nav {
-  height: 90px;
+  max-height: 90px;
   background-color: #081f3d;
   width: 100%;
   padding-block: 10px;
@@ -213,7 +288,7 @@ fieldset {
 .main_nav .nav_content {
   position: fixed;
   width: 100%;
-  background: #081f3d;
+  background: #278EA5;
   height: 100vh;
   top: 0;
   left: 0;
@@ -225,13 +300,13 @@ fieldset {
   z-index: 110;
 }
 .main_nav .nav_content span {
-  font-size: calc(clamp(35px, 6vw, 50px) - 16px);
+  font-size: calc(clamp(28px, 7vw, 60px) - 16px);
   opacity: 0.7;
 }
 .main_nav .nav_content a {
-  font-size: clamp(35px, 6vw, 50px);
+  font-size: clamp(28px, 7vw, 60px);
   position: relative;
-  background-image: linear-gradient(to right, #21E6C1, #21E6C1 50%, white 50%);
+  background-image: linear-gradient(to right, #081f3d, #081f3d 50%, white 50%);
   background-size: 200% 100%;
   background-position: -100%;
   display: inline-block;
@@ -258,6 +333,13 @@ fieldset {
 .main_nav .nav_content a:hover::before {
   width: 40px;
 }
+.main_nav .nav-section {
+  display: flex;
+  height: 100%;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 20px;
+}
 .main_nav .nav-section .trigger_nav {
   padding: 0px;
   height: 30px;
@@ -265,7 +347,7 @@ fieldset {
   border: none;
 }
 .main_nav .nav-section .trigger_nav path {
-  stroke: #278EA5;
+  stroke: #21E6C1;
 }
 .main_nav .nav-section .trigger_nav:hover {
   cursor: pointer;
@@ -274,8 +356,40 @@ fieldset {
   stroke: #21E6C1;
 }
 .main_nav .nav-section .entrar-btn {
-  height: 100% !important;
   width: 60px;
+  padding-block: 1px;
+  background: transparent;
+  border: 1px solid #278EA5;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  opacity: 0.9;
+}
+.main_nav .nav-section .entrar-btn:before, .main_nav .nav-section .entrar-btn:after {
+  content: "";
+  position: absolute;
+  background-color: #21E6C1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  transition: 0.6s all ease-out;
+  z-index: -1;
+}
+.main_nav .nav-section .entrar-btn:before {
+  top: -100%;
+}
+.main_nav .nav-section .entrar-btn:after {
+  bottom: -100%;
+}
+.main_nav .nav-section .entrar-btn:hover {
+  color: #081f3d;
+  font-weight: bold;
+}
+.main_nav .nav-section .entrar-btn:hover:after {
+  transform: translateY(-100%);
+}
+.main_nav .nav-section .entrar-btn:hover:hover:before {
+  transform: translateY(100%);
 }
 
 .fadeTo {
@@ -300,21 +414,40 @@ fieldset {
     opacity: 1;
   }
 }
+body, html {
+  scroll-behavior: smooth;
+}
+
 .cont_h1_and_form {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  grid-template-rows: repeat(1, calc(100vh - 90px));
+  overflow: hidden;
+}
+@media (min-width: 800px) {
+  .cont_h1_and_form {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: repeat(1, calc(100vh - 90px));
+  }
+}
+@media (min-width: 1060px) {
+  .cont_h1_and_form {
+    grid-template-columns: 50% 50%;
+  }
 }
 .cont_h1_and_form .h1_cont {
   background-color: #21E6C1;
   display: flex;
-  padding: 65px;
+  justify-content: center;
+  font-style: clamp(28px, 7vw, 60px);
   align-items: center;
+  min-height: 250px;
 }
 .cont_h1_and_form .h1_cont h1 {
   text-align: center;
+  width: 90%;
+  color: #081f3d;
 }
 .cont_h1_and_form form.inscribe {
+  padding-block: 20px;
   background-color: #278EA5;
   display: flex;
   align-items: center;
@@ -337,8 +470,8 @@ fieldset {
 }
 .cont_h1_and_form form.inscribe .card_form {
   color: white;
-  width: 85%;
-  height: 500px;
+  width: min(85%, 450px);
+  height: "";
   background: #081f3d;
   display: block;
   margin: auto;
@@ -379,7 +512,7 @@ fieldset {
 .cont_h1_and_form form.inscribe .card_form .cont_input_label:hover, .cont_h1_and_form form.inscribe .card_form span:hover {
   cursor: text;
 }
-.cont_h1_and_form form.inscribe .card_form .cont_input_label input, .cont_h1_and_form form.inscribe .card_form span input {
+.cont_h1_and_form form.inscribe .card_form .cont_input_label input:not(input[type=submit]), .cont_h1_and_form form.inscribe .card_form span input:not(input[type=submit]) {
   border: 0;
   display: block;
   border-bottom: 2px solid #278EA5;
@@ -391,7 +524,7 @@ fieldset {
   font-size: 18px;
   width: 100%;
 }
-.cont_h1_and_form form.inscribe .card_form .cont_input_label input:focus, .cont_h1_and_form form.inscribe .card_form span input:focus {
+.cont_h1_and_form form.inscribe .card_form .cont_input_label input:not(input[type=submit]):focus, .cont_h1_and_form form.inscribe .card_form span input:not(input[type=submit]):focus {
   border-bottom: 2px solid #21E6C1;
 }
 .cont_h1_and_form form.inscribe .card_form .cont_input_label label, .cont_h1_and_form form.inscribe .card_form span label {
@@ -425,26 +558,6 @@ fieldset {
   width: 100%;
   outline: none;
 }
-.cont_h1_and_form form.inscribe .card_form .btn_submit {
-  border: 2px solid #278EA5;
-  background: transparent;
-  padding: 12px;
-  margin-top: 70px;
-  width: 100%;
-  background-image: linear-gradient(to right, #278EA5, #081f3d 50%);
-  color: #21E6C1;
-  background-size: 200% 100%;
-  background-position: -100%;
-  z-index: 10;
-}
-.cont_h1_and_form form.inscribe .card_form .btn_submit:hover {
-  cursor: pointer;
-  color: white;
-  background-position: 0;
-}
-.cont_h1_and_form form.inscribe .card_form .btn_submit:hover .parent_btn_submit::after {
-  left: 0;
-}
 .cont_h1_and_form form.inscribe .card_form {
   padding-top: 40px;
 }
@@ -458,6 +571,13 @@ fieldset {
 .cont_h1_and_form form.inscribe .card_form fieldset label {
   transform: translateX(10px);
 }
+@media (min-width: 400px) {
+  .cont_h1_and_form form.inscribe .d-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
 .cont_h1_and_form form.inscribe input[type=file] {
   margin-bottom: 25px;
   color: #278EA5;
@@ -465,6 +585,8 @@ fieldset {
   width: 100%;
 }
 .cont_h1_and_form form.inscribe ::-webkit-file-upload-button {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
   margin-top: 10px;
   margin-bottom: 5px;
   height: 30px;
@@ -485,37 +607,34 @@ fieldset {
 .cont_h1_and_form form.inscribe #ins_date_birth.focus_valid {
   color: white !important;
 }
-
-.arrow_buttons {
-  transform: translateY(-8px);
-  align-items: center;
-}
-.arrow_buttons .next {
-  font-size: 18px !important;
-  -webkit-clip-path: polygon(0 21%, 72% 20%, 100% 50%, 73% 80%, 0 80%);
-          clip-path: polygon(0 21%, 72% 20%, 100% 50%, 73% 80%, 0 80%);
-  background: #1F4287 !important;
-  padding: 20px 30px 20px 10px;
-}
-.arrow_buttons .prev {
-  font-size: 50px;
-  color: #1F4287;
-}
-.arrow_buttons button.disable {
-  opacity: 0 !important;
-}
-.arrow_buttons button:hover {
-  color: #21E6C1;
-}
-
-.parent_btn_submit {
+.cont_h1_and_form form.inscribe .parent_btn_submit {
   margin: 0 !important;
 }
-.parent_btn_submit .btn_submit {
+.cont_h1_and_form form.inscribe .parent_btn_submit .btn_submit {
   margin: 0 !important;
   padding-inline: 45px !important;
   font-size: 20px;
-  position: absolute;
-  bottom: -100px;
-  right: 0;
+}
+.cont_h1_and_form form.inscribe .arrow_buttons {
+  align-items: center;
+  transition: all 0.3 ease;
+}
+.cont_h1_and_form form.inscribe .arrow_buttons .next {
+  font-size: 18px !important;
+  -webkit-clip-path: polygon(0 21%, 72% 20%, 100% 50%, 73% 80%, 0 80%);
+          clip-path: polygon(0 21%, 72% 20%, 100% 50%, 73% 80%, 0 80%);
+  background: #21E6C1 !important;
+  padding: 20px 30px 20px 10px;
+  color: #081f3d;
+  font-weight: bold;
+}
+.cont_h1_and_form form.inscribe .arrow_buttons .prev {
+  font-size: 50px;
+  color: #278EA5;
+}
+.cont_h1_and_form form.inscribe .arrow_buttons button.disable {
+  opacity: 0 !important;
+}
+.cont_h1_and_form form.inscribe .arrow_buttons button:hover {
+  color: #1F4287;
 }/*# sourceMappingURL=css_register.css.map */

@@ -1,14 +1,18 @@
+const slider_parent = document.querySelector(".slider");
 const slider_wrap = document.querySelector(".slider_wrap")
 const each_slider = slider_wrap.querySelectorAll(".each_slider_element")
-const prev_btn = document.querySelector(".prev")
-const next_btn = document.querySelector(".next")
+const prev_btn = document.querySelectorAll(".prev")
+const next_btn = document.querySelectorAll(".next")
 const nav_slider = document.querySelector(".nav_slider")
 const progress_bar = document.querySelector(".progress_bar div")
 const n_sliders = slider_wrap.childElementCount
 
 let per_view = 1
 let per_move = 1
-
+let opacity_effect_each = false;
+let automatic_move = false; 
+let fade_effect = false;
+let zoom_effect_each = false;
 
 slider_wrap.style.gridTemplateColumns = `repeat(${n_sliders}, ${100 / per_view}%)`
 
@@ -49,11 +53,11 @@ if (nav_slider) {
     })
 }
 
-if (next_btn || prev_btn) {
+if (next_btn.length || prev_btn.length) {
     let level_of_opacity_btn = 0;
     function btnOpacity() {
-        active_slider == 0 ? prev_btn.classList.add('disable') : prev_btn.classList.remove('disable')
-        active_slider == n_sliders - per_view ? next_btn.classList.add('disable') : next_btn.classList.remove('disable')
+        active_slider == 0 ? prev_btn[0].classList.add('disable') : prev_btn[0].classList.remove('disable')
+        active_slider == n_sliders - per_view ? next_btn[active_slider].classList.add('disable') : next_btn[active_slider].classList.remove('disable')
     }
     btnOpacity()
 }
@@ -68,12 +72,34 @@ if (progress_bar) {
 
 
 let scroll_x_position = slider_wrap.scrollLeft;
+
+if (slider_parent.classList.contains('fade_effect')){
+    fade_effect = true;
+}
+if (slider_parent.classList.contains('zoom_effect')) {
+    zoom_effect_each = true
+}
+if (slider_parent.classList.contains('auto')) {
+    automatic_move = true
+}
+
 function translate(direction, times = 1) {
-    
     function move() {
         active_slider = times
-        slider_wrap.scrollLeft = each_width * times
+        if (fade_effect == true) {
+            each_slider.forEach(i => i.style.opacity = '0')
+            each_slider[active_slider].style.opacity = '1'
+        } else {
+            slider_wrap.scrollLeft = each_width * times
+        }
         scroll_x_position = slider_wrap.scrollLeft;
+        if(zoom_effect_each == true) {
+            // each_slider.forEach(e => e.classList.remove('zoom_effect_act'))
+            each_slider[active_slider].classList.add('zoom_effect_act')
+            each_slider[active_slider+1]?.classList.remove('zoom_effect_act')
+            each_slider[active_slider-2]?.classList.remove('zoom_effect_act')
+
+        }
     }
 
     if (direction == '>') {
@@ -85,7 +111,6 @@ function translate(direction, times = 1) {
     }
 
     if (opacity_effect_each) {
-        console.log(opacity_effect_each);
         each_slider.forEach(e => e.style.opacity = '0')
         each_slider[active_slider].style.opacity = '1'
     }
@@ -93,11 +118,16 @@ function translate(direction, times = 1) {
     liActivate?.()
     progress?.()
 
-    
+
 }
 
-next_btn.onclick = () => translate('>', active_slider + 1)
-prev_btn.onclick = () => translate('<', active_slider - 1)
+next_btn.forEach(next => {
+    next.onclick = () => {
+        translate('>', active_slider + 1)
+    }
+
+})
+prev_btn.forEach(prev => prev.onclick = () => translate('<', active_slider - 1))
 
 let swift_scroll = false;
 let swift_move = false
@@ -140,6 +170,9 @@ let startDebounce = debounce(MoveAfterScroll)
 
 
 // automatic change
-// setInterval(() => {
-//     translate('>', active_slider +1)
-// }, 5000);
+if (automatic_move== true) {
+    setInterval(() => {
+        if (active_slider == n_sliders-1) active_slider = -1
+        translate('>', active_slider+1)
+    }, 5000);
+}
