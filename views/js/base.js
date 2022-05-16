@@ -43,9 +43,10 @@ const all_links = document.querySelectorAll("a")
 all_links.forEach(a => {
     a.onclick = (e) => {
         e.preventDefault()
+
         screenShow.classList.add('toUp')
         setTimeout(() => {
-            window.location.href = e.path.find( v => v.href).href
+            window.location.href = a.href
         }, 500);
      }
     }

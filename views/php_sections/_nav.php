@@ -3,7 +3,7 @@
 <nav class="main_nav">
         <div class="container">  
 
-            <a href="index.php">
+            <a href="/VillaDonq/index.php">
                 <picture class="logo">
                     <source media="(min-width: 700px)" srcset="<?php echo $rute ?>img/logo_small.png">
                     <img src="<?php echo $rute ?>img/logo.png" alt="">
