@@ -20,7 +20,7 @@
                 </button>
             </div>
             <ul class="nav_content">
-                <li><span>navigation</span></li>
+                <li><span>Navigation</span></li>
                 <li><a href="#">Home</a></li>
                 <li><a href="blog/index.html">Blog</a></li>
                 <li><a href="#">Contacto</a></li>
