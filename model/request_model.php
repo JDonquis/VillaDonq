@@ -211,6 +211,29 @@ class Request
 		{
 			return $this->representative_phone_number;
 		}
+
+		function get_status()
+		{	
+			$status="";
+
+			if ($this->id_status==1)
+			{	
+				$status="Aceptado";
+				return $status;	
+			}
+			else if($this->id_status==2)
+			{
+				$status="Rechazado";
+				return $status;		
+			}
+
+			else if($this->id_status==3)
+			{
+				$status="Sin revisar";
+				return $status;		
+			}
+			
+		}
 		
 	
 

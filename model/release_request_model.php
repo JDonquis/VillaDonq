@@ -72,7 +72,8 @@ class Release_request
 			$request->set_birth_certificate($row['birth_certificate']);
 			$request->set_report_card($row['report_card']);
 			$request->set_certified_notes($row['certified_notes']);
-			$request->set_certificate_conduct($row['certified_notes']);
+			$request->set_certificate_conduct($row['certificate_conduct']);
+			$request->set_photo($row['photo']);
 			$request->set_representative_name($row['representative_name']);
 			$request->set_representative_phone_number($row['representative_phone_number']);
 
