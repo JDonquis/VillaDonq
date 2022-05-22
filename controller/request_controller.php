@@ -1,6 +1,6 @@
 <?php 
 
-
+//require_once "../model/request_model.php";
 require_once "../model/release_request_model.php";
 
 class Request_controller
@@ -13,6 +13,16 @@ class Request_controller
 
 
 	static function get_Requests($status=0)
+	{
+
+		$release=new Release_request();
+
+		$request=$release->get_all_request($status);
+
+		return $request;
+		
+	}
+	static function insert_Requests($request)
 	{
 
 		$release=new Release_request();
@@ -35,6 +45,13 @@ class Request_controller
 */
 }
 
+if(isset($_POST['new_request']))
+{
+	$request=new Request();
+
+	
+	
+}
 
 
 
