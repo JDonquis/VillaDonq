@@ -82,7 +82,9 @@ if (slider_parent.classList.contains('zoom_effect')) {
 if (slider_parent.classList.contains('auto')) {
     automatic_move = true
 }
-
+if (slider_parent.classList.contains('opacity_effect_each')) {
+    opacity_effect_each = true
+}
 function translate(direction, times = 1) {
     function move() {
         active_slider = times

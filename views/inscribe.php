@@ -24,7 +24,7 @@
             <h1>Inscribete en VILLADONQ y recibe la mejor educación</h1>
         </div>
         <form class=" inscribe">
-            <div class="card_form slider" id='up'>
+            <div class="card_form slider opacity_effect_each" id='up'>
                 <!-- <ul class="nav_slider">
                 </ul>  -->
                 <div class="progress_bar">
@@ -135,7 +135,7 @@
                             <label for="ins_repre_DNI">DNI: </label>
                         </span>
                         <span>
-                            <input type="tel" id="ins_repre_tel" pattern="[A-Za-z]{1}[0-9]{8}" title="Debe escribir una letra seguida de 8 números" required>
+                            <input type="tel" id="ins_repre_tel" required>
                             <label for="ins_repre_tel">telefono: </label>
                         </span>
                         <span class="parent_btn_submit"><input type="submit" value="INSCRIBIR" class="inscribirse btn_submit"></span>
@@ -157,7 +157,7 @@
 <script src="js/base.js"></script>
 <script src="js/loader.js"></script>
 <script>
-    opacity_effect_each = true
+   
     document.querySelectorAll(".card_form input").forEach(input => {
         if (input.type !== 'file' && input.type !== 'submit') {
             input.onfocus = () =>{ 
@@ -205,12 +205,16 @@
         }
         
     }
-    function goUp() {
-        console.log('ay');
-        const form_ins = document.querySelector("form.inscribe")
-        form_ins.scrollIntoView(true)
-    }
+    // function goUp() {
+    //     console.log('ay');
+    //     const form_ins = document.querySelector("form.inscribe")
+    //     form_ins.scrollIntoView(true)
+    // }
     
+    // document.querySelector("button[type=submit]").onclick = (e) => {
+    //     e.preventDefault()
+        
+    // }
 </script>
 <script src="js/mySlider.js"></script>
     

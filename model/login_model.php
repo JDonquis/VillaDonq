@@ -2,8 +2,6 @@
 
 class Login_users
 {	
-	
-
 	private $db;
 		
 	function __construct()
