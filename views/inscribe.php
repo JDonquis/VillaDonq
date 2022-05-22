@@ -23,11 +23,9 @@
         <div class="h1_cont">
             <h1>Inscribete en VILLADONQ y recibe la mejor educación</h1>
         </div>
-<<<<<<< HEAD
-    
-=======
-        <form class="inscribe" action="../controller/request_controller.php" method="POST">
->>>>>>> inscription
+
+            <form class="inscribe" action="../controller/request_controller.php" method="POST">
+
             <div class="card_form slider" id='up'>
                 <!-- <ul class="nav_slider">
                 </ul>  -->
@@ -39,7 +37,7 @@
                         <legend>DATOS PERSONALES</legend>
                         <div class="d-grid">    
                             <span>
-                                <input type="text" id="ins_nombres" >
+                                <input type="text" id="ins_nombres" name="" >
                                 <label for="ins_nombres">Nombres: </label>
                             </span>
                             <span>
@@ -139,8 +137,8 @@
                             <label for="ins_repre_DNI">DNI: </label>
                         </span>
                         <span>
-                            <input type="tel" id="ins_repre_tel" pattern="[A-Za-z]{1}[0-9]{8}" title="Debe escribir una letra seguida de 8 números" >
-                            <label for="ins_repre_tel">telefono: </label>
+                            <input type="tel" id="ins_repre_tel">
+                            <label for="ins_repre_tel">Telefono: </label>
                         </span>
                         <span class="parent_btn_submit"><input type="submit" name="new_request" value="INSCRIBIR" class="inscribirse btn_submit"></span>
                         <div class="arrow_buttons">
