@@ -40,7 +40,11 @@ const all_links = document.querySelectorAll("a")
 all_links.forEach(a => {
     a.onclick = (e) => {
         e.preventDefault()
+<<<<<<< HEAD
         console.log(e.target.href)
+=======
+
+>>>>>>> ca6f58816f556ff2122de2fc3eb62a0fa54bb0b4
         screenShow.classList.add('toUp')
         setTimeout(() => {
             window.location.href = a.href

@@ -3,7 +3,7 @@
 <nav class="main_nav">
         <div class="container">  
 
-            <a href="index.php">
+            <a href="/VillaDonq/index.php">
                 <picture class="logo">
                     <source media="(min-width: 700px)" srcset="<?php echo $rute ?>img/logo_small.png">
                     <img src="<?php echo $rute ?>img/logo.png" alt="">
@@ -20,7 +20,7 @@
                 </button>
             </div>
             <ul class="nav_content">
-                <li><span>navigation</span></li>
+                <li><span>Navigation</span></li>
                 <li><a href="#">Home</a></li>
                 <li><a href="blog/index.html">Blog</a></li>
                 <li><a href="#">Contacto</a></li>

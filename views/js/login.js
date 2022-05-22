@@ -55,6 +55,7 @@ if (btnShow) {
 document.querySelectorAll(".card_form input").forEach(input => {
    
     if (input.type !== 'file' && input.type !== 'submit') {
+        if (input.value.length > 0) input.nextElementSibling.classList.add('focus_valid')
         input.onfocus = () => input.nextElementSibling.classList.add('focus_valid')
         input.onblur = () => input.value.length < 1 ? input.nextElementSibling.classList.remove('focus_valid') : ''
     }

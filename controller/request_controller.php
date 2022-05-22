@@ -36,11 +36,6 @@ class Request_controller
 }
 
 
-$request=Request_controller::get_Requests(3);
-
-
-
-print_r($request);
 
 
 
