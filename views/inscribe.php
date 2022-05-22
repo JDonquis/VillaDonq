@@ -23,7 +23,7 @@
         <div class="h1_cont">
             <h1>Inscribete en VILLADONQ y recibe la mejor educación</h1>
         </div>
-        <form class=" inscribe">
+        <form class="inscribe">
             <div class="card_form slider" id='up'>
                 <!-- <ul class="nav_slider">
                 </ul>  -->
