@@ -16,15 +16,17 @@
         require_once('php_sections/_loader.php');
         require_once('php_sections/_nav.php'); 
         require_once('php_sections/_form-login.php');
-     
+        
      ?>
 
     <div class="cont_h1_and_form">
         <div class="h1_cont">
             <h1>Inscribete en VILLADONQ y recibe la mejor educación</h1>
         </div>
-        <form class=" inscribe">
+
+        <form class="inscribe" action="../controller/request_controller.php" method="POST">
             <div class="card_form slider opacity_effect_each" id='up'>
+
                 <!-- <ul class="nav_slider">
                 </ul>  -->
                 <div class="progress_bar">
@@ -35,36 +37,36 @@
                         <legend>DATOS PERSONALES</legend>
                         <div class="d-grid">    
                             <span>
-                                <input type="text" id="ins_nombres" required>
+                                <input type="text" id="ins_nombres" >
                                 <label for="ins_nombres">Nombres: </label>
                             </span>
                             <span>
-                                <input type="text" id="ins_apellidos" required>
+                                <input type="text" id="ins_apellidos" >
                                 <label for="ins_apellidos">Apellidos: </label>
                             </span>
                         </div>
                         <div class="d-grid">    
                             <span>
-                                <input type="date" id="ins_date_birth" required>
-                                <label for="ins_date_birth">fecha de nacimiento: </label>
+                                <input type="date" id="ins_date_birth" >
+                                <label for="ins_date_birth">Fecha de nacimiento: </label>
                             </span>
                             <span>
-                                <input type="text" id="ins_edad" disabled required>
+                                <input type="text" id="ins_edad" disabled >
                                 <label for="ins_date_birth">Edad:</label>
                             </span>
                         </div>
                         <div class="d-grid"> 
                             <span>
-                                <input type="text" id="ins_DNI" pattern="[A-Za-z]{1}[0-9]{8}" required title="Debe escribir una letra seguida de 8 números" >
+                                <input type="text" id="ins_DNI" pattern="[A-Za-z]{1}[0-9]{8}"  title="Debe escribir una letra seguida de 8 números" >
                                 <label for="ins_DNI">DNI: </label>
                             </span>
                             <span>
-                                <input type="tel" id="ins_telefono" required>
+                                <input type="tel" id="ins_telefono" >
                                 <label for="ins_telefono">Telefono: </label>
                             </span>
                         </div>
                         <span>
-                            <input type="gmail" name="" id="ins_correo" required>
+                            <input type="gmail" name="" id="ins_correo" >
                             <label for="ins_correo">Correo: </label>
                         </span>
                         <div class="arrow_buttons">
@@ -76,12 +78,12 @@
                     <fieldset class="each_slider_element">
                         <legend>DIRECCIÓN DE HOGAR</legend>
                         <span>
-                            <input type="text" id="ins_estado" required>
+                            <input type="text" id="ins_estado" >
                             <label for="ins_estado">Estado: </label>
                         </span>
                         <div class="d-grid">
                             <span>
-                                <input type="text" id="ins_ciudad" required>
+                                <input type="text" id="ins_ciudad" >
                                 <label for="ins_ciudad">Ciudad: </label>
                             </span>
                             <span>
@@ -101,9 +103,9 @@
                     <fieldset class="each_slider_element file">
                         <legend>DOCUMENTOS PERSONALES</legend>
                         <label for="ins_foto">Foto: </label>
-                        <input type="file" id="ins_foto" required>
+                        <input type="file" id="ins_foto" >
                         <label for="ins_partida_de_nacimiento">Partida de nacimiento: </label>
-                        <input type="file" id="ins_partida_de_nacimiento" required>
+                        <input type="file" id="ins_partida_de_nacimiento" >
                         <div class="arrow_buttons">
                             <button class="prev" type="button" title="Volver"> ← </button>
                             <button class="next" type="button">Siguiente</button>
@@ -113,9 +115,9 @@
                     <fieldset class="each_slider_element file">
                         <legend>DOCUMENTOS ACADEMICOS</legend>
                         <label for="ins_boleta">Boleta: </label>
-                        <input type="file" id="ins_boleta" required>
+                        <input type="file" id="ins_boleta" >
                         <label for="ins_notas">Notas: </label>
-                        <input type="file" id="ins_notas" required>
+                        <input type="file" id="ins_notas" >
                         <label for="ins_buena_conducta">Constancia de buena conducta</label>
                         <input type="file" name="" id="ins_buena_conducta">
                         <div class="arrow_buttons">
@@ -127,18 +129,18 @@
                     <fieldset class="each_slider_element">
                         <legend>DATOS DEL REPRESENTANTE</legend>
                         <span>
-                            <input type="text" id="ins_repre_nombre" required>
+                            <input type="text" id="ins_repre_nombre" >
                             <label for="ins_repre_nombre">Nombre completo: </label>
                         </span>
                         <span>
-                            <input type="tel" id="ins_repre_DNI" required>
+                            <input type="tel" id="ins_repre_DNI" >
                             <label for="ins_repre_DNI">DNI: </label>
                         </span>
                         <span>
                             <input type="tel" id="ins_repre_tel" required>
                             <label for="ins_repre_tel">telefono: </label>
                         </span>
-                        <span class="parent_btn_submit"><input type="submit" value="INSCRIBIR" class="inscribirse btn_submit"></span>
+                        <span class="parent_btn_submit"><input type="submit" name="new_request" value="INSCRIBIR" class="inscribirse btn_submit"></span>
                         <div class="arrow_buttons">
                             <button class="prev" type="button" title="Volver" > ← </button>
                             <button class="next" type="button">Siguiente</button>
