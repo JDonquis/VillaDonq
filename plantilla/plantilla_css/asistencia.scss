@@ -1,0 +1,79 @@
+$color1: #081f3d;
+$color2: #1F4287; 
+$color3: #278EA5;
+$color4: #21E6C1;
+.intro_table {
+
+
+    #input_n_classes {
+        width: 50px !important;
+        min-width: 50px !important;
+    }
+}
+label:hover {
+    cursor: pointer;
+}
+.asist_table {
+    width: 100%;
+    td,
+    th {
+        position: relative;
+        overflow: hidden;
+
+        label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding-left: 0px;
+            height: 100%;
+            padding: 12px;
+        }
+
+    }
+
+    
+
+    .each_cell {
+        min-width: 55px;
+        max-width: 56px !important;
+        word-wrap: break-word;
+        position: relative;
+        transition: all ease .2s;
+        &.attended::before {
+            transition: all .4s ease;
+            content: '✓';
+            text-align: center;
+            line-height: 3;
+            color: $color4;
+            position: absolute;
+            inset: 0;
+            background: $color1;
+            z-index: 999;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background: #1f428742;
+        }
+
+    
+    }
+
+    .th_students,
+    tr td:first-child {
+        min-width: 215px;
+        word-wrap: break-word;
+        label {
+            padding-left: 20px;
+            font-weight: normal !important;
+        }
+    }
+
+    th:not(.th_students, .th_total), .each_cell {
+        min-width: 55px !important;
+        max-width: 56px !important;
+        word-wrap: break-word;
+    }
+   
+}

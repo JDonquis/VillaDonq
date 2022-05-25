@@ -2,6 +2,7 @@ const navContent = document.querySelector(".nav_content")
 const nav_section = document.querySelector(".nav-section")
 const btnNav = document.querySelector(".trigger_nav")
 const nav_links = document.querySelectorAll(".nav_content a")
+
 const timeline = gsap.timeline({ paused: true, defaults: { duration: .5, ease: Expo.easeInOut } })
     .to('.path-1', { rotation: 40 })
     .to('.path-2', { opacity: 0 }, '<')
@@ -11,7 +12,10 @@ const timeline = gsap.timeline({ paused: true, defaults: { duration: .5, ease: E
     .to(btnNav, { opacity: 1 }, '<')
     .from(".main_nav li", { opacity: 0, x: '-130px', stagger: .10 });
 
+    timeline.reverse()
+    
 btnNav.onclick = () => {
+    console.log('clicked');
     timeline.reversed(!timeline.reversed())
     // nav-section.childNodes.forEach( e => e.classList == 'trigger_nav'? '' : e.style= 'opacity: 0')
     nav_section.style = 'z-index: 120'
@@ -40,11 +44,6 @@ const all_links = document.querySelectorAll("a")
 all_links.forEach(a => {
     a.onclick = (e) => {
         e.preventDefault()
-<<<<<<< HEAD
-        console.log(e.target.href)
-=======
-
->>>>>>> ca6f58816f556ff2122de2fc3eb62a0fa54bb0b4
         screenShow.classList.add('toUp')
         setTimeout(() => {
             window.location.href = a.href
