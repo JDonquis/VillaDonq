@@ -16,17 +16,26 @@
         require_once('php_sections/_loader.php');
         require_once('php_sections/_nav.php'); 
         require_once('php_sections/_form-login.php');
-        
-     ?>
+    ?>
+     
 
     <div class="cont_h1_and_form">
         <div class="h1_cont">
             <h1>Inscribete en VILLADONQ y recibe la mejor educación</h1>
-        </div>
-        <form class="inscribe" action="../controller/request_controller.php" method="POST">
-            <div class="card_form slider opacity_effect_each" id='up'>
 
 >>>>>>> 1c0c249a5d4cb9b501bfa90320e9bc9fad53583e
+=======
+         </div>
+          
+        <form class="inscribe" action="../controller/request_controller.php" method="POST" enctype="multipart/form-data">
+          <?php if(isset($_GET['fail-size'])){ ?>
+               
+               <div class="message-fail-size">Tamaño de archivo no permitido. Procure que sean menor de 2MB</div>
+
+            <?php } ?> 
+
+            <div class="card_form slider opacity_effect_each" id='up'>
+>>>>>>> inscription
                 <!-- <ul class="nav_slider">
                 </ul>  -->
                 <div class="progress_bar">
@@ -37,36 +46,37 @@
                         <legend>DATOS PERSONALES</legend>
                         <div class="d-grid">    
                             <span>
-                                <input type="text" id="ins_nombres" name="" >
+                                <input type="text" id="ins_nombres" name="name_s" >
+>>>>>>> inscription
                                 <label for="ins_nombres">Nombres: </label>
                             </span>
                             <span>
-                                <input type="text" id="ins_apellidos" >
+                                <input type="text" id="ins_apellidos" name="lastname_s" >
                                 <label for="ins_apellidos">Apellidos: </label>
                             </span>
                         </div>
                         <div class="d-grid">    
                             <span>
-                                <input type="date" id="ins_date_birth" >
-                                <label for="ins_date_birth">Fecha de nacimiento: </label>
+                                <input type="date" id="ins_date_birth" name="date_s" >
+                                <label for="ins_date_birth">Fecha de nacimiento:</label>
                             </span>
                             <span>
-                                <input type="text" id="ins_edad" disabled >
+                                <input type="text" id="ins_edad" name="age" >
                                 <label for="ins_date_birth">Edad:</label>
                             </span>
                         </div>
                         <div class="d-grid"> 
                             <span>
-                                <input type="text" id="ins_DNI" pattern="[A-Za-z]{1}[0-9]{8}"  title="Debe escribir una letra seguida de 8 números" >
+                                <input type="text" id="ins_DNI" pattern="[A-Za-z]{1}[0-9]{8}"  title="Debe escribir una letra 'V' seguida de 8 números" name="DNI_s" >
                                 <label for="ins_DNI">DNI: </label>
                             </span>
                             <span>
-                                <input type="tel" id="ins_telefono" >
+                                <input type="tel" id="ins_telefono" name="phone_s" >
                                 <label for="ins_telefono">Telefono: </label>
                             </span>
                         </div>
                         <span>
-                            <input type="gmail" name="" id="ins_correo" >
+                            <input type="gmail" name="email_s" id="ins_correo" >
                             <label for="ins_correo">Correo: </label>
                         </span>
                         <div class="arrow_buttons">
@@ -78,22 +88,22 @@
                     <fieldset class="each_slider_element">
                         <legend>DIRECCIÓN DE HOGAR</legend>
                         <span>
-                            <input type="text" id="ins_estado" >
+                            <input type="text" id="ins_estado" name="state" >
                             <label for="ins_estado">Estado: </label>
                         </span>
                         <div class="d-grid">
                             <span>
-                                <input type="text" id="ins_ciudad" >
+                                <input type="text" id="ins_ciudad" name="city" >
                                 <label for="ins_ciudad">Ciudad: </label>
                             </span>
                             <span>
-                                <input type="text" id="ins_codigo_postal" >
+                                <input type="text" id="ins_codigo_postal"  >
                                 <label for="ins_codigo_postal">Codigo postal (opciona): </label>
                             </span>
                         </div>
                     
                             <label for="direccion_detallada">Dirección especifica</label>
-                            <textarea name="" id="direccion_detallada" cols="30" rows="5"></textarea>
+                            <textarea name="address" id="direccion_detallada" cols="30" rows="5"></textarea>
                         <div class="arrow_buttons">
                             <button class="prev" type="button" title="Volver"> ← </button>
                             <button class="next" type="button">Siguiente</button>
@@ -103,9 +113,9 @@
                     <fieldset class="each_slider_element file">
                         <legend>DOCUMENTOS PERSONALES</legend>
                         <label for="ins_foto">Foto: </label>
-                        <input type="file" id="ins_foto" >
+                        <input type="file" id="ins_foto" name="photo" >
                         <label for="ins_partida_de_nacimiento">Partida de nacimiento: </label>
-                        <input type="file" id="ins_partida_de_nacimiento" >
+                        <input type="file" id="ins_partida_de_nacimiento" name="birth_certificate" >
                         <div class="arrow_buttons">
                             <button class="prev" type="button" title="Volver"> ← </button>
                             <button class="next" type="button">Siguiente</button>
@@ -115,11 +125,11 @@
                     <fieldset class="each_slider_element file">
                         <legend>DOCUMENTOS ACADEMICOS</legend>
                         <label for="ins_boleta">Boleta: </label>
-                        <input type="file" id="ins_boleta" >
+                        <input type="file" id="ins_boleta" name="report_card" >
                         <label for="ins_notas">Notas: </label>
-                        <input type="file" id="ins_notas" >
+                        <input type="file" id="ins_notas" name="certificate_notes" >
                         <label for="ins_buena_conducta">Constancia de buena conducta</label>
-                        <input type="file" name="" id="ins_buena_conducta">
+                        <input type="file" name="certificate_conduct" id="ins_buena_conducta">
                         <div class="arrow_buttons">
                             <button class="prev" type="button" title="Volver"> ← </button>
                             <button class="next" type="button">Siguiente</button>
@@ -129,16 +139,16 @@
                     <fieldset class="each_slider_element">
                         <legend>DATOS DEL REPRESENTANTE</legend>
                         <span>
-                            <input type="text" id="ins_repre_nombre" >
+                            <input type="text" id="ins_repre_nombre" name="name_r" >
                             <label for="ins_repre_nombre">Nombre completo: </label>
                         </span>
                         <span>
-                            <input type="tel" id="ins_repre_DNI" >
+                            <input type="tel" id="ins_repre_DNI" name="DNI_r" >
                             <label for="ins_repre_DNI">DNI: </label>
                         </span>
                         <span>
-                            <input type="tel" id="ins_repre_tel" required>
-                            <label for="ins_repre_tel">telefono: </label>
+                            <input type="tel" id="ins_repre_tel" name="phone_r">
+>>>>>>> inscription         <label for="ins_repre_tel">telefono: </label>
 >>>>>>> 1c0c249a5d4cb9b501bfa90320e9bc9fad53583e
                         </span>
                         <span class="parent_btn_submit"><input type="submit" name="new_request" value="INSCRIBIR" class="inscribirse btn_submit"></span>
@@ -156,9 +166,9 @@
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>   
 <script src="js/login.js"></script>
-<script src="js/base.js"></script>
-<script src="js/loader.js"></script>
+<script src="./js/modules/inscribe.js" type="module"></script>
 <script>
    
     document.querySelectorAll(".card_form input").forEach(input => {
@@ -208,18 +218,17 @@
         }
         
     }
-    // function goUp() {
-    //     console.log('ay');
-    //     const form_ins = document.querySelector("form.inscribe")
-    //     form_ins.scrollIntoView(true)
-    // }
-    
-    // document.querySelector("button[type=submit]").onclick = (e) => {
-    //     e.preventDefault()
+
+    function goUp() {
         
-    // }
+        const form_ins = document.querySelector("form.inscribe")
+        form_ins.scrollIntoView(true)
+    }
+
 </script>
 <script src="js/mySlider.js"></script>
-    
+
+
+
 
 </html>
