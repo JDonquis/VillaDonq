@@ -96,13 +96,9 @@
     </header>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script>
-    <script src="views/js/base.js"></script>
-    <script src="views/js/loader.js"></script>
     <script src="views/js/login.js"></script>
     <script src="views/js/mySlider.js"></script>
-    <script>
-        
-    </script>
+    <script src="views/js/modules/index.js" type="module"></script>
 </body>
 
 </html>

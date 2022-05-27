@@ -16,6 +16,9 @@ class Request
 	private $report_card;
 	private $certified_notes;
 	private $certificate_conduct;
+	private $city;
+	private $state;
+	private $representative_DNI;
 	private $representative_name;
 	private $representative_phone_number;
 
@@ -106,6 +109,20 @@ class Request
 			$this->certificate_conduct=$p;
 		}
 
+		function set_city($p)
+		{
+			$this->city=$p;
+		}
+
+		function set_state($p)
+		{
+			$this->state=$p;
+		}
+
+		function set_representative_DNI($p)
+		{
+			$this->representative_DNI=$p;
+		}
 
 		function set_representative_name($p)
 		{
@@ -199,6 +216,22 @@ class Request
 		{
 			return $this->certificate_conduct;
 		}
+
+		function get_city()
+		{
+			return $this->city;
+		}
+
+		function get_state()
+		{
+			return $this->state;
+		}
+
+		function get_representative_DNI()
+		{
+			return $this->representative_DNI;
+		}
+
 
 
 		function get_representative_name()
