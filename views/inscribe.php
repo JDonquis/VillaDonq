@@ -22,9 +22,6 @@
     <div class="cont_h1_and_form">
         <div class="h1_cont">
             <h1>Inscribete en VILLADONQ y recibe la mejor educación</h1>
-
->>>>>>> 1c0c249a5d4cb9b501bfa90320e9bc9fad53583e
-=======
          </div>
           
         <form class="inscribe" action="../controller/request_controller.php" method="POST" enctype="multipart/form-data">
@@ -35,7 +32,6 @@
             <?php } ?> 
 
             <div class="card_form slider opacity_effect_each" id='up'>
->>>>>>> inscription
                 <!-- <ul class="nav_slider">
                 </ul>  -->
                 <div class="progress_bar">
@@ -47,7 +43,6 @@
                         <div class="d-grid">    
                             <span>
                                 <input type="text" id="ins_nombres" name="name_s" >
->>>>>>> inscription
                                 <label for="ins_nombres">Nombres: </label>
                             </span>
                             <span>
@@ -148,8 +143,7 @@
                         </span>
                         <span>
                             <input type="tel" id="ins_repre_tel" name="phone_r">
->>>>>>> inscription         <label for="ins_repre_tel">telefono: </label>
->>>>>>> 1c0c249a5d4cb9b501bfa90320e9bc9fad53583e
+                             <label for="ins_repre_tel">telefono: </label>
                         </span>
                         <span class="parent_btn_submit"><input type="submit" name="new_request" value="INSCRIBIR" class="inscribirse btn_submit"></span>
                         <div class="arrow_buttons">
