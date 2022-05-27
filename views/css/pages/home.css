@@ -193,11 +193,11 @@ fieldset {
   z-index: 110;
 }
 .main_nav .nav_content span {
-  font-size: calc(clamp(28px, 7vw, 60px) - 16px);
+  font-size: calc(clamp(28px, 6vw, 60px) - 16px);
   opacity: 0.7;
 }
 .main_nav .nav_content a {
-  font-size: clamp(28px, 7vw, 60px);
+  font-size: clamp(28px, 6vw, 60px);
   position: relative;
   background-image: linear-gradient(to right, #081f3d, #081f3d 50%, white 50%);
   background-size: 200% 100%;
@@ -698,34 +698,53 @@ fieldset {
 
 .home_header {
   display: flex;
-  justify-content: space-between;
   overflow: hidden;
   align-items: center;
+  position: relative;
   gap: 20px;
   height: calc(100vh - 90px);
+  flex-direction: column;
+}
+@media (min-width: 700px) {
+  .home_header {
+    justify-content: space-between;
+    flex-direction: row;
+  }
 }
 .home_header h1 {
-  font-size: clamp(28px, 7vw, 60px);
-  border-left: 7.5px solid #278EA5;
-  padding-left: 30px;
+  margin-block: 25px;
 }
-.home_header .link_to_inscribe {
+@media (min-width: 700px) {
+  .home_header h1 {
+    max-block: none;
+    font-size: clamp(28px, 6vw, 60px);
+    border-left: 7.5px solid #278EA5;
+    padding-left: 30px;
+  }
+}
+.home_header .parent_inscribe_link {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.home_header .parent_inscribe_link .link_to_inscribe {
   float: right;
   max-width: 100px;
   text-align: center;
 }
 .home_header .circle_img_cont {
   margin: 30px;
-  height: 400px;
-  width: 400px;
+  height: clamp(250px, 30vw, 400px);
+  width: clamp(250px, 30vw, 400px);
   position: relative;
 }
 .home_header .circle_img_cont:after {
   box-sizing: border-box;
   content: "";
   position: absolute;
-  width: 445px;
-  height: 445px;
+  width: calc(clamp(250px, 30vw, 400px) + 45px);
+  height: calc(clamp(250px, 30vw, 400px) + 45px);
   border-radius: 50%;
   left: 50%;
   top: 50%;
@@ -736,8 +755,8 @@ fieldset {
   box-sizing: border-box;
   content: "";
   position: absolute;
-  width: 421px;
-  height: 421px;
+  width: calc(clamp(250px, 30vw, 400px) + 21px);
+  height: calc(clamp(250px, 30vw, 400px) + 21px);
   border-radius: 50%;
   left: 50%;
   top: 50%;

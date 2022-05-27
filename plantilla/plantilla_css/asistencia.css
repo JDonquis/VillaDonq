@@ -42,7 +42,6 @@ label:hover {
   position: absolute;
   inset: 0;
   background: #081f3d;
-  z-index: 999;
 }
 .asist_table .each_cell:hover {
   cursor: pointer;
@@ -52,11 +51,21 @@ label:hover {
 .asist_table tr td:first-child {
   min-width: 215px;
   word-wrap: break-word;
+  position: -webkit-sticky;
+  position: sticky;
+  background: white;
+  border: none !important;
+  outline: 1px solid #081f3d;
+  z-index: 50 !important;
+  left: 0;
 }
 .asist_table .th_students label,
 .asist_table tr td:first-child label {
   padding-left: 20px;
   font-weight: normal !important;
+}
+.asist_table .th_students {
+  z-index: 100 !important;
 }
 .asist_table th:not(.th_students, .th_total), .asist_table .each_cell {
   min-width: 55px !important;

@@ -3,27 +3,42 @@
 @import '../_components.scss';
 @import '../layouts/_login';
 @import '../mySlider.scss';
-$size_square : 400px; 
- 
+
 .home_header {
     display: flex;
-    justify-content: space-between;    
     overflow: hidden;
     align-items: center;        
+    position: relative;
     gap: 20px;
     height: calc(100vh - $nav_height);  
-    h1 {
-        font-size: $bigFont;   
-        border-left: 7.5px solid $color3;   
-        padding-left: 30px;     
+    flex-direction: column;
+    @media (min-width: 700px) {
+        justify-content: space-between;    
+        flex-direction: row;
     }
-    .link_to_inscribe {
-        float: right;
-        max-width: 100px;
-        text-align: center;
-              
+    h1 {
+        margin-block: 25px;
+        @media (min-width: 700px) {
+            max-block: none;
+            font-size: $bigFont;   
+            border-left: 7.5px solid $color3;   
+            padding-left: 30px;     
+        }
+    }
+    .parent_inscribe_link {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        .link_to_inscribe {
+            float: right;
+            max-width: 100px;
+            text-align: center;
+        }
+
     }
     .circle_img_cont  {    
+        $size_square : clamp(250px, 30vw,400px); 
         margin: 30px; 
         height: $size_square;
         width: $size_square;

@@ -17,7 +17,6 @@ const timeline = gsap.timeline({ paused: true, defaults: { duration: .5, ease: E
 btnNav.onclick = () => {
     console.log('clicked');
     timeline.reversed(!timeline.reversed())
-    // nav-section.childNodes.forEach( e => e.classList == 'trigger_nav'? '' : e.style= 'opacity: 0')
     nav_section.style = 'z-index: 120'
 }
 // close with click esc
@@ -30,7 +29,7 @@ nav_links.forEach(a => {
     a.onclick = (e) => {
         e.preventDefault()
         nav_section.style = 'z-index:1'
-        screenShow.style = 'transform: translateX(0)'
+        // screenShow.style = 'transform: translateX(0)'
         timeline.timeScale(2)
         timeline.reverse(timeline.reversed())
         setTimeout(() => {
@@ -40,7 +39,7 @@ nav_links.forEach(a => {
 })
 
 
-const all_links = document.querySelectorAll("a")
+const all_links = document.querySelectorAll("a:not(.nav_links")
 all_links.forEach(a => {
     a.onclick = (e) => {
         e.preventDefault()
@@ -51,6 +50,8 @@ all_links.forEach(a => {
      }
     }
 )
+
+
 // const form_inscribir = document.querySelector("form.inscribe")
 // const formValidation = (form) => {
 //     const r = [...form.querySelectorAll("input")].every( i =>  !i.value)

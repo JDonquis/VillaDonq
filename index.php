@@ -69,7 +69,7 @@
 
          <div>
              <h1> La escuela del futuro ya llegó a prestarte la mejor educación.</h1>
-             <span class="parent_btn_submit parent_inscribe_link"><a href="views/inscribe.php" class="link_to_inscribe btn_submit">Inscribete</a></span>
+             
              
          </div>
  
@@ -91,6 +91,7 @@
             
             </div>
         </div>
+        <span class="parent_btn_submit parent_inscribe_link"><a href="views/inscribe.php" class="link_to_inscribe btn_submit">Inscribete</a></span>
     
     </header>
 

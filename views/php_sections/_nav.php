@@ -21,10 +21,10 @@
             </div>
             <ul class="nav_content">
                 <li><span>Navigation</span></li>
-                <li><a href="#">Home</a></li>
-                <li><a href="blog/index.html">Blog</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="#">Lorem</a></li>
+                <li><a class="nav_links" href="#">Home</a></li>
+                <li><a class="nav_links" href="blog/index.html">Blog</a></li>
+                <li><a class="nav_links" href="#">Contacto</a></li>
+                <li><a class="nav_links" href="#">Lorem</a></li>
             </ul>
         </div>
 
