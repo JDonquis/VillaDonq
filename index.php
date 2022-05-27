@@ -75,7 +75,7 @@
  
 
         <div>
-            <div class="circle_img_cont slider fade_effect zoom_effect auto">
+            <div class="circle_img_cont slider fade_effect zoom_effect auto ">
                 <div class=" slider_wrap">
                     <div class="each_slider_element active_default zoom_effect_act">
                         <img src="views/img/pexels-fauxels-3184432.jpg" alt="" srcset="" >

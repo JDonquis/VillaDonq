@@ -23,10 +23,10 @@
         <div class="h1_cont">
             <h1>Inscribete en VILLADONQ y recibe la mejor educación</h1>
         </div>
+        <form class="inscribe" action="../controller/request_controller.php" method="POST">
+            <div class="card_form slider opacity_effect_each" id='up'>
 
-            <form class="inscribe" action="../controller/request_controller.php" method="POST">
-
-            <div class="card_form slider" id='up'>
+>>>>>>> 1c0c249a5d4cb9b501bfa90320e9bc9fad53583e
                 <!-- <ul class="nav_slider">
                 </ul>  -->
                 <div class="progress_bar">
@@ -137,8 +137,9 @@
                             <label for="ins_repre_DNI">DNI: </label>
                         </span>
                         <span>
-                            <input type="tel" id="ins_repre_tel">
-                            <label for="ins_repre_tel">Telefono: </label>
+                            <input type="tel" id="ins_repre_tel" required>
+                            <label for="ins_repre_tel">telefono: </label>
+>>>>>>> 1c0c249a5d4cb9b501bfa90320e9bc9fad53583e
                         </span>
                         <span class="parent_btn_submit"><input type="submit" name="new_request" value="INSCRIBIR" class="inscribirse btn_submit"></span>
                         <div class="arrow_buttons">
@@ -159,7 +160,7 @@
 <script src="js/base.js"></script>
 <script src="js/loader.js"></script>
 <script>
-    opacity_effect_each = true
+   
     document.querySelectorAll(".card_form input").forEach(input => {
         if (input.type !== 'file' && input.type !== 'submit') {
             input.onfocus = () =>{ 
@@ -207,12 +208,16 @@
         }
         
     }
-    function goUp() {
-        console.log('ay');
-        const form_ins = document.querySelector("form.inscribe")
-        form_ins.scrollIntoView(true)
-    }
+    // function goUp() {
+    //     console.log('ay');
+    //     const form_ins = document.querySelector("form.inscribe")
+    //     form_ins.scrollIntoView(true)
+    // }
     
+    // document.querySelector("button[type=submit]").onclick = (e) => {
+    //     e.preventDefault()
+        
+    // }
 </script>
 <script src="js/mySlider.js"></script>
     

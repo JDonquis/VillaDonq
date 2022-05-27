@@ -10,11 +10,11 @@ body, html {
     overflow: hidden;
     @media (min-width: 800px) {
         display: grid;
-        grid-template-columns: 40% 60%;
+        grid-template-columns: 40% 60%;   
         grid-template-rows: repeat(1, calc(100vh - $nav_height));
         
     }
-    @media (min-width: 1060px) {
+    @media (min-width: 1060px) { 
         grid-template-columns: 50% 50%;
     }
 

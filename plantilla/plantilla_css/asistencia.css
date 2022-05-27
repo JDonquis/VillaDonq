@@ -1,0 +1,65 @@
+@charset "UTF-8";
+.intro_table #input_n_classes {
+  width: 50px !important;
+  min-width: 50px !important;
+}
+
+label:hover {
+  cursor: pointer;
+}
+
+.asist_table {
+  width: 100%;
+}
+.asist_table td,
+.asist_table th {
+  position: relative;
+  overflow: hidden;
+}
+.asist_table td label,
+.asist_table th label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-left: 0px;
+  height: 100%;
+  padding: 12px;
+}
+.asist_table .each_cell {
+  min-width: 55px;
+  max-width: 56px !important;
+  word-wrap: break-word;
+  position: relative;
+  transition: all ease 0.2s;
+}
+.asist_table .each_cell.attended::before {
+  transition: all 0.4s ease;
+  content: "✓";
+  text-align: center;
+  line-height: 3;
+  color: #21E6C1;
+  position: absolute;
+  inset: 0;
+  background: #081f3d;
+  z-index: 999;
+}
+.asist_table .each_cell:hover {
+  cursor: pointer;
+  background: rgba(31, 66, 135, 0.2588235294);
+}
+.asist_table .th_students,
+.asist_table tr td:first-child {
+  min-width: 215px;
+  word-wrap: break-word;
+}
+.asist_table .th_students label,
+.asist_table tr td:first-child label {
+  padding-left: 20px;
+  font-weight: normal !important;
+}
+.asist_table th:not(.th_students, .th_total), .asist_table .each_cell {
+  min-width: 55px !important;
+  max-width: 56px !important;
+  word-wrap: break-word;
+}/*# sourceMappingURL=asistencia.css.map */

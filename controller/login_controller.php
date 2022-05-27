@@ -36,8 +36,8 @@ class Login_controller{
 
 			}
 			else{			
-
-				header("location:../views/login.php");
+ 
+				header("location:../views/login.php?try=1");
 				exit();
 			}
 	
