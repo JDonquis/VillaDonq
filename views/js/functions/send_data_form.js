@@ -1,35 +1,46 @@
+const d = document;
 
-
-
-
-
-function send_data(form) 
+export default function send_data(form) 
 	{
-	  const dataf = $(form).serialize();
+	 const f=$(form)[0]; 
+	 f.addEventListener("submit",function(e)
+	   {
+	   	
+	   	e.preventDefault();
+	    const dataform = new FormData(f);
+	  	dataform.append('request',1);
 
-	  console.log(dataf);
+	  	$.ajax({ 
+	    type: 'POST', 
+	    url:'../controller/request_controller.php',
+	    dataType: "html",
+	  	data: dataform,
+	  	// cache: false,
+	  	processData: false,
+    	contentType: false, 
+	    beforeSend: function()
+	    {
+	    	console.log("Enviando...");
+	    },
+	   	 success: function(resp) 
+	      { 
+	      	
+	       // const r = JSON.parse(resp);
+	       // resp==''?alert('Error: No se ha podido enviar la informacion.'):alert(resp);
 
-	  // $.ajax({ 
-	  //   type: 'POST', 
-	  //   url: "<?php echo base_url().'Alineacion/AddAlineacion'>",
-	  //   data: dataf, 
-	  //   success: function(dat) 
-	  //   { 
+	       console.log(resp);
+	       
+	       
 
-	  //     var datos = eval("(" + dat + ")");
-	  //     resp=datos.resp;
-	  //     mensaje=datos.mensaje;ned
+	    },
+	     error: function(e) 
+	     {
+	      alert('Error: No se ha podio Guardar o Actualizar la informacion !')
+	     } 
 
-	  //     $("#Modal_add_alineacion").modal("hide");
+	   });
 
-	  //     Listar_alin(1);
-	  //   },
-	  //   error: function(e) 
-	  //   {
-	  //     $("#Modal_add_alineacion").modal("hide");
-	  //     alert('Error: No se ha podio Guardar o Actualizar la informacion !')
-	  //   } 
-
-	  // }); 
+	 
+	   })
 	}
 	

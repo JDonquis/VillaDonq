@@ -5,7 +5,7 @@
 */
 import loader_screen from "../functions/loader_screen.js";
 import file_validation from "../functions/f_size_validation.js"
-import send_data from "..functions/send_data_form.js";
+import send_data from "../functions/send_data_form.js";
 import 
 {	
 	gsap_timeline
@@ -27,4 +27,5 @@ d.addEventListener("DOMContentLoaded",e=>
 	close_nav(timeline);
 	links_animation(".screenShow");
 	nav_links_animation(".nav_content>li>a",".nav-section",".screenShow",timeline);
+	send_data("#form-file"); 
 })

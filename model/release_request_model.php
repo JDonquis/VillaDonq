@@ -85,6 +85,57 @@ class Release_request
 		return $requests;
 	}
 
+
+	function insert_requests(Request $request)
+	{
+		/*Por ahora evitar los campos, estado, ciudad , codigo postal*/
+
+		// INSERT INTO `request` (`id`, `id_status`, `name`, `last_name`, `DNI`, `age`, `date_birth`, `email`, `phone_number`, `birth_certificate`, `report_card`, `certified_notes`, `certificate_conduct`, `photo`, `address`, `representative_name`, `representative_DNI`, `representative_phone_number`) VALUES (NULL, '3', 'Don Quijote', 'De la mancha', '123456', '12', '2022-05-09', 'donquijote@gmail.com', '1234564', 'foto1', 'foto2', 'foto3', 'foto4', 'foto5', 'en algun lugar de la mancha', 'Juan Vicente Gomez', '654897213', '123455'); 
+
+		$sql="INSERT INTO request (id, id_status, name, last_name, DNI, age, date_birth, email, phone_number, birth_certificate, report_card, certified_notes, certificate_conduct, photo, address, representative_name, representative_DNI, representative_phone_number) VALUES (NULL, '3', :name, :last_name,:DNI,:age,:date_birth,:email,:phone_number,:birth_certificate,:report_card,:certified_notes,:certificate_conduct,:photo,:address, :representative_name,:representative_DNI,:representative_phone_number)";
+
+		 $result=$this->db->prepare($sql);
+
+		$result->execute(array(
+
+			":name"=>$request->get_name(),":last_name"=>$request->get_last_name(),":DNI"=>$request->get_DNI(),
+			":age"=>$request->get_age(),":date_birth"=>$request->get_date_birth(),":email"=>$request->get_email(),
+			":phone_number"=>$request->get_phone(),":birth_certificate"=>$request->get_birth_certificate(),":report_card"=>$request->get_report_card(),
+			":certified_notes"=>$request->get_certified_notes(),":certificate_conduct"=>$request->get_certificate_conduct(),":photo"=>$request->get_photo(),
+			":address"=>$request->get_address(),":representative_name"=>$request->get_representative_name(),":representative_DNI"=>$request->get_representative_DNI(),
+			":representative_phone_number"=>$request->get_representative_phone_number()  ) );
+
+		if ($result->rowCount()!=0)
+            return 1;  
+        
+        else{
+            return 2;
+        }
+
+	}
+	
+
+	function get_id($p)
+	{
+		if($p=="LAST")
+		{
+			$sql="SELECT MAX(id) as id FROM request";
+			
+		}
+		else if($p=="FIRST")
+		{
+			$sql="SELECT MIN(id) as id FROM request";
+		}
+
+			$result=$this->db->prepare($sql);
+			$result->execute(array());
+
+			$row=$result->fetch(PDO::FETCH_ASSOC);
+
+			return $row["id"];
+
+	}
+
 	/*	function get_one_request($id_user)
 	{	
 		$persona=new Personal();
@@ -115,23 +166,6 @@ class Release_request
 
 	*/
 
-
-	/*function insert_student(Student $student)
-	{
-		$sql="INSERT INTO images (id_category,title,subject,date,image) VALUES (:id_cat,:title,:sub,:date,:image)";
-		$result=$this->db->prepare($sql);
-
-		$result->execute(array(":id_cat"=>$image->get_category(),":title"=>$image->get_title(),":sub"=>$image->get_subject(),":date"=>$image->get_date(),":image"=>$image->get_image() ));
-
-		if ($result->rowCount()!=0)
-            return 1;  
-        
-        else{
-            return 2;
-        }
-
-	}
-	*/
 
 	/*function get_allcategories()
 	{

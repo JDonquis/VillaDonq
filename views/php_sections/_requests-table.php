@@ -53,11 +53,11 @@
                       <td><?php echo $request->get_DNI(); ?></td>
                       <td><?php echo $request->get_address(); ?></td>
                       <td><?php echo $request->get_age(); ?></td>
-                      <td><a href="../request_images/birth/<?php echo $request->get_birth_certificate(); ?>">Ver Documento</a></td>
-                      <td><a href="../request_images/report/<?php echo $request->get_report_card(); ?>">Ver Documento</a></td>
-                      <td><a href="../request_images/notes/<?php echo $request->get_certified_notes(); ?>">Ver Documento</a></td>
-                      <td><a href="../request_images/conduct/<?php echo $request->get_certificate_conduct(); ?>">Ver Documento</a></td>
-                      <td><a href="../request_images/photo/<?php echo $request->get_photo(); ?>">Ver Documento</a></td>
+                      <td><a href="../request_images/birth_certificate/<?php echo $request->get_birth_certificate(); ?>" target="blank">Ver Documento</a></td>
+                      <td><a href="../request_images/report_card/<?php echo $request->get_report_card(); ?>" target="_blank">Ver Documento</a></td>
+                      <td><a href="../request_images/certificate_notes/<?php echo $request->get_certified_notes(); ?>" target="blank">Ver Documento</a></td>
+                      <td><a href="../request_images/certificate_conduct/<?php echo $request->get_certificate_conduct(); ?>" target="blank">Ver Documento</a></td>
+                      <td><a href="../request_images/photo/<?php echo $request->get_photo(); ?>" target="blank">Ver Documento</a></td>
                       <td><?php echo $request->get_representative_name(); ?></td>
                       <td><?php echo $request->get_representative_phone_number(); ?></td>
                       <td><?php echo $request->get_date_birth(); ?></td>
