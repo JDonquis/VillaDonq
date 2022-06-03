@@ -31,9 +31,6 @@ export function button_nav(btn,nav,timeline)
         {   
             timeline.reversed(!timeline.reversed())
             n.style = 'z-index: 120';
-
-            // nav-section.childNodes.forEach( e => e.classList == 'trigger_nav'? '' : e.style= 'opacity: 0')
-            
         }
 
     })  

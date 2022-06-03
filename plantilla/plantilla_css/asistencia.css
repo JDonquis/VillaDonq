@@ -3,6 +3,17 @@
   width: 50px !important;
   min-width: 50px !important;
 }
+.intro_table .history_arrows:hover {
+  cursor: pointer;
+  color: #278EA5;
+}
+.intro_table .history_arrows.disabled {
+  opacity: 0.3;
+}
+.intro_table .history_arrows.disabled:hover {
+  color: inherit;
+  cursor: default;
+}
 
 label:hover {
   cursor: pointer;
@@ -55,7 +66,7 @@ label:hover {
   position: sticky;
   background: white;
   border: none !important;
-  outline: 1px solid #081f3d;
+  outline: 1px solid rgb(153, 153, 153);
   z-index: 50 !important;
   left: 0;
 }
@@ -67,8 +78,17 @@ label:hover {
 .asist_table .th_students {
   z-index: 100 !important;
 }
+.asist_table .th_total {
+  display: sticky;
+  left: 100%;
+}
 .asist_table th:not(.th_students, .th_total), .asist_table .each_cell {
   min-width: 55px !important;
   max-width: 56px !important;
   word-wrap: break-word;
+}
+
+.min75 {
+  color: #1F4287;
+  font-weight: bold;
 }/*# sourceMappingURL=asistencia.css.map */

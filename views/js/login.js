@@ -29,7 +29,7 @@ focusFirstInput()
 // si existe 
 if (btnShow) {
     btnShow.onclick = () => {
-        nav_section.style = 'z-index: 1'
+        // nav_section.style = 'z-index: 1'
         moveY('0')
         focusFirstInput()
     }
