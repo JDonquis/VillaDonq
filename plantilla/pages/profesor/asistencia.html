@@ -8,11 +8,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <link rel="stylesheet" href="../../plantilla_css/asistencia.css">
+
 
     <title>Asistencia</title>
 </head>
@@ -849,7 +853,52 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Asistencia - seccion tal, matematica </h1>
+                            <!-- SELECT2 EXAMPLE -->
+
+                            <h1>Control de asistencia</h1>
+                            <div class="row mt-2">
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Sección</label>
+                                        <select class="form-control select2 select2-primary"
+                                            data-dropdown-css-class="select2-primary" style="width: 100%;">
+                                            <option selected="selected">Alabama</option>
+                                            <option>Alaska</option>
+                                            <option>California</option>
+                                            <option>Delaware</option>
+                                            <option>Tennessee</option>
+                                            <option>Texas</option>
+                                            <option>Washington</option>
+                                        </select>
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-12 col-sm-6">
+                                    <form class="form-group">
+                                        <label>Lapsos</label>
+                                        
+                                            <div class="d-flex">
+                                                <div class="custom-control custom-radio">
+                                                  <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio" checked>
+                                                  <label for="customRadio1" class="custom-control-label">1</label>
+                                                </div>
+                                                <div class="custom-control custom-radio mx-4">
+                                                  <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio">
+                                                  <label for="customRadio2" class="custom-control-label">2</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input" type="radio" id="customRadio3" name="customRadio">
+                                                    <label for="customRadio3" class="custom-control-label">3</label>
+                                                </div>
+                                            </div>
+                                              
+                                            
+                                    </form>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -871,6 +920,8 @@
                             <div class="card">
                                 <div class="card-header intro_table">
                                     <div class="form-group float-left w-50 d-flex align-items-center mb-0">
+                                        <i title="revertir cambio" class=" disabled fa-solid history_arrows past  fa-arrow-rotate-left"></i>
+                                        <i title="volver al cambio" class="fa-solid history_arrows future fa-arrow-rotate-right disabled ml-2 mr-4"></i>
                                         <div class="form-check mr-4">
                                             <input class="form-check-input" type="checkbox" id="marcar_todos">
                                             <label class="form-check-label" for="marcar_todos">
@@ -983,7 +1034,7 @@
                                                 <td>
                                                     <label for="e1" title='marcar toda la fila'>
 
-                                                        <input type="checkbox" class="marcar_fila_input"  name=""
+                                                        <input type="checkbox" class="marcar_fila_input mr-1" name=""
                                                             id="e1">
                                                         <span class="student_name">Fulanito perez</span>
                                                     </label>
@@ -1001,13 +1052,13 @@
                                                 <td class="each_cell "></td>
                                                 <td class="each_cell "></td>
                                                 <td class="each_cell "></td>
-                                                <td class="each_total">59%</td>
+                                                <td class="each_total">0%</td>
                                             </tr>
-                                            
+
                                             <tr>
                                                 <td>
                                                     <label for="e2">
-                                                        <input type="checkbox" class="marcar_fila_input" name=""
+                                                        <input type="checkbox" class="marcar_fila_input mr-1" name=""
                                                             id="e2">
                                                         <span class="student_name">pantaleona cabezona</span>
                                                     </label>
@@ -1025,13 +1076,13 @@
                                                 <td class="each_cell"></td>
                                                 <td class="each_cell"></td>
                                                 <td class="each_cell"></td>
-                                                <td class="each_total">59%</td>
+                                                <td class="each_total">0%</td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <label for="e3">
 
-                                                        <input type="checkbox" class="marcar_fila_input" name=""
+                                                        <input type="checkbox" class="marcar_fila_input mr-1" name=""
                                                             id="e3">
                                                         <span class="student_name">Dolores Pecho Barba</span>
                                                     </label>
@@ -1049,7 +1100,31 @@
                                                 <td class="each_cell"></td>
                                                 <td class="each_cell"></td>
                                                 <td class="each_cell"></td>
-                                                <td class="each_total">59%</td>
+                                                <td class="each_total">0%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label for="e4">
+
+                                                        <input type="checkbox" class="marcar_fila_input mr-1" name=""
+                                                            id="e4">
+                                                        <span class="student_name"> Alan brito</span>
+                                                    </label>
+                                                </td>
+                                                <td class="each_cell"></td>
+                                                <td class="each_cell"></td>
+                                                <td class="each_cell"></td>
+                                                <td class="each_cell"></td>
+                                                <td class="each_cell"></td>
+                                                <td class="each_cell"></td>
+                                                <td class="each_cell"></td>
+                                                <td class="each_cell"></td>
+                                                <td class="each_cell"></td>
+                                                <td class="each_cell"></td>
+                                                <td class="each_cell"></td>
+                                                <td class="each_cell"></td>
+                                                <td class="each_cell"></td>
+                                                <td class="each_total">0%</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -1085,14 +1160,11 @@
 
 
 
-    <script src="../plantilla_js/asistencia.js">
-    </script>
-<script src="../plantilla_js/dragSelect.js"></script>
-<script src="https://dragselect.com/v2/ds.min.js"></script>
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-
-
-
+    <script src="../../plugins/select2/js/select2.full.min.js"></script>
+    <script src="../../plantilla_js/asistencia.js"></script>
 </body>
 
 </html>

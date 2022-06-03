@@ -7,12 +7,27 @@ $color4: #21E6C1;
         width: 50px !important;
         min-width: 50px !important;
     }
+    .history_arrows {
+        &:hover {
+            cursor: pointer;
+            color: $color3;
+        } 
+        &.disabled {
+            opacity: .3;
+            &:hover {
+                color: inherit;
+                cursor: default;
+            }
+        }
+    }
 }
 label:hover {
     cursor: pointer;
 }
 .asist_table {
     width: 100%;
+
+    
     td,
     th {
         position: relative;
@@ -60,7 +75,7 @@ label:hover {
         position: sticky;
         background: white;
         border: none !important;
-        outline: 1px solid $color1;
+        outline: 1px solid rgb(153, 153, 153);
         
         z-index: 50 !important;
         left: 0;
@@ -73,11 +88,18 @@ label:hover {
         z-index: 100 !important;
         
     }
-
+    .th_total {
+        display: sticky;
+        left: 100%;
+    }
     th:not(.th_students, .th_total), .each_cell {
         min-width: 55px !important;
         max-width: 56px !important;
         word-wrap: break-word;
     }
    
+}
+.min75 {
+    color: $color2 ;
+    font-weight: bold ;
 }

@@ -17,7 +17,7 @@ import
 
 const d= document;
 
-d.addEventListener("DOMContentLoaded",e=>{
+d.addEventListener("DOMContentLoaded", e=>{
 
 
 	loader_screen(".screenShow");
