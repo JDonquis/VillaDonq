@@ -22,7 +22,6 @@
     <div class="cont_h1_and_form">
         <div class="h1_cont">
             <h1>Inscribete en VILLADONQ y recibe la mejor educación</h1>
-
          </div>
           
         <form class="inscribe" action="../controller/request_controller.php" method="POST" enctype="multipart/form-data">
@@ -144,7 +143,7 @@
                         </span>
                         <span>
                             <input type="tel" id="ins_repre_tel" name="phone_r">
-                            <label for="ins_repre_tel">telefono: </label>
+                             <label for="ins_repre_tel">telefono: </label>
                         </span>
                         <span class="parent_btn_submit"><input type="submit" name="new_request" value="INSCRIBIR" class="inscribirse btn_submit"></span>
                         <div class="arrow_buttons">

@@ -1,28 +1,35 @@
-function Guardar_Alineacion() 
+
+
+
+
+
+function send_data(form) 
 	{
-	  var dataf = $('#faddalineacion').serialize();
+	  const dataf = $(form).serialize();
 
-	  $.ajax({ 
-	    type: 'POST', 
-	    url: "<?php echo base_url().'Alineacion/AddAlineacion'>",
-	    data: dataf, 
-	    success: function(dat) 
-	    { 
+	  console.log(dataf);
 
-	      var datos = eval("(" + dat + ")");
-	      resp=datos.resp;
-	      mensaje=datos.mensaje;
+	  // $.ajax({ 
+	  //   type: 'POST', 
+	  //   url: "<?php echo base_url().'Alineacion/AddAlineacion'>",
+	  //   data: dataf, 
+	  //   success: function(dat) 
+	  //   { 
 
-	      $("#Modal_add_alineacion").modal("hide");
+	  //     var datos = eval("(" + dat + ")");
+	  //     resp=datos.resp;
+	  //     mensaje=datos.mensaje;ned
 
-	      Listar_alin(1);
-	    },
-	    error: function(e) 
-	    {
-	      $("#Modal_add_alineacion").modal("hide");
-	      alert('Error: No se ha podio Guardar o Actualizar la informacion !')
-	    } 
+	  //     $("#Modal_add_alineacion").modal("hide");
 
-	  }); 
+	  //     Listar_alin(1);
+	  //   },
+	  //   error: function(e) 
+	  //   {
+	  //     $("#Modal_add_alineacion").modal("hide");
+	  //     alert('Error: No se ha podio Guardar o Actualizar la informacion !')
+	  //   } 
+
+	  // }); 
 	}
 	

@@ -5,6 +5,7 @@
 */
 import loader_screen from "../functions/loader_screen.js";
 import file_validation from "../functions/f_size_validation.js"
+import send_data from "..functions/send_data_form.js";
 import 
 {	
 	gsap_timeline

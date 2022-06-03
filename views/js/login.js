@@ -1,3 +1,4 @@
+const nav_section = document.querySelector(".nav-section");
 const fieldset = document.querySelector(".login_form fieldset")
 document.querySelectorAll('.login_form span input').forEach(element => {
 

@@ -1,6 +1,4 @@
 
-
-
 /*For efficiency we create a const 'd' for save the DOM document*/
 const d=document;
 
