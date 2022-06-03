@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AdminLTE 3 | Dashboard</title>
-
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css"> -->
@@ -851,27 +852,70 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <div class="content-header">
+            <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
+                            <!-- SELECT2 EXAMPLE -->
+
                             <h1 class="m-0">Plan de evaluación</h1>
-                        </div><!-- /.col -->
+
+                            <div class="row mt-2">
+                                <div class="col-12 col-sm-6">
+                                    
+                                    <div class="form-group">
+                                        
+                                        <label>Materia</label>
+                                        <select class="form-control select2 select2-primary"
+                                            data-dropdown-css-class="select2-primary" style="width: 100%;">
+                                            <option selected="selected">Biologia</option>
+                                            <option>Matematica</option>
+                                            <option>Física</option>
+                                            <option>Escritura y compresión lectora</option>
+                                            <option>ect ect</option>
+                                            
+                                        </select>
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        
+                                        <label>Año escolar</label>
+                                        <select class="form-control select2 select2-primary"
+                                            data-dropdown-css-class="select2-primary" style="width: 100%;">
+                                            <option selected="selected">1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+
+                        </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard v1</li>
+                                <li class="breadcrumb-item active">Simple Tables</li>
                             </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
+                        </div>
+                    </div>
                 </div><!-- /.container-fluid -->
-            </div>
+            </section>
+        
             <!-- /.content-header -->
 
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                   
+                   <form action="" class="plan_evaluacion">
+
+                   </form>
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->
@@ -893,7 +937,15 @@
     </div>
     <!-- ./wrapper -->
 
-
+    <script>
+        document.querySelectorAll(".card_form input").forEach(input => {
+    if (input.type !== 'file' && input.type !== 'submit') {
+        if (input.value.length > 0) input.nextElementSibling.classList.add('focus_valid')
+        input.onfocus = () => input.nextElementSibling.classList.add('focus_valid')
+        input.onblur = () => input.value.length < 1 ? input.nextElementSibling.classList.remove('focus_valid') : ''
+    }
+})
+    </script>
 </body>
 
 </html>
