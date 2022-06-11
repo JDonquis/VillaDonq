@@ -9,7 +9,9 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <link rel="stylesheet" href="../../plantilla_css/asistencia.css">
@@ -872,23 +874,26 @@
                                 <div class="col-12 col-sm-6">
                                     <form class="form-group">
                                         <label>Lapsos</label>
-                                        
-                                            <div class="d-flex">
-                                                <div class="custom-control custom-radio">
-                                                  <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio" checked>
-                                                  <label for="customRadio1" class="custom-control-label">1</label>
-                                                </div>
-                                                <div class="custom-control custom-radio mx-4">
-                                                  <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio">
-                                                  <label for="customRadio2" class="custom-control-label">2</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" id="customRadio3" name="customRadio">
-                                                    <label for="customRadio3" class="custom-control-label">3</label>
-                                                </div>
+
+                                        <div class="d-flex">
+                                            <div class="custom-control custom-radio">
+                                                <input class="custom-control-input" type="radio" id="customRadio1"
+                                                    name="customRadio" checked>
+                                                <label for="customRadio1" class="custom-control-label">1</label>
                                             </div>
-                                              
-                                            
+                                            <div class="custom-control custom-radio mx-4">
+                                                <input class="custom-control-input" type="radio" id="customRadio2"
+                                                    name="customRadio">
+                                                <label for="customRadio2" class="custom-control-label">2</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input class="custom-control-input" type="radio" id="customRadio3"
+                                                    name="customRadio">
+                                                <label for="customRadio3" class="custom-control-label">3</label>
+                                            </div>
+                                        </div>
+
+
                                     </form>
                                 </div>
                                 <!-- /.col -->
@@ -902,7 +907,7 @@
                             </ol>
                         </div>
                     </div>
-                </div><!-- /.container-fluid -->
+                </div>
             </section>
 
 
@@ -913,22 +918,32 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header intro_table">
-                                    <div class="form-group float-left w-50 d-flex align-items-center mb-0">
-                                        <i title="revertir cambio" class=" disabled fa-solid history_arrows past  fa-arrow-rotate-left"></i>
-                                        <i title="volver al cambio" class="fa-solid history_arrows future fa-arrow-rotate-right disabled ml-2 mr-4"></i>
+                                <div class="card-header intro_table justify-content-between">
+                                    <div class="form-group float-left d-sm-flex align-items-center mt-2 mb-0">
+                                        <i title="revertir cambio"
+                                            class=" disabled fa-solid history_arrows past  fa-arrow-rotate-left"></i>
+                                        <i title="volver al cambio"
+                                            class="fa-solid history_arrows future fa-arrow-rotate-right disabled ml-2 mr-4"></i>
                                         <div class="form-check mr-4">
                                             <input class="form-check-input" type="checkbox" id="marcar_todos">
                                             <label class="form-check-label" for="marcar_todos">
                                                 Marcar todos asistentes
                                             </label>
                                         </div>
-                                        <label for="input_n_classes" class="mb-0 pl-5">Número de clases</label>
-                                        <input type="number" value="13" class="p-1 ml-2 form-control"
-                                            id="input_n_classes">
+                                        <span class="d-flex align-items-center my-3 my-sm-0">
+                                            <label for="input_n_classes" class="mb-0 pl-sm-5">Número de clases</label>
+                                            <input type="number" value="13" class="p-1 ml-2 form-control"
+                                                id="input_n_classes">
+                                        </span>
+                                    </div>
+                                    <div class="float-sm-right">
+                                        <span class="parent_btn_submit ">
+                                            <input type="submit" title='Ctrl + s' name="" value="GUARDAR"
+                                                class=" btn_submit mt-0">
+                                        </span>
                                     </div>
 
-                                    <div class="card-tools mt-2">
+                                    <!-- <div class="card-tools mt-2">
                                         <div class="input-group input-group-sm" style="width: 150px;">
                                             <input type="text" name="table_search" class="form-control float-right"
                                                 placeholder="Search">
@@ -939,7 +954,8 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
+                                    
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0" style="max-height: 500px;">
@@ -1133,8 +1149,8 @@
 
                 </div>
                 <!-- /.row -->
+            </section>
         </div><!-- /.container-fluid -->
-        </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
@@ -1159,6 +1175,12 @@
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <script src="../../plugins/select2/js/select2.full.min.js"></script>
+    <script> $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })</script>
     <script src="../../plantilla_js/asistencia.js"></script>
 </body>
 

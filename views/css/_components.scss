@@ -223,3 +223,18 @@ $top_pixels: 20px;
     background: $color1; 
     color: red !important; 
 }  
+
+// undo and redo btns
+.history_arrows {
+    &:hover {
+        cursor: pointer;
+        color: $color3;
+    } 
+    &.disabled {
+        opacity: .3;
+        &:hover {
+            color: inherit;
+            cursor: default;
+        }
+    }
+}

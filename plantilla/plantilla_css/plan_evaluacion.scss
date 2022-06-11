@@ -1,0 +1,86 @@
+@import '../../views/css/base';
+@import '../../views/css/_components';
+* {
+    color: inherit;
+}
+.materias_div {
+    width: 200px; 
+}
+.row_table_plan {
+    
+    position: relative;
+
+    
+    tr {
+        transition: all .2s;
+    }
+    tr.removing {
+        height: 0px;
+        opacity: 0;
+        transform: translateY(-20px); 
+    }
+    .td_valor, td.borrar {
+        width: 65px !important;
+        min-width: 65px !important;
+    }
+    td.borrar i {
+        &:hover {
+            cursor: pointer;
+            color: $color4;
+        }
+    }
+    .td_unidad, .th_unidad {
+        width: 95px;
+        padding-left: 14px !important;
+    }
+    .each_cell {
+        padding: 0;
+        min-width: 200px;
+        @media (min-width: 500px) {
+            min-width: 0px;
+        }
+    } 
+    textarea {
+        height: 50px; 
+        padding: 10px;
+        resize: none;
+        z-index: 20 !important;
+        outline: none; 
+        border: none  !important;
+        width: 100%;
+        p {
+            margin-bottom: 0;
+        }
+    }
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    // @include card-form(auto, );     
+    textarea::-webkit-scrollbar {
+        width: 0px;
+    }
+    tr.inactive {
+        opacity: .3;
+        background: #f4f6f9;
+        * {
+            background-color: #f4f6f9; 
+        }
+    }
+    padding-bottom: 100px;
+    
+    .btn_more {
+        text-align: center;
+        color: $color3;
+        transition: all .2s;
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        background: white;
+        width: 100%;
+        &:hover {
+            cursor: pointer;
+            background: $color1;
+            color: $color4;
+        }
+
+    }
+}  

@@ -1,7 +1,8 @@
-$color1: #081f3d;
-$color2: #1F4287; 
-$color3: #278EA5;
-$color4: #21E6C1;
+@import '../../views/css/base';
+@import '../../views/css/_components';
+* {
+    color: inherit;
+}
 .intro_table {
     #input_n_classes {
         width: 50px !important;
@@ -20,6 +21,7 @@ $color4: #21E6C1;
             }
         }
     }
+
 }
 label:hover {
     cursor: pointer;

@@ -119,7 +119,7 @@ fillAll();
 
 // get data
 const history = [];
-let number_now = history.length;
+let now = history.length;
 
 let all_asist_data = [];
 function getData() {
@@ -141,59 +141,81 @@ function getData() {
 
     // print total number in totals columns
     all_total_td[i].innerHTML = `${total}%`;
-    classDependsTotal(total, i)
-
+    classDependsTotal(total, i);
     all_asist_data.push(obj);
   }
 
-  history.push(all_asist_data);
-  number_now = history.length - 1;
+  if (now < history.length - 1) {
+    history.splice(now + 1, history.length - (now + 1), all_asist_data);
+    future.classList.add("disabled");
+  } else {
+    history.push(all_asist_data);
+  }
+
   past.classList.remove("disabled");
-  return all_asist_data;
+  if (now > 25) history.shift()
+  now = history.length - 1;
+  if (now < 1) past.classList.add("disabled");
 }
-
-
+getData();
 // remove or add class of style whether the total is less or more than 75
 function classDependsTotal(total, i) {
   if (total >= 75) {
     all_students_name[i].classList.add("min75");
-    all_total_td[i].classList.add('min75')
+    all_total_td[i].classList.add("min75");
   } else {
     all_students_name[i].classList.remove("min75");
-    all_total_td[i].classList.remove('min75')
+    all_total_td[i].classList.remove("min75");
   }
 }
-
 
 // event: when click in arrows history
 document.querySelectorAll(".history_arrows").forEach((arrow) => {
   arrow.onclick = (e) => {
     if (arrow.classList.contains("past")) {
-      if (number_now > 0) {
-        future.classList.remove("disabled");
-        number_now--;
-        printHistory(...history.slice(number_now, number_now + 1));
-      }
-      if (number_now == 0) {
-        past.classList.add("disabled");
-      }
+      goBack();
     }
-    if (arrow.classList.contains("future") && number_now < history.length - 1) {
-      past.classList.remove("disabled");
-      number_now++;
-      printHistory(...history.slice(number_now, number_now + 1));
-    }
-    if (number_now == history.length - 1) {
-      future.classList.add("disabled");
+    if (arrow.classList.contains("future") && now < history.length - 1) {
+      goNext();
     }
   };
 });
-
+//  shortcuts
+document.addEventListener("keydown", (e) => {
+  // to go back
+  if (e.key.toLowerCase() === "z" && e.ctrlKey) {
+    e.preventDefault();
+    goBack();
+  }
+  // to go next
+  if (e.key.toLowerCase() === "y" && e.ctrlKey) {
+    e.preventDefault();
+    goNext();
+  }
+});
+function goBack() {
+  if (now > 0) {
+    future.classList.remove("disabled");
+    now--;
+    printHistory(...history.slice(now, now + 1));
+  }
+  if (now == 0) {
+    past.classList.add("disabled");
+  }
+}
+function goNext() {
+  past.classList.remove("disabled");
+  now++;
+  printHistory(...history.slice(now, now + 1));
+  if (now == history.length - 1) {
+    future.classList.add("disabled");
+  }
+}
 function printHistory(arr) {
   addOrRemoveCells(arr[0].asistencia.length);
   arr.forEach((e, i) => {
     all_total_td[i].innerHTML = `${e.total}%`;
-    classDependsTotal(e.total, i)
+    classDependsTotal(e.total, i);
     e.asistencia.forEach((v, j) => {
       let actual_cell = all_students_row[i].querySelectorAll(".each_cell")[j];
       v == 0

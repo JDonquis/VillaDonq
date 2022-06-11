@@ -442,6 +442,18 @@ fieldset {
   color: red !important;
 }
 
+.history_arrows:hover {
+  cursor: pointer;
+  color: #278EA5;
+}
+.history_arrows.disabled {
+  opacity: 0.3;
+}
+.history_arrows.disabled:hover {
+  color: inherit;
+  cursor: default;
+}
+
 .login_form {
   position: fixed;
   width: 100%;
