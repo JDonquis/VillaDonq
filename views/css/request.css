@@ -1,0 +1,118 @@
+
+
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap");
+
+
+
+
+
+
+
+
+
+
+
+.wrapper{
+
+	overflow-y: hidden !important;
+}
+
+
+.request-modal
+{
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	z-index: 9998;
+	background-color: rgba(0, 0, 0, .5);
+	padding-top: 5vh;
+	display: none;
+}
+
+.request-modal-content
+{
+	width: 85%;
+	height: 90vh;
+	z-index: 9999;
+	margin: auto;
+	padding: 10px;
+	background-color: white;
+	overflow-x: hidden !important;
+	position: relative;
+
+	
+}
+
+.box-request{
+
+
+border-bottom: 2px solid black;
+
+
+
+}
+
+.box-img{
+
+	width: 150px;
+	height: 150px;
+
+
+}
+.margin-top-edit{
+
+margin-top: 8rem;
+
+}
+
+
+.title-request{
+
+	font-weight: bold;
+	font-family: "Libre Baskerville", serif;
+
+
+}
+.title-request ~ p {  font-size: 1.2em; }
+.photo_request{
+
+	width: 100%;
+	height: 100%;
+	object-fit: cover; 
+}
+
+.box-id-status>label{
+
+	font-size: 1.1em;
+	padding: 1px;
+	
+}
+
+.box-id-status>p{
+
+	font-size: 1.1em;
+	padding: 1px;
+	
+}
+
+#exit-modal{
+
+	position: fixed;
+	top: 20%;
+	left: 80%;
+	max-width: 80px;
+	height: 80px;
+	z-index: 999999;
+}
+
+.document{
+
+	max-width: 100%;
+	min-height: 200px;
+	display: block;
+	padding-bottom: 5px;
+
+}

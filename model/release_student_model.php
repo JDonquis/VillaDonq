@@ -15,14 +15,12 @@ class Release_student
 		
 	}
 
-	
 	function get_all_students()
 	{	
 		$students=array();
 		$c=0;
 
-		$sql="SELECT student.id,student.id_user,student.id_course, user.DNI,user.name,user.last_name,user.email,user.password,user.phone,user.date_birth,user.photo
-FROM student INNER JOIN user ON student.id_user = user.id;  ORDER BY id DESC";
+		$sql="SELECT student.id,student.id_user,student.id_course, user.DNI,user.name,user.last_name,user.email,user.password,user.phone,user.date_birth,user.photo FROM student INNER JOIN user ON student.id_user = user.id;  ORDER BY id DESC";
 
 		$result=$this->db->prepare($sql);
 		$result->execute(array());
@@ -79,47 +77,7 @@ FROM student INNER JOIN user ON student.id_user = user.id;  ORDER BY id DESC";
 		return $student;
 	}
 
-/*	function insert_student(Student $student)
-	{
-		$sql="INSERT INTO images (id_category,title,subject,date,image) VALUES (:id_cat,:title,:sub,:date,:image)";
-		$result=$this->db->prepare($sql);
 
-		$result->execute(array(":id_cat"=>$image->get_category(),":title"=>$image->get_title(),":sub"=>$image->get_subject(),":date"=>$image->get_date(),":image"=>$image->get_image() ));
-
-		if ($result->rowCount()!=0)
-            return 1;  
-        
-        else{
-            return 2;
-        }
-
-	}
-
-	*/
-	
-
-	/*function get_allcategories()
-	{
-		$categories=array();
-		$count=0;
-		$sql="SELECT name FROM category";
-
-		$result=$this->db->prepare($sql);
-		$result->execute(array());
-
-		while ($row=$result->fetch(PDO::FETCH_ASSOC))
-		{	
-			$categories[$count]=$row["name"];
-			$count++;
-			
-
-		}
-		return $categories;
-
-
-	}
-
-	*/
 
 }
 

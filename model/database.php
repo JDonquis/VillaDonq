@@ -11,7 +11,7 @@ class Database
 
 		try 
 		{
-			self::$connection=new PDO('mysql:host='.HOST.';dbname='.DB_NAME.'',USER,PASSWORD);
+			self::$connection=new PDO('mysql:host='.HOST.';dbname='.DB_NAME.''.';charset=UTF8',USER,PASSWORD);
 			self::$connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 			self::$connection->exec("SET CHARACTER SET utf8");
 

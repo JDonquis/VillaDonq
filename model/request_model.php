@@ -16,6 +16,7 @@ class Request
 	private $report_card;
 	private $certified_notes;
 	private $certificate_conduct;
+	private $photo;
 	private $city;
 	private $state;
 	private $representative_DNI;

@@ -24,7 +24,7 @@
             <h1>Inscribete en VILLADONQ y recibe la mejor educación</h1>
          </div>
           
-        <form class="inscribe" action="../controller/request_controller.php" method="POST" enctype="multipart/form-data">
+        <form class="inscribe" id="form-file" action="../controller/request_controller.php" method="POST" enctype="multipart/form-data">
           <?php if(isset($_GET['fail-size'])){ ?>
                
                <div class="message-fail-size">Tamaño de archivo no permitido. Procure que sean menor de 2MB</div>
@@ -144,8 +144,9 @@
                         <span>
                             <input type="tel" id="ins_repre_tel" name="phone_r">
                              <label for="ins_repre_tel">telefono: </label>
+
                         </span>
-                        <span class="parent_btn_submit"><input type="submit" name="new_request" value="INSCRIBIR" class="inscribirse btn_submit"></span>
+                        <span class="parent_btn_submit"><input type="submit" id="b_form" name="new_request" value="INSCRIBIR" class="inscribirse btn_submit"></span>
                         <div class="arrow_buttons">
                             <button class="prev" type="button" title="Volver" > ← </button>
                             <button class="next" type="button">Siguiente</button>
@@ -160,9 +161,10 @@
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script>
- <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>   
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>   
+ <script src="./js/modules/inscribe.js" type="module"></script>
 <script src="js/login.js"></script>
-<script src="./js/modules/inscribe.js" type="module"></script>
+
 <script>
    
     document.querySelectorAll(".card_form input").forEach(input => {

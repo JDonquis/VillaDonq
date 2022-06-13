@@ -1,14 +1,20 @@
 
 <?php 
+
+
 	require_once "../helpers/type_user.php"; 
 	require_once "../controller/request_controller.php";
 
 	if(isset($_SESSION["username"]) and isset($_SESSION["password"]))
 		$requests=Request_controller::get_Requests();
+
 	else{
 
 		header("index.php");
 	}
+
+  
+
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +23,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Workspace</title>
+
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,15 +45,21 @@
   <link rel="stylesheet" href="../plantilla/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="../plantilla/plugins/summernote/summernote-bs4.min.css">
+
+  <link rel="stylesheet" href="./css/request.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+
+
+
+
+
+
+ <?php include "php_sections/_modal-request.php"; ?>
+  
 <div class="wrapper">
 
-
-
-
-
-  <!-- Navbar -->
+   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -226,7 +239,7 @@
 
           <li class="nav-header">TASKS</li>
             
-          <?php include "php_sections/_director-menu.php" ?>	
+          <?php include "php_sections/_director-menu.php"; ?>	
        
      
         </ul>
@@ -263,6 +276,11 @@
         
         <?php include "php_sections/_requests-table.php"; ?>
 
+        
+
+
+
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -295,29 +313,8 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="../plantilla/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="../plantilla/plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="../plantilla/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="../plantilla/plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="../plantilla/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="../plantilla/plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="../plantilla/plugins/moment/moment.min.js"></script>
-<script src="../plantilla/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="../plantilla/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="../plantilla/plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="../plantilla/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../plantilla/dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../plantilla/dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="../plantilla/dist/js/pages/dashboard.js"></script>
+
+<script src="./js/modules/requests.js" type="module"></script>
 </body>
 </html>
+

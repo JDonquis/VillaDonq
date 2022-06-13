@@ -74,7 +74,9 @@ export function links_animation(screen)
             screenShow.classList.add('toUp');
             setTimeout(() => {
                 window.location.href = e.target.href
-             }, 500);
+                screenShow.classList.remove('toUp');
+             }, 700);
+            
         }
     })
 }
