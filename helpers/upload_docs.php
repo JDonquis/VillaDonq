@@ -1,11 +1,12 @@
  <?php 
 
 
-
-
+/*Max size file 2MB*/
 $limit=2097152;
 
+
 $destiny=$_SERVER['DOCUMENT_ROOT'].'/VillaDonq/request_images/';
+
 $docs = array(
 
 	'photo' => array("name"=>str_replace(" ","_",$_FILES['photo']['name'] ),"type"=>$_FILES['photo']['type'],"size"=>$_FILES['photo']['size'])
@@ -21,7 +22,7 @@ foreach ($docs as $doc => $value)
  {
 	if($value["size"]>$limit || $value["size"]==0)
 	{
-		$r='ERROR: Tamaño de archivo no permitido. Asegurese de ingresar todos los archivos y que sean menor de 2MiB';
+		$r='Tamaño de archivo no permitido. Asegurese de ingresar todos los archivos y que sean menor de 2 MB';
 		break 1;
 	}
 	else{
@@ -29,19 +30,19 @@ foreach ($docs as $doc => $value)
 		if($value["type"]=='image/jpg' || $value["type"]=='image/jpeg' || $value["type"]=='image/png' || $value["type"]=='application/pdf' || $value["type"]=='application/vnd.oasis.opendocument.text' || $value["type"]=='application/msword' || $value["type"]=='application/vnd.openxmlformats-officedocument.wordprocessingml.document' )
 		{
 
-			if(move_uploaded_file($_FILES[$doc]['tmp_name'],$destiny.$doc."/".$_POST['DNI_s']."-".$last_id."-".$value['name']) )
+			if(move_uploaded_file($_FILES[$doc]['tmp_name'],$destiny.$doc."/".$_POST['DNI_s']."-".$last_id."-".$doc."-".$value['name']) )
 			{
-				$r="FUNCIONO";
+				$r="work";
 			}
 			else{
 
-				$r="no funciono";
+				$r="Hubo un error al subir el archivo.";
 				break 1;
 			}
 		}
 		else{
 
-			$r="Tipo de archivo no aceptado";
+			$r="El formato del archivo no es compatible.";
 			break 1;
 		}
 	}

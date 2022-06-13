@@ -29,3 +29,5 @@ d.addEventListener("DOMContentLoaded",e=>
 	nav_links_animation(".nav_content>li>a",".nav-section",".screenShow",timeline);
 	send_data("#form-file"); 
 })
+
+

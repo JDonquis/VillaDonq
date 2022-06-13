@@ -16,37 +16,37 @@ class Release_personal
 	}
 
 	
-	function get_all_personal()
-	{	
-		$personal=array();
-		$c=0;
+	// function get_all_personal()
+	// {	
+	// 	$personal=array();
+	// 	$c=0;
 
-		$sql="SELECT * FROM personal ORDER BY id DESC";
+	// 	$sql="SELECT * FROM personal ORDER BY id DESC";
 
-		$result=$this->db->prepare($sql);
-		$result->execute(array());
+	// 	$result=$this->db->prepare($sql);
+	// 	$result->execute(array());
 
-		while ($row=$result->fetch(PDO::FETCH_ASSOC))
-		{
-			$person=new Personal();
+	// 	while ($row=$result->fetch(PDO::FETCH_ASSOC))
+	// 	{
+	// 		$person=new Personal();
 
-			$person->set_id($row['id']);
-			$person->set_id_position($row['id_position']);
-			$person->set_DNI($row['DNI']);
-			$person->set_name($row['name']);
-			$person->set_last_name($row['last_name']);
-			$person->set_email($row['email']);
-			$person->set_password($row['password']);
-			$person->set_phone($row['phone']);
-			$person->set_date_birth($row['date_birth']);
-			$person->set_photo($row['photo']);
+	// 		$person->set_id($row['id']);
+	// 		$person->set_id_position($row['id_position']);
+	// 		$person->set_DNI($row['DNI']);
+	// 		$person->set_name($row['name']);
+	// 		$person->set_last_name($row['last_name']);
+	// 		$person->set_email($row['email']);
+	// 		$person->set_password($row['password']);
+	// 		$person->set_phone($row['phone']);
+	// 		$person->set_date_birth($row['date_birth']);
+	// 		$person->set_photo($row['photo']);
 
-			$personal[$c]=$person;
-			$c++;
+	// 		$personal[$c]=$person;
+	// 		$c++;
 
-		}
-		return $personal;
-	}
+	// 	}
+	// 	return $personal;
+	// }
 
 		function get_one_personal($id_user)
 	{	

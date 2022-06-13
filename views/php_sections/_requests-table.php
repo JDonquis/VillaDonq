@@ -17,7 +17,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
+                <table class="table table-head-fixed text-nowrap" >
                   <thead>
                     <tr>
                       <th>ID</th>
@@ -27,7 +27,7 @@
                       <th>Correo</th>
                       <th>Telefono</th>
                       <th>DNI</th>
-                      <th>Direccion</th>
+<!--                       <th>Direccion</th>
                       <th>Edad</th>
                       <th>Acta de nacimiento</th>
                       <th>Boleta</th>
@@ -36,14 +36,15 @@
                       <th>Foto</th>
                       <th>Nombre Representante</th>
                       <th>Numero de Representante</th>
-                      <th>Fecha de Nacimiento</th>
+                      <th>Fecha de Nacimiento</th> -->
                     </tr>
                   </thead>
-                  <tbody>
-                    
+                  <tbody id="table-request">
+                   
                     <?php foreach ($requests as $request){ ?>
                       
-                    <tr>
+                    <tr> 
+                      
                       <td><?php echo $request->get_id(); ?></td>
                       <td><?php echo $request->get_status(); ?></td>
                       <td><?php echo $request->get_name(); ?></td>
@@ -51,20 +52,18 @@
                       <td><?php echo $request->get_email();?></td>
                       <td><?php echo $request->get_phone(); ?></td>
                       <td><?php echo $request->get_DNI(); ?></td>
-                      <td><?php echo $request->get_address(); ?></td>
-                      <td><?php echo $request->get_age(); ?></td>
-                      <td><a href="../request_images/birth_certificate/<?php echo $request->get_birth_certificate(); ?>" target="blank">Ver Documento</a></td>
-                      <td><a href="../request_images/report_card/<?php echo $request->get_report_card(); ?>" target="_blank">Ver Documento</a></td>
-                      <td><a href="../request_images/certificate_notes/<?php echo $request->get_certified_notes(); ?>" target="blank">Ver Documento</a></td>
-                      <td><a href="../request_images/certificate_conduct/<?php echo $request->get_certificate_conduct(); ?>" target="blank">Ver Documento</a></td>
-                      <td><a href="../request_images/photo/<?php echo $request->get_photo(); ?>" target="blank">Ver Documento</a></td>
-                      <td><?php echo $request->get_representative_name(); ?></td>
-                      <td><?php echo $request->get_representative_phone_number(); ?></td>
-                      <td><?php echo $request->get_date_birth(); ?></td>
 
+                      <?php $request->get_status()=="Aceptado"||$request->get_status()=="Rechazado"?$btn_status="disabled":$btn_status=""; ?>
+
+                      <td><button type="button" class="btn btn-primary btn-details"  id-user="<?php echo $request->get_id(); ?>">Detalles</button></td>
+                      <td><button type="button" class="btn btn-success btn-request"  btn-action="add" <?php echo $btn_status ?>  id-user="<?php echo $request->get_id(); ?>">Aceptar</button></td>
+                      <td><button type="button" class="btn btn-danger btn-request" btn-action="delete" <?php echo $btn_status ?>  id-user="<?php echo $request->get_id(); ?>">Rechazar</button></td>
+                       
                     </tr>
 
                      <?php  } ?>
+
+                     
 
                   </tbody>
                 </table>
