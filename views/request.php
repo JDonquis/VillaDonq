@@ -2,16 +2,16 @@
 <?php 
 
 
-	require_once "../helpers/type_user.php"; 
-	require_once "../controller/request_controller.php";
+  require_once "../helpers/type_user.php"; 
+  require_once "../controller/request_controller.php";
 
-	if(isset($_SESSION["username"]) and isset($_SESSION["password"]))
-		$requests=Request_controller::get_Requests();
+  if(isset($_SESSION["username"]) and isset($_SESSION["password"]))
+    $requests=Request_controller::get_Requests();
 
-	else{
+  else{
 
-		header("index.php");
-	}
+    header("index.php");
+  }
 
   
 
@@ -55,7 +55,7 @@
 
 
 
- <?php include "php_sections/_modal-request.php"; ?>
+ <?php include "../template/sections/_modal-request.php"; ?>
   
 <div class="wrapper">
 
@@ -239,7 +239,7 @@
 
           <li class="nav-header">TASKS</li>
             
-          <?php include "php_sections/_director-menu.php"; ?>	
+          <?php include "../template/sections/_director-menu.php"; ?> 
        
      
         </ul>
@@ -274,7 +274,7 @@
       <div class="container-fluid">
        <div class="row">
         
-        <?php include "php_sections/_requests-table.php"; ?>
+        <?php include "../template/sections/_requests-table.php"; ?>
 
         
 

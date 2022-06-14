@@ -226,7 +226,7 @@
               echo "";
             }
             elseif($_SESSION['id_position']==3) {
-              include "php_sections/_director-menu.php";
+              include "../template/sections/_director-menu.php";
             }
             elseif($_SESSION['id_position']==4) {
              echo "";
