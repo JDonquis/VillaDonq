@@ -29,64 +29,26 @@
   </div>
 
   <!-- Navbar -->
+
   <?php include_once "../template/sections/_nav-bar.php"; ?>
-  <!-- /.navbar -->
+  
+  <!-- /.Navbar -->
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="workspace.php" class="brand-link">
-      <img src="../plantilla/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Workspace</span>
-    </a>
+  <!-- Lateral-menu -->
 
-    <!-- Sidebar -->
-    
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="../request_images/photo/<?php echo $user->get_photo()=='photo'?'default.png':$user->get_photo();  ?>" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block"> <?php echo $user->get_name(); ?></a>
-        </div>
-      </div>
+  <?php      
+  
+    if($_SESSION['id_position']==1) echo "";//include "php_sections/_director-menu.php";
 
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+    elseif($_SESSION['id_position']==2) { echo ""; }
 
-      <!-- Sidebar Menu -->    
-       <?php
+    elseif($_SESSION['id_position']==3) { include "../template/sections/_director-menu.php"; }
+        
+    elseif($_SESSION['id_position']==4) { include "../template/sections/_student-menu.php";  }       
 
-           if($_SESSION['id_position']==1)
-              echo "";//include "php_sections/_director-menu.php";
+  ?> 
 
-            elseif($_SESSION['id_position']==2) {
-              echo "";
-            }
-            elseif($_SESSION['id_position']==3) {
-              include "../template/sections/_director-menu.php";
-            }
-            elseif($_SESSION['id_position']==4) {
-              include "../template/sections/_student-menu.php";
-            }
-           
-
-      ?> 
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+  <!-- /.Lateral-menu -->
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
