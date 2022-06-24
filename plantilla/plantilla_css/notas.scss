@@ -1,0 +1,43 @@
+
+@import 'general_plantilla';
+
+
+thead th:hover .ev_details {
+  display: block;
+}
+.ev_details {
+  font-size: 14px; 
+  font-weight: normal;
+  overflow: hidden;
+  display: none;
+  p {
+    margin-bottom: 0px ;
+  }
+}
+td {
+  position: relative;
+  input {
+    position: absolute;
+    background: transparent;
+    inset: 0;
+    padding: 12px;
+    -moz-appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
+.each_cell {
+  max-width: 20px;
+}
+.dataTables_info {
+  display: none;
+}
+div.dataTables_wrapper div.dataTables_filter label {
+  margin-right: 12px;
+}
+table.table-bordered.dataTable {
+  margin: 0 !important;
+}
