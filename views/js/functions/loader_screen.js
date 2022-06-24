@@ -6,7 +6,6 @@ const d=document;
 export default function loader_screen(screen){
 
 	const screenShow = d.querySelector(screen);
-    screenShow.querySelector('.shadowsLoader').classList.remove('shadowsLoader');
-    screenShow.classList.add('hidden_screen_loader');
+    screenShow.classList.add("hidden_screen_loader");
 
-}
+ }

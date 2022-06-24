@@ -1,0 +1,28 @@
+@import "../../views/css/base";
+@import "../../views/css/_components";
+* {
+  color: inherit;
+}
+a.active {
+  background: $color3 !important;
+}
+.main-sidebar {
+  background-color: $color1 !important;
+  box-shadow: none !important;
+}
+.dataTables_info {
+  display: none;
+}
+.card-header { 
+  border-bottom: none !important;
+
+  .dt-buttons button {
+    background: $color1;
+  }
+}
+div.dataTables_wrapper div.dataTables_filter label {
+  margin-right: 12px !important;
+}
+.bg-success {
+  background-color: $color2 !important;
+}
