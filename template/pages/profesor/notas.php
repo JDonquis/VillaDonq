@@ -336,7 +336,7 @@
                                                 <td class="total"><input type="number" name=""
                                                         value="09" disabled>
                                                     <span class="d-none">09 </span>
-                                                </td>
+                                                </td> 
 
                                             </tr>
                                             <tr id="">

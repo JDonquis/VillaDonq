@@ -11,13 +11,13 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plantilla/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../template/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../plantilla/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="../plantilla/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="../template/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -25,7 +25,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="../plantilla/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="../template/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -168,29 +168,29 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../plantilla/plugins/jquery/jquery.min.js"></script>
+<script src="../template/plugins/jquery/jquery.min.js"></script>
 
 <!-- jQuery UI 1.11.4 -->
-<script src="../plantilla/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../template/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="../plantilla/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="../plantilla/plugins/chart.js/Chart.min.js"></script>
+<script src="../template/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
-<script src="../plantilla/plugins/sparklines/sparkline.js"></script>
+<script src="../template/plugins/sparklines/sparkline.js"></script>
 
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="../plantilla/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="../template/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
-<script src="../plantilla/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="../template/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="../plantilla/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="../template/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../plantilla/dist/js/adminlte.js"></script>
+<script src="../template/dist/js/adminlte.js"></script>
 
 </body>
 </html>

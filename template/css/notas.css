@@ -336,7 +336,11 @@ a.active {
 }
 
 div.dataTables_wrapper div.dataTables_filter label {
-  margin-right: 12px;
+  margin-right: 12px !important;
+}
+
+.bg-success {
+  background-color: #1F4287 !important;
 }
 
 thead th:hover .ev_details {
@@ -361,11 +365,15 @@ td input {
   background: transparent;
   inset: 0;
   padding: 12px;
+  font-size: 20px;
   -moz-appearance: textfield;
 }
 td input::-webkit-outer-spin-button, td input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+td.total input {
+  font-weight: bold !important;
 }
 
 .each_cell {

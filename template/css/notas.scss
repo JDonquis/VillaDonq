@@ -21,12 +21,16 @@ td {
     background: transparent;
     inset: 0;
     padding: 12px;
+    font-size: 20px;
     -moz-appearance: textfield;
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
+  }
+  &.total input {
+    font-weight: bold !important; 
   }
 }
 .each_cell {
