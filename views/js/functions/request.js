@@ -63,11 +63,11 @@ export function request_action(btn)
 
 		      	 				requests.forEach(el=>{
 
-	      	 						if (el[1]==1) { $status="Aceptado";	btn_status="disabled"; }
+	      	 						if (el[1]==1) { status="Aceptado";	btn_status="disabled"; }
 
-									else if(el[1]==2) {	$status="Rechazado"; btn_status="disabled"; }
+									else if(el[1]==2) {	status="Rechazado"; btn_status="disabled"; }
 
-									else if(el==3) { $status="Sin revisar";	}
+									else if(el[1]==3) { status="Sin revisar";	}
 
 		      	 					table.innerHTML+=`
 
@@ -114,11 +114,11 @@ export function request_action(btn)
 
 		      	 				requests.forEach(el=>{
 
-	      	 						if (el[1]==1) { $status="Aceptado";	btn_status="disabled"; }
+	      	 						if (el[1]==1) { status="Aceptado";	btn_status="disabled"; }
 
-									else if(el[1]==2) {	$status="Rechazado"; btn_status="disabled"; }
+									else if(el[1]==2) {	status="Rechazado"; btn_status="disabled"; }
 
-									else if(el==3) { $status="Sin revisar";	}
+									else if(el[1]==3) { status="Sin revisar";	}
 
 		      	 					table.innerHTML+=`
 
@@ -267,31 +267,80 @@ export function exit_model(btn)
 	})
 }
 
-// export function accept_request(btn)
-// {
-// 	d.addEventListener("click",e=>{
+export function filter(btn)
+{
+	d.addEventListener("click",e=>{
 
-//       if(e.target.matches(btn))
-//       {
+		if(e.target.matches(btn))
+      {
 
-//       	const button=e.target;
-//        	const id=button.getAttribute("id-user");
-//        	const 
+      	const button=e.target;
+       	const id=button.getAttribute("id");
+
+
+       	
+ 	  
    
-//       		 $.ajax({
-//       	 		url: '../controller/request_controller.php?id_user='+id,
-//       	 		async:true,
-//       	 		dataType:"json",
-//       	 		success: function (resp) 
-//       	 		{		
-      	 
-//       	 		}
+      	$.ajax({
+      		url: '../controller/request_controller.php?filter='+id,
+      	 	async:true,
+      	 	dataType:"json",
+      	 	success: function (resp) 
+      	 	{		
+      	 		console.log(resp);
+      	 		console.log("Funciono!");
+
+      	 			if(resp!=0)
+      	 			{	
+
+						const request=Object.values(resp);
+
+  	 					const requests= request.map( el=> {	return el=Object.values(el); } );
+	      	 					
+  	 					const table = $("#table-request")[0];
+
+      	 				table.innerHTML="";
+
+      	 				let btn_status="",status="";
+
+      	 				requests.forEach(el=>{
+
+  	 						if (el[1]==1) { status="Aceptado";	btn_status="disabled"; }
+
+							else if(el[1]==2) {	status="Rechazado"; btn_status="disabled"; }
+
+							else if(el[1]==3) { status="Sin revisar";	}
+
+      	 					table.innerHTML+=`
+
+      	 					<tr> 
+
+      	 					  <td>${el[0]}</td>
+		                      <td>${status}</td>
+		                      <td>${el[2]}</td>
+		                      <td>${el[3]}</td>
+		                      <td>${el[5]}</td>
+		                      <td>${el[4]}</td>
+		                      <td>${el[6]}</td>
+
+	                      			 
+
+		                      <td><button type="button" class="btn btn-primary btn-details"  id-user="${el[0]}">Detalles</button></td>
+		                      <td><button type="button" class="btn btn-success btn-request"  btn-action="add" ${btn_status}  id-user="${el[0]}">Aceptar</button></td>
+		                      <td><button type="button" class="btn btn-danger btn-request" btn-action="delete" ${btn_status}  id-user="${el[0]}">Rechazar</button></td>
+				                       
+              				  </tr>`;
+		      	 				})
+
+      	 					}
+      	 					else{ const table = $("#table-request")[0]; table.innerHTML=""; }     
+      	 			 
+      	 			 
+      	 	}
 
       	 		
-//       	 	});
-//       }
+      	 });
+      }
 
-
-// 	})
-// }
-
+	})
+}

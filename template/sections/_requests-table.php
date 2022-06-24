@@ -1,10 +1,16 @@
   <div class="col-12">
             <div class="card">
-              <div class="card-header">
+              <div class="card-header d-flex justify-content-between align-items-center">
                 <h3 class="card-title">Solicitudes de Incripcion</h3>
 
+                <div class="w-50 text-center">
+                  <button class="btn btn-primary filter" id="filter-no-check">Sin Revisar</button>
+                  <button class="btn btn-primary filter" id="filter-accept">Aceptados</button>
+                  <button class="btn btn-primary filter" id="filter-rejected">Rechazados</button>
+                </div>
+
                 <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
                     <div class="input-group-append">
@@ -14,6 +20,8 @@
                     </div>
                   </div>
                 </div>
+
+                
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0" style="height: 300px;">

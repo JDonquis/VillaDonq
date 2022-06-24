@@ -224,12 +224,61 @@ if(isset($_GET['id_user'] ) and isset($_GET['action']) )
 	}
 }
 
-// if(isset($_POST['request']))
-// {	
-// 	$r='';
-	
+
+if(isset($_GET['filter']))
+{
+	$requests;
+	$status;
+	switch ($_GET['filter']) 
+	{
+		case 'filter-accept':
+			$status=1;
+		break;
+
+		case 'filter-rejected':
+			$status=2;
+		break;
+
+		case 'filter-no-check':
+			$status=3;
+		break;
+		
+		default:
+			echo 0;
+			break;
+	}
+
+			$requests = Request_controller::get_Requests($status);
+
+			 if(!empty($requests))
+			  {
+			  	foreach ($requests as $request) {	$resp[]=(array) $request; } 	
+			 	$resp=json_encode($resp);
+			 	echo $resp;
+			  }
+
+			 else{ echo 0; }
+	}
+
 
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // 	/*Crear un array asociativo con la respuesta
@@ -257,7 +306,7 @@ if(isset($_GET['id_user'] ) and isset($_GET['action']) )
 
 	
 	
-// }
+
 
 
 
