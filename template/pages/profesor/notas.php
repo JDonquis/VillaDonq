@@ -254,10 +254,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="form-group d-flex float-left mt-2 move_hist_btns">
-                                        <button type="button" onclick="goBack()" title="revertir cambio ( ctrl + z )"
-                                            class=" disabled fa-solid history_arrows past fa-arrow-rotate-left"></button>
-                                        <button type="button" onclick="goNext()" title="volver al cambio ( ctrl + y )"
-                                            class="fa-solid history_arrows future fa-arrow-rotate-right disabled ml-2 mr-4"></button>
+                                        
                                         <div class="btn_prints "></div>
                                     </div>
 
