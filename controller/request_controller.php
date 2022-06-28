@@ -1,8 +1,8 @@
 <?php 
 
-//require_once "../model/request_model.php";
+//require_once "../../model/request_model.php";
 
- require_once "../model/release_request_model.php";
+ require_once "../../model/release_request_model.php";
 
 class Request_controller
 {
@@ -93,7 +93,7 @@ if(isset($_POST['request'])){
 
 
 
-	require_once "../helpers/upload_docs.php";
+	require_once "../../helpers/upload_docs.php";
 
 	if($r=="work")
 	{	

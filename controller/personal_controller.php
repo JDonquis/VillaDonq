@@ -1,6 +1,6 @@
 <?php 
 
-require_once "../model/release_personal_model.php";
+require_once "../../model/release_personal_model.php";
 
 
 
