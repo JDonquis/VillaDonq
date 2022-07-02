@@ -23,16 +23,7 @@ export default function send_data(form)
 	    	console.log("Enviando...");
 	    },
 	   	 success: function(resp) 
-	      { 
-	      	
-	       // const r = JSON.parse(resp);
-	       // resp==''?alert('Error: No se ha podido enviar la informacion.'):alert(resp);
-
-	       console.log(resp);
-	       
-	       
-
-	    },
+	      { alert(resp); },
 	     error: function(e) 
 	     {
 	      alert('Error: No se ha podio Guardar o Actualizar la informacion !')
