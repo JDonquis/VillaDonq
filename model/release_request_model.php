@@ -1,5 +1,5 @@
 <?php 
-require_once "request_model.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/VillaDonq/model/request_model.php";
 
 class Release_request
 {	
@@ -8,7 +8,7 @@ class Release_request
 		
 	function __construct()
 	{
-		require_once "database.php";
+		require_once $_SERVER["DOCUMENT_ROOT"]."/VillaDonq/model/database.php";
 		$this->db=Database::Connect();
 		
 	}

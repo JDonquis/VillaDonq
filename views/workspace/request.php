@@ -2,8 +2,10 @@
 <?php 
 
 
-  require_once "../helpers/type_user.php"; 
-  require_once "../controller/request_controller.php";
+  require_once $_SERVER["DOCUMENT_ROOT"]."/VillaDonq/helpers/type_user.php"; 
+  require_once $_SERVER["DOCUMENT_ROOT"]."/VillaDonq/controller/request_controller.php";
+  include_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/routes/routes.php";
+
 
   if(isset($_SESSION["username"]) and isset($_SESSION["password"]))
     $requests=Request_controller::get_Requests();
@@ -28,32 +30,32 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plantilla/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../plantilla/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="./dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="../plantilla/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="./plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- css -->
   <link rel="stylesheet" href="./css/request.css">
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 
- <?php include "../template/sections/_modal-request.php"; ?>
+ <?php include "./sections/_modal-request.php"; ?>
   
 <div class="wrapper">
 
   <!-- Navbar -->
 
-    <?php include_once "../template/sections/_nav-bar.php"; ?>
+    <?php include_once "./sections/_nav-bar.php"; ?>
 
   <!-- /.navbar -->
 
   <!-- Lateral-menu -->
 
-  <?php include "../template/sections/_director-menu.php"; ?> 
+  <?php include "./sections/_director-menu.php"; ?> 
        
   <!-- /.Lateral-menu -->   
     
@@ -83,7 +85,7 @@
       <div class="container-fluid">
        <div class="row">
         
-        <?php include "../template/sections/_requests-table.php"; ?>
+        <?php include "./sections/_requests-table.php"; ?>
 
         
 
@@ -113,32 +115,32 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../plantilla/plugins/jquery/jquery.min.js"></script>
+<script src="./plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="../plantilla/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="./plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="../plantilla/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- ChartJS -->
-<script src="../plantilla/plugins/chart.js/Chart.min.js"></script>
+<script src="./plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
-<script src="../plantilla/plugins/sparklines/sparkline.js"></script>
+<script src="./plugins/sparklines/sparkline.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="../plantilla/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="./plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
-<script src="../plantilla/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="./plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="../plantilla/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="./plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../plantilla/dist/js/adminlte.js"></script>
+<script src="./dist/js/adminlte.js"></script>
 
 <script src="./js/modules/requests.js" type="module"></script>
 </body>

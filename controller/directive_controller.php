@@ -1,6 +1,6 @@
 <?php 
 
-require_once "../../model/release_directive_model.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/model/release_directive_model.php";
 
 
 

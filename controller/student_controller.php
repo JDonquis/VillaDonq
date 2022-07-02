@@ -1,6 +1,6 @@
 <?php 
 
-require_once "../../model/release_student_model.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/model/release_student_model.php";
 
 class Students_controller
 {	

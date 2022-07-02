@@ -1,6 +1,6 @@
 <?php 
-require_once "directive_model.php";
-require_once "request_model.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/model/directive_model.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/model/request_model.php";
 
 
 class Release_directive
@@ -11,7 +11,7 @@ class Release_directive
 		
 	function __construct()
 	{
-		require_once "database.php";
+		require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/model/database.php";
 		$this->db=Database::Connect();
 
 	

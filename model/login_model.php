@@ -1,12 +1,13 @@
 <?php 
 
+
 class Login_users
 {	
 	private $db;
 		
 	function __construct()
 	{
-		require_once "database.php";
+		require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/model/database.php";
 		$this->db=Database::Connect();
 		
 	}

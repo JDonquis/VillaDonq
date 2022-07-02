@@ -1,5 +1,5 @@
 <?php 
-require_once "personal_model.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/model/personal_model.php";
 
 
 

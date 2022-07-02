@@ -37,7 +37,7 @@ export function request_action(btn)
 
    
       		 $.ajax({
-      	 		url: '../controller/request_controller.php?id_user='+id+"&action="+action,
+      	 		url: '../../controller/request_controller.php?id_user='+id+"&action="+action,
       	 		async:true,
       	 		dataType:"json",
       	 		success: function (resp) 
@@ -177,7 +177,7 @@ export function see_details(btn)
 
    
       		 $.ajax({
-      	 		url: '../controller/request_controller.php?id_user='+id+"&action=details",
+      	 		url: '../../controller/request_controller.php?id_user='+id+"&action=details",
       	 		async:true,
       	 		dataType:"json",
       	 		success: function (resp) 
@@ -282,7 +282,7 @@ export function filter(btn)
  	  
    
       	$.ajax({
-      		url: '../controller/request_controller.php?filter='+id,
+      		url: '../../controller/request_controller.php?filter='+id,
       	 	async:true,
       	 	dataType:"json",
       	 	success: function (resp) 

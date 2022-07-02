@@ -1,6 +1,6 @@
 <?php 
 
-require_once "student_model.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/model/student_model.php";
 
 class Release_student
 {	
@@ -10,7 +10,7 @@ class Release_student
 		
 	function __construct()
 	{
-		require_once "database.php";
+		require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/model/database.php";
 		$this->db=Database::Connect();
 		
 	}

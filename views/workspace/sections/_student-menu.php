@@ -1,26 +1,26 @@
 <!-- Main Sidebar Container -->
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-  <a href="workspace.php" class="brand-link">
-    <img src="../plantilla/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle   elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">Workspace</span>
-  </a>
+            <!-- Brand Logo -->
+            <a href="<?php echo WORKSPACE_INDEX; ?>" class="brand-link">
+                <img src="<?php echo URL_LOGO; ?>" alt="Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">Workspace</span>
+            </a>
 
-    <!-- Sidebar -->
-
-  <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       
-      <div class="image">
-          <img src="../request_images/photo/<?php echo $user->get_photo()=='photo'?'default.png':$user->get_photo();  ?>" class="img-circle elevation-2" alt="User Image">
-      </div>
-      
-      <div class="info">
-          <a href="#" class="d-block"> <?php echo $user->get_name(); ?></a>
-      </div>
-    </div>
+                      <div class="image">
+                          <img src="<?php echo URL_USER_IMAGES;?><?php echo $user->get_photo()=='photo'?'default.png':$user->get_photo(); ?>" class="img-circle elevation-2" alt="User Image">
+                      </div>
+                      
+                      <div class="info">
+                          <a href="#" class="d-block"> <?php echo $user->get_name(); ?></a>
+                      </div>
+                </div>
 
       <!-- SidebarSearch Form -->
 
@@ -43,7 +43,7 @@
         <!-- Add icons to the links using the .nav-icon class
          with font-awesome or any other icon font library -->
         <li class="nav-item">
-          <a href="request.php" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
             <p>Nada xd<span class="badge badge-info right">2</span></p>
           </a>

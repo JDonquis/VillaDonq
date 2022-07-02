@@ -1,5 +1,6 @@
 
-<?php require_once "../../helpers/type_user.php"; ?>
+<?php require_once $_SERVER["DOCUMENT_ROOT"]."/VillaDonq/helpers/type_user.php"; ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/routes/routes.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +39,7 @@
 
   <?php      
   
-    if($_SESSION['id_position']==1) echo "";//include "php_sections/_director-menu.php";
+    if($_SESSION['id_position']==1) include "sections/_prof-menu.php";
 
     elseif($_SESSION['id_position']==2) { echo ""; }
 

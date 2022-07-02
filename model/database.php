@@ -1,6 +1,6 @@
 <?php 
 
-require_once "../../config.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/config.php";
 
 class Database
 {

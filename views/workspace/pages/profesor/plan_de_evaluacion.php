@@ -1,3 +1,6 @@
+<?php require_once $_SERVER["DOCUMENT_ROOT"]."/VillaDonq/helpers/type_user.php"; ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/routes/routes.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +35,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../../index3.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -168,7 +171,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php require_once('../../sections/_prof-menu.php') ?>
+        <?php require_once "../../sections/_prof-menu.php"; ?>
         
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
