@@ -186,7 +186,7 @@ export function see_details(btn)
   					const request=Object.values(resp);
   			 		$(".request-modal").fadeIn();
 
-      			 	$(".photo_request").attr("src","../request_images/photo/"+request[14]);
+      			 	$(".photo_request").attr("src","../../request_images/photo/"+request[14]);
       	 			 $("#id_request").text(request[0]);
       	 			 $("#name_request").text(request[2]);
       	 			 $("#last_name_request").text(request[3]);
@@ -196,10 +196,10 @@ export function see_details(btn)
       	 			 $("#address_request").text(request[7]);
       	 			 $("#age_request").text(request[8]);
       	 			 $("#date_b_request").text(request[9]);
-      	 			 $("#birth_certificate").attr("href","../request_images/birth_certificate/"+request[10]);
-      	 			 $("#report_card_request").attr("href","../request_images/report_card/"+request[11]);
-      	 			 $("#certificate_notes").attr("href","../request_images/certificate_notes/"+request[12]);
-      	 			 $("#certificate_conduct").attr("href","../request_images/certificate_conduct/"+request[13]);
+      	 			 $("#birth_certificate").attr("href","../../request_images/birth_certificate/"+request[10]);
+      	 			 $("#report_card_request").attr("href","../../request_images/report_card/"+request[11]);
+      	 			 $("#certificate_notes").attr("href","../../request_images/certificate_notes/"+request[12]);
+      	 			 $("#certificate_conduct").attr("href","../../request_images/certificate_conduct/"+request[13]);
       	 			 $("#DNI_repre").text(request[17]);
       	 			 $("#fullname_repre").text(request[18]);
       	 			 $("#phone_repre").text(request[19]);

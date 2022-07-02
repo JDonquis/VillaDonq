@@ -92,7 +92,7 @@ if(isset($_POST['request'])){
 
 
 
-	require_once $_SERVER['DOCUMENT_ROOT']."VillaDonq/helpers/upload_docs.php";
+	require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/helpers/upload_docs.php";
 
 	if($r=="work")
 	{	
