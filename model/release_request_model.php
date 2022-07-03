@@ -168,27 +168,23 @@ class Release_request
 	}
 
 	function accept_request($request)
-	{
-
-		// INSERT INTO `user` (`id`, `id_position`, `DNI`, `name`, `last_name`, `email`, `password`, `phone`, `photo`, `date_birth`) VALUES (NULL, '4', '124556', 'juanito', 'sanchez', 'juancho070902@gmail.com', '23435', '012453', 'photo', '2022-06-13');
-
-		$sql="INSERT INTO user  (id, id_position, DNI, name, last_name, email, password, phone, photo, date_birth,address) VALUES (NULL, '4', :DNI, :name,:last_name,:email,:password,:phone,:photo,:date_birth,:address)";
+	{	
+	
+		$sql="INSERT INTO user (id, id_position, DNI, name, last_name, email, password, phone, photo, date_birth, address) VALUES (NULL, '4', :DNI, :name,:last_name, :email, :password, :phone, :photo, :date_birth, :address)";
 
 		$result=$this->db->prepare($sql);
 
 		$result->execute(array(
 
-			":DNI"=>$request->get_DNI(),":name"=>$request->get_name(),":last_name"=>$request->get_last_name(),":email"=>$request->get_email()
-		   ,"password"=>$request->get_DNI(),":date_birth"=>$request->get_date_birth(),":phone"=>$request->get_phone(),":photo"=>$request->get_photo(),":address"=>$request->get_address() ) );
+			":DNI"=>$request->get_DNI(),":name"=>$request->get_name(),":last_name"=>$request->get_last_name()
+			,":email"=>$request->get_email(),":password"=>$request->get_DNI(),":phone"=>$request->get_phone()
+			,":photo"=>$request->get_photo(),":date_birth"=>$request->get_date_birth(),":address"=>$request->get_address() ) );
 
-		if ($result->rowCount()!=0)
+		if($result->rowCount() !=0 )
 		{	
-
-			/*I have try to quit triggers on table user and do a insert*/
-
 			$id=$this->db->lastInsertId();
 
-			$sql2=" INSERT INTO student (id,id_user,id_course,representative_name,representative_DNI,representative_phone_number) VALUES (NULL,:id,'1',:rep_name,:rep_DNI,:rep_phone)";
+			$sql2="INSERT INTO student (id,id_user,id_course,representative_name,representative_DNI,representative_phone_number) VALUES (NULL,:id,'1',:rep_name,:rep_DNI,:rep_phone)";
 
 			$result=$this->db->prepare($sql2);
 
@@ -227,6 +223,8 @@ class Release_request
 				
 			}
 			else{ return 2; }
+
+			return 1;
 
 		}
             

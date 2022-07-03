@@ -1,5 +1,7 @@
   <?php 
 
+    require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/routes/routes.php";
+
     session_start();
     if(isset($_SESSION['id']))
     { 
@@ -13,25 +15,32 @@
             $user=Students_controller::get_one($_SESSION['id']);
         }
 
-
-        else if($type==1 or $type==2)
+        else if($type==3)
         {
-            require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/controller/personal_controller.php";
-            $user=Personal_controller::get_one($_SESSION['id']);
+            require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/controller/manager_controller.php";
+            $user=Manager_controller::get_one($_SESSION['id']);
         }
 
-            else if($type==3)
+        else if($type==2)
         {
-            require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/controller/personal_controller.php";
-            $user=Personal_controller::get_one($_SESSION['id']);
+            require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/controller/administrative_controller.php";
+            $user=Administrative_controller::get_one($_SESSION['id']);
         }
+
+           else if($type==1)
+        {
+            require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/controller/teacher_controller.php";
+            $user=Teacher_controller::get_one($_SESSION['id']);
+        }
+
+            
         
     }
 
     else{
 
         
-         header("location:".$_SERVER['DOCUMENT_ROOT']."/VillaDonq/views/login.php");
+         header("location:".URL_VIEWS."login.php");
          exit();
     }
 

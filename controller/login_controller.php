@@ -1,6 +1,7 @@
 <?php 
 
 require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/model/login_model.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/routes/routes.php";
 
 class Login_controller{
 
@@ -8,7 +9,7 @@ class Login_controller{
 
 	function __construct()
 	{	
-		$this->login=new Login_users();
+		$this->login = new Login_users();
 	}
 
 	
@@ -17,36 +18,36 @@ class Login_controller{
 	{
 
 		
-		$n=$this->login->verify_user($u,$p);
+		$n = $this->login->verify_user($u,$p);
 		
-			if($n[0]!=0){
+			if($n[0] != 0){
 					
 					session_start();
 
-					$_SESSION['username']=$u;
-					$_SESSION['password']=$p;
-					$_SESSION['id']=$n[0];
-					$_SESSION['id_position']=$n[1];
+					$_SESSION['username'] = $u;
+					$_SESSION['password'] = $p;
+					$_SESSION['id'] = $n[0];
+					$_SESSION['id_position'] = $n[1];
 
-					header("location:../views/workspace/index.php");
+					header("location:".WORKSPACE_INDEX);
 					exit();
 
 			}
 			else{			
  
-				header("location:../views/login.php?try=1");
+				header("location:".URL_VIEWS."login.php?try=1");
 				exit();
 			}
 	
 	}
 
-	public function type_user($id)
-	{
-		$type=$this->login->search_type($id);
+	// public function type_user($id)
+	// {
+	// 	$type=$this->login->search_type($id);
 
-		return $type==0?false:$type;
+	// 	return $type==0?false:$type;
 
-	}
+	// }
 
 
 }
@@ -56,7 +57,7 @@ class Login_controller{
 	if(isset($_POST['username']) and isset($_POST['password']))
 	{
 		
-		$login=new Login_controller();
+		$login = new Login_controller();
 		$login->verify($_POST['username'], $_POST['password']);
 	}
 

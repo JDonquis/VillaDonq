@@ -39,13 +39,13 @@
 
   <?php      
   
-    if($_SESSION['id_position']==1) include "sections/_prof-menu.php";
+    if($_SESSION['id_position']==1) include_once "sections/_prof-menu.php";
 
-    elseif($_SESSION['id_position']==2) { echo ""; }
+    elseif($_SESSION['id_position']==2) { include_once "sections/_administrative-menu.php"; }
 
-    elseif($_SESSION['id_position']==3) { include "sections/_director-menu.php"; }
+    elseif($_SESSION['id_position']==3) { include_once "sections/_manager-menu.php"; }
         
-    elseif($_SESSION['id_position']==4) { include "sections/_student-menu.php";  }       
+    elseif($_SESSION['id_position']==4) { include_once "sections/_student-menu.php";  }       
 
   ?> 
 

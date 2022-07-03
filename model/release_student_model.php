@@ -25,7 +25,7 @@ class Release_student
 		$result=$this->db->prepare($sql);
 		$result->execute(array());
 
-
+		
 		while ($row=$result->fetch(PDO::FETCH_ASSOC))
 		{
 			$student=new Student();

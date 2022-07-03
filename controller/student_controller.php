@@ -5,8 +5,6 @@ require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/model/release_student_model.p
 class Students_controller
 {	
 	
-	
-	
 	function __construct()
 	{	
 	}
@@ -33,41 +31,7 @@ class Students_controller
 
 		return $student;
 	}
-	/*
-	function show_main(){
 
-		include_once "/var/www/html/development/php/BLOG/view/images.php";
-	}
-
-	function show_header(){
-
-		include_once "/var/www/html/development/php/BLOG/view/header.php";
-
-	}
-
-	function show_banner(){
-
-		$section="contact";
-
-		include "/var/www/html/development/php/BLOG/view/sectionBanner.php";
-
-	}
-
-	function show_contact(){
-
-		include_once "/var/www/html/development/php/BLOG/view/contact.php";
-
-	}
-
-	function show_footer(){
-
-		$section="MauCake";
-
-		include "/var/www/html/development/php/BLOG/view/sectionBanner.php";
-
-	}
-	
-	*/
 
 }
 

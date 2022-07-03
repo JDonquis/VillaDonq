@@ -1,18 +1,18 @@
 <?php 
 
 
-class Personal 
+class Persona 
 {
-	private $id;
-	private $id_user;
-	private $DNI;
-	private $name;
-	private $last_name;
-	private $email;
-	private $password;
-	private $phone;
-	private $date_birth;
-	private $photo;
+	protected $id;
+	protected $id_user;
+	protected $DNI;
+	protected $name;
+	protected $last_name;
+	protected $email;
+	protected $password;
+	protected $phone;
+	protected $date_birth;
+	protected $photo;
 
 	function __construct()
 	{
@@ -109,9 +109,6 @@ class Personal
 		{
 			return $this->photo;
 		}
-		
-	
-
 }
 
 

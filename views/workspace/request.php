@@ -55,7 +55,7 @@
 
   <!-- Lateral-menu -->
 
-  <?php include "./sections/_director-menu.php"; ?> 
+  <?php include_once "./sections/_administrative-menu.php"; ?> 
        
   <!-- /.Lateral-menu -->   
     

@@ -14,9 +14,9 @@ class Request_controller
 	static function get_Requests($status=3)
 	{
 
-		$release=new Release_request();
+		$release = new Release_request();
 
-		$request=$release->get_all_request($status);
+		$request = $release->get_all_request($status);
 
 		return $request;
 		
@@ -25,9 +25,9 @@ class Request_controller
 	static function get_one_Requests($id)
 	{
 
-		$release=new Release_request();
+		$release = new Release_request();
 
-		$request=$release->get_one_request($id);
+		$request = $release->get_one_request($id);
 
 		return $request;
 		
@@ -35,27 +35,27 @@ class Request_controller
 	static function insert_Requests(Request $request)
 	{
 
-		$release=new Release_request();
+		$release = new Release_request();
 
-		$r=$release->insert_requests($request);
+		$r = $release->insert_requests($request);
 
 		return $r;		
 	}
 
 	static function accept_Requests(Request $request)
 	{
-		$release=new Release_request();
+		$release = new Release_request();
 
-		$r=$release->accept_request($request);
+		$r = $release->accept_request($request);
 
 		return $r;
 	}
 
 	static function rejected_Requests(Request $request)
 	{
-		$release=new Release_request();
+		$release = new Release_request();
 
-		$r=$release->rejected_request($request);
+		$r = $release->rejected_request($request);
 
 		return $r;
 
@@ -64,11 +64,11 @@ class Request_controller
 
 	static function get_id($position)
 	{
-		$release=new Release_request();
+		$release = new Release_request();
 
-		$id=$release->get_id($position);
+		$id = $release->get_id($position);
 
-		return $id==NULL? 1: $id;
+		return $id == NULL? 1: $id;
 	}
 
 	static function setchars($cadena)
@@ -86,24 +86,24 @@ class Request_controller
 
 if(isset($_POST['request'])){
 
-	$r="";
+	$r = "";
 
-	$last_id=Request_controller::get_id("LAST");
+	$last_id = Request_controller::get_id("LAST");
 
 
 
 	require_once $_SERVER['DOCUMENT_ROOT']."/VillaDonq/helpers/upload_docs.php";
 
-	if($r=="work")
+	if($r == "work")
 	{	
 
-		$photo_name=$_POST['DNI_s']."-".$last_id."-photo-".str_replace(" ","_", $_FILES['photo']['name']);
-		$birth_name=$_POST['DNI_s']."-".$last_id."-birth_certificate-".str_replace(" ","_", $_FILES['birth_certificate']['name']);
-		$report_name=$_POST['DNI_s']."-".$last_id."-report_card-".str_replace(" ","_", $_FILES['report_card']['name']);
-		$conduct_name=$_POST['DNI_s']."-".$last_id."-certificate_conduct-".str_replace(" ","_", $_FILES['certificate_conduct']['name']);
-		$notes_name=$_POST['DNI_s']."-".$last_id."-certificate_notes-".str_replace(" ","_",$_FILES['certificate_notes']['name'] );
+		$photo_name = $_POST['DNI_s']."-".$last_id."-photo-".str_replace(" ","_", $_FILES['photo']['name']);
+		$birth_name = $_POST['DNI_s']."-".$last_id."-birth_certificate-".str_replace(" ","_", $_FILES['birth_certificate']['name']);
+		$report_name = $_POST['DNI_s']."-".$last_id."-report_card-".str_replace(" ","_", $_FILES['report_card']['name']);
+		$conduct_name = $_POST['DNI_s']."-".$last_id."-certificate_conduct-".str_replace(" ","_", $_FILES['certificate_conduct']['name']);
+		$notes_name = $_POST['DNI_s']."-".$last_id."-certificate_notes-".str_replace(" ","_",$_FILES['certificate_notes']['name'] );
 
-		$request=new Request();
+		$request = new Request();
 
 		 $request->set_name(Request_controller::setchars( htmlentities(addslashes($_POST['name_s'] ) ) ) );
 
@@ -141,9 +141,9 @@ if(isset($_POST['request'])){
 
 		 $request->set_photo(Request_controller::setchars( htmlentities(addslashes( $photo_name ) ) ) );
 
-		 $resp=Request_controller::insert_Requests($request);
+		 $resp = Request_controller::insert_Requests($request);
 
-		 if($resp==1)
+		 if($resp == 1)
 		 	echo "Solicitud Enviada";
 		 else
 		 {	
@@ -159,35 +159,35 @@ if(isset($_POST['request'])){
 
 if(isset($_GET['id_user'] ) and isset($_GET['action']) )
 {	
-	$id=$_GET['id_user'];
+	$id = $_GET['id_user'];
 
-	$request=Request_controller::get_one_Requests($id);
+	$request = Request_controller::get_one_Requests($id);
 
-	switch ($_GET['action'])
+
+	 switch ($_GET['action'])
 	 {
 		case 'details':
 			
-			$resp=(array) $request;
+	 		$resp = (array) $request;
 
-			$resp=json_encode($resp);
+	 		$resp = json_encode($resp);
 			
-			echo $resp;
+	 		echo $resp;
 
 
-			break;
+	 		break;
 
-			case 'add':
+	 		case 'add':
 
-				 $r=Request_controller::accept_Requests($request);
+	 			 $r = Request_controller::accept_Requests($request);
+	 			 if($r == 1)
+	 			 {
+				 	$objects = Request_controller::get_Requests();
 
-				 if($r==1)
-				 {
-				 	$objects=Request_controller::get_Requests();
-
-				  	foreach ($objects as $object) {	$resp[]=(array) $object; }
+				  	foreach ($objects as $object) {	$resp[] = (array) $object; }
 
 				 	
-				 	$resp=json_encode($resp);
+				 	$resp = json_encode($resp);
 				 	echo $resp;
 				 }
 
@@ -198,16 +198,16 @@ if(isset($_GET['id_user'] ) and isset($_GET['action']) )
 
 			case 'delete':
 
-				$r=Request_controller::rejected_Requests($request);
+				$r = Request_controller::rejected_Requests($request);
 
-				if($r==1)
+				if($r == 1)
 				 {
-				 	$objects=Request_controller::get_Requests();
+				 	$objects = Request_controller::get_Requests();
 
-				  	foreach ($objects as $object) {	$resp[]=(array) $object; }
+				  	foreach ($objects as $object) {	$resp[] = (array) $object; }
 
 				 	
-				 	$resp=json_encode($resp);
+				 	$resp = json_encode($resp);
 				 	echo $resp;
 				 }
 
@@ -220,7 +220,7 @@ if(isset($_GET['id_user'] ) and isset($_GET['action']) )
 		default:
 			echo "No se encontro";
 			break;
-	}
+	 }
 }
 
 
@@ -231,15 +231,15 @@ if(isset($_GET['filter']))
 	switch ($_GET['filter']) 
 	{
 		case 'filter-accept':
-			$status=1;
+			$status = 1;
 		break;
 
 		case 'filter-rejected':
-			$status=2;
+			$status = 2;
 		break;
 
 		case 'filter-no-check':
-			$status=3;
+			$status = 3;
 		break;
 		
 		default:
@@ -251,31 +251,13 @@ if(isset($_GET['filter']))
 
 			 if(!empty($requests))
 			  {
-			  	foreach ($requests as $request) {	$resp[]=(array) $request; } 	
-			 	$resp=json_encode($resp);
+			  	foreach ($requests as $request) {	$resp[] = (array) $request; } 	
+			 	$resp = json_encode($resp);
 			 	echo $resp;
 			  }
 
 			 else{ echo 0; }
 	}
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -298,18 +280,5 @@ if(isset($_GET['filter']))
 // */
  
 // 	echo $r;	
-
-
-
-	
-
-	
-	
-
-
-
-
-
-
 
  ?>
