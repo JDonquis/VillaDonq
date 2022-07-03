@@ -1,26 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const d=document;
-
-
-
 
 export function request_action(btn)
 {
@@ -47,8 +25,7 @@ export function request_action(btn)
       	 			 {
       	 				case 'add':
 
-      	 					
-      	 					if(resp!=null)
+      	 					if( resp != null )
       	 					{	
       	 							
       	 						const request=Object.values(resp);
@@ -148,7 +125,7 @@ export function request_action(btn)
       	 				break;
 
       	 				default:
-      	 					console.log("No se encontro la accion");
+      	 					alert("No se encontro la accion");
       	 					break;
       	 			}
       	 			 
@@ -286,10 +263,7 @@ export function filter(btn)
       	 	async:true,
       	 	dataType:"json",
       	 	success: function (resp) 
-      	 	{		
-      	 		console.log(resp);
-      	 		console.log("Funciono!");
-
+      	 	{				
       	 			if(resp!=0)
       	 			{	
 
