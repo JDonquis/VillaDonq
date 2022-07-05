@@ -2,11 +2,11 @@
 
 class Teacher_course
 {
-	$id_matter;
-	$id_course;
-	$id_section;
+	private $id_matter;
+	private $id_course;
+	private $id_section;
 
-	funtion __construct(){}
+	function __construct(){}
 
 	// ---------------------------------------------------- SETTERS -----------------------------------------------
 
