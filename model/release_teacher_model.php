@@ -76,6 +76,11 @@ class Release_teacher
 			return $teacher;
 	}
 
+	function get_matters()
+	{
+		
+	}
+
 
 	
 }
