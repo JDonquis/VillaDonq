@@ -24,8 +24,6 @@ function set_lessons($id){ $this->lessons = $this->work_data->get_all_one_teache
 
 function get_lessons(){	return $this->lessons; }
 
-
-
 }
 
 

@@ -33,6 +33,8 @@
 
         <!-- Main Sidebar Container -->
         <?php require_once "../../sections/_prof-menu.php"; ?>
+
+        <input type="hidden" id="input-id" value="<?php echo $user->get_id(); ?>">
         
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -44,13 +46,13 @@
                             <!-- SELECT2 EXAMPLE -->
                             <h1 class="m-0">Plan de evaluación</h1>
 
-                            <div class="row mt-2">
+                            <form class="row mt-2" id="lesson">
                                 <div class="col-12 col-sm-6">
 
                                     <div class="form-group">
 
                                         <label>Materia</label>
-                                        <select class="form-control select2 select2-primary"
+                                        <select class="form-control select2 select2-primary" id="matters_select" name="matter" 
                                             data-dropdown-css-class="select2-primary" style="width: 100%;">
                                             <option selected="selected">Biologia</option>
                                             <option>Matematica</option>
@@ -67,7 +69,7 @@
                                     <div class="form-group">
 
                                         <label>Año escolar</label>
-                                        <select class="form-control" data-dropdown-css-class="select2-primary"
+                                        <select class="form-control" data-dropdown-css-class="select2-primary" id="years_select" name="year" 
                                             style="width: 100%;">
                                             <option selected="selected">1</option>
                                             <option>2</option>
@@ -79,32 +81,32 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <form class="form-group">
+                                    <div class="form-group">
                                         <label>Lapsos</label>
 
                                         <div class="d-flex">
                                             <div class="custom-control custom-radio">
                                                 <input class="custom-control-input" type="radio" id="customRadio1"
-                                                    name="customRadio" checked>
+                                                    name="customRadio1" checked>
                                                 <label for="customRadio1" class="custom-control-label">1</label>
                                             </div>
                                             <div class="custom-control custom-radio mx-4">
                                                 <input class="custom-control-input" type="radio" id="customRadio2"
-                                                    name="customRadio">
+                                                    name="customRadio2">
                                                 <label for="customRadio2" class="custom-control-label">2</label>
                                             </div>
                                             <div class="custom-control custom-radio">
                                                 <input class="custom-control-input" type="radio" id="customRadio3"
-                                                    name="customRadio">
+                                                    name="customRadio3">
                                                 <label for="customRadio3" class="custom-control-label">3</label>
                                             </div>
                                         </div>
 
 
-                                    </form>
+                                    </div>
                                 </div>
                                 <!-- /.col -->
-                            </div>
+                            </form>
 
                         </div>
 
@@ -116,7 +118,7 @@
             <section class="content">
                 <div class="container-fluid">
 
-                    <form class="row  row_table_plan">
+                    <form class="row  row_table_plan" id="plan-form">
                         <div class="col-12">
                             <div class="card parent_pdf">
                                 <div class="card-header">
@@ -129,7 +131,7 @@
 
                                     <div class="card-tools ">
                                         <span class="parent_btn_submit"><input title='Ctrl + s' type="submit" name=""
-                                                value="GUARDAR" class=" btn_submit mt-0"></span>
+                                                value="GUARDAR" class=" btn_submit mt-0" id="save-form"></span>
                                     </div>
                                 </div>
                                 <!-- /.card-header -->
@@ -225,7 +227,6 @@
     <script src="../../dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="../../dist/js/pages/dashboard.js"></script>
-
     <script>
         let all_row = document.querySelectorAll('tbody tr')
         let table = document.querySelector('table')
@@ -410,11 +411,8 @@
             }
 
         })
-
-
-
-
     </script>
+    <script src="../../js/modules/evaluation_plan.js" type="module"></script>
 </body>
 
 </html>

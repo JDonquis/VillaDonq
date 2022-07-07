@@ -38,6 +38,7 @@ class Release_teacher
 			$teacher->set_phone($row['phone']);
 			$teacher->set_date_birth($row['date_birth']);
 			$teacher->set_photo($row['photo']);
+			$teacher->set_lessons($row['id']);
 
 			$teachers[$c]=$teacher;
 			$c++;
@@ -72,15 +73,19 @@ class Release_teacher
 			$teacher->set_phone($row['phone']);
 			$teacher->set_date_birth($row['date_birth']);
 			$teacher->set_photo($row['photo']);
+			$teacher->set_lessons($row['id']);
 
 			return $teacher;
 	}
 
-	function get_matters()
+	function get_lessons_one($id_teacher)
 	{
-		
-	}
+		$teacher=new Teacher();
 
+		$teacher->set_lessons($id_teacher);
+
+		return $teacher->get_lessons();
+	}
 
 	
 }
