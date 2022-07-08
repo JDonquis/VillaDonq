@@ -87,17 +87,17 @@
                                         <div class="d-flex">
                                             <div class="custom-control custom-radio">
                                                 <input class="custom-control-input" type="radio" id="customRadio1"
-                                                    name="customRadio1" checked>
+                                                    name="customRadio" value="1" checked>
                                                 <label for="customRadio1" class="custom-control-label">1</label>
                                             </div>
                                             <div class="custom-control custom-radio mx-4">
                                                 <input class="custom-control-input" type="radio" id="customRadio2"
-                                                    name="customRadio2">
+                                                    name="customRadio" value="2">
                                                 <label for="customRadio2" class="custom-control-label">2</label>
                                             </div>
                                             <div class="custom-control custom-radio">
                                                 <input class="custom-control-input" type="radio" id="customRadio3"
-                                                    name="customRadio3">
+                                                    name="customRadio" value="3">
                                                 <label for="customRadio3" class="custom-control-label">3</label>
                                             </div>
                                         </div>
@@ -130,8 +130,8 @@
                                     </div>
 
                                     <div class="card-tools ">
-                                        <span class="parent_btn_submit"><input title='Ctrl + s' type="submit" name=""
-                                                value="GUARDAR" class=" btn_submit mt-0" id="save-form"></span>
+                                        <span class="parent_btn_submit">
+                                        <input title='Ctrl + s' type="submit" name="save-plan" value="GUARDAR" class="btn_submit mt-0" id="save-form"></span>
                                     </div>
                                 </div>
                                 <!-- /.card-header -->
@@ -160,7 +160,7 @@
                                                 </td>
                                                 <td class="p-0 each_cell"><textarea
                                                         name="estrategia1">mapa mixto</textarea></td>
-                                                <td class="td_valor p-0 each_cell"><textarea name=""
+                                                <td class="td_valor p-0 each_cell"><textarea name="valor1"
                                                         id="">18+2</textarea>
                                                 </td>
                                                 <td class="borrar text-center"><i class="fa-solid fa-xmark"
@@ -183,6 +183,11 @@
                             </div>
                             <!-- /.card -->
                         </div>
+                        <input type="hidden" name="insert" value="1">
+                        <input type="hidden" name="teacher_id" value="<?php echo $user->get_id(); ?>">
+                        <input type="hidden" name="name_teacher" value="<?php echo $user->get_name(); ?>">
+                        <input type="hidden" name="last_name_teacher" value="<?php echo $user->get_last_name(); ?>">
+                        <input type="hidden" name="unidades" value="" id="N_uni">
                     </form>
                 </div>
                 <!-- /.row -->
@@ -233,6 +238,7 @@
         let tbody = document.querySelector("tbody")
         const tfoot = document.querySelector("tfoot")
         let n_unidades = all_row.length;
+        $("#N_uni")[0].value = n_unidades;
         let textareasTable = document.querySelectorAll("tbody textarea")
         const move_hist_btns = document.querySelector(".move_hist_btns")
         const past_btn = document.querySelector(".past")
@@ -291,6 +297,9 @@
             all_row = document.querySelectorAll('tbody tr')
             allow = false;
             if (get_data) getData()
+
+            $("#N_uni")[0].value = n_unidades;
+
         }
 
         // focus textarea when click in its td
@@ -330,6 +339,8 @@
                 }
 
             })
+            $("#N_uni")[0].value = n_unidades;
+
         }
 
         // save data for then go back or next

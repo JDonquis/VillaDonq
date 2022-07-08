@@ -40,7 +40,8 @@ class Release_activity
 
 	function insert_activity(Activity $activity)
 	{
-		$sql = "INSERT INTO activities (id, id_plan, title, description, strategy, value) VALUES (NULL, :id_plan, :title, :description, :strategy, :value)";
+		$sql = "INSERT INTO activities (id, id_plan, title, description, strategy, value) VALUES (NULL, :id_plan, :title, :description,:strategy,:value)";
+
 		$result = $this->db->prepare($sql);
 		$result->execute(array(
 
@@ -48,12 +49,14 @@ class Release_activity
 			":description"=>$activity->get_description(),":strategy"=>$activity->get_strategy(),
 			":value"=>$activity->get_value() ) );
 
-		if ($result->rowCount()!=0)
-            return 1;  
+		// if ($result->rowCount()!=0)
+  //           return 1;  
         
-        else{
-            return 2;
-        }
+  //       else{
+  //           return 2;
+  //       }
+
+		return 1;
 	}
 
 

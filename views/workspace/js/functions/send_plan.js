@@ -10,12 +10,15 @@ export default function send_plan(form1,form2,button)
 
 		const allData = $(form1+","+form2).serialize();
 
+		console.log(allData);
 		$.ajax({
-				url: '',
+				url: '../../../../controller/evaluation_plan_controller.php',
 				type: 'post',
-				data: {},
+				data: allData,
+				dataType:"json",
 				success: function (data) {
-					data
+					
+					alert("Guardado Exitosamente");
 				}
 			});
     
