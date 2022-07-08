@@ -1,7 +1,8 @@
 const d = document;
 
 export default function send_data(form) 
-	{
+	{	
+		
 	 const f=$(form)[0]; 
 	 f.addEventListener("submit",function(e)
 	   {

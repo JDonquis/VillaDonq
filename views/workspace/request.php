@@ -83,15 +83,8 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-       <div class="row">
-        
+       <div class="row">   
         <?php include "./sections/_requests-table.php"; ?>
-
-        
-
-
-
-
         </div>
       </div><!-- /.container-fluid -->
     </section>

@@ -184,15 +184,13 @@ class Release_request
 		{	
 			$id=$this->db->lastInsertId();
 
-			$sql2="INSERT INTO student (id,id_user,id_course,representative_name,representative_DNI,representative_phone_number) VALUES (NULL,:id,'1',:rep_name,:rep_DNI,:rep_phone)";
+			$sql2="INSERT INTO student (id,id_user,id_course,seccion,representative_name,representative_DNI,representative_phone_number) VALUES (NULL,:id,'1','1',:rep_name,:rep_DNI,:rep_phone)";
 
-			$result=$this->db->prepare($sql2);
+			$result2=$this->db->prepare($sql2);
 
-			$result->execute(array(
+			$result2->execute(array(":id"=>$id,":rep_name"=>$request->get_representative_name(),":rep_DNI"=>$request->get_representative_DNI()
+			,":rep_phone"=>$request->get_representative_phone_number() ) ); 
 
-				":rep_name"=>$request->get_representative_name(), ":rep_phone"=>$request->get_representative_phone_number()
-				,":rep_DNI"=>$request->get_representative_DNI(),":id"=>$id ) );
-			
 			if($result->rowCount()!=0)
 			{
 				$id2=$this->db->lastInsertId();
@@ -218,18 +216,14 @@ class Release_request
 						return 1;
 					else{ return 2; }
 				}	
-				
 				else{ return 2; }	
 				
 			}
-			else{ return 2; }
+			else{ return 2; } 
 
-			return 1;
-
+		return 1;
 		}
-            
-        
-        else{ return 2; }
+		else{ return 2; }	
 	}
 
 	function rejected_request($request)

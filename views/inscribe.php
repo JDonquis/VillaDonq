@@ -24,7 +24,7 @@
             <h1>Inscribete en VILLADONQ y recibe la mejor educación</h1>
          </div>
           
-        <form class="inscribe" id="form-file" action="../controller/request_controller.php" method="POST" enctype="multipart/form-data">
+        <form class="inscribe" id="form-file" action="" method="POST" enctype="multipart/form-data">
           <?php if(isset($_GET['fail-size'])){ ?>
                
                <div class="message-fail-size">Tamaño de archivo no permitido. Procure que sean menor de 2MB</div>
@@ -160,9 +160,19 @@
     </div>
 
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>   
- <script src="./js/modules/inscribe.js" type="module"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script> -->
+
+<!-- jQuery -->
+<script src="./workspace/plugins/jquery/jquery.min.js"></script>
+
+<!-- jQuery UI 1.11.4 -->
+
+<script src="./workspace/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+   
+<script src="./js/modules/inscribe.js" type="module"></script>
+
 <script src="js/login.js"></script>
 
 <script>

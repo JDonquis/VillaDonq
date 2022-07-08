@@ -48,6 +48,8 @@ class Request_controller
 
 		$r = $release->accept_request($request);
 
+		// return $r;
+
 		return $r;
 	}
 
@@ -144,11 +146,15 @@ if(isset($_POST['request'])){
 		 $resp = Request_controller::insert_Requests($request);
 
 		 if($resp == 1)
-		 	echo "Solicitud Enviada";
+		 {	
+		 	$message = "Solicitud Enviada";
+		 	echo json_encode($message);
+		 }
+		 	
 		 else
 		 {	
-		 	
-		 	echo "Solicitud no enviada. Intente de nuevo";
+		 	$message = "Solicitud no enviada. Intente de nuevo";	 	
+		 	echo json_encode($message);
 		 }
 
 	}
@@ -180,18 +186,21 @@ if(isset($_GET['id_user'] ) and isset($_GET['action']) )
 	 		case 'add':
 
 	 			 $r = Request_controller::accept_Requests($request);
-	 			 if($r == 1)
-	 			 {
-				 	$objects = Request_controller::get_Requests();
+	 			//  if($r == 1)
+	 			//  {
+				 // 	$objects = Request_controller::get_Requests();
 
-				  	foreach ($objects as $object) {	$resp[] = (array) $object; }
-
+				 //  	foreach ($objects as $object) {	$resp[] = (array) $object; }
 				 	
-				 	$resp = json_encode($resp);
-				 	echo $resp;
-				 }
+				 // 	$resp = json_encode($resp);
+				 // 	echo $resp;
+				 // }
 
-				 else{ echo $r; }
+				 // else{ echo $r; }
+
+				 echo $r;
+
+
 
 			break;
 

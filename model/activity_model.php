@@ -27,7 +27,7 @@ class Activity
 
 	function set_strategy($t){ $this->strategy = $t; }
 
-	function set_id_plan($n){ $this->value = $n; }
+	function set_value($n){ $this->value = $n; }
 
 	// ------------------------------------------------------- GETTERS ---------------------------------------------------------
 
@@ -41,7 +41,7 @@ class Activity
 
 	function get_strategy(){ return $this->strategy; }
 
-	function get_id_plan(){ return $this->value; }
+	function get_value(){ return $this->value; }
 
 }
 
