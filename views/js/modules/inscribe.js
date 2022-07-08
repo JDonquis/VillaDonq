@@ -22,11 +22,11 @@ d.addEventListener("DOMContentLoaded",e=>
 {
 	loader_screen(".screenShow");
 	file_validation("input[type='file']");
-	// const timeline=gsap_timeline(".nav_content",".trigger_nav");
-	// button_nav(".trigger_nav",".nav-section",timeline);
-	// close_nav(timeline);
+	const timeline=gsap_timeline(".nav_content",".trigger_nav");
+	button_nav(".trigger_nav",".nav-section",timeline);
+	close_nav(timeline);
 	links_animation(".screenShow");
-	// nav_links_animation(".nav_content>li>a",".nav-section",".screenShow",timeline);
+	nav_links_animation(".nav_content>li>a",".nav-section",".screenShow",timeline);
 	send_data("#form-file"); 
 })
 

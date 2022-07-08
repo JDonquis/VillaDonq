@@ -31,16 +31,27 @@ class Release_evaluation_plan
 		$plan->set_activities($row['id']);
 
 		return $plan;
+	}
 
-		// return 1;
+	function insert_plan(Evaluation_plan $plan)
+	{
+		$sql="INSERT INTO plan_activities(id, id_teacher, id_lapse) VALUES (NULL, :id_teacher, :id_lapse)";
+
+		$result=$this->db->prepare($sql);
+
+		$result->execute(array( ":id_teacher"=>$plan->get_id_teacher(),":id_lapse"=>$plan->get_id_lapse() ) );
+
+		if($result->rowCount()!=0)
+        {
+        	$id = $this->db->lastInsertId();
+
+        	$sql2 = "INSERT INTO activities (id, id_plan, title, description, strategy, value) VALUES (NULL, :id_plan, :title, :description, :strategy, :value)";
+        } 
+        
+        else{
+            return 2;
+        }
 	}
 }
-
-$prueba = new Release_evaluation_plan();
-
-$epale = $prueba->get_plan_one(1);
-
-
-print_r($epale);
 
  ?>

@@ -160,7 +160,7 @@
     </div>
 
 </body>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script>
 
 <!-- jQuery -->
 <script src="./workspace/plugins/jquery/jquery.min.js"></script>
