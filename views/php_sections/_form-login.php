@@ -1,6 +1,6 @@
 
 
-<form class="login_form" action="../controller/login_controller.php" method="POST"> 
+<form class="login_form " action="../controller/login_controller.php" method="POST"> 
     <a class="close_btn" type="menu" >
         <svg width="37" height="31" viewBox="0 0 37 31" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4.62216 29.6726L31 2.00003"  stroke-width="3" />

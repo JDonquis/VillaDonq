@@ -22,7 +22,7 @@ document.querySelectorAll('.login_form span input').forEach(element => {
 const btnClose = document.querySelector(".close_btn")
 const btnShow = document.querySelector(".entrar-btn")
 const fullScreen = btnClose.parentElement;
-const moveY = (sign) => gsap.to(fullScreen, { y: `${sign}vh`, duration: .5, ease: Expo.easeInOut })
+const moveY = (sign) => fullScreen.transform= `translateY:${sign}vh`
 
 // focus firs input
 const focusFirstInput = () => setTimeout(() =>  document.querySelector('#CI_o_correo').focus(), 500);

@@ -1,6 +1,7 @@
 const d = document;
 
 //Config Gsap
+
 export function gsap_timeline(nav,btn)
 {   
     const navContent = d.querySelector(nav);

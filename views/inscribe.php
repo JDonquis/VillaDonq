@@ -227,6 +227,18 @@
 
 
 </script>
+
+ <script type="text/javascript">
+        
+    const button = document.getElementsByClassName("entrar-btn")[0];
+    
+    button.addEventListener("click",e=>{
+        console.log("click")
+        document.getElementsByClassName("login_form")[0].style = "transition: all .4s ease; transform: translate(0px, 0vh);"
+    })
+
+    </script>
+    
 <script src="js/mySlider.js"></script>
 
 

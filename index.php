@@ -73,7 +73,7 @@
              
              
          </div>
- 
+
 
         <div>
             <div class="circle_img_cont slider fade_effect zoom_effect auto ">
@@ -96,10 +96,21 @@
     
     </header>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script> -->
     <script src="views/js/login.js"></script>
     <script src="views/js/mySlider.js"></script>
+    <script type="text/javascript">
+        
+    const button = document.getElementsByClassName("entrar-btn")[0];
+    
+    button.addEventListener("click",e=>{
+        console.log("click")
+        document.getElementsByClassName("login_form")[0].style = "transition: all .4s ease; transform: translate(0px, 0vh);"
+    })
+
+    </script>
     <script src="views/js/modules/index.js" type="module"></script>
+
 </body>
 
 </html>

@@ -1,8 +1,24 @@
+
+
+
+
+
+
+
+
+
+
+
+
+.active{ transform: translateY(100vh);  }
+
+
 .login_form {
     @include full-screen($color3);
     @include flex-center();
     color: white;
     transform: translateY(-100vh);
+    transition: all .3s ease;
 
 
     .close_btn {            
