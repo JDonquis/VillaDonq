@@ -1,0 +1,14 @@
+.column-edit,.sorting
+{
+	min-width: 200px !important;
+
+}
+
+.column-buttons{
+
+	text-align: center;
+
+}
+.btn-request:first-child{ margin-right: 10px; }
+
+
