@@ -25,72 +25,83 @@ const d = document;
 
 
 
-export default function datatable_request ()
+export default function datatable_request (repeat = 0)
 {
-	let all_request_tr = '';
 
-    all_request_tr = document.createDocumentFragment();
-
-    // if ( $.fn.dataTable.isDataTable( '#example' ) ) 
-    //         d.querySelector('tbody').replaceChildren();
     
 
+    if(repeat == 1)
+        $('#example').DataTable().ajax.reload();
+    else{
 
-
-
-	$.ajax({
-    type: 'GET',
-    url: '/workspace/solicitudes/get',
-    mimeType: 'json',
-    success: function(data) {
-        $.each(data, function(i, data) {
-
-            const tr = document.createElement('tr')
-            const columns = `
-                <td class='dt-control' id='${i}'></td>
-                <td class='column-edit' >${data.year}</td>
-                <td class='column-edit' >${data.name}</td>
-                <td class='column-edit' >${data.last_name}</td>
-                <td class='column-edit' >${data.DNI}</td>
-                <td class='column-edit' >${data.address}</td>
-                <td class='column-edit' >${data.date_birth}</td>
-                <td class='column-edit' >${data.age}</td>
-                <td class='column-edit' >${data.cer_birth}</td>
-                <td class='column-edit' >${data.report_card}</td>
-                <td class='column-edit' >${data.cer_notes}</td>
-                <td class='column-edit' >${data.cer_conduct}</td>
-                <td class='column-edit' >${data.photo}</td>
-                <td class='column-edit' >${data.rep_name}</td>
-                <td class='column-edit' >${data.rep_DNI}</td>
-                <td class='column-edit' >${data.rep_phone_number}</td>
-                <td class='column-edit column-buttons' > <button type='button' class='btn btn-primary btn-request' btn-action='add' status='${data.request_statu_id}' id-request='${data.id}'>Aceptar</button><button type='button' class='btn btn-outline-danger btn-request' btn-action='delete' id-user='${data.request_statu_id}'>Rechazar</button></td>    
-            `
-            tr.innerHTML = columns;
-
-            all_request_tr.appendChild(tr);
-        });
+    var t = $('#example');
         
+    t.DataTable({
 
-        d.querySelector('tbody').replaceChildren(all_request_tr)
-        /*DataTables instantiation.*/
-        var table = $( "#example" ).DataTable({
-            
-        	"responsive": true,
-            "retrieve": true,
-           	"language": {
-     		 "emptyTable": "No hay solicitudes por responder."
-    		}
-        });
+        "order":[],
+        "responsive": true,
+        "language": {
+              "emptyTable": "No hay solicitudes por responder."
+         },
+        columnDefs:[
+        {
+           
+                    className: 'dtr-control',
+                    orderable: false,
+                    targets:0,
+                    data:'',
+        },
 
 
-    },
-    error: function() {
-        alert('Fail!');
+         ],
+        "ajax":{
+
+            url: '/workspace/solicitudes/get',
+            type: 'GET',
+            dataSrc:'',
+
+        },
+
+        "columns":[
+
+            {data:null, defaultContent:''},
+            {data:'year'},
+            {data:'name'},
+            {data:'last_name'},
+            {data:'DNI'},
+            {data:'address'},
+            {data:'date_birth'},
+            {data:'age'},
+            {data:'cer_birth',defaultContent:'No enviado'},
+            {data:'report_card',defaultContent:'No enviado'},
+            {data:'cer_notes',defaultContent:'No enviado'},
+            {data:'cer_conduct',defaultContent:'No enviado'},
+            {data:'photo',defaultContent:'No enviado'},
+            {data:'rep_name'},
+            {data:'rep_DNI'},
+            {data:'rep_phone_number'},
+            {data:function (row){
+
+
+                let btns = ` 
+                <button type='button' class='btn btn-primary btn-request' btn-action='add' status='${row['request_statu_id']}' id-request='${row['id']}' ${row['request_statu_id']!=3?'disabled':''} >Aceptar</button>
+                <button type='button' class='btn btn-outline-danger btn-request' btn-action='delete' id-request='${row['id']}' ${ row['request_statu_id']!=3?'disabled':''}>Rechazar</button>`;
+                return btns;
+            }
+
+                
+
+
+            },
+
+        ]
+
+    })
+
+
     }
-});
-
-
-
 }
 
 
+
+// <tr class="odd"><td colspan="4" class="dataTables_empty" valign="top">No hay solicitudes por responder.</td></tr>

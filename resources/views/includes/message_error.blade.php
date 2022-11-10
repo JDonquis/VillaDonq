@@ -1,16 +1,8 @@
-@if($errors->any())
+  <div class="message {{$errors->any()?'response':''}} {{session("message")?'response':''}}">
+        
+                <span>
+                    {{$errors->first()}}
+                    {{session("message")}}
+                </span>
 
-<div class="">
-	<div>
-		<h5>Alert!!</h5>
-
-		<ul class="">
-			@foreach ($errors->all() as $error)
-				<li>{{$error}}</li>
-			@endforeach
-			
-		</ul>	
-
-	</div>
-</div>
-@endif
+  </div>

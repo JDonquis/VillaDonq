@@ -24,12 +24,12 @@
 	    <div class="card">
 	      <div class="card-header "></div>
 		      <div class="d-flex  justify-content-center align-content-center py-3"> 
-		      		<button class="btn btn-outline-primary">Sin Revisar</button>
-		      		<button class="btn btn-outline-primary mx-4">Aceptados</button>
-		      		<button class="btn btn-outline-primary">Rechazados</button>
+		      		<button class="btn btn-outline-primary btn-filter" id-action='3'>Sin Revisar</button>
+		      		<button class="btn btn-outline-primary mx-4 btn-filter" id-action='1'>Aceptados</button>
+		      		<button class="btn btn-outline-primary btn-filter" id-action='2'>Rechazados</button>
 		       </div>
 	      <div class="card-body table-responsive  p-0" >
-				<table id="example" class="display w-100  table-head-fixed table mw-100">
+				<table id="example" class="display w-100 responsive table-head-fixed table mw-100">
 					<thead>
 					<tr>
 						<th></th>
@@ -48,7 +48,6 @@
 		                <th>Nombre Representante:</th>
 		                <th>DNI Representante:</th>
 		                <th>Numero de Representante:</th>
-
 					    <th data-priority="3">Accion:</th>
 					</tr>
 					</thead>

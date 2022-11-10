@@ -21,14 +21,7 @@
     @include("includes.loader")
     @include("includes.main_nav")
 
-            <div class="message {{$errors->any()?'response':''}} {{session("message")?'response':''}}">
-        
-                <span>
-                    {{$errors->first()}}
-                    {{session("message")}}
-                </span>
-
-            </div>
+          @include('includes.message_error')
 
     @include("includes.form_login")
    

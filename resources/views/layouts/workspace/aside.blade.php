@@ -23,7 +23,7 @@
 
      <nav class="mt-2">
 
-        @include("layouts.workspace.menus.".session()->get('type_user_name'))
+        @include("layouts.workspace.menus.".strtolower( session()->get('type_user_name')) )
 
      </nav>
 

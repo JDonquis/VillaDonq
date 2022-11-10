@@ -1,4 +1,54 @@
-@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap");
+@font-face {
+  font-family: "Encode Sans SemiExpanded";
+  src: url("../fonts/EncodeSansSemiExpanded-bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Encode Sans SemiExpanded";
+  src: url("../fonts/EncodeSansSemiExpanded-SemiBold.ttf");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Encode Sans SemiExpanded";
+  src: url("../fonts/EncodeSansSemiExpanded-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Encode Sans SemiExpanded";
+  src: url("../fonts/EncodeSansSemiExpanded-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Encode Sans SemiExpanded";
+  src: url("../fonts/EncodeSansSemiExpanded-Light.ttf");
+  font-weight: 300;
+}
+/***************/
+@font-face {
+  font-family: "Comfortaa";
+  src: url("../fonts/Comfortaa-bold.ttf");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Comfortaa";
+  src: url("../fonts/Comfortaa-SemiBold.ttf");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Comfortaa";
+  src: url("../fonts/Comfortaa-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Comfortaa";
+  src: url("../fonts/Comfortaa-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Comfortaa";
+  src: url("../fonts/Comfortaa-Light.ttf");
+}
+
 /* colores */
 .full-screen {
   position: fixed;

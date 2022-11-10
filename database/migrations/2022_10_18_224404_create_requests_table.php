@@ -26,15 +26,10 @@ class CreateRequestsTable extends Migration
             $table->date("date_birth");
             $table->string('state',20);
             $table->string('city',20);
-            $table->string("cer_birth",100)->nullable();
-            $table->string("cer_notes",100)->nullable();
-            $table->string("cer_conduct",100)->nullable();
-            $table->string("report_card",100)->nullable();
-            $table->string("address",100);
+             $table->string("address",100);
             $table->string("rep_name",30);
             $table->string("rep_DNI",30);
-            $table->string("rep_phone_number",11);
-            $table->string("photo",100)->nullable();
+            $table->string("rep_phone_number",11);   
             $table->timestamps();
         });
     }

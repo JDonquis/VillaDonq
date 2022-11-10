@@ -57,8 +57,9 @@ class InscriptionController extends Controller
          {
             $requests_s = Request_s::where('request_statu_id',3)->orderBy('request_statu_id','asc')->get()->toArray();
 
-     
-            return json_encode($requests_s);
+            return response()->json($requests_s);
+
+            // return json_encode($requests_s);
   
          }
          
@@ -70,7 +71,6 @@ class InscriptionController extends Controller
         if($request->ajax())
         {  
             
-
             DB::transaction(function () use ($request) {
                 
                 $r = Request_s::findOrFail($request->request_id);
@@ -101,7 +101,7 @@ class InscriptionController extends Controller
                 Student::create([
 
                     'user_id' => $u->id,
-                    'course_section_id' => $cs->id ,
+                    'course_section_id' => $cs->id,
                     'rep_name' => $r->rep_name,
                     'rep_DNI' => $r->rep_DNI,
                     'rep_phone_number' => $r->rep_phone_number, 
@@ -151,7 +151,20 @@ class InscriptionController extends Controller
     public function save_request(InscriptionRequest $request)
     {
         
-        // First Step, Call all type_documents enabled
+
+        $request_student = new Request_s;
+
+
+        $request->request->add(['request_statu_id' => 3]);
+           
+        $request_student->create($request->all());
+
+        $id_request = $request_student->latest('id')->first()->id;
+
+        // dd($id_request);
+
+        
+         // First Step, Call all type_documents enabled
         $t = Type_Document::where('status',1)->get()->toArray();
 
         // Second Step
@@ -160,19 +173,45 @@ class InscriptionController extends Controller
                 
             $dUp = $doc_up['name'].'_up';
             $d = $doc_up['name'];      
-            if($doc = Request_s::set_docs($request->$dUp,false,$d))                
-                $request->request->add([$d => $doc]);
+            if($doc = Request_s::set_docs($request->$dUp,false,$d))  
+            {
+                
+                DB::table('request_documents')->insert([
 
-        }   
+                     'request_s_id' => $id_request,
+                    'type_document_id' => $doc_up['id'],
+                    'name' => $doc
+                ]);
+            }     
+                
+
+            }   
 
 
-            $request->request->add(['request_statu_id' => 3]);
-           
-            Request_s::create($request->all());
+
 
             return redirect('/inscribirse')->with('message','Solicitud enviada correctamente, la respuesta será enviada al correo');
 
 
+    }
+
+    public function verify_request(Request $request)
+    {
+
+         if($s = Request_s::where('DNI',$request->DNI)->orWhere('email',$request->email)->first() );
+         {  
+            $m = '';
+            if($s->request_statu_id == 1)
+                $m = 'Su solicitud anteriormente fue aceptada, Por favor revise su email';
+            elseif ($s->request_statu_id == 2)
+            {
+                $m = 'Su solicitud anteriormente fue rechazada, Por favor espere al siguiente periodo de inscripcion';
+            }
+            elseif($s->request_statu_id == 3)
+                $m = 'Su solicitud aun no ha sido revisada, Por favor espere la respuesta en su email';
+
+             return redirect('/inscribirse')->with('message',$m);
+         }
     }
 
     /**
@@ -213,7 +252,29 @@ class InscriptionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->ajax())
+        {   
+
+
+            Request_s::where('id',$id)->update(['request_statu_id' => 2]);
+            
+            return response()->json(['message'=>'Solicitud rechazada con exito']);
+        }
+    }
+
+    public function filter_requests(Request $request,$action)
+    {
+        if($request->ajax())
+        {   
+            if($action == 2)
+                $requests_s = Request_s::where('request_statu_id',2)->orderBy('request_statu_id','asc')->get()->toArray();
+            else if($action == 1)
+                $requests_s = Request_s::where('request_statu_id',1)->orderBy('request_statu_id','asc')->get()->toArray();
+            
+            return response()->json($requests_s);
+    
+            
+        }
     }
 
     /**
@@ -222,8 +283,8 @@ class InscriptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id,Request $request)
     {
-        //
+        
     }
 }

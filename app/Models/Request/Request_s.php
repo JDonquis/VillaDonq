@@ -5,6 +5,7 @@ namespace App\Models\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Models\Documents\Type_Document;
 
 class Request_s extends Model
 {
@@ -23,17 +24,14 @@ class Request_s extends Model
         "date_birth",
         "state",
         "city",
-        "cer_birth",
-        "cer_notes",
-        "cer_conduct",
-        "report_card",
         "address",
         "rep_name",
         "rep_DNI",
         "rep_phone_number",
-        "photo", 
         
-         ];
+     ];
+
+    
 
     public static function set_docs($doc,$current = false,$type)
     {
@@ -77,10 +75,12 @@ class Request_s extends Model
         
         else{ return false; }
 
-
-        
-
     } 
 
-// if($value["type"]=='image/jpg' || $value["type"]=='image/jpeg' || $value["type"]=='image/png' || $value["type"]=='application/pdf' || $value["type"]=='application/vnd.oasis.opendocument.text' || $value["type"]=='application/msword' || $value["type"]=='application/vnd.openxmlformats-officedocument.wordprocessingml.document' )
+    public function type_documents()
+    {
+        return $this->belongsToMany(Type_Document::class,'request_documents');
+    }
+
+
 }

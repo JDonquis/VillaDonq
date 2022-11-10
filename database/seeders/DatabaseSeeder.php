@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
 
             'courses',
             'sections',
+            'course_sections',
             'request_status',
             'type_documents',
             'type_users',
@@ -35,6 +36,7 @@ class DatabaseSeeder extends Seeder
 
             CourseSeeder::class,
             SectionSeeder::class,
+            CourseSectionSeeder::class,
             RequestStatusSeeder::class,
             TypeUserSeeder::class,
             UserSeeder::class,

@@ -56,7 +56,8 @@ export default function confirmartion (table,btn,box_message,request)
 	 		{	
 
 	 			const b = e.target;
-	 			var id = b.getAttribute('id-request');
+	 			let id = b.getAttribute('id-request');
+	 			let action = b.getAttribute('btn-action');
 	 			box.classList.add('box-active');
 	 			box.addEventListener('click',e => {
 
@@ -69,7 +70,10 @@ export default function confirmartion (table,btn,box_message,request)
 	 				{
 	 					box.classList.remove('box-active');
 
-	 					accept_request(id,request);
+	 					if(action == 'add')
+	 						accept_request(id,request);
+	 					else
+	 						reject_request(id,request);
 
 	 				}
 
@@ -86,7 +90,6 @@ export default function confirmartion (table,btn,box_message,request)
 
 function accept_request(id,request)
 {	
-	 
 	const data = {	_token: $('input[name=_token]').val(), request_id: id }
 
 	$.ajax({ 
@@ -97,13 +100,61 @@ function accept_request(id,request)
 	    dataType: 'json', 
 	  	success:function(response){
 
-	  		console.log(response);
-	  		request();
+
+	  			show_message(response.message); 
+
+	  				
+	  				request(1);
 	  	},
 	  	error:function(error)
-	  	{
-	  		console.log(error);
+	  	{	
+	  		let e = error.responseJSON.message;
+	  		if(e.includes('Duplicate entry'))
+	  		 	show_message('Cedula de la solicitud ya existe');
+	  			
 	  	}
 
 	  	 });
+}
+
+function reject_request(id,request)
+{
+	const data = {	_token: $('input[name=_token]').val(), request_id: id }
+
+	$.ajax({ 
+	   
+	   	url:'/workspace/solicitudes/'+id,
+	    type: 'put', 
+	    data:data,
+	    dataType: 'json', 
+	  	success:function(response){
+	  		console.log(response);
+	  		show_message(response.message);
+	  		request(1);
+	  	},
+	  	error:function(error)
+	  	{	
+	  		console.log(error)
+	  	}
+
+	  	 });
+}
+
+function show_message(message)
+{
+	let bm = document.querySelector('.message')
+	  				let m = document.querySelector('.message>span')
+
+	  				m.innerHTML = `${message}`;
+				
+	  				bm.classList.add('message-active');
+	  				m.classList.add('text-white');
+
+
+
+  					setTimeout(()=>{ 
+
+       		 				bm.classList.remove('message-active');
+
+         				}, 2500)
 }

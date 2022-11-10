@@ -33,10 +33,17 @@ Route::group([ 'prefix' => 'workspace', 'namespace' => 'Workspace','middleware' 
     
     
     Route::get('', [WorkspaceController::class,'index'])->name("workspace");
+    
+    // Inscription-Workspace
     Route::get('solicitudes', [InscriptionController::class,'requests'])->name("requests");
+    
     Route::get('solicitudes/get', [InscriptionController::class,'requests_show'])->name("requests_show");
+
+    Route::get('solicitudes/filter/{action}',[InscriptionController::class,'filter_requests'])->name('filter_requests');
+
     Route::post('solicitudes/create',[InscriptionController::class,'create'])->name('inscription_create');
-    // Route::get('permission/create', [PermissionController::class,'create'])->name("permission-create");
+
+    Route::put('solicitudes/{id}',[InscriptionController::class,'update'])->name('request_update');
 
 
 });

@@ -42,3 +42,30 @@
 	.box-confimation{ left: 0; top: 0;}
 	.box-message-confirmation{ left: calc(50% - 200px); }
 }
+
+.message{
+
+  display: block;
+  position: fixed;
+  width: 289px;
+  height: 100px;
+  top: 0%;
+  left: calc(50% - 145px);
+  z-index: 999999;
+  background: #081f3d;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 11px 10px rgba(0, 0, 0, 0.3);
+  visibility: hidden;
+  opacity: 0;
+  
+  transition: transform ease .7s, visibility ease .7s, opacity ease .8s;
+
+}
+
+.message-active {
+
+  transform: translateY(110%);
+  visibility: visible;
+  opacity: 1;
+}
