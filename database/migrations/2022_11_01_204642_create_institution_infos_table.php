@@ -16,7 +16,12 @@ class CreateInstitutionInfosTable extends Migration
         Schema::create('institution_infos', function (Blueprint $table) {
             $table->id();
             $table->string("name",100);
+            $table->string("rif",10);
+            $table->string("phone_number",11);
+            $table->string("address",100);
             $table->string("email",30);
+            $table->date("release");
+            $table->string("motto",100);
 
             
         });

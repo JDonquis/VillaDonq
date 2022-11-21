@@ -35,11 +35,6 @@ class InscriptionRequest extends FormRequest
         "date_birth" => "required|date",
         "state" => "string|max:20|nullable",
         "city" => "string|max:20|nullable",
-        "photo_up" => ["nullable",InscriptionRequest::required_or_not("photo")?:"required"],
-        "cer_birth_up" => ["nullable",InscriptionRequest::required_or_not("cer_birth")?:"required"],
-        "cer_notes_up" => ["nullable",InscriptionRequest::required_or_not("cer_notes")?:"required"],
-        "cer_conduct_up" => ["nullable",InscriptionRequest::required_or_not("cer_conduct")?:"required"],
-        "report_card_up" => ["nullable",InscriptionRequest::required_or_not("report_card")?:"required"],
         "address" => "string|max:100",
         "rep_name" => "required|string|max:30",
         "rep_DNI" => "required|string|max:10",
@@ -49,12 +44,12 @@ class InscriptionRequest extends FormRequest
         ];
     }
 
-    public static function required_or_not($attribute)
-    {
-        $docs = Type_Document::where("name",$attribute)->where("required",1)->where("status",1)->get();
+    // public static function required_or_not($attribute)
+    // {
+    //     $docs = Type_Document::where("name",$attribute)->where("required",1)->where("status",1)->get();
 
-        return $docs->isEmpty();
-    }
+    //     return $docs->isEmpty();
+    // }
 
        /**
      * Get the error messages for the defined validation rules.

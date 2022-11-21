@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Workspace\WorkspaceController;
 use App\Http\Controllers\Security\LoginController;
 use App\Http\Controllers\Inscription\InscriptionController;
+use App\Http\Controllers\Workspace\InstitutionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +28,11 @@ Route::get('logout',[LoginController::class,'logout'])->name("logout");
 // Inscription
 Route::get('inscribirse',[InscriptionController::class,'index'])->name("inscription");
 
+Route::get('inscribirse/consulta',[InscriptionController::class,'consult'])->name("consult_request");
+
 Route::post('inscribirse/solicitud',[InscriptionController::class,'save_request'])->name("inscription_request");
+
+
 
 Route::group([ 'prefix' => 'workspace', 'namespace' => 'Workspace','middleware' => 'auth' ], function() {
     
@@ -36,14 +41,21 @@ Route::group([ 'prefix' => 'workspace', 'namespace' => 'Workspace','middleware' 
     
     // Inscription-Workspace
     Route::get('solicitudes', [InscriptionController::class,'requests'])->name("requests");
-    
-    Route::get('solicitudes/get', [InscriptionController::class,'requests_show'])->name("requests_show");
 
-    Route::get('solicitudes/filter/{action}',[InscriptionController::class,'filter_requests'])->name('filter_requests');
+    Route::get('solicitudes/documentos/{documents}', [InscriptionController::class,'see_documents'])->name("see_documents");
+
+    Route::post('solicitudes/get', [InscriptionController::class,'requests_show'])->name("requests_show");
+
+    Route::post('solicitudes/filter/{action}',[InscriptionController::class,'filter_requests'])->name('filter_requests');
 
     Route::post('solicitudes/create',[InscriptionController::class,'create'])->name('inscription_create');
 
     Route::put('solicitudes/{id}',[InscriptionController::class,'update'])->name('request_update');
+
+    // Institution Profile
+
+    Route::get('institucion',[InstitutionController::class,'index'])->name("institution_profile");
+    Route::post('institucion',[InstitutionController::class,'store'])->name("create_institution_profile");
 
 
 });

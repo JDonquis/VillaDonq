@@ -5,9 +5,6 @@
 @section('title-section') Solicitudes @endsection
 
 @section('styles') 
-
-	{{-- <link rel="stylesheet" href="{{ asset('assets/DataTables/datatables.min.css') }}"> --}}
-	
 	
 	<link rel="stylesheet" href="{{asset('assets/LTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/LTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
@@ -22,12 +19,28 @@
 
 	<div class="col-12">
 	    <div class="card">
-	      <div class="card-header "></div>
-		      <div class="d-flex  justify-content-center align-content-center py-3"> 
-		      		<button class="btn btn-outline-primary btn-filter" id-action='3'>Sin Revisar</button>
-		      		<button class="btn btn-outline-primary mx-4 btn-filter" id-action='1'>Aceptados</button>
-		      		<button class="btn btn-outline-primary btn-filter" id-action='2'>Rechazados</button>
+	      <div class="card-header border-0 "></div>
+		      <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center  py-3"> 
+		      		<button class="btn btn-outline-primary btn-outline  mt-10px btn-filter" id-action='3'>Sin Revisar</button>
+		      		<button class="btn btn-outline-primary btn-outline  mt-10px mx-4 btn-filter" id-action='1'>Aceptados</button>
+		      		<button class="btn btn-outline-primary btn-outline  mt-10px btn-filter" id-action='2'>Rechazados</button>
 		       </div>
+		       <div class="d-flex justify-content-center align-items-center">
+		            <div class="form-group">
+
+                                        <label>Año escolar</label>
+                                        <select class="form-select select-edit"  id="years_select" name="year" 
+                                            style="width: 200px;">
+                                            <option selected="selected" value="all">Todos</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+
+                                        </select>
+                      </div>
+                </div>
 	      <div class="card-body table-responsive  p-0" >
 				<table id="example" class="display w-100 responsive table-head-fixed table mw-100">
 					<thead>
@@ -48,7 +61,7 @@
 		                <th>Nombre Representante:</th>
 		                <th>DNI Representante:</th>
 		                <th>Numero de Representante:</th>
-					    <th data-priority="3">Accion:</th>
+					    <th data-priority="3" class="no-sort">Accion:</th>
 					</tr>
 					</thead>
 					<tbody>

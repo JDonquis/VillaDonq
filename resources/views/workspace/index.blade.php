@@ -10,4 +10,10 @@
 
 @endsection
 
+@section("scripts")
+
+<script src="{{asset("assets/js/modules/home.js")}}" type="module"></script>
+
+@endsection
+
 

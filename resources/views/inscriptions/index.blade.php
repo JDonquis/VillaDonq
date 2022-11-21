@@ -23,6 +23,7 @@
 
           @include('includes.message_error')
 
+
     @include("includes.form_login")
    
 
@@ -30,6 +31,34 @@
         <div class="h1_cont">
             <h1>Inscribete en VILLADONQ y recibe la mejor educación</h1>
         </div>
+
+        
+            <form class="inscribe {{ old("DNI")?'d-none':''}}" id="consult-form">
+            <div class="card_form" >
+                <fieldset>
+                    <legend>INGRESA LOS SIGUIENTES DATOS PARA COMENZAR LA INSCRIPCIÓN:</legend>
+                        
+                            <span>
+                                <input type="text" data-type="CI" id="ins_ci" pattern="[A-Za-z]{1}[0-9]{8}" title="Debe escribir una letra 'V' seguida de 8 números" name="ins_ci">
+                                <label for="ins_ci">CI: </label>
+                            </span>
+                         
+                        <label for="ins_type_new">Selecciona un cupo disponible: </label>
+                            <div id="new_inscri_section">
+                             <select name="year" id="ins-year">
+                                        @foreach($q_available as $q)
+                                            <option value="{{$q->course->id}}">{{$q->course->name}}</option>
+                                        @endforeach
+                            </select>
+                            </div>
+                
+                <div class="consult-message"></div>
+
+                <button class="btn_submit mt-0" type="button" id="btn-consult">Siguiente</button>
+                </fieldset>
+
+            </div>
+        </form>      
 
         @include("includes.form_inscription")
         
@@ -40,41 +69,10 @@
 <!-- jQuery -->
 <script src="{{asset("assets/LTE/plugins/jquery/jquery.min.js")}}"></script>
 
-
-
-
-<script>
-    const date_input = document.querySelector("#ins_date_birth")
-    const age_input = document.querySelector("#ins_edad")
-
-    let fecha = new Date(),
-        añoA = fecha.getFullYear(),
-        mesA = fecha.getMonth() + 1,
-        diaA = fecha.getDate();
-
-    function calculateAge(_nacimiento) {
-        let n = 0;
-        let añoN, mesN, diaN;
-        [añoN, mesN, diaN] = _nacimiento.split('-')
-
-        n = +añoA - +añoN
-        if ((mesA < mesN) || ((mesA == mesN) && (diaA < diaN))) n--
-
-        return n
-    }
-    date_input.onchange = () => {
-        if (date_input.value) {
-            age_input.value = calculateAge(date_input.value)
-            age_input.nextElementSibling.classList.add('focus_valid')
-        }
-
-    }
-</script>
-
-
-
+<script src="{{asset("assets/js/modules/inscribe.js")}}" type="module"></script>
 
 <script src="{{asset("assets/js/slider.js")}}"></script>
 
-<script src="{{asset("assets/js/modules/inscribe.js")}}" type="module"></script>
+
+
 </html>

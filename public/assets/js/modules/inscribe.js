@@ -17,12 +17,16 @@ import { focus_input, show_hide_password } from "../functions/form_functions.js"
 
 import feedbackMessage from "../functions/messages.js";
 
+import consult_request from "../functions/consult_request.js";
+
 
 
 const d= document;
 
 d.addEventListener("DOMContentLoaded",e=>
-{
+{	
+
+	consult_request("#btn-consult");
 	loader_screen(".screenShow");
 	file_validation("input[type='file']");
 	openModalDown();
@@ -35,5 +39,31 @@ d.addEventListener("DOMContentLoaded",e=>
 	show_hide_password();
 
 })
+
+    const date_input = document.querySelector("#ins_date_birth")
+    const age_input = document.querySelector("#ins_edad")
+
+    let fecha = new Date(),
+        añoA = fecha.getFullYear(),
+        mesA = fecha.getMonth() + 1,
+        diaA = fecha.getDate();
+
+    function calculateAge(_nacimiento) {
+        let n = 0;
+        let añoN, mesN, diaN;
+        [añoN, mesN, diaN] = _nacimiento.split('-')
+
+        n = +añoA - +añoN
+        if ((mesA < mesN) || ((mesA == mesN) && (diaA < diaN))) n--
+
+        return n
+    }
+    date_input.onchange = () => {
+        if (date_input.value) {
+            age_input.value = calculateAge(date_input.value)
+            age_input.nextElementSibling.classList.add('focus_valid')
+        }
+
+    }
 
 

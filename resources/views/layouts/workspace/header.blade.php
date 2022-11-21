@@ -1,6 +1,3 @@
-<div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{asset("assets/LTE/dist/img/AdminLTELogo.png")}}" alt="AdminLTELogo" height="60" width="60">
-  </div>
 
   <!-- Navbar -->
 
@@ -25,8 +22,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <li class="breadcrumb-item text-primary">@yield('title-section')</li>
+              <li class="breadcrumb-item active">Workspace v1</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

@@ -10,12 +10,14 @@ class Type_Document extends Model
 {
     protected $table = "type_documents";
 
-     protected $guarded = ['id'];
+    protected $guarded = ['id'];
 
     protected $fillable = ['name','status','required'];
 
+    public $timestamps = false;
+
     public function request()
     {
-        return $this->belongsToMany(Request_s::class,'request_documents');
+        return $this->belongsToMany(Request_s::class,'request_documents','type_document_id','request_s_id')->withPivot('name');
     }
 }

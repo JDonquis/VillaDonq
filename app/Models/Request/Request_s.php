@@ -68,9 +68,7 @@ class Request_s extends Model
             || $doc->getMimeType() == 'image/jpeg' 
             || $doc->getMimeType() == 'image/png' 
             || $doc->getMimeType() == 'application/pdf'
-            || $doc->getMimeType() == 'application/vnd.oasis.opendocument.text'
-            || $doc->getMimeType() == 'application/msword'
-            || $doc->getMimeType() == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+
         ) return true;
         
         else{ return false; }
@@ -79,7 +77,7 @@ class Request_s extends Model
 
     public function type_documents()
     {
-        return $this->belongsToMany(Type_Document::class,'request_documents');
+        return $this->belongsToMany(Type_Document::class,'request_documents','request_s_id','type_document_id')->withPivot('name');;
     }
 
 

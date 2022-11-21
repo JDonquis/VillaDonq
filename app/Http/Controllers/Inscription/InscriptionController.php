@@ -15,12 +15,17 @@ use App\Models\Inscriptions\CourseSection;
 use App\Models\Person\Student;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Message_request;
+
 
 
 use DB;
+use Validator;
 
 class InscriptionController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -45,6 +50,12 @@ class InscriptionController extends Controller
 
     }
 
+    public function requests()
+    {
+        return view('workspace.admin.request');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -54,10 +65,14 @@ class InscriptionController extends Controller
         public function requests_show(Request $request)
     {     
          if($request->ajax())
-         {
-            $requests_s = Request_s::where('request_statu_id',3)->orderBy('request_statu_id','asc')->get()->toArray();
+         {  
 
-            return response()->json($requests_s);
+            $requests_s = new Request_s;
+            // $r = $requests_s->find(16)->type_documents(); 
+            $r = Request_s::with('type_documents')->where('request_statu_id',3)->get()->toArray();
+            // $r = $requests_s->find(6)->type_documents;
+
+            return response()->json($r);
 
             // return json_encode($requests_s);
   
@@ -161,7 +176,7 @@ class InscriptionController extends Controller
 
         $id_request = $request_student->latest('id')->first()->id;
 
-        // dd($id_request);
+
 
         
          // First Step, Call all type_documents enabled
@@ -214,22 +229,91 @@ class InscriptionController extends Controller
          }
     }
 
-    /**
+    public function update(Request $request, $id)
+    {
+        if($request->ajax())
+        {   
+
+            Request_s::where('id',$id)->update(['request_statu_id' => 2]);
+
+            $r = Request_s::where('id',$id)->first();
+
+            Mail::to($r->email)->queue(new Message_request($r));
+            
+            return response()->json(['message'=>'Solicitud rechazada con exito']);
+        }
+    }
+
+    public function filter_requests(Request $request,$action)
+    {
+        if($request->ajax())
+        {   
+            $year = [];
+           if($request->year == "all")
+                $year = [1,2,3];
+            else
+                $year = [$request->year];
+
+           if($action == 2)
+                $requests_s = Request_s::where('request_statu_id',2)->whereIn('year',$year)->orderBy('request_statu_id','asc')->get()->toArray();
+            else if($action == 1)
+                $requests_s = Request_s::where('request_statu_id',1)->whereIn('year',$year)->orderBy('request_statu_id','asc')->get()->toArray();
+            else if($action == 3)
+                $requests_s = Request_s::where('request_statu_id',3)->whereIn('year',$year)->orderBy('request_statu_id','asc')->get()->toArray();
+
+
+            return response()->json($requests_s);
+    
+            
+        }
+    }
+
+
+    
+    public function consult(Request $request)
+    {
+        if($request->ajax()){
+
+            $r = Request_s::where("DNI",$request->DNI)->first();
+
+            if(empty($r))
+                return response()->json(["continue" => "OK","DNI" => $request->DNI, "year" => $request->year]);
+            else{
+
+                if ($r->request_statu_id == 1)
+                {
+                 return response()->json(["continue" => "NO","message" => "Su solicitud fue aceptada anteriormente, revise su correo para mas informacion"]);   
+                }
+                else if($r->request_statu_id == 2){
+
+                    return response()->json(["continue" => "NO","message" => "Su solicitud fue rechazada anteriormente, revise su correo para mas informacion"]);
+                }
+                else if($r->request_statu_id == 3)
+                {
+                    return response()->json(["continue" => "NO","message" => "Su solicitud anterior aun no ha sido revisada, por favor espere la respuesta via email, o intente mas tarde"]);                    
+                }
+            }    
+
+            
+        }
+    }
+
+    public function see_documents($documents)
+    {
+        return view('workspace.admin.see_documents',compact("documents"));
+    }
+
+   /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         //
     }
-
-    public function requests()
-    {
-        return view('workspace.admin.request');
-    }
-
 
 
     /**
@@ -250,32 +334,7 @@ class InscriptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        if($request->ajax())
-        {   
 
-
-            Request_s::where('id',$id)->update(['request_statu_id' => 2]);
-            
-            return response()->json(['message'=>'Solicitud rechazada con exito']);
-        }
-    }
-
-    public function filter_requests(Request $request,$action)
-    {
-        if($request->ajax())
-        {   
-            if($action == 2)
-                $requests_s = Request_s::where('request_statu_id',2)->orderBy('request_statu_id','asc')->get()->toArray();
-            else if($action == 1)
-                $requests_s = Request_s::where('request_statu_id',1)->orderBy('request_statu_id','asc')->get()->toArray();
-            
-            return response()->json($requests_s);
-    
-            
-        }
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -288,3 +347,13 @@ class InscriptionController extends Controller
         
     }
 }
+
+
+
+/*
+
+
+
+
+
+*/

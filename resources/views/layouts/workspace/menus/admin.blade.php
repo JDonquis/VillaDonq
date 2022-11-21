@@ -4,21 +4,14 @@
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
         <li class="nav-item">
-          <a href="../administrador/perfil_institucion.php" class="nav-link">
+          <a href="{{route("institution_profile")}}" class="nav-link">
             <p>
               Perfil de la institución
             </p>
           </a>
 
         </li>
-        <li class="nav-item">
-          <a href="../administrador/Materias.php" class="nav-link">
-            <p>
-              Materias
-            </p>
-          </a>
 
-        </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
              

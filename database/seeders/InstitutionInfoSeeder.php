@@ -17,7 +17,15 @@ class InstitutionInfoSeeder extends Seeder
     {
           $fields = [
 
-            ['name' => 'VillaDonq', 'email' => 'villadonq@gmail.com' ],
+            ['name' => 'VillaDonq',
+             'email' => 'villadonq@gmail.com',
+             'rif' => 'v123456789',
+             'phone_number' => '04125800610',
+             'address' => 'Entre Av.Manaure y Av.Ruiz Pineda',
+             'release' => '2002-09-07',
+             'motto' => 'La escuela del futuro ya llegó a prestarte a mejor educación',
+
+              ],
      
 
          ];   

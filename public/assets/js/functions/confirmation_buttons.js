@@ -47,40 +47,38 @@ export default function confirmartion (table,btn,box_message,request)
 	 let t = d.querySelector(table); 
 	 let box = d.querySelector(box_message);
 
+	 var id ='';
+	 var action = ';'
 	 
-	 t.addEventListener('click',e => {
+	 d.addEventListener('click',e => {
 
-
+	 	e.stopPropagation();
 	 	
 	 	if(e.target.matches(btn))
 	 		{	
 
+	 			
 	 			const b = e.target;
-	 			let id = b.getAttribute('id-request');
-	 			let action = b.getAttribute('btn-action');
+	 			id = b.getAttribute('id-request');
+	 			action = b.getAttribute('btn-action');
 	 			box.classList.add('box-active');
-	 			box.addEventListener('click',e => {
+	 		}
 
-	 				e.stopPropagation();
+	 		if( e.target.matches('.box-confimation') || e.target.matches('#btn-cancel-confirmation') )
+	 			box.classList.remove('box-active');
 
-	 				if( e.target.matches('.box-confimation') || e.target.matches('#btn-cancel-confirmation') )
-	 					box.classList.remove('box-active');
+	 		if(e.target.matches('#btn-confirm-confirmation'))
+	 		{	
 
-	 				if(e.target.matches('#btn-confirm-confirmation'))
-	 				{
-	 					box.classList.remove('box-active');
+	 			box.classList.remove('box-active');
 
 	 					if(action == 'add')
 	 						accept_request(id,request);
-	 					else
-	 						reject_request(id,request);
-
-	 				}
-
-	 			})
+	 					
+	 					else if(action == 'delete')		
+							reject_request(id,request);
+	 					
 	 		}
-
-	 	
 
 
 	 })
@@ -142,7 +140,7 @@ function reject_request(id,request)
 
 function show_message(message)
 {
-	let bm = document.querySelector('.message')
+					let bm = document.querySelector('.message')
 	  				let m = document.querySelector('.message>span')
 
 	  				m.innerHTML = `${message}`;

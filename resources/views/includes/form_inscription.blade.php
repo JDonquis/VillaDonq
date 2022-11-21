@@ -1,4 +1,4 @@
-<form class="inscribe" id="form-file" action="{{route('inscription_request')}}" method="POST" enctype="multipart/form-data">
+<form class="inscribe " show="{{old("DNI")?'active':'desactive'}}"  id="form-file" action="{{route('inscription_request')}}" method="POST" enctype="multipart/form-data">
   @csrf
             <div class="card_form slider opacity_effect_each">
                 <!-- <ul class="nav_slider">
@@ -7,35 +7,6 @@
                     <div></div>
                 </div>
                 <div class="slider_wrap">
-                <fieldset class="each_slider_element">
-                        <legend>INSCRIBIRME EN:</legend>
-                        <div class="d-grid">
-                            <div id="">
-                                {{-- <input type="radio" id="ins_type_new" name="type_inscri">
-                                <label for="ins_type_new">Nuevo año escolar: </label> --}}
-                                <div id="new_inscri_section">
-                                    <label>Selecionar año</label>
-                                    <select name="year" id="">
-                                        @foreach($q_available as $q)
-                                            <option value="{{$q->course->id}}">{{$q->course->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                     {{--    <div class="d-grid">
-                            <div>
-                                <input type="radio" id="ins_type_middle" name="type_inscri">
-                                <label for="ins_type_middle">Momento: </label>
-                            </div>
-                            
-                        </div> --}}
-               
-
-
-                    </fieldset>
-
                     <fieldset class="each_slider_element">
                         <legend>DATOS PERSONALES</legend>
                         <div class="d-grid">
@@ -70,6 +41,7 @@
                             </span>
                         </div>
 
+                        <input type="hidden" name="year" value="5">
 
                     </fieldset>
 
@@ -92,6 +64,7 @@
 
                     </fieldset>
 
+
                     <fieldset class="each_slider_element file">
                         <legend>DOCUMENTOS PERSONALES</legend>
                         <label for="ins_foto">Foto: </label>
@@ -111,6 +84,9 @@
                         <input type="file" name="cer_conduct_up" id="ins_buena_conducta">
 
                     </fieldset>
+
+
+
 
                     <fieldset class="each_slider_element">
                         <legend>DATOS DEL REPRESENTANTE</legend>

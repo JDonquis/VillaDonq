@@ -13,21 +13,16 @@
 	 @yield('styles','')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="box-confimation">
+
 	
-	<div class="box-message-confirmation">
-		<p class="mb-5">¿Esta seguro de realizar esta accion?</p>
-		<div class="d-flex justify-content-around mt-4"> 
+	@include("includes.message_confirmation")
 
-			<button class="btn btn-primary" id="btn-confirm-confirmation">Confirmar</button>
-			<button class="btn btn-outline-danger" id="btn-cancel-confirmation">Cancelar</button>
-
-		</div>
-	</div>
-
-</div>
+	@include("includes.message_error")
 
 	<div class="wrapper">
+
+		@include("includes.loader")
+
 	{{-- Header --}}
 
 		@include("layouts.workspace.header")
