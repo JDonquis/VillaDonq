@@ -94,6 +94,8 @@ class InscriptionRequest extends FormRequest
             'rep_phone_number.min' => 'Numero de telefono invalido, intente que el numero no sea menor de los 11 caracteres',
             'phone_number.min' => 'Numero de telefono invalido, intente que el numero no sea menor de los 11 caracteres',
 
+            'age.numeric' => 'Asegurese de colocar la fecha de nacimiento',
+
             'email.email' => 'Campo correo invalido, asegurese de colocar correctamente el correo',
             
 

@@ -8,6 +8,7 @@
 	
 	<link rel="stylesheet" href="{{asset('assets/LTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/LTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/hamburger_css/hamburger.css')}}">
 	<link rel="stylesheet" href="{{ asset('assets/css/workspace/request/index.css') }}">
 
 @endsection()	
@@ -50,17 +51,14 @@
 						<th data-priority="2" >Nombre:</th>
 					    <th data-priority="2" >Apellido:</th>
 					    <th>DNI:</th>
+					    <th>Correo:</th>
 					    <th>Direccion:</th>
 					    <th>Fecha de Nacimiento:</th> 
 		                <th>Edad:</th>
-		                <th>Acta de nacimiento:</th>
-		                <th>Boleta:</th>
-		                <th>Notas Certificadas:</th>
-		                <th>Certificado Buena Conducta:</th>
-		                <th>Foto:</th>
 		                <th>Nombre Representante:</th>
 		                <th>DNI Representante:</th>
 		                <th>Numero de Representante:</th>
+		                <th>Documentos:</th>
 					    <th data-priority="3" class="no-sort">Accion:</th>
 					</tr>
 					</thead>
@@ -74,6 +72,11 @@
 		 </div>
 	   </div>
 	</div>
+</div>
+
+<div class="full-screen flex-center d-none" id="modal-document">
+	
+
 </div>
 
 @endsection

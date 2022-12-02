@@ -106,6 +106,20 @@ fieldset {
   .btn_submit:hover .parent_btn_submit::after {
     left: 0; }
 
+.full-screen {
+  position: fixed;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.582);
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1039 !important; }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
 .parent_btn_submit.clicked:before {
   content: "Procesando...";
   position: absolute;

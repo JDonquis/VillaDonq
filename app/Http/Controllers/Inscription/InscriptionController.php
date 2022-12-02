@@ -42,8 +42,10 @@ class InscriptionController extends Controller
 
         $lapse = new InscriptionLapse;         
 
+        $docs = Type_Document::where('status',1)->get();
+
             if($lapse->verify_date())
-                return view("inscriptions.index",compact('q_available'));
+                return view("inscriptions.index",compact('q_available','docs'));
             else 
                 return view("inscriptions.inscriptions_closed",['message' => 'Lo sentimos las inscripciones han sido cerradas']);
 
@@ -51,8 +53,10 @@ class InscriptionController extends Controller
     }
 
     public function requests()
-    {
-        return view('workspace.admin.request');
+    {   
+        $docs = Type_Document::where('status',1)->get();
+
+        return view('workspace.admin.request',compact('docs'));
     }
 
 
@@ -69,12 +73,11 @@ class InscriptionController extends Controller
 
             $requests_s = new Request_s;
             // $r = $requests_s->find(16)->type_documents(); 
-            $r = Request_s::with('type_documents')->where('request_statu_id',3)->get()->toArray();
+            $r = Request_s::where('request_statu_id',3)->get()->toArray();
             // $r = $requests_s->find(6)->type_documents;
 
             return response()->json($r);
 
-            // return json_encode($requests_s);
   
          }
          
@@ -250,7 +253,7 @@ class InscriptionController extends Controller
         {   
             $year = [];
            if($request->year == "all")
-                $year = [1,2,3];
+                $year = [1,2,3,4,5];
             else
                 $year = [$request->year];
 
@@ -298,10 +301,17 @@ class InscriptionController extends Controller
         }
     }
 
-    public function see_documents($documents)
-    {
-        return view('workspace.admin.see_documents',compact("documents"));
+    public function see_documents(Request $request,$id)
+    {   
+        if($request->ajax())
+        {   
+            $docs = Type_Document::where('status',1)->get();
+            $request_docs = Request_s::with('type_documents')->where('id',$id)->first();
+            return view('workspace.admin.see_documents',compact("request_docs","docs"));
+        }
+        
     }
+
 
    /**
      * Display the specified resource.

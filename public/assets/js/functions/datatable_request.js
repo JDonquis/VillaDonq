@@ -28,7 +28,7 @@ var csrf = $('input[name="_token"]').attr('value');
 
 
 
-export default function datatable_request (repeat = 0)
+export function datatable_request (repeat = 0)
 {
 
 
@@ -74,9 +74,11 @@ export default function datatable_request (repeat = 0)
             url: '/workspace/solicitudes/get',
             type: 'POST',
             dataSrc:function(json){
-                console.log(json);
-                return json;
+               
+               console.log(json) 
+               return json;
             },
+            
             data:{
                 "_token":csrf,
             },
@@ -91,31 +93,20 @@ export default function datatable_request (repeat = 0)
             {data:'name'},
             {data:'last_name'},
             {data:'DNI'},
+            {data:'email'},
             {data:'address'},
             {data:'date_birth'},
-            {data:'age'},
-            {data:'cer_birth',defaultContent:'No enviado'},
-            {data:'report_card',defaultContent:'No enviado'},
-            {data:'cer_notes',defaultContent:'No enviado'},
-            {data:'cer_conduct',defaultContent:'No enviado'},
-            {data:function(row)
-            { 
-                let documents = row['type_documents'];
-
-                if(!documents.length)
-                    return null;    
-
-                let doc_name = documents[0].pivot.name;
-                return "<a href='/workspace/solicitudes/documentos/"+documents+"' target='_blank'>Ver documento</a>";
-
-                
-
-
-            },defaultContent:'No enviado'},
-            
+            {data:'age'},         
             {data:'rep_name'},
             {data:'rep_DNI'},
             {data:'rep_phone_number'},
+            {data:function(row){
+
+                let link = `<a href='#' class='link-document' id='${row['id']}' >Ver documentos</a>`;
+                return link;
+            }
+
+            },
             {data:function (row){
 
 
@@ -138,5 +129,130 @@ export default function datatable_request (repeat = 0)
     }
 }
 
+export function likn_documents(link)
+{
+    d.addEventListener('click',(e)=>{
+
+        if(e.target.matches(link))
+        {   
+            e.preventDefault();
+            let id = e.target.id;
+            
+            $.ajax({
+                    url: '/workspace/solicitudes/documentos/'+id,
+                    type: 'get',
+                    success: function (data) {
+                        
+                        let modal = d.querySelector("#modal-document");
+                        modal.classList.remove('d-none');
+                        modal.innerHTML = data;
 
 
+                    }
+                });
+
+            
+            
+        }
+
+        if(e.target.matches('#modal-document'))
+            d.querySelector("#modal-document").classList.add('d-none');
+        
+        if(e.target.matches('#close-model-docs *') || e.target.matches('#close-model-docs'))
+            d.querySelector("#modal-document").classList.add('d-none'); 
+
+        if(e.target.matches('.modal-body-edit'))
+        {
+            if(d.querySelector('#navbarSupportedContent').classList.contains('show'))
+            {   
+                d.querySelector('#navbarSupportedContent').remove('show');;
+                d.querySelector('.navbar-toggler').classList.add('collapsed');                
+            }
+        } 
+
+        if(e.target.matches('.li-doc'))
+        {
+
+            let id = e.target.getAttribute('id-doc');
+            call_document(id)
+
+            if(d.querySelector('#navbarSupportedContent').classList.contains('show'))
+            {   
+                let nav = d.querySelector('#navbarSupportedContent');
+                nav.classList.remove('show');
+                d.querySelector('.navbar-toggler').classList.add('collapsed');
+                
+            }
+        }     
+    })
+}
+
+
+
+export function filter_request (request,button)
+{
+        d.addEventListener('click',e => {
+
+
+
+            if(e.target.matches(button))
+            {
+                let action = e.target.getAttribute('id-action');
+
+                filter_ajax(action);
+            }
+
+            e.stopPropagation();
+
+        })
+}
+
+function filter_ajax(action)
+{       
+        let csrf = $('input[name="_token"]').attr('value'); 
+
+        let datos = {'_token':csrf,'year': $("select[name='year']").val() };
+
+        $.ajax({ 
+       
+        url:'/workspace/solicitudes/filter/'+action,
+        type: 'POST', 
+        dataType: 'json',
+        data: datos,
+        success:function(response){
+
+            const r = response;
+
+            console.log(r);
+
+            $('#example').DataTable().clear().rows.add(r).draw();
+                                    
+    
+        },
+        error:function(error)
+        {   
+            console.log(error);
+        }
+
+         });
+}
+
+
+
+function call_document(id)
+{
+    let section = d.querySelector(`#doc-${id}`)
+
+    if(section != null){
+        let bodys = d.querySelectorAll('.body-doc');
+        
+        bodys.forEach( function(body)
+        {   
+            if(!body.classList.contains('d-none'))
+                body.classList.replace('d-flex','d-none');
+        });    
+
+        section.classList.replace('d-none','d-flex');
+    }
+    
+}

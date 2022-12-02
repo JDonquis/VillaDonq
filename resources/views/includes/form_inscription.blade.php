@@ -64,26 +64,38 @@
 
                     </fieldset>
 
+                     @php 
 
-                    <fieldset class="each_slider_element file">
-                        <legend>DOCUMENTOS PERSONALES</legend>
-                        <label for="ins_foto">Foto: </label>
-                        <input type="file" id="ins_foto" name="photo_up">
-                        <label for="ins_partida_de_nacimiento">Partida de nacimiento: </label>
-                        <input type="file" id="ins_partida_de_nacimiento" name="cer_birth_up">
+                        $ndocs = round(count($docs)/3,0,PHP_ROUND_HALF_DOWN);
+                        $start = 0;
+                     @endphp
 
-                    </fieldset>
+                     @for($i = 0; $i<$ndocs;$i++)  
+                                      
+                        <fieldset class="each_slider_element file"> 
+                        <legend>DOCUMENTOS {{$i+1}} </legend>
+                       
+                        @for($j = $start; $j<$start+3;$j++)
 
-                    <fieldset class="each_slider_element file">
-                        <legend>DOCUMENTOS ACADEMICOS</legend>
-                        <label for="ins_boleta">Boleta: </label>
-                        <input type="file" id="ins_boleta" name="report_card_up">
-                        <label for="ins_notas">Notas: </label>
-                        <input type="file" id="ins_notas" name="cer_notes_up">
-                        <label for="ins_buena_conducta">Constancia de buena conducta</label>
-                        <input type="file" name="cer_conduct_up" id="ins_buena_conducta">
+                            @php 
+                            if(!isset($docs[$j]))
+                                break;
 
-                    </fieldset>
+                            @endphp
+                        
+                            
+                            <label for="ins_{{$docs[$j]->name}}">{{ str_replace('_', ' ',$docs[$j]->name)}}: </label>
+                            <input type="file" id="ins_{{$docs[$j]->name}}" name="{{$docs[$j]->name}}_up">
+                        
+
+                        @endfor
+
+                        @php $start = $start + 3;   @endphp
+
+                        </fieldset>
+                     @endfor
+
+
 
 
 

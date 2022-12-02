@@ -40,9 +40,10 @@ Route::group([ 'prefix' => 'workspace', 'namespace' => 'Workspace','middleware' 
     Route::get('', [WorkspaceController::class,'index'])->name("workspace");
     
     // Inscription-Workspace
+    
     Route::get('solicitudes', [InscriptionController::class,'requests'])->name("requests");
 
-    Route::get('solicitudes/documentos/{documents}', [InscriptionController::class,'see_documents'])->name("see_documents");
+    Route::get('solicitudes/documentos/{id}', [InscriptionController::class,'see_documents'])->name("see_documents");
 
     Route::post('solicitudes/get', [InscriptionController::class,'requests_show'])->name("requests_show");
 

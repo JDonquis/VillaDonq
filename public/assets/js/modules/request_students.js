@@ -4,10 +4,11 @@
 **
 */
 
-import datatable_request from "../functions/datatable_request.js";
+import {datatable_request,likn_documents,filter_request} from "../functions/datatable_request.js";
 import confirmartion from "../functions/confirmation_buttons.js";
 import feedbackMessage from "../functions/messages.js";
-import filter_request from "../functions/filter_request.js";
+import buttons_activate from "../functions/buttons_activate.js";
+
 
 
 
@@ -21,7 +22,14 @@ d.addEventListener("DOMContentLoaded",e=>
 	confirmartion("#example",".btn-request",".box-confimation",datatable_request);
 	feedbackMessage();
 	filter_request(datatable_request,'.btn-filter');
+	likn_documents('.link-document');
+	buttons_activate('.btn-filter','.li-doc');
 	
 })
+
+
+
+
+
 
 
