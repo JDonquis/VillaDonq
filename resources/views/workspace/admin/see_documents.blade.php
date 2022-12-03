@@ -30,7 +30,7 @@
 
 			      	@foreach($docs as $doc)
 
-						<li class="btn-outline li-doc p-3 text-white {{sendit_or_not($request_docs,$doc->name)}}" id-doc="{{$doc->id}}">{{$doc->name}}</li>
+						<li class="btn-outline li-doc p-3 text-white {{sendit_or_not($request_docs,$doc->name)}}" id-doc="{{$doc->id}}">{{ str_replace('_',' ',$doc->name) }}</li>
 
 					@endforeach
 			    </ul>
@@ -73,7 +73,7 @@
 
 		@else
 
-		<iframe src="{{Storage::url('request/'.$document->name.'/'.$document->pivot->name);}}"  alt="Documento" style="width:80%; height: 90%;"></iframe>
+		<iframe src="{{Storage::url('request/'.$document->name.'/'.$document->pivot->name);}}"  alt="Documento" style="width:95%; height: 80%;"></iframe>
 
 		@endif
 
