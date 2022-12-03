@@ -253,12 +253,12 @@ background-color: #081f3d;
 
 
 .body-doc{
-
+/*
 	width: calc(100% - 294px);
 	margin-left: auto;
 	text-align: center;
 	padding-left: 5%;
-}
+*/}
 
 .h-fit{
 	
@@ -284,9 +284,9 @@ background-color: #081f3d;
 @media(max-width: 992px)
 {
 	.body-doc{
-
+/*
 		width: 100%;
-		margin-left: 0px !important;
+		margin-left: 0px !important;*/
 	}
 
 /*		.box-name{
@@ -300,3 +300,38 @@ background-color: #081f3d;
 {
 	#doc-menu, #container-menu-docs, #navbarSupportedContent, #nav-documents{ height: 100%; }
 }
+
+
+
+
+
+/****Try fix css */
+
+.side-menu{
+
+	position: sticky;
+	top: 0;
+	width: 25%;
+	height: 100%;
+
+}
+.modal-content-edit{
+
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 75%;
+	height: 100%;
+
+}
+
+
+
+@media(max-width: 992px)
+{
+	.side-menu{ width: 50%; height: fit-content; z-index: 9999; }
+	.modal-content-edit{ width: 100%; }
+	
+
+}
+
