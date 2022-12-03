@@ -179,36 +179,80 @@ class InscriptionController extends Controller
 
         $id_request = $request_student->latest('id')->first()->id;
 
-
-
         
-         // First Step, Call all type_documents enabled
+        // First Step, Call all type_documents enabled
+       
         $t = Type_Document::where('status',1)->get()->toArray();
 
-        // Second Step
-
+        // Second Step validate docs_up
+            
         foreach ($t as $key => $doc_up) {
                 
             $dUp = $doc_up['name'].'_up';
-            $d = $doc_up['name'];      
-            if($doc = Request_s::set_docs($request->$dUp,false,$d))  
-            {
-                
-                DB::table('request_documents')->insert([
+            $d = $doc_up['name'];
 
-                     'request_s_id' => $id_request,
-                    'type_document_id' => $doc_up['id'],
-                    'name' => $doc
-                ]);
-            }     
-                
+            if($doc_up['required'] == 1)
+            {
+                if(!isset($request->$dUp)){
+
+                    DB::table('request_documents')->where('request_s_id',$id_request)->delete();
+                    Request_s::where('id',$id_request)->delete();
+
+                    return back()->with( ['message' => str_replace('_', ' ',$d ).' es requerido.','continue' => 'OK'] )->withInput();     
+                }
+                else{
+
+                     if(!$doc = Request_s::verify_type_doc($request->$dUp) )
+                     {
+                        
+                        DB::table('request_documents')->where('request_s_id',$id_request)->delete();
+                        Request_s::where('id',$id_request)->delete();
+
+                        return back()->with( ['message' => 'Formato de '. str_replace('_', ' ',$d ).' no valido, Asegurese que el fomato sea pdf, jpg, jpeg, png','continue' => 'OK'] )->withInput();
+
+                     }
+                     else{
+
+                         $doc = Request_s::set_docs($request->$dUp,false,$d);
+                         DB::table('request_documents')->insert([
+
+                             'request_s_id' => $id_request,
+                            'type_document_id' => $doc_up['id'],
+                            'name' => $doc
+                         ]);
+                     }   
+                }
+            }
+            else{
+
+                if(isset($request->$dUp)){
+                   if(!$doc = Request_s::verify_type_doc($request->$dUp) ){ 
+                        
+                        DB::table('request_documents')->where('request_s_id',$id_request)->delete();
+                        Request_s::where('id',$id_request)->delete();
+
+                        return back()->with( ['message' => 'Formato de '. str_replace('_', ' ',$d ).' no valido, Asegurese que el fomato sea pdf, jpg, jpeg, png','continue' => 'OK'] )->withInput();
+                        }
+                    else{
+
+                        $doc = Request_s::set_docs($request->$dUp,false,$d);
+                        DB::table('request_documents')->insert([
+
+                             'request_s_id' => $id_request,
+                            'type_document_id' => $doc_up['id'],
+                            'name' => $doc
+                        ]);
+
+                    }
+     
+                }
 
             }   
 
+        }
 
 
-
-            return redirect('/inscribirse')->with('message','Solicitud enviada correctamente, la respuesta será enviada al correo');
+        return redirect('/inscribirse')->with('message','Solicitud enviada correctamente, la respuesta será enviada al correo');
 
 
     }

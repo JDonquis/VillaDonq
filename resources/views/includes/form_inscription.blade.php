@@ -103,15 +103,15 @@
                     <fieldset class="each_slider_element">
                         <legend>DATOS DEL REPRESENTANTE</legend>
                         <span>
-                            <input type="text" id="ins_repre_nombre" name="rep_name">
+                            <input type="text" id="ins_repre_nombre" name="rep_name" value="{{old("rep_name")}}">
                             <label for="ins_repre_nombre">Nombre completo: </label>
                         </span>
                         <span>
-                            <input type="text" data-type="CI" id="ins_repre_DNI" name="rep_DNI">
+                            <input type="text" data-type="CI" id="ins_repre_DNI" name="rep_DNI" value="{{old("rep_DNI")}}">
                             <label for="ins_repre_DNI">DNI: </label>
                         </span>
                         <span>
-                            <input type="tel" id="ins_repre_tel" name="rep_phone_number">
+                            <input type="tel" id="ins_repre_tel" name="rep_phone_number" value="{{old("rep_phone_number")}}">
                             <label for="ins_repre_tel">Telefono: </label>
 
                         </span>

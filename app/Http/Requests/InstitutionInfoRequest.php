@@ -27,7 +27,7 @@ class InstitutionInfoRequest extends FormRequest
             
             "name" => "required|string|max:100|min:5",
             "rif" => "required|string|max:10",
-            "phone_number" => "required|number|max:11",
+            "phone_number" => "required|max:11",
             "email" => "required|email|max:30",
             "motto" => "max:100"
 

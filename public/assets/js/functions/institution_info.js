@@ -30,6 +30,8 @@ export default function institution_info(form,btn)
 	  	{	
 	  		let r = '';
 
+	  		console.log(error)
+
 	  		let errors = error.responseJSON.errors;
 
 	  		let e = Object.values(errors);

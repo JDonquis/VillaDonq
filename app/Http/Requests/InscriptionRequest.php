@@ -44,13 +44,6 @@ class InscriptionRequest extends FormRequest
         ];
     }
 
-    // public static function required_or_not($attribute)
-    // {
-    //     $docs = Type_Document::where("name",$attribute)->where("required",1)->where("status",1)->get();
-
-    //     return $docs->isEmpty();
-    // }
-
        /**
      * Get the error messages for the defined validation rules.
      * ñ
@@ -73,6 +66,10 @@ class InscriptionRequest extends FormRequest
             'rep_DNI.required' => 'El campo cedula del representante es requerido',
             'rep_phone_number.required' => 'El campo numero de telefono del representante es requerido',
             'photo_up.required' => 'El documento Foto es requerido',
+
+            'rep_name.string' => 'El campo nombre completo del representante es invalido',
+            'rep_DNI.string' => 'El campo cedula del representante es invalido',
+            'rep_phone_number.string' => 'El campo numero de telefono del representante es invalido',
 
             'state.string' => 'Nombre del estado invalido',
             'city.string' => 'Nombre de la ciudad invalido',

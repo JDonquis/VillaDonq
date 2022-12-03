@@ -1,4 +1,4 @@
-  <div class="message {{$errors->any()?'response':''}} {{session("message")?'response':''}}">
+  <div class="message text-center {{$errors->any()?'response':''}} {{session("message")?'response':''}}">
         
                 <span>
                     {{$errors->first()}}

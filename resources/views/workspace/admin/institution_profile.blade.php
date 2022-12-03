@@ -4,12 +4,6 @@
 
 @section('title-section') Perfil de Institución @endsection
 
-@section('styles') 
-
-	{{-- <link rel="stylesheet" href="{{ asset('assets/css/workspace/request/index.css') }}"> --}}
-
-@endsection()	
-
 @section("main-content")
 	           
                 <div class="container-fluid">

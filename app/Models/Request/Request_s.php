@@ -42,16 +42,13 @@ class Request_s extends Model
                 Storage::disk('public')->delete("request/".$type."/".$current);
             }
 
-            if(self::verify_type_doc($doc))
-            {
                 $doc_name = Str::random(25).".".$doc->extension();
             
                 $doc->storeAs('request/'.$type,$doc_name,'public');
             
                 return $doc_name;
                 
-            }
-            return false;
+    
 
             
 
