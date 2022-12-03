@@ -220,7 +220,6 @@ background-color: #081f3d;
 .box-name{
 
 	z-index: 9999;
-	/*margin-left: 45%;*/
 
 }
 
@@ -252,60 +251,11 @@ background-color: #081f3d;
 }
 
 
-.body-doc{
-/*
-	width: calc(100% - 294px);
-	margin-left: auto;
-	text-align: center;
-	padding-left: 5%;
-*/}
-
 .h-fit{
 	
 	height: fit-content
 }
-@media(max-width: 607px)
-{
-	#example_length , #example_filter{ display: block; width: 100%; }
-	.paginate_button{
 
-		margin: 0px 3px;
-	}
-	.modal-body-edit{
-
-		width: 98%;
-		height: 98%;
-	}
-
-
-
-}
-
-@media(max-width: 992px)
-{
-	.body-doc{
-/*
-		width: 100%;
-		margin-left: 0px !important;*/
-	}
-
-/*		.box-name{
-
-		margin-left: 10%;
-	}
-*/
-}
-
-@media(min-width: 992px)
-{
-	#doc-menu, #container-menu-docs, #navbarSupportedContent, #nav-documents{ height: 100%; }
-}
-
-
-
-
-
-/****Try fix css */
 
 .side-menu{
 
@@ -335,3 +285,22 @@ background-color: #081f3d;
 
 }
 
+@media(min-width: 992px)
+{
+	#doc-menu, #container-menu-docs, #navbarSupportedContent, #nav-documents{ height: 100%; }
+}
+
+@media(max-width: 607px)
+{
+	#example_length , #example_filter{ display: block; width: 100%; }
+	.paginate_button{
+
+		margin: 0px 3px;
+	}
+	.modal-body-edit{
+
+		width: 98%;
+		height: 98%;
+	}
+
+}
