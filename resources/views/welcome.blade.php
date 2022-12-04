@@ -16,17 +16,13 @@
     @include("includes.loader")
      
     @include("includes.form_login")
-
-<header>
-
+<div class="gradient_blue">
     @include("includes.main_nav")
 
-</header>
-
-    <section class="home_header container">
+    <header class="home_header container">
 
          <div>
-             <h1 > La escuela del <span>futuro</span> ya llegó a prestarte la mejor educa<span>ción.</span></h1>             
+             <h1 > La escuela del <span>futuro</span> ya llegó a prestarte la mejor educación.</h1>             
          </div>
 
 
@@ -43,12 +39,14 @@
                         <img src="{{asset("assets/img/pexels-emily-ranquist-1205651.webp")}}" alt="" >
                     </div>
                 </div>
-            
+                
                 <span class="parent_btn_submit parent_inscribe_link"><a href="{{route("inscription")}}" class="link_to_inscribe btn_submit transition_link">Inscribete</a></span>
+
             </div> 
         </div>
     
-    </section>
+    </header>
+</div>
 
     <script type="module" src="{{asset("assets/js/modules/index.js")}}"></script>
     <script src="{{asset("assets/js/slider.js")}}"></script>
