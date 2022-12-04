@@ -10,18 +10,25 @@
 
 }
 
+.sorting#field_year{
+
+	min-width: 100px !important;
+	max-width: 100px !important;
+
+}
+
 .column-buttons{
 
 	text-align: center;
 
 }
-.btn-request:first-child{ margin-right: 10px; }
+/*.btn-request:first-child{ margin-right: 5px; }*/
 
 
 .btn_submit{
 
 	max-width: 150px;
-	padding: 8px;
+	padding: 6px;
 
 }	
 
@@ -41,6 +48,7 @@
   	background-position: -101%;
   	transition: all .4s ease;
   	font-weight: bold;
+  	padding: 6px;
 }
 
 .btn-outline-reject:hover{

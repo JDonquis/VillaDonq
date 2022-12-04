@@ -47,7 +47,7 @@
 					<thead>
 					<tr>
 						<th></th>
-						<th data-priority="1" >Año Solicitado:</th>
+						<th data-priority="1" id="field_year" >Año Solicitado:</th>
 						<th data-priority="2" >Nombre:</th>
 					    <th data-priority="2" >Apellido:</th>
 					    <th>DNI:</th>

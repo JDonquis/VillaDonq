@@ -66,8 +66,7 @@ export function datatable_request (repeat = 0)
                     orderable: false,
                     targets:0,
                     data:'',
-        },
-
+        }
          ],
         "ajax":{
 
