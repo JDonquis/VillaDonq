@@ -19,8 +19,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Message_request;
 
-
-
 use DB;
 use Validator;
 
