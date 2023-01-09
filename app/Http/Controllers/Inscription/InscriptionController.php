@@ -26,7 +26,7 @@ class InscriptionController extends Controller
 {
 
     /**
-     * hola
+     * hola test
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
