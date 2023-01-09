@@ -31,6 +31,9 @@ class InscriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // ------------------------------------------------------ Inscription Index --------------------
+
     public function index()
     {   
 
@@ -52,158 +55,8 @@ class InscriptionController extends Controller
 
     }
 
-    public function requests()
-    {   
-        $docs = Type_Document::where('status',1)->get();
+    // ------------------------------------------------------ Save Requests from inscription index
 
-        return view('workspace.admin.request',compact('docs'));
-    }
-
-    public function config()
-    {   
-        $school_lapse = SchoolLapse::with('inscription_lapse')->orderBy('id','desc')->first();
-
-        $access = false;
-
-        if($school_lapse == null)            
-            return view('workspace.admin.inscriptions.config',compact('access'));
-
-        else{
-
-             
-
-            if ($school_lapse->status == 1)
-            {       
-                $docs = Type_Document::orderBy('id','asc')->get();   
-                $access = true;
-
-                if(isset($school_lapse->inscription_lapse->id))
-                {   
-                      
-
-                       $docs = Type_Document::orderBy('id','asc')->get();
-
-                       return view('workspace.admin.inscriptions.config',compact('access','scholl_lapse','docs')); 
-                }
-                else
-                {
-                       
-
-                       return view('workspace.admin.inscriptions.config',compact('access','docs'));
-                }   
-            }
-
-            else{ return view('workspace.admin.inscriptions.config',compact('access') ); }
-        }
-        
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-        public function requests_show(Request $request)
-    {     
-         if($request->ajax())
-         {  
-
-            $requests_s = new Request_s;
-            // $r = $requests_s->find(16)->type_documents(); 
-            $r = Request_s::where('request_statu_id',3)->get()->toArray();
-            // $r = $requests_s->find(6)->type_documents;
-
-            return response()->json($r);
-
-  
-         }
-         
-    }
-
-
-    public function create(Request $request)
-    {
-        if($request->ajax())
-        {  
-            
-            DB::transaction(function () use ($request) {
-                
-                $r = Request_s::findOrFail($request->request_id);
-
-                // Create user
-                User::create([
-
-                    'type_user_id'=>2,
-                    'DNI' => $r->DNI,
-                    'name' => $r->name,
-                    'last_name'=>$r->last_name,
-                    'email' => $r->email,
-                    'password' => Hash::make($r->DNI),
-                    'phone_number' => $r->phone_number,
-                    'address' => $r->address,
-                    'date_birth'=>$r->date_birth,
-                    'state' => $r->state,
-                    'city' => $r->city,
-                    'photo' => ''
-                ]);
-
-                // Create Student
-
-                $u = User::select('id')->orderBy('id', 'desc')->first();
-
-                $cs = CourseSection::where('course_id',$r->year)->where('section_id',1)->first();
-
-                Student::create([
-
-                    'user_id' => $u->id,
-                    'course_section_id' => $cs->id,
-                    'rep_name' => $r->rep_name,
-                    'rep_DNI' => $r->rep_DNI,
-                    'rep_phone_number' => $r->rep_phone_number, 
-
-                ]);
-
-                $s = Student::select('id')->orderBy('id', 'desc')->first();
-
-                $documents = Type_Document::select('id','name')->where('status',1)->orderBy('id','asc')->get()->toArray();
-
-                $fields = array();
-
-                foreach($documents as $document)
-                {   $name = $document['name'];
-                    $field = array( 'student_id' => $s->id, 'type_document_id' => $document['id'], 'document' =>$r->$name  );
-                    array_push($fields,$field);
-                }
-
-
-                 DB::table('document_students')->insert($fields);
-
-                 $lapse = InscriptionLapse::select('id')->orderBy('id', 'desc')->first();
-
-                 DB::table('inscriptions')->insert([
-
-                    'inscription_lapse_id' => $lapse->id,
-                    'student_id' => $s->id
-
-                 ]);
-
-                 $r->request_statu_id = '1';
-                 $r->save();
-
-            });
-            
-            return response()->json(['message'=>'Solicitud aceptada con exito']);
-            
-        }
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function save_request(InscriptionRequest $request)
     {
         
@@ -295,6 +148,8 @@ class InscriptionController extends Controller
 
     }
 
+    // ------------------------------------------------------ Verify Requests from inscription index
+
     public function verify_request(Request $request)
     {
 
@@ -314,46 +169,7 @@ class InscriptionController extends Controller
          }
     }
 
-    public function update(Request $request, $id)
-    {
-        if($request->ajax())
-        {   
-
-            Request_s::where('id',$id)->update(['request_statu_id' => 2]);
-
-            $r = Request_s::where('id',$id)->first();
-
-            Mail::to($r->email)->queue(new Message_request($r));
-            
-            return response()->json(['message'=>'Solicitud rechazada con exito']);
-        }
-    }
-
-    public function filter_requests(Request $request,$action)
-    {
-        if($request->ajax())
-        {   
-            $year = [];
-           if($request->year == "all")
-                $year = [1,2,3,4,5];
-            else
-                $year = [$request->year];
-
-           if($action == 2)
-                $requests_s = Request_s::where('request_statu_id',2)->whereIn('year',$year)->orderBy('request_statu_id','asc')->get()->toArray();
-            else if($action == 1)
-                $requests_s = Request_s::where('request_statu_id',1)->whereIn('year',$year)->orderBy('request_statu_id','asc')->get()->toArray();
-            else if($action == 3)
-                $requests_s = Request_s::where('request_statu_id',3)->whereIn('year',$year)->orderBy('request_statu_id','asc')->get()->toArray();
-
-
-            return response()->json($requests_s);
-    
-            
-        }
-    }
-
-
+    // ------------------------------------------------------ Consult Request statu from inscription index
     
     public function consult(Request $request)
     {
@@ -383,6 +199,160 @@ class InscriptionController extends Controller
         }
     }
 
+
+
+
+    // ------------------------------------------------------ Requests Index --------------------
+
+    public function requests()
+    {   
+        $docs = Type_Document::where('status',1)->get();
+
+        return view('workspace.admin.request',compact('docs'));
+    }
+
+    // ------------------------------------------------------ Show Requests from request index
+
+    public function requests_show(Request $request)
+    {     
+         if($request->ajax())
+         {  
+
+            $requests_s = new Request_s;
+            $r = Request_s::where('request_statu_id',3)->get()->toArray();
+            return response()->json($r);
+
+  
+         }
+         
+    }
+
+    // ------------------------------------------------------ Create New Student from request index
+
+    public function create(Request $request)
+    {
+        if($request->ajax())
+        {  
+            
+            DB::transaction(function () use ($request) {
+                
+                $r = Request_s::findOrFail($request->request_id);
+
+                // Create user
+                User::create([
+
+                    'type_user_id'=>2,
+                    'DNI' => $r->DNI,
+                    'name' => $r->name,
+                    'last_name'=>$r->last_name,
+                    'email' => $r->email,
+                    'password' => Hash::make($r->DNI),
+                    'phone_number' => $r->phone_number,
+                    'address' => $r->address,
+                    'date_birth'=>$r->date_birth,
+                    'state' => $r->state,
+                    'city' => $r->city,
+                    'photo' => ''
+                ]);
+
+                // Create Student
+
+                $u = User::select('id')->orderBy('id', 'desc')->first();
+
+                $cs = CourseSection::where('course_id',$r->year)->where('section_id',1)->first();
+
+                Student::create([
+
+                    'user_id' => $u->id,
+                    'course_section_id' => $cs->id,
+                    'rep_name' => $r->rep_name,
+                    'rep_DNI' => $r->rep_DNI,
+                    'rep_phone_number' => $r->rep_phone_number, 
+
+                ]);
+
+                $s = Student::select('id')->orderBy('id', 'desc')->first();
+
+                $documents = Type_Document::select('id','name')->where('status',1)->orderBy('id','asc')->get()->toArray();
+
+                $fields = array();
+
+                foreach($documents as $document)
+                {   $name = $document['name'];
+                    $field = array( 'student_id' => $s->id, 'type_document_id' => $document['id'], 'document' =>$r->$name  );
+                    array_push($fields,$field);
+                }
+
+
+                 DB::table('document_students')->insert($fields);
+
+                 $lapse = InscriptionLapse::select('id')->orderBy('id', 'desc')->first();
+
+                 DB::table('inscriptions')->insert([
+
+                    'inscription_lapse_id' => $lapse->id,
+                    'student_id' => $s->id
+
+                 ]);
+
+                 $r->request_statu_id = '1';
+                 $r->save();
+
+            });
+            
+            return response()->json(['message'=>'Solicitud aceptada con exito']);
+            
+        }
+    }
+
+
+
+    // ------------------------------------------------------ Reject Requests from request index
+
+    public function update(Request $request, $id)
+    {
+        if($request->ajax())
+        {   
+
+            Request_s::where('id',$id)->update(['request_statu_id' => 2]);
+
+            $r = Request_s::where('id',$id)->first();
+
+            Mail::to($r->email)->queue(new Message_request($r));
+            
+            return response()->json(['message'=>'Solicitud rechazada con exito']);
+        }
+    }
+
+    // ------------------------------------------------------ Filter Requests from request index
+
+    public function filter_requests(Request $request,$action)
+    {
+        if($request->ajax())
+        {   
+            $year = [];
+           if($request->year == "all")
+                $year = [1,2,3,4,5];
+            else
+                $year = [$request->year];
+
+           if($action == 2)
+                $requests_s = Request_s::where('request_statu_id',2)->whereIn('year',$year)->orderBy('request_statu_id','asc')->get()->toArray();
+            else if($action == 1)
+                $requests_s = Request_s::where('request_statu_id',1)->whereIn('year',$year)->orderBy('request_statu_id','asc')->get()->toArray();
+            else if($action == 3)
+                $requests_s = Request_s::where('request_statu_id',3)->whereIn('year',$year)->orderBy('request_statu_id','asc')->get()->toArray();
+
+
+            return response()->json($requests_s);
+    
+            
+        }
+    }
+
+
+    // ------------------------------------------------------ Consult Request documents from request index
+
     public function see_documents(Request $request,$id)
     {   
         if($request->ajax())
@@ -395,49 +365,54 @@ class InscriptionController extends Controller
     }
 
 
-   /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // ------------------------------------------------------ Config Inscriptions Index --------------------
 
-    public function show($id)
-    {
-        //
-    }
+    public function config()
+    {   
 
+        //Verify if exists school lapse 
+        $school_lapse = SchoolLapse::with('inscription_lapse.quotas')->orderBy('id','desc')->first();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $access = false;
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        if($school_lapse == null)            
+            return view('workspace.admin.inscriptions.config',compact('access'));
 
+        else{
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function delete($id,Request $request)
-    {
+             
+
+            if ($school_lapse->status == 1)
+            {       
+                $docs = Type_Document::orderBy('id','asc')->get();   
+                $access = true;
+
+                if(isset($school_lapse->inscription_lapse->id))
+                {   
+                      
+
+                       $docs = Type_Document::orderBy('id','asc')->get();
+
+                       return view('workspace.admin.inscriptions.config',compact('access','school_lapse','docs')); 
+                }
+                else
+                {
+                       
+
+                       return view('workspace.admin.inscriptions.config',compact('access','docs'));
+                }   
+            }
+
+            else{ return view('workspace.admin.inscriptions.config',compact('access') ); }
+        }
         
     }
+
+    public function save_config(Request $request)
+    {
+        return "Work it";
+    }
+
 }
 
 

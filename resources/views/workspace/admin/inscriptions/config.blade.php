@@ -30,27 +30,9 @@
   <script src="{{asset('assets/LTE/plugins/inputmask/jquery.inputmask.min.js')}}"></script>  
   <script src="{{asset('assets/LTE/plugins/daterangepicker/daterangepicker.js')}}"></script>
 
-    <script>
-            //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Money Euro
-    $('[data-mask]').inputmask()
 
-        //         //Datemask dd/mm/yyyy
-        // $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-        // //Datemask2 mm/dd/yyyy
-        // $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-        // //Money Euro
-        // $('[data-mask]').inputmask()
-
-        //Date picker
-
-    </script>
-
-
-    <script>
+  <!-- Docs table -->
+  <script>
         // start config date for inscribe *********************************************************************+
         const submit_date = document.querySelector('#date_btn')
         const inp_start = document.querySelector('.start')
@@ -339,28 +321,26 @@
             }
 
         })
-    </script>
+  </script>
+  <!-- ??? -->
+  <script>
+        
+        $('.selectyear').each(function() {
 
-<script>
-    
-    $('.selectyear').each(function() {
+          var year = (new Date()).getFullYear();
+          var current = year;
+          year -= 3;
+          for (var i = 0; i < 6; i++) {
+            if ((year+i) == current)
+              $(this).append('<option selected value="' + (year + i) + '">' + (year + i) + '</option>');
+            else
+              $(this).append('<option value="' + (year + i) + '">' + (year + i) + '</option>');
+          }
 
-  var year = (new Date()).getFullYear();
-  var current = year;
-  year -= 3;
-  for (var i = 0; i < 6; i++) {
-    if ((year+i) == current)
-      $(this).append('<option selected value="' + (year + i) + '">' + (year + i) + '</option>');
-    else
-      $(this).append('<option value="' + (year + i) + '">' + (year + i) + '</option>');
-  }
+        })
+  </script>
 
-})
-
-
-
-
-</script>
+ <script src="{{asset("assets/js/modules/config_inscriptions.js")}}" type="module"></script>
 
 @endsection
 

@@ -2,10 +2,12 @@
 
 namespace App\Models\Inscriptions;
 
+use App\Models\Inscriptions\Quota;
+use App\Models\Inscriptions\SchoolLapse;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
-use App\Models\Inscriptions\SchoolLapse;
+
 
 class InscriptionLapse extends Model
 {     
@@ -22,6 +24,11 @@ class InscriptionLapse extends Model
     public function school_lapse()
     {
         return $this->hasOne(SchoolLapse::class);
+    }
+
+    public function quotas()
+    {
+        return $this->hasMany(Quota::class);
     }
 
     public function verify_date()

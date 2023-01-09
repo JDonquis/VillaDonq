@@ -4,12 +4,12 @@
                         <form class="d-md-flex " id="date-form">
                         <div class="form-group" >
                             <label>Inicio:
-                                <input min="" max="" class="start form-control" type="date" name="start">
+                                <input value="{{$school_lapse->inscription_lapse->start}}" max="{{$school_lapse->inscription_lapse->end}}" class="start form-control" type="date" name="start">
                             </label>
                         </div>
                         <div class="form-group ml-md-3">
                             <label>Fin:
-                                <input disabled="true" min="" max="" class="end form-control" type="date" name="end">
+                                <input disabled="true" min="{{$school_lapse->inscription_lapse->start}}" value="{{$school_lapse->inscription_lapse->end}}" max="" class="end form-control" type="date" name="end">
                             </label>
                         </div>
                         <span class="parent_btn_submit ">
@@ -38,12 +38,14 @@
                     </tr>
                   </thead>
                   <tbody>
-
-                    <tr>
-                      <td>1</td>
+                    
+                    @for($i = 0; $i < 5; $i++)
+                    
+                     <tr>
+                      <td>{{$i+1}}</td>
                       <td class="position-relative ">  
                         <!-- min == numero de aceptados -->
-                      <input type="number" min="30" class="asignados w-100 h-100 position-absolute top-0 left-0 pl-3 pb-3"  name="asignado1" value="100">
+                      <input type="number" min="{{$school_lapse->inscription_lapse->quotas[$i]->accepted}}" class="asignados w-100 h-100 position-absolute top-0 left-0 pl-3 pb-3"  name="assigned{{$i+1}}" value="{{$school_lapse->inscription_lapse->quotas[$i]->assigned}}">
                       </td>
                       <td colspan="2">
                         <div class="progress progress-xs">
@@ -51,82 +53,22 @@
                           <div class="progress-bar bg-2" style="width: 85%"></div>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <span class="aceptados mt-2 color-2 font-weight-bold">30</span>
-                        <input  min="0" class="restantes r1 border text-right rounded mt-1 col-3 input-sm" type="number" name="restantes1" value="15" >
+                            <span class="aceptados mt-2 color-2 font-weight-bold">{{$school_lapse->inscription_lapse->quotas[0]->accepted}}</span>
+                        <input  min="0" class="restantes r1 border text-right rounded mt-1 col-3 input-sm" type="number" name="remaining{{$i+1}}" value="{{$school_lapse->inscription_lapse->quotas[$i]->remaining}}" >
                         </div>
                       </td>
                     </tr>
 
-                    <tr>
-                        <td>2</td>
-                        <td class="position-relative ">
-                          
-                        <input type="number" min="1" class="asignados w-100 h-100 position-absolute top-0 left-0 pl-3 pb-3"  name="asignado2" value="7">
-                        </td>
-                        <td colspan="2">
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-2" style="width: 75%"></div>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span class="aceptados mt-2 color-2 font-weight-bold">1</span>
-                        <input  min="0" class="restantes r2 border text-right rounded mt-1 col-3 input-sm" type="number" name="restantes2" value="15" >
-                        </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td class="position-relative ">
-                          
-                        <input type="number" min="0" class="asignados w-100 h-100 position-absolute top-0 left-0 pl-3 pb-3"  name="asignado3" value="9">
-                        </td>
-                        <td colspan="2">
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-2" style="width: 5%"></div>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span class="aceptados mt-2 color-2 font-weight-bold">30</span>
-                        <input  min="0" class="restantes r3 border text-right rounded mt-1 col-3 input-sm" type="number" name="restantes3" value="15" >
-                        </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td class="position-relative ">
-                          
-                        <input type="number" min="0" class="asignados w-100 h-100 position-absolute top-0 left-0 pl-3 pb-3"  name="asignado4" value="2">
-                        </td>
-                        <td colspan="2">
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-2" style="width: 55%"></div>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span class="aceptados mt-2 color-2 font-weight-bold">30</span>
-                        <input  min="0" class="restantes r4 border text-right rounded mt-1 col-3 input-sm" type="number" name="restantes4" value="15" >
-                        </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td class="position-relative ">
-                          
-                        <input type="number" min="0" class="asignados w-100 h-100 position-absolute top-0 left-0 pl-3 pb-3"  name="asignado5" value="6">
-                        </td>
-                        <td colspan="2">
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-2" style="width: 15%"></div>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span class="aceptados mt-2 color-2 font-weight-bold">30</span>
-                        <input  min="0" class="restantes r5 border text-right rounded mt-1 col-3 input-sm" type="number" name="restantes5" value="15" >
-                        </div>
-                        </td>
-                    </tr>
+
+                    @endfor
+                    
+                    
                    
                   </tbody>
 
                 </table>
                 <span class="parent_btn_submit">
-                <input title='Ctrl + s' type="submit" name="save-plan" value="Guardar cupos" class="btn_submit d-none mt-2" id="cupos_btn"></span>
+                <input title='Ctrl + s' type="submit" name="save-quotas" value="Guardar cupos" class="btn_submit d-none mt-2" id="cupos_btn"></span>
                                         
               </div>
               <!-- /.card-body -->
@@ -150,7 +92,7 @@
                                     <h2 class="h4 d-inline">Documentos </h2>
                                     <div class="card-tools ">
                                         <span class="parent_btn_submit">
-                                        <input title='Ctrl + s' type="submit" name="save-plan" value="GUARDAR" class="btn_submit d-none mt-0" id="docs_btn"></span>
+                                        <input title='Ctrl + s' type="submit" name="save-docs" value="GUARDAR" class="btn_submit d-none mt-0" id="docs_btn"></span>
                                     </div>
                                 </div>
                                 <!-- /.card-header -->
@@ -181,8 +123,8 @@
                                                 <td class="text-center align-middle each_cell">
                                                     <div class="form-group">
                                                     <div class="custom-control custom-switch">
-                                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                                        <label class="custom-control-label" for="customSwitch1"></label>
+                                                        <input type="checkbox" class="custom-control-input" id="requested{{$c}}">
+                                                        <label class="custom-control-label" for="requested{{$c}}"></label>
                                                     </div>
                                                     </div>
                                                 </td>
@@ -190,8 +132,8 @@
                                                 <td class="text-center align-middle each_cell">
                                                     <div class="form-group">
                                                     <div class="custom-control custom-switch">
-                                                        <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                                                        <label class="custom-control-label" for="customSwitch2"></label>
+                                                        <input type="checkbox" class="custom-control-input" id="required-{{$c+1}}">
+                                                        <label class="custom-control-label" for="required-{{$c+1}}"></label>
                                                     </div>
                                                     </div>
                                                 </td>
@@ -218,13 +160,9 @@
                             </div>
                             <!-- /.card -->
                         </div>
-                        <input type="hidden" name="insert" value="1">
-                        <input type="hidden" name="teacher_id" value="1">
-                        <input type="hidden" name="name_teacher" value="1">
-                        <input type="hidden" name="last_name_teacher" value="1">
-                        <input type="hidden" name="unidades" value="1" id="N_uni">
+
                     </form>
-                
+            
 
 
 </section>
