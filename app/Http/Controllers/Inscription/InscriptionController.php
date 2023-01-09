@@ -9,6 +9,7 @@ use App\Http\Requests\InscriptionRequest;
 use App\Models\Documents\Type_Document;
 use App\Models\Request\Request_s;
 use App\Models\Inscriptions\InscriptionLapse;
+use App\Models\Inscriptions\SchoolLapse;
 use App\Models\Inscriptions\Course;
 use App\Models\Inscriptions\Quota;
 use App\Models\Inscriptions\CourseSection;
@@ -59,6 +60,44 @@ class InscriptionController extends Controller
         return view('workspace.admin.request',compact('docs'));
     }
 
+    public function config()
+    {   
+        $school_lapse = SchoolLapse::with('inscription_lapse')->orderBy('id','desc')->first();
+
+        $access = false;
+
+        if($school_lapse == null)            
+            return view('workspace.admin.inscriptions.config',compact('access'));
+
+        else{
+
+             
+
+            if ($school_lapse->status == 1)
+            {       
+                $docs = Type_Document::orderBy('id','asc')->get();   
+                $access = true;
+
+                if(isset($school_lapse->inscription_lapse->id))
+                {   
+                      
+
+                       $docs = Type_Document::orderBy('id','asc')->get();
+
+                       return view('workspace.admin.inscriptions.config',compact('access','scholl_lapse','docs')); 
+                }
+                else
+                {
+                       
+
+                       return view('workspace.admin.inscriptions.config',compact('access','docs'));
+                }   
+            }
+
+            else{ return view('workspace.admin.inscriptions.config',compact('access') ); }
+        }
+        
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -195,7 +234,7 @@ class InscriptionController extends Controller
             {
                 if(!isset($request->$dUp)){
 
-                    DB::table('request_documents')->where('request_s_id',$id_request)->delete();
+                    DB::table('request_documents')->where('request_id',$id_request)->delete();
                     Request_s::where('id',$id_request)->delete();
 
                     return back()->with( ['message' => str_replace('_', ' ',$d ).' es requerido.','continue' => 'OK'] )->withInput();     
@@ -205,7 +244,7 @@ class InscriptionController extends Controller
                      if(!$doc = Request_s::verify_type_doc($request->$dUp) )
                      {
                         
-                        DB::table('request_documents')->where('request_s_id',$id_request)->delete();
+                        DB::table('request_documents')->where('request_id',$id_request)->delete();
                         Request_s::where('id',$id_request)->delete();
 
                         return back()->with( ['message' => 'Formato de '. str_replace('_', ' ',$d ).' no valido, Asegurese que el fomato sea pdf, jpg, jpeg, png','continue' => 'OK'] )->withInput();
@@ -216,7 +255,7 @@ class InscriptionController extends Controller
                          $doc = Request_s::set_docs($request->$dUp,false,$d);
                          DB::table('request_documents')->insert([
 
-                             'request_s_id' => $id_request,
+                             'request_id' => $id_request,
                             'type_document_id' => $doc_up['id'],
                             'name' => $doc
                          ]);
@@ -228,7 +267,7 @@ class InscriptionController extends Controller
                 if(isset($request->$dUp)){
                    if(!$doc = Request_s::verify_type_doc($request->$dUp) ){ 
                         
-                        DB::table('request_documents')->where('request_s_id',$id_request)->delete();
+                        DB::table('request_documents')->where('request_id',$id_request)->delete();
                         Request_s::where('id',$id_request)->delete();
 
                         return back()->with( ['message' => 'Formato de '. str_replace('_', ' ',$d ).' no valido, Asegurese que el fomato sea pdf, jpg, jpeg, png','continue' => 'OK'] )->withInput();
@@ -238,7 +277,7 @@ class InscriptionController extends Controller
                         $doc = Request_s::set_docs($request->$dUp,false,$d);
                         DB::table('request_documents')->insert([
 
-                             'request_s_id' => $id_request,
+                             'request_id' => $id_request,
                             'type_document_id' => $doc_up['id'],
                             'name' => $doc
                         ]);

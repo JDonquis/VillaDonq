@@ -17,11 +17,11 @@ class TypeDocumentSeeder extends Seeder
     {   
          $types = [
 
-            ['name' => 'cer_notes', 'status' => 1, 'required' => 1],
-            ['name' => 'cer_conduct', 'status' => 1, 'required' => 1],
-            ['name' => 'cer_birth', 'status' => 1, 'required' => 1],
-            ['name' => 'report_card', 'status' => 1, 'required' => 1],
-            ['name' => 'photo', 'status' => 1, 'required' => 1],            
+            ['name' => 'Notas_certificadas', 'status' => 1, 'required' => 1],
+            ['name' => 'Certificado_de_buena_conducta', 'status' => 1, 'required' => 1],
+            ['name' => 'Partida_de_nacimiento', 'status' => 1, 'required' => 1],
+            ['name' => 'Boleta', 'status' => 1, 'required' => 1],
+            ['name' => 'Foto', 'status' => 1, 'required' => 1],            
 
          ];   
 

@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             'users',
             'institution_infos',
             'inscription_lapses',
+            'school_lapses',
             'quotas'
 
 
@@ -42,6 +43,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TypeDocumentSeeder::class,
             InstitutionInfoSeeder::class,
+            SchoolLapseSeeder::class,
             InscriptionLapseSeeder::class,
             QuotaSeeder::class,
 

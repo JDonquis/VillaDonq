@@ -41,17 +41,23 @@ Route::group([ 'prefix' => 'workspace', 'namespace' => 'Workspace','middleware' 
     
     // Inscription-Workspace
     
-    Route::get('solicitudes', [InscriptionController::class,'requests'])->name("requests");
+        //Requests 
+        
+            Route::get('solicitudes', [InscriptionController::class,'requests'])->name("requests");
 
-    Route::get('solicitudes/documentos/{id}', [InscriptionController::class,'see_documents'])->name("see_documents");
+            Route::get('solicitudes/documentos/{id}', [InscriptionController::class,'see_documents'])->name("see_documents");
 
-    Route::post('solicitudes/get', [InscriptionController::class,'requests_show'])->name("requests_show");
+            Route::post('solicitudes/get', [InscriptionController::class,'requests_show'])->name("requests_show");
 
-    Route::post('solicitudes/filter/{action}',[InscriptionController::class,'filter_requests'])->name('filter_requests');
+            Route::post('solicitudes/filter/{action}',[InscriptionController::class,'filter_requests'])->name('filter_requests');
 
-    Route::post('solicitudes/create',[InscriptionController::class,'create'])->name('inscription_create');
+            Route::post('solicitudes/create',[InscriptionController::class,'create'])->name('inscription_create');
 
-    Route::put('solicitudes/{id}',[InscriptionController::class,'update'])->name('request_update');
+            Route::put('solicitudes/{id}',[InscriptionController::class,'update'])->name('request_update');
+        
+        //Config
+            Route::get('inscripciones/configuracion', [InscriptionController::class,'config'])->name("config");
+            
 
     // Institution Profile
 

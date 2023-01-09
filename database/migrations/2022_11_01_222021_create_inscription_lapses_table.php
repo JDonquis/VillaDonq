@@ -15,6 +15,7 @@ class CreateInscriptionLapsesTable extends Migration
     {
         Schema::create('inscription_lapses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("school_lapse_id")->constrained()->onDelete("restrict")->onUpdate("restrict");
             $table->date('start');
             $table->date('end');
             $table->timestamps();

@@ -11,7 +11,7 @@ class CreateRequestsTable extends Migration
      *
      * @return void
      */
-    public function up()
+       public function up()
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
@@ -33,6 +33,7 @@ class CreateRequestsTable extends Migration
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

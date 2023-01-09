@@ -17,7 +17,7 @@ class InscriptionLapseSeeder extends Seeder
     {
         $fields = [
 
-            ['start' => '2022-09-07', 'end' => '2023-09-07' ],
+            ['start' => '2022-09-07', 'end' => '2023-09-07','school_lapse_id' => 1 ],
      
 
          ];   

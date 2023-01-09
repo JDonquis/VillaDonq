@@ -21,12 +21,21 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
+              <li class="nav-item">
+                <a href="{{route("config")}}" class="nav-link">
+                  <i class="nav-icon far fa-circle"></i>
+                  <p>Configuracion</p>
+                </a>
+              </li>
+              
               <li class="nav-item">
                 <a href="{{route("requests")}}" class="nav-link">
                   <i class="nav-icon far fa-circle"></i>
                   <p>Solicitudes</p>
                 </a>
               </li>
+            
             </ul>
           </li>
       </ul>

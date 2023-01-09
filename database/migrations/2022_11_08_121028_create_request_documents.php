@@ -15,7 +15,7 @@ class CreateRequestDocuments extends Migration
     {
         Schema::create('request_documents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('request_s_id')->constrained()->onDelete("cascade")->onUpdate("restrict");
+            $table->foreignId('request_id')->constrained()->onDelete("cascade")->onUpdate("restrict");
             $table->foreignId('type_document_id')->constrained()->onDelete("restrict")->onUpdate("restrict");
             $table->string('name',100)->nullable();
         });

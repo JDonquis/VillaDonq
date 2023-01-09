@@ -18,6 +18,6 @@ class Type_Document extends Model
 
     public function request()
     {
-        return $this->belongsToMany(Request_s::class,'request_documents','type_document_id','request_s_id')->withPivot('name');
+        return $this->belongsToMany(Request_s::class,'request_documents','type_document_id','request_id')->withPivot('name');
     }
 }

@@ -74,7 +74,7 @@ class Request_s extends Model
 
     public function type_documents()
     {
-        return $this->belongsToMany(Type_Document::class,'request_documents','request_s_id','type_document_id')->withPivot('name');;
+        return $this->belongsToMany(Type_Document::class,'request_documents','request_id','type_document_id')->withPivot('name');;
     }
 
 

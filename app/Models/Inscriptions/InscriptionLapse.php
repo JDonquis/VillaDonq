@@ -5,6 +5,8 @@ namespace App\Models\Inscriptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Models\Inscriptions\SchoolLapse;
+
 class InscriptionLapse extends Model
 {     
 
@@ -12,8 +14,15 @@ class InscriptionLapse extends Model
       protected $fillable = [
         'start',
         'end',
+        
     ];
     protected $guarded = 'id';
+
+
+    public function school_lapse()
+    {
+        return $this->hasOne(SchoolLapse::class);
+    }
 
     public function verify_date()
     {
@@ -25,4 +34,5 @@ class InscriptionLapse extends Model
 
         return $Ldate >= $Ndate ? true:false; 
     }
+
 }

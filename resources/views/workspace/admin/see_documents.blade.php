@@ -42,7 +42,7 @@
 		<div class="d-flex justify-content-between">
 
 			<div class="offset-5 box-name">
-				<h4 class="text-dark pt-1">{{$request_docs->name}}</h4>
+				<h4 class="text-dark pt-1">{{$request_docs->name.' '.$request_docs->last_name}}</h4>
 			</div>
 			<div class="h-fit">
 				<button class="hamburger hamburger--slider is-active" id="close-model-docs" type="button">
