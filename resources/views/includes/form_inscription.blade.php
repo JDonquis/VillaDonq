@@ -66,7 +66,7 @@
 
                      @php 
 
-                        $ndocs = round(count($docs)/3,0,PHP_ROUND_HALF_DOWN);
+                        $ndocs = ceil(count($docs)/3);
                         $start = 0;
                      @endphp
 
@@ -126,3 +126,8 @@
                 </div>
             </div>
         </form>
+
+        <div>
+            
+            <p>{{var_dump($ndocs)}}</p>
+        </div>

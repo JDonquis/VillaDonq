@@ -17,7 +17,11 @@ class QuotaSeeder extends Seeder
     {
              $fields = [
 
-            ['assigned' => 30, 'accepted' => 0, 'remaining' => 30, 'course_id' =>'1','inscription_lapse_id' => '1' ]
+            ['assigned' => 0, 'accepted' => 0, 'remaining' => 0, 'course_id' =>'1','inscription_lapse_id' => '1' ],
+            ['assigned' => 0, 'accepted' => 0, 'remaining' => 0, 'course_id' =>'2','inscription_lapse_id' => '1' ],
+            ['assigned' => 0, 'accepted' => 0, 'remaining' => 0, 'course_id' =>'3','inscription_lapse_id' => '1' ],
+            ['assigned' => 0, 'accepted' => 0, 'remaining' => 0, 'course_id' =>'4','inscription_lapse_id' => '1' ],
+            ['assigned' => 0, 'accepted' => 0, 'remaining' => 0, 'course_id' =>'5','inscription_lapse_id' => '1' ],
      
 
          ];   
