@@ -295,8 +295,13 @@ class InscriptionController extends Controller
 
                  ]);
 
+                 Quota::where("inscription_lapse_id",$lapse->id)->where("course_id",$r->year)->increment("accepted");
+                 Quota::where("inscription_lapse_id",$lapse->id)->where("course_id",$r->year)->decrement("remaining");
+
                  $r->request_statu_id = '1';
                  $r->save();
+
+
 
             });
             
@@ -410,7 +415,76 @@ class InscriptionController extends Controller
 
     public function save_config(Request $request)
     {
-        return "Work it";
+        if($request->ajax())
+        {   
+
+            $id_lapse = InscriptionLapse::select('id')->orderBy('id','desc')->first();
+
+            //Verify field
+            if($request->field == 'date')
+            {
+                
+
+                if($request->start != null)
+                    $ins_lapse = InscriptionLapse::where("id",$id_lapse->id)->update(["start" => $request->start, "end" => $request->end]);
+                else{
+
+                    $ins_lapse = InscriptionLapse::where("id",$id_lapse->id)->update(["end" => $request->end]);
+                }
+
+                return response()->json("Fecha actualizada con exito!.");
+            }
+
+            if($request->field == 'quota')
+            {   
+                $assigned = 'assigned';
+                $remaining = 'remaining';
+
+                for($i = 1; $i <= 5; $i++)
+                {
+                    $a = $assigned.$i;
+                    $r = $remaining.$i;
+                    Quota::where("inscription_lapse_id",$id_lapse->id)->where("course_id",$i)->update(["assigned" => $request->$a, "remaining" => $request->$r ]);
+                }
+                
+                return response()->json("Cupos actualizados con exito!.");
+            }
+
+            if($request->field == 'doc')
+            {   
+
+                for($i = 1; $i <= number_format($request->unidades);$i++)
+                {
+                    
+                     $str = "doc-id-".$i;
+                     $str2 = "tema".$i;
+                     $rq = "requested".$i."-1";
+                     $rqr = "required".$i."-2";
+
+                     $st = 0;
+                     $re = 0;
+                     $id_doc = $request->$str;
+                     $n = $request->$str2;
+                     
+                     if(isset($request->$rq))
+                        $st = 1;
+                    
+                     if(isset($request->$rqr))
+                        $re = 1;
+
+                        
+                        Type_Document::updateOrCreate(
+
+                            ['id' => $id_doc],
+                            ['name' => str_replace(" ","_",$n),'status' => $st, 'required' => $re]                   
+                            
+                        );
+                }    
+                      return response()->json("Documentos actualizados con exito!.");
+                
+            }
+            
+        }
     }
 
 }

@@ -29,41 +29,10 @@
   <script src="{{asset('assets/LTE/plugins/moment/moment.min.js')}}"></script>
   <script src="{{asset('assets/LTE/plugins/inputmask/jquery.inputmask.min.js')}}"></script>  
   <script src="{{asset('assets/LTE/plugins/daterangepicker/daterangepicker.js')}}"></script>
-
-
-  <!-- Docs table -->
+  <script src="{{asset("assets/js/modules/config_inscriptions.js")}}" type="module"></script>
+ {{-- Docs table --}}
   <script>
-        // start config date for inscribe *********************************************************************+
-        const submit_date = document.querySelector('#date_btn')
-        const inp_start = document.querySelector('.start')
-        const inp_end = document.querySelector('.end')
-
-        document.querySelector("#date-form").onchange = (e) => {
-            if (e.target == inp_start) {
-                inp_end.min = inp_start.value
-                inp_end.disabled = false
-
-                if (inp_start.value >= inp_end.value) {
-                    inp_end.value = inp_start.value
-                }
-            }
-
-            submit_date.classList.remove('d-none')
-            submit_date.classList.add('opacity_1')
-
-        }
-        if (inp_start.value.length > 0  ) {
-            inp_start.disabled = true
-            inp_end.disabled = false
-        }
-        // inp_start.onchange = (e) => {
-
-
-        // }
-
-
-
-        // start   events on cupos table ***************************************************************
+              // start   events on cupos table ***************************************************************
         const submit_cupos = document.querySelector('#cupos_btn')
         const error_message = document.querySelector('.limit_error')
         document.querySelector('table.cupos').addEventListener('input', (e) => {
@@ -156,7 +125,7 @@
             <td class="text-center align-middle each_cell">
                 <div class="form-group">
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="solicitado${new_n}">
+                        <input type="checkbox" class="custom-control-input" id="solicitado${new_n}" name="requested${new_n}-1">
                         <label class="custom-control-label" for="solicitado${new_n}"></label>
                     </div>
                 </div>
@@ -165,7 +134,7 @@
             <td class="text-center align-middle each_cell">
                 <div class="form-group">
                 <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="requerido${new_n}">
+                    <input type="checkbox" class="custom-control-input" id="requerido${new_n}" name="required${new_n}-2">
                     <label class="custom-control-label" for="requerido${new_n}"></label>
                 </div>
                 </div>
@@ -196,7 +165,6 @@
                     const texta = td.querySelectorAll('textarea')
                     if (texta) {
                         const texta_len = texta.value.length
-                        console.log(texta.value.trim().length)
                         if (!(texta.value.trim().length === 0)) {
                             texta.setSelectionRange(texta_len, texta_len)
                         }
@@ -257,7 +225,7 @@
                 past_btn.classList.add('disabled')
 
             } 
-            console.log(history)
+
 
         }
         getData()
@@ -322,25 +290,6 @@
 
         })
   </script>
-  <!-- ??? -->
-  <script>
-        
-        $('.selectyear').each(function() {
-
-          var year = (new Date()).getFullYear();
-          var current = year;
-          year -= 3;
-          for (var i = 0; i < 6; i++) {
-            if ((year+i) == current)
-              $(this).append('<option selected value="' + (year + i) + '">' + (year + i) + '</option>');
-            else
-              $(this).append('<option value="' + (year + i) + '">' + (year + i) + '</option>');
-          }
-
-        })
-  </script>
-
- <script src="{{asset("assets/js/modules/config_inscriptions.js")}}" type="module"></script>
 
 @endsection
 

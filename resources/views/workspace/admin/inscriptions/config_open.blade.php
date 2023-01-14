@@ -1,7 +1,8 @@
 <section class="container-fluid">
                     <h2 class="h3">Periodo de inscripción nuevo año escolar 2023</h2>
 
-                        <form class="d-md-flex " id="date-form">
+                        <form class="d-md-flex " id="date-form" method="post">
+                        @csrf
                         <div class="form-group" >
                             <label>Inicio:
                                 <input value="{{$school_lapse->inscription_lapse->start}}" max="{{$school_lapse->inscription_lapse->end}}" class="start form-control" type="date" name="start">
@@ -18,7 +19,8 @@
 
 
 <!-- start cupos *********************************************************************************************************************************************************************************************** -->
-<form class="row">
+<form class="row" method="post" id="quotas-form">
+    @csrf
     <div class="col-md-8">
         <div class="card">
 
@@ -41,6 +43,7 @@
                     
                     @for($i = 0; $i < 5; $i++)
                     
+                    <input type="hidden" name="id_year" value="{{$i}}">
                      <tr>
                       <td>{{$i+1}}</td>
                       <td class="position-relative ">  
@@ -53,7 +56,7 @@
                           <div class="progress-bar bg-2" style="width: 85%"></div>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <span class="aceptados mt-2 color-2 font-weight-bold">{{$school_lapse->inscription_lapse->quotas[0]->accepted}}</span>
+                            <span class="aceptados mt-2 color-2 font-weight-bold">{{$school_lapse->inscription_lapse->quotas[$i]->accepted}}</span>
                         <input  min="0" class="restantes r1 border text-right rounded mt-1 col-3 input-sm" type="number" name="remaining{{$i+1}}" value="{{$school_lapse->inscription_lapse->quotas[$i]->remaining}}" >
                         </div>
                       </td>
@@ -79,7 +82,8 @@
 
 
 <!--start docs *****************************************************************************************************************************************************************************************+ -->
-             <form class="row  row_table_plan" id="docs-form">
+             <form class="row  row_table_plan" method="post" id="docs-form">
+                @csrf
                         <div class="col-md-10">
                             <div class="card parent_pdf">
                                 <div class="card-header">
@@ -104,12 +108,11 @@
                                                 <th>Nombre del documento</th>
                                                 <th>Solicitado</th>
                                                 <th>Obligatorio</th>
-                                                <th class="th_valor">Eliminar</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{-- {{var_dump($docs)}} --}}
+                                            
 
                                             @php $c = 0; @endphp
                                             @foreach($docs as $doc)
@@ -118,12 +121,13 @@
                                                 <td class="text-bold td_unidad">
                                                     {{$c}}
                                                 </td>
+                                                <input type="hidden" name="doc-id-{{$c}}" value="{{$doc->id}}">
                                                 <td class="p-0 each_cell"><textarea
-                                                        name="tema1">{{ str_replace("_"," ",$doc->name) }}</textarea></td>
+                                                        name="tema{{$c}}">{{ str_replace("_"," ",$doc->name) }}</textarea></td>
                                                 <td class="text-center align-middle each_cell">
                                                     <div class="form-group">
                                                     <div class="custom-control custom-switch">
-                                                        <input type="checkbox" class="custom-control-input" id="requested{{$c}}">
+                                                        <input type="checkbox" class="custom-control-input" id="requested{{$c}}" name="requested{{$c}}-1" {{$doc->status == 1?"checked":""}}>
                                                         <label class="custom-control-label" for="requested{{$c}}"></label>
                                                     </div>
                                                     </div>
@@ -132,15 +136,12 @@
                                                 <td class="text-center align-middle each_cell">
                                                     <div class="form-group">
                                                     <div class="custom-control custom-switch">
-                                                        <input type="checkbox" class="custom-control-input" id="required-{{$c+1}}">
+                                                        <input type="checkbox" name="required{{$c}}-2" class="custom-control-input" id="required-{{$c+1}}" {{$doc->required == 1?"checked":""}}>
                                                         <label class="custom-control-label" for="required-{{$c+1}}"></label>
                                                     </div>
                                                     </div>
                                                 </td>
-                                                
-                                                <td class="borrar text-center"><i class="fa-solid fa-xmark"
-                                                        id="br{{$c}}"></i></td>
-
+                                               
                                             </tr>
                                             @endforeach
 
@@ -161,8 +162,8 @@
                             <!-- /.card -->
                         </div>
 
+                         <input type="hidden" name="unidades" value="1" id="N_uni">
+
                     </form>
-            
-
-
+        
 </section>
