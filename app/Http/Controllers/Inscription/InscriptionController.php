@@ -37,6 +37,11 @@ class InscriptionController extends Controller
     public function index()
     {   
 
+        $school_lapse = SchoolLapse::select('status')->orderByDesc('id')->first();
+
+        if($school_lapse->status != 1)
+             return view("inscriptions.inscriptions_closed",['message' => 'Lo sentimos las inscripciones han sido cerradas']);
+
        $lapse_id = Quota::last_lapse_id();
 
        $q_available = Quota::where('remaining','>',0)

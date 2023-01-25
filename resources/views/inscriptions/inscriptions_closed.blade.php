@@ -17,14 +17,6 @@
 
     @include("includes.loader")
 
-{{--             <div class="message {{$errors->any()?'response':''}} {{session("message")?'response':''}}">
-        
-                <span>
-                    {{$errors->first()}}
-                    {{session("message")}}
-                </span>
-
-            </div> --}}
 
 
             <div class="box-message-inscription-closed">
@@ -37,6 +29,7 @@
 
 <!-- jQuery -->
 <script src="{{asset("assets/LTE/plugins/jquery/jquery.min.js")}}"></script>
+<script src="{{asset("assets/LTE/dist/js/adminlte.min.js")}}"></script>
 
 <script src="{{asset("assets/js/modules/inscribe.js")}}" type="module"></script>
 </html>

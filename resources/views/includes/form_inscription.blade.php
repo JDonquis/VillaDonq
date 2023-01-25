@@ -126,8 +126,3 @@
                 </div>
             </div>
         </form>
-
-        <div>
-            
-            <p>{{var_dump($ndocs)}}</p>
-        </div>

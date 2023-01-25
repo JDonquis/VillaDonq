@@ -1,6 +1,6 @@
 const d = document;
 
-export function save_date (btn,f,message) {
+export function save_date (btn,f,message,url_f) {
 
 	let button = document.querySelector(btn);
 	let form = document.querySelector(f);
@@ -17,7 +17,7 @@ export function save_date (btn,f,message) {
 		
 		$.ajax({
 			
-			url: '/workspace/inscripciones/configuracion/save',
+			url: url_f,
 			type: 'post',
 			data: formD,
 			processData: false,
