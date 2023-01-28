@@ -13,6 +13,16 @@
         </li>
 
         <li class="nav-item">
+          <a href="{{route("school_lapse")}}" class="nav-link">
+            <p>
+              Periodo escolar
+            </p>
+          </a>
+
+        </li>
+
+
+        <li class="nav-item">
             <a href="#" class="nav-link">
              
               <p>
@@ -21,6 +31,8 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+
+
               
               <li class="nav-item">
                 <a href="{{route("config")}}" class="nav-link">

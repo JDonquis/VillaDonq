@@ -1,6 +1,6 @@
 const d = document;
 
-export function save_date (btn,f,message) {
+export function save_date (btn,f,message,url_f) {
 
 	let button = document.querySelector(btn);
 	let form = document.querySelector(f);
@@ -17,13 +17,13 @@ export function save_date (btn,f,message) {
 		
 		$.ajax({
 			
-			url: '/workspace/inscripciones/configuracion/save',
+			url: url_f,
 			type: 'post',
 			data: formD,
 			processData: false,
     		contentType: false,
 			success: function (data) {
-				
+				console.log(data);
 				message(data);
 				button.classList.add("d-none");
 
@@ -55,7 +55,7 @@ export function save_quotas(btn,f,message){
     		contentType: false,
 			success: function (data) {
 				
-
+				console.log(data);
 				message(data);
 				button.classList.add("d-none");
 

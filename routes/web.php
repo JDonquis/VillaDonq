@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Workspace\WorkspaceController;
-use App\Http\Controllers\Security\LoginController;
 use App\Http\Controllers\Inscription\InscriptionController;
+use App\Http\Controllers\Security\LoginController;
 use App\Http\Controllers\Workspace\InstitutionController;
+use App\Http\Controllers\Workspace\SchoolLapseController;
+use App\Http\Controllers\Workspace\WorkspaceController;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,10 +65,14 @@ Route::group([ 'prefix' => 'workspace', 'namespace' => 'Workspace','middleware' 
 
     Route::get('institucion',[InstitutionController::class,'index'])->name("institution_profile");
     Route::post('institucion',[InstitutionController::class,'store'])->name("create_institution_profile");
+    
+    // School Lapse
+
+    Route::get('periodo/escolar',[SchoolLapseController::class,'index'])->name("school_lapse");
+    
+    Route::post('periodo/escolar/save',[SchoolLapseController::class,'save_lapses'])->name("save_lapses");
+    
 
 
 });
 
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -37,6 +37,11 @@ class InscriptionController extends Controller
     public function index()
     {   
 
+        $school_lapse = SchoolLapse::select('status')->orderByDesc('id')->first();
+
+        if($school_lapse->status != 1)
+             return view("inscriptions.inscriptions_closed",['message' => 'Lo sentimos las inscripciones han sido cerradas']);
+
        $lapse_id = Quota::last_lapse_id();
 
        $q_available = Quota::where('remaining','>',0)
@@ -437,6 +442,7 @@ class InscriptionController extends Controller
 
             if($request->field == 'quota')
             {   
+
                 $assigned = 'assigned';
                 $remaining = 'remaining';
 
@@ -444,10 +450,17 @@ class InscriptionController extends Controller
                 {
                     $a = $assigned.$i;
                     $r = $remaining.$i;
-                    Quota::where("inscription_lapse_id",$id_lapse->id)->where("course_id",$i)->update(["assigned" => $request->$a, "remaining" => $request->$r ]);
+                    $accepted = $request->$a - $request->$r;
+                   Quota::updateOrCreate(
+                    ['inscription_lapse_id' =>  $id_lapse->id, 'course_id' => $i ],
+                    ['assigned' => $request->$a, 'remaining' => $request->$r, 'accepted' =>$accepted]
+                );
+                    
                 }
                 
                 return response()->json("Cupos actualizados con exito!.");
+
+                // return response()->json($id_lapse);
             }
 
             if($request->field == 'doc')

@@ -6,7 +6,7 @@ const d = document;
 
 d.addEventListener("DOMContentLoaded", e=>{
 
-	save_date("#date_btn","#date-form",show_message);
+	save_date("#date_btn","#date-form",show_message,'/workspace/inscripciones/configuracion/save');
   save_quotas("#cupos_btn","#quotas-form",show_message);
 	save_docs("#docs_btn","#docs-form",show_message);
 })

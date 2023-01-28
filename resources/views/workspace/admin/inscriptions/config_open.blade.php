@@ -5,12 +5,12 @@
                         @csrf
                         <div class="form-group" >
                             <label>Inicio:
-                                <input value="{{$school_lapse->inscription_lapse->start}}" max="{{$school_lapse->inscription_lapse->end}}" class="start form-control" type="date" name="start">
+                                <input value="{{$school_lapse->inscription_lapse->start ?? ''}}" max="{{$school_lapse->inscription_lapse->end ?? ''}}" class="start form-control" type="date" name="start">
                             </label>
                         </div>
                         <div class="form-group ml-md-3">
                             <label>Fin:
-                                <input disabled="true" min="{{$school_lapse->inscription_lapse->start}}" value="{{$school_lapse->inscription_lapse->end}}" max="" class="end form-control" type="date" name="end">
+                                <input disabled="true" min="{{$school_lapse->inscription_lapse->start ?? ''}}" value="{{$school_lapse->inscription_lapse->end ?? ''}}" max="" class="end form-control" type="date" name="end">
                             </label>
                         </div>
                         <span class="parent_btn_submit ">
@@ -41,14 +41,18 @@
                   </thead>
                   <tbody>
                     
+
                     @for($i = 0; $i < 5; $i++)
+
+
                     
                     <input type="hidden" name="id_year" value="{{$i}}">
                      <tr>
                       <td>{{$i+1}}</td>
                       <td class="position-relative ">  
                         <!-- min == numero de aceptados -->
-                      <input type="number" min="{{$school_lapse->inscription_lapse->quotas[$i]->accepted}}" class="asignados w-100 h-100 position-absolute top-0 left-0 pl-3 pb-3"  name="assigned{{$i+1}}" value="{{$school_lapse->inscription_lapse->quotas[$i]->assigned}}">
+
+                      <input type="number" min="{{$school_lapse->inscription_lapse->quotas[$i]->accepted ?? ''}}" class="asignados w-100 h-100 position-absolute top-0 left-0 pl-3 pb-3"  name="assigned{{$i+1}}" value="{{$school_lapse->inscription_lapse->quotas[$i]->assigned ?? ''}}">
                       </td>
                       <td colspan="2">
                         <div class="progress progress-xs">
@@ -56,8 +60,8 @@
                           <div class="progress-bar bg-2" style="width: 85%"></div>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <span class="aceptados mt-2 color-2 font-weight-bold">{{$school_lapse->inscription_lapse->quotas[$i]->accepted}}</span>
-                        <input  min="0" class="restantes r1 border text-right rounded mt-1 col-3 input-sm" type="number" name="remaining{{$i+1}}" value="{{$school_lapse->inscription_lapse->quotas[$i]->remaining}}" >
+                            <span class="aceptados mt-2 color-2 font-weight-bold">{{$school_lapse->inscription_lapse->quotas[$i]->accepted ?? ''}}</span>
+                        <input  min="0" class="restantes r1 border text-right rounded mt-1 col-3 input-sm" type="number" name="remaining{{$i+1}}" value="{{$school_lapse->inscription_lapse->quotas[$i]->remaining ?? ''}}" >
                         </div>
                       </td>
                     </tr>

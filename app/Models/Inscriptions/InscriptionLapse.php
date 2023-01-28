@@ -14,6 +14,7 @@ class InscriptionLapse extends Model
 
       protected $table = 'inscription_lapses';  
       protected $fillable = [
+        'school_lapse_id',
         'start',
         'end',
         
