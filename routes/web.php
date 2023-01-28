@@ -70,7 +70,7 @@ Route::group([ 'prefix' => 'workspace', 'namespace' => 'Workspace','middleware' 
 
     Route::get('periodo/escolar',[SchoolLapseController::class,'index'])->name("school_lapse");
     
-    Route::post('periodo/escolar/save', [SchoolLapseController::class,'save_lapses'])->name("save_lapses");
+    Route::post('periodo/escolar/save',[SchoolLapseController::class,'save_lapses'])->name("save_lapses");
     
 
 

@@ -8,30 +8,30 @@
 	           
                
             <div class="container-fluid">
-                   <form method="POST" id="form-lapses"  class="w-100">
+                   <form id="form-lapses"  class="w-100" method="post">
                      @csrf                     
                         <div class="row justify-content-around">
 
                             <div class="col-3">
                                 <h4>1er Lapso</h4>
                                 <label for="" class="pt-2">Comienza: </label>
-                                <input type="date" name="start-1" class="form-control">
+                                <input type="date" name="start_1" class="form-control" value="{{$laps[0]->start ?? ''}}">
                                 <label for="" class="pt-2">Termina: </label>
-                                <input type="date" name="end-1" class="form-control">
+                                <input type="date" name="end_1" class="form-control" value="{{$laps[0]->end ?? ''}}">
                             </div>
                             <div class="col-3">
                                 <h4>2do Lapso</h4>
                                 <label for="" class="pt-2">Comienza: </label>
-                                <input type="date" name="start-2" class="form-control">
+                                <input type="date" name="start_2" class="form-control" value="{{$laps[1]->start ?? ''}}">
                                 <label for="" class="pt-2">Termina: </label>
-                                <input type="date" name="end-2" class="form-control">
+                                <input type="date" name="end_2" class="form-control" value="{{$laps[1]->end ?? ''}}">
                             </div>
                             <div class="col-3">
                                 <h4>3er Lapso</h4>
                                 <label for="" class="pt-2">Comienza: </label>
-                                <input type="date" name="start-3" class="form-control">
+                                <input type="date" name="start_3" class="form-control" value="{{$laps[2]->start ?? ''}}">
                                 <label for="" class="pt-2">Termina: </label>
-                                <input type="date" name="end-3" class="form-control">
+                                <input type="date" name="end_3" class="form-control" value="{{$laps[2]->end ?? ''}}">
                             </div>
 
     	                </div>
@@ -39,6 +39,8 @@
 
                     </form>
             </div>
+
+
 @endsection
 
 @section("scripts")

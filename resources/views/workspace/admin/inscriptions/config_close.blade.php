@@ -5,7 +5,7 @@
         <p>Pulse el boton para crear un nuevo periodo escolar</p>
         <div class="d-flex justify-content-center p-3" >
 
-            <button class="btn btn_submit w-25 mt-0" id="star_scolar_lapse">Iniciar nuevo periodo escolar</button>
+            <a class="btn btn_submit w-25 mt-0" id="star_scolar_lapse" href="{{route("school_lapse")}}">Iniciar nuevo periodo escolar</a>
 
         </div>
         

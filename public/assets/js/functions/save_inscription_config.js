@@ -23,7 +23,7 @@ export function save_date (btn,f,message,url_f) {
 			processData: false,
     		contentType: false,
 			success: function (data) {
-				
+				console.log(data);
 				message(data);
 				button.classList.add("d-none");
 
@@ -55,7 +55,7 @@ export function save_quotas(btn,f,message){
     		contentType: false,
 			success: function (data) {
 				
-
+				console.log(data);
 				message(data);
 				button.classList.add("d-none");
 
