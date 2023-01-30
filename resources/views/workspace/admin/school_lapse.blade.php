@@ -17,21 +17,21 @@
                                 <label for="" class="pt-2">Comienza: </label>
                                 <input type="date" name="start_1" class="form-control" value="{{$laps[0]->start ?? ''}}">
                                 <label for="" class="pt-2">Termina: </label>
-                                <input type="date" name="end_1" class="form-control" value="{{$laps[0]->end ?? ''}}">
+                                <input disabled type="date" name="end_1" class="form-control" value="{{$laps[0]->end ?? ''}}">
                             </div>
                             <div class="col-3">
                                 <h4>2do Lapso</h4>
                                 <label for="" class="pt-2">Comienza: </label>
-                                <input type="date" name="start_2" class="form-control" value="{{$laps[1]->start ?? ''}}">
+                                <input disabled type="date" name="start_2" class="form-control" value="{{$laps[1]->start ?? ''}}">
                                 <label for="" class="pt-2">Termina: </label>
-                                <input type="date" name="end_2" class="form-control" value="{{$laps[1]->end ?? ''}}">
+                                <input disabled type="date" name="end_2" class="form-control" value="{{$laps[1]->end ?? ''}}">
                             </div>
                             <div class="col-3">
                                 <h4>3er Lapso</h4>
                                 <label for="" class="pt-2">Comienza: </label>
-                                <input type="date" name="start_3" class="form-control" value="{{$laps[2]->start ?? ''}}">
+                                <input disabled type="date" name="start_3" class="form-control" value="{{$laps[2]->start ?? ''}}">
                                 <label for="" class="pt-2">Termina: </label>
-                                <input type="date" name="end_3" class="form-control" value="{{$laps[2]->end ?? ''}}">
+                                <input disabled type="date" name="end_3" class="form-control" value="{{$laps[2]->end ?? ''}}">
                             </div>
 
     	                </div>
@@ -47,16 +47,19 @@
 	
     <script src="{{asset("assets/js/modules/school_lapse.js")}}" type="module"></script>
     <script>
-        const all_dateInputs = document.querySelectorAll(`input[type="date"]`)
+const all_dateInputs = document.querySelectorAll(`input[type="date"]`)
         all_dateInputs.forEach((inp, indx) => {
+           
             inp.onchange = () => {
                 document.querySelector('#date_btn').classList.remove('d-none')
-                next_inp = all_dateInputs[indx+1]
-                if (next_inp.value < inp.value || !next_inp[indx+1].value ) { 
+                const next_inp = all_dateInputs[indx+1]
+                next_inp.disabled = false
+                if (next_inp.value < inp.value || !next_inp.value ) { 
                     next_inp.min = inp.value
                     next_inp.value = inp.value
                 }
             }
+            if (inp.value) inp.disabled = false
         })
     </script>
 
