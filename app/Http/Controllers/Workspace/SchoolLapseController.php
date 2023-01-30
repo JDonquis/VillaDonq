@@ -41,7 +41,7 @@ class SchoolLapseController extends Controller
     {   
         if($request->ajax()){
 
-            $school_lapse = SchoolLapse::select('status')->orderByDesc('id')->first();
+            $school_lapse = SchoolLapse::select('id','status')->orderByDesc('id')->first();
 
             if($school_lapse->status != 1)
             {
@@ -49,7 +49,7 @@ class SchoolLapseController extends Controller
                 
                    $fields = [
 
-                        ['start' => $request->start_1, 'end' => $request->end_2, 'number' => 1, "school_lapse_id" => $sc->id ],
+                        ['start' => $request->start_1, 'end' => $request->end_1, 'number' => 1, "school_lapse_id" => $sc->id ],
                         ['start' => $request->start_2, 'end' => $request->end_2, 'number' => 2, "school_lapse_id" => $sc->id ],
                         ['start' => $request->start_3, 'end' => $request->end_3, 'number' => 3, "school_lapse_id" => $sc->id ]
                     ];   
@@ -63,7 +63,22 @@ class SchoolLapseController extends Controller
             }
             else{
 
-                return response()->json("existed");
+                $ldate = date('Y-m-d H:i:s');
+
+                for($i = 1; $i < 4; $i++)
+                {
+                    $start = "start_".$i;
+                    $end = "end_".$i;
+
+                    Lapse::where('id',$school_lapse->id)->where('number',$i)->update(['start' => $request->$start, 'end' => $request->end_1, 'number' => $i, "school_lapse_id" => $school_lapse->id ]);
+
+                }
+
+                SchoolLapse::where('id',$school_lapse->id)->update(["start" => $request->start_1, "end" => $request->end_3, "status"=> 1]);
+
+
+
+                return response()->json("Periodo escolar actualizado con exito.");
             }
 
          
