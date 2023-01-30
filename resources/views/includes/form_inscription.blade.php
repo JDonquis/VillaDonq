@@ -32,7 +32,7 @@
                         </div>
                         <div class="d-grid">
                             <span>
-                                <input type="text" data-type="CI" id="ins_DNI" title="Debe escribir una letra 'V' seguida de 8 números" name="DNI" value="{{old("DNI")}}">
+                                <input type="text" data-type="CI" id="ins_DNI" pattern="[0-9]{8}" name="DNI" value="{{old("DNI")}}">
                                 <label for="ins_DNI">DNI: </label>
                             </span>
                             <span>
