@@ -13,9 +13,6 @@ document.querySelectorAll(".card_form input").forEach(input => {
             if (input.type === 'date') {
                 input.classList.add('focus_valid')
             }
-            if (input.dataset.type === 'CI') {
-                input.value = 'V'
-            }
             input.nextElementSibling.classList.add('focus_valid')
             
         }
@@ -23,6 +20,7 @@ document.querySelectorAll(".card_form input").forEach(input => {
             if (input.type == 'date') {
                 !input.value ?  input.classList.remove('focus_valid'): ''
             }
+
             !input.value ? input.nextElementSibling.classList.remove('focus_valid') : ''
         }
     } else {
