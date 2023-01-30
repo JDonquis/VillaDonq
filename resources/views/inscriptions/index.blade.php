@@ -40,7 +40,7 @@
                         
                             <span>
                                 <input type="text" data-type="CI" id="ins_ci" pattern="[A-Za-z]{1}[0-9]{8}" title="Debe escribir una letra 'V' seguida de 8 números" name="ins_ci">
-                                <label for="ins_ci">CI: </label>
+                                <label for="ins_ci">DNI: </label>
                             </span>
                          
                         <label for="ins_type_new">Selecciona un cupo disponible: </label>
