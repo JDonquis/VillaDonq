@@ -35,7 +35,7 @@
                             </div>
 
     	                </div>
-                         <input title='Ctrl + s' type="submit" name="save-lapses" value="Guardar fechas" class="btn_submit mt-5 mx-auto p-2 w-50" id="date_btn">
+                         <input title='Ctrl + s' type="submit" name="save-lapses" value="Guardar fechas" class="btn_submit mt-5 mx-auto p-2 w-50 d-none" id="date_btn">
 
                     </form>
             </div>
@@ -46,5 +46,18 @@
 @section("scripts")
 	
     <script src="{{asset("assets/js/modules/school_lapse.js")}}" type="module"></script>
+    <script>
+        const all_dateInputs = document.querySelectorAll(`input[type="date"]`)
+        all_dateInputs.forEach((inp, indx) => {
+            inp.onchange = () => {
+                document.querySelector('#date_btn').classList.remove('d-none')
+                next_inp = all_dateInputs[indx+1]
+                if (next_inp.value < inp.value || !next_inp[indx+1].value ) { 
+                    next_inp.min = inp.value
+                    next_inp.value = inp.value
+                }
+            }
+        })
+    </script>
 
 @endsection()
