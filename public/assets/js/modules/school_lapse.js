@@ -15,8 +15,12 @@ const d= document;
 d.addEventListener("DOMContentLoaded",e=>
 {	
 	save_date("#date_btn","#form-lapses",show_message,'/workspace/periodo/escolar/save');
+
+
 	
 })
+
+
 
 
 
