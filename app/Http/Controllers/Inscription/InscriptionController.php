@@ -180,6 +180,10 @@ class InscriptionController extends Controller
     {
         if($request->ajax()){
 
+            if(!isset($request->DNI))
+                return response()->json(["continue" => "NO","message" => "Ingrese un DNI valido"]);
+            
+
             $r = Request_s::where("DNI",$request->DNI)->first();
 
             if(empty($r))
