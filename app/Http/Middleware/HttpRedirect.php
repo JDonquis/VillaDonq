@@ -17,8 +17,13 @@ class HttpRedirect
     public function handle(Request $request, Closure $next)
     {           
 
-                dd($request->secure());
-                if (!$request->secure() && App::environment('production')){
+        if ($request->headers->has('X-Forwarded-Proto')) {
+            if (strcmp($request->header('X-Forwarded-Proto'), 'https') === 0) {
+                return $next($request);
+            }
+        }
+        
+        if (!$request->secure() && App::environment('production')){
                 return redirect()->secure($request->getRequestUri(),301);
         }
  
