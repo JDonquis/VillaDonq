@@ -32,7 +32,7 @@
                         </div>
                         <div class="d-grid">
                             <span>
-                                <input type="text" data-type="CI" id="ins_DNI" title="Debe escribir una letra 'V' seguida de 8 números" name="DNI" value="{{old("DNI")}}">
+                                <input type="text" data-type="CI" id="ins_DNI" pattern="[0-9]{8}" name="DNI" value="{{old("DNI")}}">
                                 <label for="ins_DNI">DNI: </label>
                             </span>
                             <span>
@@ -51,13 +51,11 @@
                             <input type="text" id="ins_estado" name="state" value="{{old("state")}}">
                             <label for="ins_estado">Estado: </label>
                         </span>
-                        <div class="d-grid">
                             <span>
                                 <input type="text" id="ins_ciudad" name="city" value="{{old("city")}}">
                                 <label for="ins_ciudad">Ciudad: </label>
                             </span>
                             
-                        </div>
 
                         <label for="direccion_detallada">Dirección especifica</label>
                         <textarea name="address" id="direccion_detallada" cols="30" rows="5" style="max-height: 100px;">{{old("address")}}</textarea>
@@ -126,3 +124,4 @@
                 </div>
             </div>
         </form>
+

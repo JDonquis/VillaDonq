@@ -243,16 +243,19 @@
 .main_nav .nav-section .trigger_nav:hover path {
   stroke: #21e6c1;
 }
-.main_nav .nav-section .entrar-btn {
-  width: 60px;
-  padding-block: 1px;
-  background: transparent;
-  border: 1px solid #278ea5;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s ease;
-  opacity: 0.9;
-}
+   .main_nav .nav-section .entrar-btn {
+
+        width: 70px;
+        padding-block: 9px;
+        background: transparent;
+        border: 1px solid #278ea5;
+        position: relative;
+        border-radius: 17px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        opacity: 0.9; 
+
+  }
 .main_nav .nav-section .entrar-btn:before, .main_nav .nav-section .entrar-btn:after {
   content: "";
   position: absolute;

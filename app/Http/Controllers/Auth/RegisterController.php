@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -50,15 +50,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:50'],
-            'last_name' => ['required', 'string', 'max:50'],
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'max:100', 'confirmed'],
-            'type_user_id' => ['required', 'max:1'],
-            'DNI' => ['required', 'string', 'max:30','unique:users'],
-            'phone_number' => ['string', 'max:30'],
-            'address' => ['string', 'max:100'],
-            'date_birth' => ['date'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -72,14 +66,8 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'type_user_id' => $data['type_user_id'],
-            'DNI' => $data['DNI'],
-            'phone_number' => $data['phone_number'],
-            'address' => $data['address'],
-            'date_birth' => $data['data_birth'],
         ]);
     }
 }

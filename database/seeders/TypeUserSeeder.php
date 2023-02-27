@@ -19,7 +19,7 @@ class TypeUserSeeder extends Seeder
         $fields = [
 
             ['name' => 'Admin' ],
-            ['name' => 'Estudiante' ],
+            ['name' => 'Student' ],
             ['name' => 'Profesor' ],
 
      

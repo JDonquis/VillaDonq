@@ -22,7 +22,7 @@
 	    <div class="card">
 	      <div class="card-header border-0 "></div>
 		      <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center  py-3"> 
-		      		<button class="btn btn-outline-primary btn-outline  mt-10px btn-filter" id-action='3'>Sin Revisar</button>
+		      		<button class="btn btn-outline-primary btn-outline  mt-10px btn-filter button_active" id-action='3'>Sin Responder</button>
 		      		<button class="btn btn-outline-primary btn-outline  mt-10px mx-4 btn-filter" id-action='1'>Aceptados</button>
 		      		<button class="btn btn-outline-primary btn-outline  mt-10px btn-filter" id-action='2'>Rechazados</button>
 		       </div>

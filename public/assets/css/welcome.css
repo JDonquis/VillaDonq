@@ -674,8 +674,33 @@ h1 {
       font-size: clamp(28px, 6vw, 60px);
       border-left: 7.5px solid #278ea5;
       padding-left: 30px; } }
-  h1 span {
-    background: #1f4287; }
+ h1 span:nth-child(1) {
+  background-image: linear-gradient(to right, #278ea5, rgba(33, 230, 194, 0) 50%);
+  background-size: 200% 100%;
+  background-position: -100%;
+  -webkit-animation: bg0 1s forwards;
+          animation: bg0 1s forwards;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+h1 span:nth-child(2) {
+  background-image: linear-gradient(to right, #278ea5, rgba(33, 230, 194, 0) 50%);
+  background-size: 200% 100%;
+  background-position: -100%;
+  -webkit-animation: bg0 1.5s forwards;
+          animation: bg0 1.5s forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+@-webkit-keyframes bg0 {
+  to {
+    background-position: 0;
+  }
+}
+@keyframes bg0 {
+  to {
+    background-position: 0;
+  }}
 
 .parent_inscribe_link {
   position: absolute;
@@ -745,6 +770,65 @@ h1 {
 
 
     
+.main_nav .logo > * {
+  width: clamp(30px, 9vw, 50px);
+  position: relative;
+}
+.main_nav .link_to_home {
+  display: flex;
+  align-items: center;
+}
+
+.main_nav .text_logo {
+  display: none;
+}
+
+
+.main_nav .nav-section .entrar-btn {
+  width: 70px;
+  padding-block: 9px;
+  background: transparent;
+  border: 1px solid #278ea5;
+  position: relative;
+  border-radius: 17px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  opacity: 0.9;
+}
+.main_nav .nav-section .entrar-btn:before, .main_nav .nav-section .entrar-btn:after {
+  content: "";
+  position: absolute;
+  background-color: #21e6c1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  transition: 0.6s all ease-out;
+  z-index: -1;
+}
+.main_nav .nav-section .entrar-btn:before {
+  top: -100%;
+}
+.main_nav .nav-section .entrar-btn:after {
+  bottom: -100%;
+}
+.main_nav .nav-section .entrar-btn:hover {
+  color: #081f3d;
+  font-weight: bold;
+}
+.main_nav .nav-section .entrar-btn:hover:after {
+  transform: translateY(-100%);
+}
+.main_nav .nav-section .entrar-btn:hover:hover:before {
+  transform: translateY(100%);
+}
+
+
+@media (min-width: 600px) {
+  .main_nav .text_logo {
+    display: block;
+    margin-left: 20px;
+  }
+}
 
 
 /*# sourceMappingURL=home.css.map */

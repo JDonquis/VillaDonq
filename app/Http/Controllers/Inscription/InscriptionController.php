@@ -39,7 +39,7 @@ class InscriptionController extends Controller
 
         $school_lapse = SchoolLapse::select('status')->orderByDesc('id')->first();
 
-        if($school_lapse->status != 1)
+        if(!isset($school_lapse->status) || $school_lapse->status != 1)
              return view("inscriptions.inscriptions_closed",['message' => 'Lo sentimos las inscripciones han sido cerradas']);
 
        $lapse_id = Quota::last_lapse_id();
@@ -50,7 +50,7 @@ class InscriptionController extends Controller
 
         $lapse = new InscriptionLapse;         
 
-        $docs = Type_Document::where('status',1)->get();
+        $docs = Type_Document::where('status','1')->get();
 
             if($lapse->verify_date())
                 return view("inscriptions.index",compact('q_available','docs'));
@@ -179,6 +179,10 @@ class InscriptionController extends Controller
     public function consult(Request $request)
     {
         if($request->ajax()){
+
+            if(!isset($request->DNI))
+                return response()->json(["continue" => "NO","message" => "Ingrese un DNI valido"]);
+            
 
             $r = Request_s::where("DNI",$request->DNI)->first();
 
@@ -327,8 +331,8 @@ class InscriptionController extends Controller
             Request_s::where('id',$id)->update(['request_statu_id' => 2]);
 
             $r = Request_s::where('id',$id)->first();
-
-            Mail::to($r->email)->queue(new Message_request($r));
+              
+            //Mail::to($r->email)->queue(new Message_request($r));
             
             return response()->json(['message'=>'Solicitud rechazada con exito']);
         }
@@ -485,7 +489,7 @@ class InscriptionController extends Controller
                      if(isset($request->$rqr))
                         $re = 1;
 
-                        
+
                         Type_Document::updateOrCreate(
 
                             ['id' => $id_doc],

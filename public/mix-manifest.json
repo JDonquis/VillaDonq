@@ -1,26 +1,4 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/fonts/Comfortaa-Bold.ttf": "/fonts/Comfortaa-Bold.ttf",
-    "/fonts/Comfortaa-Light.ttf": "/fonts/Comfortaa-Light.ttf",
-    "/fonts/Comfortaa-Medium.ttf": "/fonts/Comfortaa-Medium.ttf",
-    "/fonts/Comfortaa-Regular.ttf": "/fonts/Comfortaa-Regular.ttf",
-    "/fonts/Comfortaa-SemiBold.ttf": "/fonts/Comfortaa-SemiBold.ttf",
-    "/fonts/Comfortaa-VariableFont_wght.ttf": "/fonts/Comfortaa-VariableFont_wght.ttf",
-    "/fonts/EncodeSansSemiExpanded-Black.ttf": "/fonts/EncodeSansSemiExpanded-Black.ttf",
-    "/fonts/EncodeSansSemiExpanded-Bold.ttf": "/fonts/EncodeSansSemiExpanded-Bold.ttf",
-    "/fonts/EncodeSansSemiExpanded-ExtraBold.ttf": "/fonts/EncodeSansSemiExpanded-ExtraBold.ttf",
-    "/fonts/EncodeSansSemiExpanded-ExtraLight.ttf": "/fonts/EncodeSansSemiExpanded-ExtraLight.ttf",
-    "/fonts/EncodeSansSemiExpanded-Light.ttf": "/fonts/EncodeSansSemiExpanded-Light.ttf",
-    "/fonts/EncodeSansSemiExpanded-Medium.ttf": "/fonts/EncodeSansSemiExpanded-Medium.ttf",
-    "/fonts/EncodeSansSemiExpanded-Regular.ttf": "/fonts/EncodeSansSemiExpanded-Regular.ttf",
-    "/fonts/EncodeSansSemiExpanded-SemiBold.ttf": "/fonts/EncodeSansSemiExpanded-SemiBold.ttf",
-    "/fonts/EncodeSansSemiExpanded-Thin.ttf": "/fonts/EncodeSansSemiExpanded-Thin.ttf",
-    "/fonts/JuliusSansOne-Regular.ttf": "/fonts/JuliusSansOne-Regular.ttf",
-    "/fonts/ZenKurenaido-Regular.ttf": "/fonts/ZenKurenaido-Regular.ttf",
-    "/fonts/static/Comfortaa-Bold.ttf": "/fonts/static/Comfortaa-Bold.ttf",
-    "/fonts/static/Comfortaa-Light.ttf": "/fonts/static/Comfortaa-Light.ttf",
-    "/fonts/static/Comfortaa-Medium.ttf": "/fonts/static/Comfortaa-Medium.ttf",
-    "/fonts/static/Comfortaa-Regular.ttf": "/fonts/static/Comfortaa-Regular.ttf",
-    "/fonts/static/Comfortaa-SemiBold.ttf": "/fonts/static/Comfortaa-SemiBold.ttf"
+    "/css/app.css": "/css/app.css"
 }

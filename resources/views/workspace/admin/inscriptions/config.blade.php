@@ -35,14 +35,14 @@
               // start   events on cupos table ***************************************************************
         const submit_cupos = document.querySelector('#cupos_btn')
         const error_message = document.querySelector('.limit_error')
-        document.querySelector('table.cupos').addEventListener('input', (e) => {
+        document.querySelector('table.cupos').addEventListener('change', (e) => {
             const input = e.target
             const tr = input.closest('tr')
             const inp_restante = tr.querySelector('.restantes')
             const inp_asignados = tr.querySelector('.asignados')
             const aceptados = tr.querySelector('.aceptados')
             const progress = tr.querySelector('.progress-bar')
-            const asig_val = inp_asignados.value
+            const asig_val = +inp_asignados.value
             const acep_val = +aceptados.textContent
             const rest_val = inp_restante.value
 
@@ -54,14 +54,17 @@
             }
 
             progress.style.width = `${getPercent(asig_val, acep_val)}%`
+            console.log({asig_val, acep_val})
             submit_cupos.classList.remove('d-none')
             submit_cupos.classList.add('opacity_1')
 
 
         })
 
+      
+
         function getPercent(total, amount){
-            return ((amount / total) * 100)
+            return (amount / total) * 100
         }
 
 
@@ -119,7 +122,8 @@
             tr.id = `tr${new_n}`
             const tds = `
             <td class="text-bold td_unidad">${new_n}</td>
-            <td class="each_cell"><textarea name="tema${new_n}" id="">
+            <input type="hidden" name="doc-id-${new_n}" value="${new_n}">
+            <td class="p-0 each_cell"><textarea name="tema${new_n}" id="">
                 </textarea>
             </td>
             <td class="text-center align-middle each_cell">
@@ -139,7 +143,63 @@
                 </div>
                 </div>
             </td>
-            <td class="borrar text-center"><i class="fa-solid fa-xmark" id="br${new_n}"></i></td>`
+           `
+
+           /*
+                
+                <tr id="tr6">
+                                                <td class="text-bold td_unidad">
+                                                    6
+                                                </td>
+                                                <input type="hidden" name="doc-id-6" value="6">
+                                                <td class="p-0 each_cell"><textarea name="tema6" style="height: calc(80px);">Foto de cedula</textarea></td>
+                                                <td class="text-center align-middle each_cell">
+                                                    <div class="form-group">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="requested6" name="requested6-1" checked="">
+                                                        <label class="custom-control-label" for="requested6"></label>
+                                                    </div>
+                                                    </div>
+                                                </td>
+
+                                                <td class="text-center align-middle each_cell">
+                                                    <div class="form-group">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" name="required6-2" class="custom-control-input" id="required-7" checked="">
+                                                        <label class="custom-control-label" for="required-7"></label>
+                                                    </div>
+                                                    </div>
+                                                </td>
+                                               
+                                            </tr>
+           */
+
+           /*
+<tr id="tr8">
+            <td class="text-bold td_unidad">8</td>
+            <input type="hidden" name="doc-id-8" value="8">
+            <td class="p-0 each_cell"><textarea name="tema8" id="" style="height: calc(80px);">                </textarea>
+            </td>
+            <td class="text-center align-middle each_cell">
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="solicitado8" name="requested8-1">
+                        <label class="custom-control-label" for="solicitado8"></label>
+                    </div>
+                </div>
+            </td>
+
+            <td class="text-center align-middle each_cell">
+                <div class="form-group">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="requerido8" name="required8-2">
+                    <label class="custom-control-label" for="requerido8"></label>
+                </div>
+                </div>
+            </td>
+           </tr>
+
+           */
 
             tr.innerHTML = tds
             tbody.append(tr)

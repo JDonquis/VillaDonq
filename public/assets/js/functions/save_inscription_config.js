@@ -79,6 +79,7 @@ export function save_docs (btn,f,message) {
 		formD.append('field','doc');
 
 		
+		console.log(formD);
 
 		$.ajax({
 			
