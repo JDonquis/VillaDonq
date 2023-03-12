@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Response;
 class LoginController extends Controller
 {   
    
@@ -28,7 +29,7 @@ class LoginController extends Controller
             $this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
 
-            return $this->sendLockoutResponse_edit($request);
+            return $this->sendLockoutResponseCustom($request);
         }
 
         if ($this->attemptLogin($request)) {
@@ -100,5 +101,19 @@ class LoginController extends Controller
 
 
     }
+
+         protected function sendLockoutResponseCustom(Request $request)
+    {
+        $seconds = $this->limiter()->availableIn(
+            $this->throttleKey($request)
+        );
+
+        throw ValidationException::withMessages([
+        
+            $this->username() => trans('Demasiados Intentos. Vuelva intentar en: '.$seconds.'s')
+        
+        ])->status(Response::HTTP_TOO_MANY_REQUESTS);
+    }
+
 
 }
