@@ -15,7 +15,7 @@ export function openModalDown() {
     modal.classList.toggle("full_screen_down")
 
     if (t?.classList.contains('trigger_nav') || modal.classList.contains('nav_content')){
-      nav_btn.classList.toggle("active");
+      nav_btn.classList.toggle("is-active");
       nav_btn.style = "z-index: 1030 !important;";
       transitionsElements(".nav_content  li", "leftToRight", '', .4);    
     }
