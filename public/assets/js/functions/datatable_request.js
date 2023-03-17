@@ -188,7 +188,7 @@ export function likn_documents(link)
 
 
 
-export function filter_request (request,button)
+export function filter_request (request,button,option)
 {
         d.addEventListener('click',e => {
 
@@ -197,6 +197,13 @@ export function filter_request (request,button)
             if(e.target.matches(button))
             {
                 let action = e.target.getAttribute('id-action');
+
+                filter_ajax(action);
+            }
+
+            if (e.target.matches(option))
+            {
+                let action = d.querySelector(".btn-filter.button_active").getAttribute('id-action');
 
                 filter_ajax(action);
             }
@@ -221,8 +228,6 @@ function filter_ajax(action)
         success:function(response){
 
             const r = response;
-
-            console.log(r);
 
             $('#example').DataTable().clear().rows.add(r).draw();
                                     
