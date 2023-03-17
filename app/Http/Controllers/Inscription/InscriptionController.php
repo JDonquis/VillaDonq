@@ -37,7 +37,7 @@ class InscriptionController extends Controller
     public function index()
     {   
 
-        $school_lapse = SchoolLapse::with('inscription_lapse')->select('status')->latest()->first();
+        $school_lapse = SchoolLapse::with('inscription_lapse')->latest()->first();
 
         if(!isset($school_lapse->status) || $school_lapse->status != 1)
              return view("inscriptions.inscriptions_closed",['message' => 'Lo sentimos las inscripciones no estan disponibles']);
