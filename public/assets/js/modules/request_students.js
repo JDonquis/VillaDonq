@@ -21,14 +21,11 @@ d.addEventListener("DOMContentLoaded",e=>
 	datatable_request();
 	confirmartion("#example",".btn-request",".box-confimation",datatable_request);
 	feedbackMessage();
-	filter_request(datatable_request,'.btn-filter');
+	filter_request(datatable_request,'.btn-filter','.option-filter-year');
 	likn_documents('.link-document');
 	buttons_activate('.btn-filter','.li-doc');
 	
 })
-
-
-
 
 
 
