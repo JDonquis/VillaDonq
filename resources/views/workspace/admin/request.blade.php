@@ -32,12 +32,12 @@
                                         <label>Año escolar</label>
                                         <select class="form-select select-edit"  id="years_select" name="year" 
                                             style="width: 200px;">
-                                            <option selected="selected" value="all">Todos</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
+                                            <option class="option-filter-year" selected="selected" value="all">Todos</option>
+                                            <option class="option-filter-year" value="1">1</option>
+                                            <option class="option-filter-year" value="2">2</option>
+                                            <option class="option-filter-year" value="3">3</option>
+                                            <option class="option-filter-year" value="4">4</option>
+	                                        <option class="option-filter-year" value="5">5</option>
 
                                         </select>
                       </div>
