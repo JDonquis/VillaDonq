@@ -26,8 +26,10 @@ class Request_s extends Model
         "city",
         "address",
         "rep_name",
+        "rep_last_name",
         "rep_DNI",
         "rep_phone_number",
+        "rep_email"
         
      ];
 
