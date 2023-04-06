@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
+/*@import url(https://fonts.googleapis.com/css?family=Nunito);*/
 @charset "UTF-8"; /*!
  * Bootstrap  v5.2.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
@@ -53,7 +53,7 @@
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
-  --bs-body-font-size: 0.9rem;
+/*  --bs-body-font-size: 0.9rem;*/
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.6;
   --bs-body-color: #212529;
@@ -86,7 +86,7 @@
   }
 }
 
-body {
+/*body {
   margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
@@ -106,7 +106,7 @@ hr {
   border-top: 1px solid;
   opacity: 0.25;
 }
-
+*//*
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -157,13 +157,13 @@ h5, .h5 {
 h6, .h6 {
   font-size: 0.9rem;
 }
-
-p {
+*/
+/*p {
   margin-top: 0;
   margin-bottom: 1rem;
-}
+}*/
 
-abbr[title] {
+/*abbr[title] {
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted;
   cursor: help;
@@ -401,17 +401,17 @@ fieldset {
   padding: 0;
   margin: 0;
   border: 0;
-}
+}*/
 
-legend {
+/*legend {
   float: left;
   width: 100%;
   padding: 0;
   margin-bottom: 0.5rem;
   font-size: calc(1.275rem + 0.3vw);
   line-height: inherit;
-}
-@media (min-width: 1200px) {
+}*/
+/*@media (min-width: 1200px) {
   legend {
     font-size: 1.5rem;
   }
@@ -419,7 +419,7 @@ legend {
 legend + * {
   clear: left;
 }
-
+*/
 ::-webkit-datetime-edit-fields-wrapper,
 ::-webkit-datetime-edit-text,
 ::-webkit-datetime-edit-minute,
