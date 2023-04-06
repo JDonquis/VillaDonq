@@ -1,26 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const d = document;
 
 var csrf = $('input[name="_token"]').attr('value');
@@ -97,8 +74,10 @@ export function datatable_request (repeat = 0)
             {data:'date_birth'},
             {data:'age'},         
             {data:'rep_name'},
+            {data:'rep_last_name'},
             {data:'rep_DNI'},
             {data:'rep_phone_number'},
+            {data:'rep_email'},
             {data:function(row){
 
                 let link = `<a href='#' class='link-document' id='${row['id']}' >Ver documentos</a>`;
