@@ -20,14 +20,24 @@
                         <path class='path-3' d="M0 24C10.4 24 26.6667 24 33.5 24" stroke-width="3" />
                     </svg>
                 </button> --}}
-                <button class="hamburger hamburger--collapse trigger_nav trigger_modal" type="button" data-modal="nav_content">
+                <button class="hamburger hamburger--collapse trigger_nav trigger_modal" id="btn-hamburger-main" type="button" data-modal="nav_content">
                   <span class="hamburger-box">
                     <span class="hamburger-inner"></span>
                   </span>
                 </button>
 
                 @else
-                <a href="{{route('workspace')}}">Workspace</a>
+                <div class="dropdown">
+                  <button class="btn btn-trasnparent dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-user h4"></i>
+                  </button>
+                  <ul class="dropdown-menu" style="left: -350%;">
+                    <li><a class="dropdown-item" href="#"><i class="fa fa-cog mr-2 text-dark " aria-hidden="true"></i> Configuración del perfil</a></li>
+                    <li><a class="dropdown-item" href="{{route('workspace')}}">Workspace</a></li>
+                    <li><a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out-alt mr-2"></i>Cerrar sesión</a></li>
+                  </ul>
+                </div>
+                
                 @endif
 
             </div>

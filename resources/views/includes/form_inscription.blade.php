@@ -32,7 +32,7 @@
                         </div>
                         <div class="d-grid">
                             <span>
-                                <input type="text" data-type="CI" id="ins_DNI" pattern="[0-9]{8}" name="DNI" value="{{old("DNI")}}">
+                                <input type="text" data-type="CI" id="ins_DNI" pattern="[0-9]{8}" name="DNI" value="{{old("DNI")}}" readonly>
                                 <label for="ins_DNI">DNI: </label>
                             </span>
                             <span>
@@ -100,10 +100,17 @@
 
                     <fieldset class="each_slider_element">
                         <legend>DATOS DEL REPRESENTANTE</legend>
-                        <span>
-                            <input type="text" id="ins_repre_nombre" name="rep_name" value="{{old("rep_name")}}">
-                            <label for="ins_repre_nombre">Nombre completo: </label>
-                        </span>
+                        <div class="d-grid">
+
+                            <span>
+                                <input type="text" id="ins_repre_nombre" name="rep_name">
+                                <label for="ins_repre_nombre">Nombres: </label>
+                            </span>
+                            <span>
+                                <input type="text" id="ins_repre_apellido" name="rep_last_name">
+                                <label for="ins_repre_apellido">Apellidos: </label>
+                            </span>
+                        </div>
                         <span>
                             <input type="text" data-type="CI" id="ins_repre_DNI" name="rep_DNI" value="{{old("rep_DNI")}}">
                             <label for="ins_repre_DNI">DNI: </label>
@@ -111,6 +118,11 @@
                         <span>
                             <input type="tel" id="ins_repre_tel" name="rep_phone_number" value="{{old("rep_phone_number")}}">
                             <label for="ins_repre_tel">Telefono: </label>
+
+                        </span>
+                        <span>
+                            <input type="email" id="ins_repre_email" name="rep_email" value="{{old("rep_email")}}">
+                            <label for="ins_repre_tel">Correo: </label>
 
                         </span>
                         <span class="parent_btn_submit"><input type="submit" id="b_form" name="new_request" value="INSCRIBIR" class="inscribirse btn_submit"></span>

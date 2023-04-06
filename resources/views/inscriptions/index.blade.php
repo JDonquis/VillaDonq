@@ -7,10 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
    
-    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+        @if(session()->has('id_user'))
+           <link rel="stylesheet" href="{{asset("css/app.css")}}">
+        @endif
+    <link rel="stylesheet" href="{{asset("assets/LTE/plugins/fontawesome-free/css/all.css")}}">
+    <link rel="stylesheet" href="{{asset("assets/hamburger_css/hamburger.css")}}">
     <link rel="stylesheet" href="{{asset("assets/css/inscription/index.css")}}">
     <link rel="stylesheet" href="{{asset("assets/css/inscription/inscription.css")}}">
-
 
 
     <title>Inscrirbirse</title>
@@ -39,8 +42,8 @@
                     <legend>INGRESA LOS SIGUIENTES DATOS PARA COMENZAR LA INSCRIPCIÓN:</legend>
                         
                             <span>
-                                <input type="text" data-type="CI" id="ins_ci" pattern="[A-Za-z]{1}[0-9]{8}" title="Debe escribir una letra 'V' seguida de 8 números" name="ins_ci">
-                                <label for="ins_ci">DNI: </label>
+                                <input type="text" data-type="CI" id="ins_ci" pattern="[0-9]{8}" title="Debe ser de 8 números" name="ins_ci">
+                                <label for="ins_ci">C.I: </label>
                             </span>
                          
                         <label for="ins_type_new">Selecciona un cupo disponible: </label>
@@ -72,6 +75,8 @@
 <script src="{{asset("assets/js/modules/inscribe.js")}}" type="module"></script>
 
 <script src="{{asset("assets/js/slider.js")}}"></script>
+
+<script src="{{asset("js/app.js")}}"></script>
 
 
 
