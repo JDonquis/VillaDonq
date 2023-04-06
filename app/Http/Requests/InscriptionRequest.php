@@ -22,21 +22,22 @@ class InscriptionRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
+    {   
         return [
         
         "year" => "required|string|max:1",
         "name" => "required|string|max:30",
         "last_name" => "required|string|max:30",
-        "DNI" => "required|string|max:10",
+        "DNI" => "required|unique:requests|string|max:10|min:8",
         "age" => "numeric",
         "email" => "required|string|max:30|email",
-        "phone_number" => "string|max:11|min:11",
+        "phone_number" => "string|max:11|min:8",
         "date_birth" => "required|date",
         "state" => "string|max:20|nullable",
         "city" => "string|max:20|nullable",
         "address" => "string|max:100",
         "rep_name" => "required|string|max:30",
+        "rep_last_name" => "required|string|max:30",
         "rep_DNI" => "required|string|max:10",
         "rep_phone_number" => "required|string|max:11",
  
@@ -53,47 +54,88 @@ class InscriptionRequest extends FormRequest
     {
         return [
             'year.required' => 'El campo año es requerido',
+
             'name.required' => 'El campo nombre es requerido',
+
             'last_name.required' => 'El campo apellido es requerido',
+
             'DNI.required' => 'El campo C.I es requerido',
+
             'email.required' => 'El campo email es requerido',
+
             'date_birth.required' => 'El campo fecha de nacimiento es requerido',
+
             'cer_birth_up.required' => 'El documento Partida de nacimiento es requerido',
+
             'cer_notes_up.required' => 'El documento notas certificadas es requerido',
+
             'cer_conduct_up.required' => 'El documento certificado de buena conducta es requerido',
+
             'report_card_up.required' => 'El documento boleta es requerido',
+
             'rep_name.required' => 'El campo nombre completo del representante es requerido',
+
             'rep_DNI.required' => 'El campo cedula del representante es requerido',
+
             'rep_phone_number.required' => 'El campo numero de telefono del representante es requerido',
+
             'photo_up.required' => 'El documento Foto es requerido',
 
+
             'rep_name.string' => 'El campo nombre completo del representante es invalido',
+
             'rep_DNI.string' => 'El campo cedula del representante es invalido',
+
             'rep_phone_number.string' => 'El campo numero de telefono del representante es invalido',
 
+
             'state.string' => 'Nombre del estado invalido',
+
             'city.string' => 'Nombre de la ciudad invalido',
+
             'phone_number.string' => 'Campo numero de telefono invalido',
+
             "address.string" => "Direccion invalida",
+
             
             'year.max' => 'Año invalido, intente nuevamente',
+
             'name.max' => 'Nombre demasiado largo, intente que el nombre no sobrepase de los 30 caracteres',
+
             'last_name.max' => 'Apellido demasiado largo, intente que el apellido no sobrepase de los 30 caracteres',
+
             'DNI.max' => 'C.I invalida, asegurese que no sobrepase de los 10 caracteres',
+
             'phone_number.max' => 'Numero de telefono invalido, intente que el numero no sobrepase de los 11 caracteres',
+
             'state.max' => 'Nombre del estado demasiado largo, intente que el nombre no sobrepase de los 20 caracteres',
+
             'city.max' => 'Nombre de la ciudad demasiado largo, intente que el nombre no sobrepase de los 20 caracteres',
+
             'address.max' => 'Dirección demasiada larga, intente que la dirección no sobrepase de los 100 caracteres',
+
             'rep_name.max' => 'Nombre demasiado largo, intente que el nombre no sobrepase de los 30 caracteres',
+
             'rep_DNI.max' => 'C.I invalida, asegurese que no sobrepase de los 10 caracteres',
-            'rep_phone_number.max' => 'Numero de telefono invalido, intente que el numero no sobrepase de los 11 caracteres',
+
+            'rep_phone_number.max' => 'Numero de telefono invalido, intente que el numero no sobrepase de los 11 
+            caracteres',
 
             'rep_phone_number.min' => 'Numero de telefono invalido, intente que el numero no sea menor de los 11 caracteres',
+
             'phone_number.min' => 'Numero de telefono invalido, intente que el numero no sea menor de los 11 caracteres',
+
+            'DNI.min' => 'C.I invalida, asegurese que no sea menor de 8 caracteres',
+
 
             'age.numeric' => 'Asegurese de colocar la fecha de nacimiento',
 
             'email.email' => 'Campo correo invalido, asegurese de colocar correctamente el correo',
+
+
+            'DNI.unique' => 'DNI ya ingresado en el sistema, verifique el estado de su solicitud anterior',
+
+
             
 
 
