@@ -58,7 +58,7 @@ class SchoolLapseController extends Controller
 
             InscriptionLapse::create(array("school_lapse_id"=>$sc->id));       
 
-             return response()->json("Periodo escolar creado con exito");
+             return response()->json(["message" => "Periodo escolar creado con exito"]);
 
             }
             else{
@@ -78,71 +78,11 @@ class SchoolLapseController extends Controller
 
 
 
-                return response()->json("Periodo escolar actualizado con exito.");
+                return response()->json(["message"=>"Periodo escolar actualizado con exito."]);
             }
 
          
         }
     }
 
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

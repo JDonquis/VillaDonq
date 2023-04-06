@@ -3,23 +3,23 @@
 namespace App\Http\Controllers\Inscription;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InscriptionRequest;
+use App\Mail\Message_request;
+use App\Models\Documents\Type_Document;
+use App\Models\Inscriptions\Course;
+use App\Models\Inscriptions\CourseSection;
+use App\Models\Inscriptions\InscriptionLapse;
+use App\Models\Inscriptions\Quota;
+use App\Models\Inscriptions\SchoolLapse;
+use App\Models\Person\Student;
+use App\Models\Request\Request_s;
+use App\Models\User;
+use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Http\Requests\InscriptionRequest;
-use App\Models\Documents\Type_Document;
-use App\Models\Request\Request_s;
-use App\Models\Inscriptions\InscriptionLapse;
-use App\Models\Inscriptions\SchoolLapse;
-use App\Models\Inscriptions\Course;
-use App\Models\Inscriptions\Quota;
-use App\Models\Inscriptions\CourseSection;
-use App\Models\Person\Student;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\Message_request;
-
-use DB;
 use Validator;
 
 class InscriptionController extends Controller
@@ -39,10 +39,11 @@ class InscriptionController extends Controller
 
         $school_lapse = SchoolLapse::with('inscription_lapse')->latest()->first();
 
+        
         if(!isset($school_lapse->status) || $school_lapse->status != 1)
              return view("inscriptions.inscriptions_closed",['message' => 'Lo sentimos las inscripciones no estan disponibles']);
 
-         if( !isset($school_lapse->inscription_lapse) )
+         if( !isset($school_lapse->inscription_lapse['start']) )
             return view("inscriptions.inscriptions_closed",['message' => 'Lo sentimos las inscripciones no estan disponibles']);
 
        $lapse_id = Quota::last_lapse_id();
@@ -158,24 +159,24 @@ class InscriptionController extends Controller
 
     // ------------------------------------------------------ Verify Requests from inscription index
 
-    public function verify_request(Request $request)
-    {
+    // public function verify_request(Request $request)
+    // {
 
-         if($s = Request_s::where('DNI',$request->DNI)->orWhere('email',$request->email)->first() );
-         {  
-            $m = '';
-            if($s->request_statu_id == 1)
-                $m = 'Su solicitud anteriormente fue aceptada, Por favor revise su email';
-            elseif ($s->request_statu_id == 2)
-            {
-                $m = 'Su solicitud anteriormente fue rechazada, Por favor espere al siguiente periodo de inscripcion';
-            }
-            elseif($s->request_statu_id == 3)
-                $m = 'Su solicitud aun no ha sido revisada, Por favor espere la respuesta en su email';
+    //      if($s = Request_s::where('DNI',$request->DNI)->orWhere('email',$request->email)->first() );
+    //      {  
+    //         $m = '';
+    //         if($s->request_statu_id == 1)
+    //             $m = 'Su solicitud anteriormente fue aceptada, Por favor revise su email';
+    //         elseif ($s->request_statu_id == 2)
+    //         {
+    //             $m = 'Su solicitud anteriormente fue rechazada, Por favor espere al siguiente periodo de inscripcion';
+    //         }
+    //         elseif($s->request_statu_id == 3)
+    //             $m = 'Su solicitud aun no ha sido revisada, Por favor espere la respuesta en su email';
 
-             return redirect('/inscribirse')->with('message',$m);
-         }
-    }
+    //          return redirect('/inscribirse')->with('message',$m);
+    //      }
+    // }
 
     // ------------------------------------------------------ Consult Request statu from inscription index
     
@@ -186,6 +187,8 @@ class InscriptionController extends Controller
             if(!isset($request->DNI))
                 return response()->json(["continue" => "NO","message" => "Ingrese un DNI valido"]);
             
+            if(strlen($request->DNI)<8 || strlen($request->DNI)>10)
+                return response()->json(["continue" => "NO","message" => "DNI debe ser mayor a 8 y menor de 10 caracteres"]); 
 
             $r = Request_s::where("DNI",$request->DNI)->first();
 
@@ -278,8 +281,10 @@ class InscriptionController extends Controller
                     'user_id' => $u->id,
                     'course_section_id' => $cs->id,
                     'rep_name' => $r->rep_name,
+                    'rep_last_name' => $r->rep_last_name,
                     'rep_DNI' => $r->rep_DNI,
-                    'rep_phone_number' => $r->rep_phone_number, 
+                    'rep_phone_number' => $r->rep_phone_number,
+                    'rep_email' => $r->rep_email, 
 
                 ]);
 
@@ -430,13 +435,12 @@ class InscriptionController extends Controller
         if($request->ajax())
         {   
 
-            $id_lapse = InscriptionLapse::select('id')->orderBy('id','desc')->first();
+            $id_lapse = InscriptionLapse::select('id')->latest()->first();
 
             //Verify field
             if($request->field == 'date')
             {
                 
-
                 if($request->start != null)
                     $ins_lapse = InscriptionLapse::where("id",$id_lapse->id)->update(["start" => $request->start, "end" => $request->end]);
                 else{
@@ -444,7 +448,13 @@ class InscriptionController extends Controller
                     $ins_lapse = InscriptionLapse::where("id",$id_lapse->id)->update(["end" => $request->end]);
                 }
 
-                return response()->json("Fecha actualizada con exito!.");
+                $dateCurrent = Carbon::now();
+                $editable = false;
+
+                if($dateCurrent->gte($request->start))
+                    $editable = true;
+
+                return response()->json(["message" => "Fecha actualizada con exito!.","editable" => $editable]);
             }
 
             if($request->field == 'quota')
@@ -454,10 +464,20 @@ class InscriptionController extends Controller
                 $remaining = 'remaining';
 
                 for($i = 1; $i <= 5; $i++)
-                {
+                {   
+
                     $a = $assigned.$i;
                     $r = $remaining.$i;
-                    $accepted = $request->$a - $request->$r;
+
+                    if($request->$a == null )
+                        return response()->json("Cupos sin asignar. Asegurese de llenar todos los campos");
+
+                    if($request->$a < 0 )
+                        return response()->json("No se permiten cupos con valores negativos.");
+
+                   
+                   $accepted = $request->$a - $request->$r;
+                   
                    Quota::updateOrCreate(
                     ['inscription_lapse_id' =>  $id_lapse->id, 'course_id' => $i ],
                     ['assigned' => $request->$a, 'remaining' => $request->$r, 'accepted' =>$accepted]
@@ -467,7 +487,7 @@ class InscriptionController extends Controller
                 
                 return response()->json("Cupos actualizados con exito!.");
 
-                // return response()->json($id_lapse);
+                
             }
 
             if($request->field == 'doc')
