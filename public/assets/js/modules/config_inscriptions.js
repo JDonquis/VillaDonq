@@ -1,38 +1,15 @@
-import { save_date,save_quotas,save_docs } from "../functions/save_inscription_config.js";
+import { save_date,save_quotas,save_docs,confirmation_save } from "../functions/save_inscription_config.js";
 import show_message from "../functions/response_message.js"; 
-
+import confirmartion from "../functions/confirmation_buttons.js";
 
 const d = document;
 
 d.addEventListener("DOMContentLoaded", e=>{
 
-	save_date("#date_btn","#date-form",show_message,'/workspace/inscripciones/configuracion/save');
+	save_date("#date_btn","#date-form",show_message,'/workspace/inscripciones/configuracion/save',confirmation_save);
   save_quotas("#cupos_btn","#quotas-form",show_message);
 	save_docs("#docs_btn","#docs-form",show_message);
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   //----------- Date picker
 
