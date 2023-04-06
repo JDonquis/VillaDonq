@@ -11,8 +11,10 @@ class Student extends Model
         'user_id',
         'course_section_id',
         'rep_name',
+        'rep_last_name',
         'rep_DNI',
-        'rep_phone_number'
+        'rep_phone_number',
+        'rep_email'
         
     ];
 
