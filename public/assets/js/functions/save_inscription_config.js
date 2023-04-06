@@ -1,34 +1,57 @@
 const d = document;
 
-export function save_date (btn,f,message,url_f) {
+export function save_date (btn,f,message,url_f,confirmation_save) {
 
 	let button = document.querySelector(btn);
 	let form = document.querySelector(f);
 	
-	const message_box = d.querySelector(".message");
-	
-
 	button.addEventListener("click",e => {
 
 		e.preventDefault();
-
-		const formD = new FormData(form);
-		formD.append('field','date');
-		
-		$.ajax({
 			
-			url: url_f,
-			type: 'post',
-			data: formD,
-			processData: false,
-    		contentType: false,
-			success: function (data) {
-				console.log(data);
-				message(data);
-				button.classList.add("d-none");
+		confirmation_save().then( function(confirmation) {
+
+			if(confirmation){
+			
+				const formD = new FormData(form);
+				formD.append('field','date');
+				
+				console.log("Guardado")			
+				$.ajax({
+					
+					url: url_f,
+					type: 'post',
+					data: formD,
+					processData: false,
+		    		contentType: false,
+					success: function (data) {
+						console.log(data['editable'])
+
+						message(data['message']);
+						button.classList.add("d-none");
+
+						if(typeof data['editable'] != 'undefined' && data['editable'] == false){
+							console.log(data['editable'])
+							document.querySelector(".start.form-control").setAttribute("disabled","");
+						}
+														
+						
+
+
+					}
+				});
 
 			}
-		});
+
+					
+		
+
+		}).catch();
+
+		
+
+		
+		
 
 	});	
 }
@@ -98,6 +121,30 @@ export function save_docs (btn,f,message) {
 
 	});
 	
-
-
 }
+export async function confirmation_save(){
+
+
+	 const confirmation_user = new Promise(function(resolve, reject) {
+     const box = d.querySelector(".box-confimation");
+	 box.classList.add('box-active');
+	
+
+	 box.addEventListener("click", e => {
+	 	
+	 	if(e.target.matches("#btn-confirm-confirmation")){
+	 		box.classList.remove("box-active");
+	 		resolve(true);
+	 	}
+	 	else{
+	 		box.classList.remove("box-active");
+	 		reject(false);
+	 	}
+	 	
+
+	 })
+  })
+	  return await confirmation_user;
+	 
+}
+
