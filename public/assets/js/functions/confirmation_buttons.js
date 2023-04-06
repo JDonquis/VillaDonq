@@ -1,45 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const d = document;
 export default function confirmartion (table,btn,box_message,request)
 {	
@@ -56,8 +14,6 @@ export default function confirmartion (table,btn,box_message,request)
 	 	
 	 	if(e.target.matches(btn))
 	 		{	
-
-	 			
 	 			const b = e.target;
 	 			id = b.getAttribute('id-request');
 	 			action = b.getAttribute('btn-action');
@@ -89,6 +45,8 @@ export default function confirmartion (table,btn,box_message,request)
 function accept_request(id,request)
 {	
 	const data = {	_token: $('input[name=_token]').val(), request_id: id }
+
+	console.log("Entra aqui");
 
 	$.ajax({ 
 	   
