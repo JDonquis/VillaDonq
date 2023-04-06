@@ -52,16 +52,16 @@
                       <td class="position-relative ">  
                         <!-- min == numero de aceptados -->
 
-                      <input type="number" min="{{$school_lapse->inscription_lapse->quotas[$i]->accepted ?? ''}}" class="asignados w-100 h-100 position-absolute top-0 left-0 pl-3 pb-3"  name="assigned{{$i+1}}" value="{{$school_lapse->inscription_lapse->quotas[$i]->assigned ?? ''}}">
+                      <input type="number" min="{{$school_lapse->inscription_lapse->quotas[$i]->accepted ?? 0}}" class="asignados w-100 h-100 position-absolute top-0 left-0 pl-3 pb-3"  name="assigned{{$i+1}}" value="{{$school_lapse->inscription_lapse->quotas[$i]->assigned ?? 0}}">
                       </td>
                       <td colspan="2">
                         <div class="progress progress-xs">
                             <!-- the style=width: getPercent(nro_asignados, nro_aceptados) -->
-                          <div class="progress-bar bg-2" style="width: calc(({{$school_lapse->inscription_lapse->quotas[$i]->accepted ?? ''}} / {{$school_lapse->inscription_lapse->quotas[$i]->assigned ?? ''}})*100%)"></div>
+                          <div class="progress-bar bg-2" style="width: calc(({{$school_lapse->inscription_lapse->quotas[$i]->accepted ?? 0}} / {{$school_lapse->inscription_lapse->quotas[$i]->assigned ?? 1}})*100%)"></div>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <span class="aceptados mt-2 color-2 font-weight-bold">{{$school_lapse->inscription_lapse->quotas[$i]->accepted ?? ''}}</span>
-                        <input  min="0" class="restantes r1 border-0 text-right rounded mt-1 col-3 input-sm" type="number" name="remaining{{$i+1}}" value="{{$school_lapse->inscription_lapse->quotas[$i]->remaining ?? ''}}" >
+                            <span class="aceptados mt-2 color-2 font-weight-bold">{{$school_lapse->inscription_lapse->quotas[$i]->accepted ?? 0}}</span>
+                        <input  min="0" class="restantes r1 border-0 text-right rounded mt-1 col-3 input-sm" type="number" name="remaining{{$i+1}}" value="{{$school_lapse->inscription_lapse->quotas[$i]->remaining ?? 0}}" >
                         </div>
                       </td>
                     </tr>

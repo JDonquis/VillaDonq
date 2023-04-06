@@ -56,8 +56,10 @@
 					    <th>Fecha de Nacimiento:</th> 
 		                <th>Edad:</th>
 		                <th>Nombre Representante:</th>
+		                <th>Apellido Representante:</th>
 		                <th>DNI Representante:</th>
 		                <th>Numero de Representante:</th>
+		                <th>Correo de Representante:</th>
 		                <th>Documentos:</th>
 					    <th data-priority="3" class="no-sort">Accion:</th>
 					</tr>

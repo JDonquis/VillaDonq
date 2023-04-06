@@ -12,21 +12,21 @@
                      @csrf                     
                         <div class="row justify-content-around">
 
-                            <div class="col-3">
+                            <div class="col-md-3 col-12">
                                 <h4>1er Lapso</h4>
                                 <label for="" class="pt-2">Comienza: </label>
                                 <input type="date" name="start_1" class="form-control" value="{{$laps[0]->start ?? ''}}">
                                 <label for="" class="pt-2">Termina: </label>
                                 <input disabled type="date" name="end_1" class="form-control" value="{{$laps[0]->end ?? ''}}">
                             </div>
-                            <div class="col-3">
+                            <div class="col-md-3 col-12 my-md-0 my-4">
                                 <h4>2do Lapso</h4>
                                 <label for="" class="pt-2">Comienza: </label>
                                 <input disabled type="date" name="start_2" class="form-control" value="{{$laps[1]->start ?? ''}}">
                                 <label for="" class="pt-2">Termina: </label>
                                 <input disabled type="date" name="end_2" class="form-control" value="{{$laps[1]->end ?? ''}}">
                             </div>
-                            <div class="col-3">
+                            <div class="col-md-3 col-12">
                                 <h4>3er Lapso</h4>
                                 <label for="" class="pt-2">Comienza: </label>
                                 <input disabled type="date" name="start_3" class="form-control" value="{{$laps[2]->start ?? ''}}">
