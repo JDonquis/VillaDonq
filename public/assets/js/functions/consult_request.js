@@ -24,6 +24,8 @@ export default function consult_request(btn)
 				    data:data,
 				  	success:function(response){
 
+
+
 	  					if(response.continue == "NO")
 	  					{
 	  						let c = d.querySelector(".consult-message");
