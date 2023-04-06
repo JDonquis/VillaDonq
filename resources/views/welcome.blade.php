@@ -6,9 +6,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @if(session()->has('id_user'))
+        <link rel="stylesheet" href="{{asset("css/app.css")}}">
+    @endif
+    <link rel="stylesheet" href="{{asset("assets/LTE/plugins/fontawesome-free/css/all.css")}}">
     <link rel="stylesheet" href="{{asset("assets/hamburger_css/hamburger.css")}}">
     <link rel="stylesheet" href="{{asset("assets/css/welcome.css")}}">
-    
+   
     <title>VillaDonq</title>
 </head>  
 
@@ -24,10 +28,10 @@
 
     <header class="home_header container">
 
-         <div>
-   <h1 > La escuela del <span>futuro</span> ya llegó a prestarte la mejor <span>educación.</span> </h1>         
-             <span class="parent_btn_submit parent_inscribe_link"><a href="{{route("inscription")}}" class="link_to_inscribe btn_submit transition_link">Inscribete</a></span>             
-         </div>
+    <div>
+       <h1 > La escuela del <span>futuro</span> ya llegó a prestarte la mejor <span>educación.</span> </h1>         
+       <span class="parent_btn_submit parent_inscribe_link"><a href="{{route("inscription")}}" class="link_to_inscribe btn_submit transition_link">Inscribete</a></span>             
+     </div>
 
 
         <div>
@@ -54,6 +58,7 @@
 
     <script type="module" src="{{asset("assets/js/modules/index.js")}}"></script>
     <script src="{{asset("assets/js/slider.js")}}"></script>
+    <script src="{{asset("js/app.js")}}"></script>
 
 
 </body>
