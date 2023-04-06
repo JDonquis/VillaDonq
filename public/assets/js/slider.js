@@ -85,7 +85,7 @@ if (slider_parent.classList.contains('auto')) automatic_move = true
 if (slider_parent.classList.contains('opacity_effect_each'))  opacity_effect_each = true
 if (slider_parent.classList.contains('type_form'))  type_form = true
 
-console.log(active_slider);
+
 
 function translate(direction, times = 1) {
     function move() {
@@ -105,7 +105,7 @@ function translate(direction, times = 1) {
 
         }
 
-        console.log(active_slider);
+
     }
 
     if (direction == '>') {
