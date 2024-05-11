@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Inscription\InscriptionController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Security\LoginController;
+use App\Http\Controllers\Workspace\WorkspaceController;
 use App\Http\Controllers\Workspace\InstitutionController;
 use App\Http\Controllers\Workspace\SchoolLapseController;
-use App\Http\Controllers\Workspace\WorkspaceController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Inscription\InscriptionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,6 +62,10 @@ Route::group([ 'prefix' => 'workspace', 'namespace' => 'Workspace','middleware' 
             Route::post('inscripciones/configuracion/save', [InscriptionController::class,'save_config'])->name("save_config");
             
         // Inscriptions Local
+            Route::get('matricula', [StudentController::class,'get_matricula'])->name("matricula");
+            // Route::post('', [InscriptionController::class,'see_documents'])->name("see_documents");
+
+
 
     // Institution Profile
 
