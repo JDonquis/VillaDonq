@@ -60,6 +60,7 @@ Route::group([ 'prefix' => 'workspace', 'namespace' => 'Workspace','middleware' 
             Route::get('inscripciones/configuracion', [InscriptionController::class,'config'])->name("config");
             Route::post('inscripciones/configuracion/save', [InscriptionController::class,'save_config'])->name("save_config");
             
+        // Inscriptions Local
 
     // Institution Profile
 
