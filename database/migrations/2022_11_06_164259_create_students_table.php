@@ -17,11 +17,16 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->foreignId("user_id")->constrained()->onDelete("cascade")->onUpdate("restrict");
             $table->foreignId("course_section_id")->constrained()->onDelete("restrict")->onUpdate("cascade");
-            $table->string("rep_name",30);
-            $table->string("rep_last_name",30);
-            $table->string("rep_DNI",30);
-            $table->string("rep_phone_number",11);
-            $table->string("rep_email")->nullable();
+            $table->string("name",50);
+            $table->string("last_name",50);
+            $table->string("DNI",30)->unique();
+            $table->string("email",100)->nullable();
+            $table->string("phone_number",30)->nullable();
+            $table->date("date_birth");
+            $table->string("address",100)->nullable();
+            $table->string("state",20)->nullable();
+            $table->string("city",20)->nullable();
+            $table->string("photo",100)->default('guest.webp');
             
         });
     }
