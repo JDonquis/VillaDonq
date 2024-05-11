@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class InstitutionInfoRequest extends FormRequest
+class MainConfigRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +29,10 @@ class InstitutionInfoRequest extends FormRequest
             "rif" => "required|string|max:10",
             "phone_number" => "required|max:11",
             "email" => "required|email|max:30",
-            "motto" => "max:100"
+            "motto" => "max:100",
+            "regular_inscription_price" => "required",
+            "new_inscription_price" => "required",
+            "monthly_payment" => "required",
 
         ];
     }

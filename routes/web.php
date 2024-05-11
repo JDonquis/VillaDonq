@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\MainConfigController;
 use App\Http\Controllers\Security\LoginController;
 use App\Http\Controllers\Workspace\WorkspaceController;
 use App\Http\Controllers\Workspace\InstitutionController;
@@ -69,8 +70,8 @@ Route::group([ 'prefix' => 'workspace', 'namespace' => 'Workspace','middleware' 
 
     // Institution Profile
 
-    Route::get('institucion',[InstitutionController::class,'index'])->name("institution_profile");
-    Route::post('institucion',[InstitutionController::class,'store'])->name("create_institution_profile");
+    Route::get('institucion',[MainConfigController::class,'index'])->name("institution_profile");
+    Route::post('institucion',[MainConfigController::class,'store'])->name("create_institution_profile");
     
     // School Lapse
 
