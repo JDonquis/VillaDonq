@@ -20,11 +20,11 @@ class UserSeeder extends Seeder
             DB::table('users')->insert([
 
                 'type_user_id' => 1,
-                'DNI' => '30847627',
+                'DNI' => '12345678',
                 'name' => 'Juan',
                 'last_name' => 'Donquis',
                 'email' => 'juan@gmail.com',
-                'password' => Hash::make('30847627'),
+                'password' => Hash::make('12345678'),
                 'phone_number' => '04125800610',
                 'address' => 'JUANCRI',
                 'date_birth' => '2022-07-09',

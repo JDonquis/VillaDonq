@@ -21,7 +21,7 @@ class CreateStudentsTable extends Migration
             $table->string("rep_last_name",30);
             $table->string("rep_DNI",30);
             $table->string("rep_phone_number",11);
-            $table->string("rep_email");
+            $table->string("rep_email")->nullable();
             
         });
     }
