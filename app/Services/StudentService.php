@@ -2,14 +2,32 @@
 
 namespace App\Services;
 
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\MainConfig;
 use App\Models\TypeDocument;
 use App\Models\Person\Student;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class StudenService
-{
+{      
+
+    private $months = [
+        'august' => 0,
+        'september' => 0,
+        'october' => 0,
+        'november' => 0,
+        'december' => 0,
+        'january' => 0,
+        'february' => 0,
+        'march' => 0,
+        'april' => 0,
+        'may' => 0,
+        'june' => 0,
+        'july' => 0,
+    ];
+
     public function create($request)
     {   
         $data = $request->all();
@@ -23,11 +41,12 @@ class StudenService
         
         $this->createDocuments($request,$student->id);
 
+        $this->createBalance($student->id);
+
         return $student;
         
     }
 
-    
     private function createUser($data)
     {
         $password = $data['DNI'];
@@ -106,4 +125,50 @@ class StudenService
         }
 
     } 
+
+    private function createBalance($studentId)
+    {
+        $configData = MainConfig::select('new_inscription_price', 'monthly_payment')->first();
+        $schoolLapse = SchoolLapse::latest()->first();
+
+        $currentDate = Carbon::now();
+        $currentMonthName = strtolower($currentDate->englishMonth);
+        $setValue = false;
+
+
+        foreach ($this->months as $monthName => $value) 
+        {
+            if($monthName == $currentMonthName && $monthName !== 'august')
+                $setValue = true;
+
+            if($setValue)
+            {
+                $this->months[$monthName] = $configData->monthly_payment;
+            }
+        }
+
+        DB::table('balance_students')->insert(
+        [
+            'student_id' => $studentId,
+            'school_lapse_id' => $schoolLapse->id,
+            'inscription' => $configData->new_inscription_price,
+            'august' => $this->months['august'],
+            'september' => $this->months['september'],
+            'october' => $this->months['october'],
+            'november' => $this->months['november'],
+            'december' => $this->months['december'],
+            'january' => $this->months['january'],
+            'february' => $this->months['february'],
+            'march' => $this->months['march'],
+            'april' => $this->months['april'],
+            'may' => $this->months['may'],
+            'june' => $this->months['june'],
+            'july' => $this->months['july'],
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            
+        ]
+        );
+
+    }
 }

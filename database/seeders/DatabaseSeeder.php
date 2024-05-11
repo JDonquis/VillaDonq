@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
             'type_documents',
             'type_users',
             'users',
-            'institution_infos',
             'main_configs'
 
 
@@ -40,7 +39,6 @@ class DatabaseSeeder extends Seeder
             TypeUserSeeder::class,
             UserSeeder::class,
             TypeDocumentSeeder::class,
-            InstitutionInfoSeeder::class,
             MainConfigSeeder::class,
 
             
