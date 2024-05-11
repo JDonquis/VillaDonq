@@ -62,7 +62,7 @@ Route::group([ 'prefix' => 'workspace', 'namespace' => 'Workspace','middleware' 
             Route::post('inscripciones/configuracion/save', [InscriptionController::class,'save_config'])->name("save_config");
             
         // Inscriptions Local
-            Route::get('matricula', [StudentController::class,'get_matricula'])->name("matricula");
+            Route::get('matricula', [StudentController::class,'getMatricula'])->name("matricula");
             // Route::post('', [InscriptionController::class,'see_documents'])->name("see_documents");
 
 

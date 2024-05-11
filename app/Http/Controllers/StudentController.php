@@ -11,7 +11,7 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function matricula()
+    public function getMatricula()
     {
         return view('workspace.admin.matricula');
     }
