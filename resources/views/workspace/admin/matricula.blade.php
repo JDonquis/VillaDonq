@@ -78,7 +78,7 @@
                 <p class="color-primary mb-0">Nro de secciones: <b class="nSectionsByYear">2</b></p>
             </div>
             <div class="card">
-                <div class="d-flex justify-content-between p-2">
+                <div class="d-flex justify-content-between p-2 ">
 
                     <div class="card-h  d-flex">
                         <ul class="nav nav-pills sections_nav">
