@@ -22,7 +22,7 @@ class StudentController extends Controller
     public function index()
     {   
         // $students = $this->studentService->getAllStudents();
-        return view('workspace.admin.matricula',compact($students));
+        return view('workspace.admin.matricula');
     }
 
     public function store(CreateStudentRequest $request)

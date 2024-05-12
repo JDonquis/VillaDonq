@@ -10,7 +10,7 @@ use App\Models\Person\Student;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class StudenService
+class StudentService
 {      
 
     private $months = [
