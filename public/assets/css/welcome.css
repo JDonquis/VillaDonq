@@ -236,6 +236,7 @@ fieldset {
 .main_nav .logo > * {
   width: clamp(30px, 9vw, 50px);
   position: relative;
+  /* color: white !important; */
 }
 .main_nav .link_to_home {
   display: flex;
@@ -243,6 +244,7 @@ fieldset {
 }
 .main_nav .text_logo {
   display: none;
+  color: white !important;
 }
 @media (min-width: 600px) {
   .main_nav .text_logo {

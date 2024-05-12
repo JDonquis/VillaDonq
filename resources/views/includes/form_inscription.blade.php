@@ -165,35 +165,35 @@
                     <div class="d-grid">
 
                         <span>
-                            <input type="text" id="ins_repre_nombre" name="rep_name">
-                            <label for="ins_repre_nombre">Nombres: </label>
+                            <input type="text" id="ins_repre2_nombre" name="rep_name">
+                            <label for="ins_repre2_nombre">Nombres: </label>
                         </span>
                         <span>
-                            <input type="text" id="ins_repre_apellido" name="rep_last_name">
-                            <label for="ins_repre_apellido">Apellidos: </label>
+                            <input type="text" id="ins_repre2_apellido" name="rep_last_name">
+                            <label for="ins_repre2_apellido">Apellidos: </label>
                         </span>
                     </div>
                     <div class="d-grid">
 
                         <span>
-                            <input type="text" data-type="CI" id="ins_repre_DNI" name="rep_DNI" value="{{old("rep_DNI")}}">
-                            <label for="ins_repre_DNI">C.I: </label>
+                            <input type="text" data-type="CI" id="ins_repre2_DNI" name="rep_DNI" value="{{old("rep_DNI")}}">
+                            <label for="ins_repre2_DNI">C.I: </label>
                         </span>
                         <span>
-                            <input type="tel" id="ins_repre_tel" name="rep_phone_number" value="{{old("rep_phone_number")}}">
-                            <label for="ins_repre_tel">Telefono: </label>
+                            <input type="tel" id="ins_repre2_tel" name="rep_phone_number" value="{{old("rep_phone_number")}}">
+                            <label for="ins_repre2_tel">Telefono: </label>
 
                         </span>
                     </div>
                     <div class="d-grid">
                         <span>
-                            <input type="email" id="ins_repre_email" name="rep_email" value="{{old("rep_email")}}">
-                            <label for="ins_repre_tel">Correo: </label>
+                            <input type="email" id="ins_repre2_email" name="rep_email" value="{{old("rep_email")}}">
+                            <label for="ins_repre2_tel">Correo: </label>
 
                         </span>
                         <span>
                             <input type="email" id="job" name="job" value="{{old("job")}}">
-                            <label for="job">Profesión: </label>
+                            <label for="job2">Profesión: </label>
                         </span>
 
                     </div>
