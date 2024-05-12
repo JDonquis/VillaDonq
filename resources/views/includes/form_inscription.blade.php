@@ -66,7 +66,7 @@
                         </select>
                     </div>
                 </div>
-                <label for="previousSchool">Colegio anterior</label>
+                <label for="previousSchool">Colegio de procedencia</label>
                 <textarea name="previousSchool" id="previousSchool" cols="30" rows="2" style="max-height: 100px;">{{old("previousSchool")}}</textarea>
                 <input type="hidden" name="year" value="5">
 
