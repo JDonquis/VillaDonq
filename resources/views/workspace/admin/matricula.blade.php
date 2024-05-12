@@ -5,12 +5,8 @@
 
 @section('styles')
 
-<link rel="stylesheet" href="{{asset('assets/LTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-<link rel="stylesheet" href="{{asset('assets/LTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 
-
-
-
+<link rel="stylesheet" href="{{asset("assets/LTE/plugins/dataTable/datatables.min.css")}}">
 
 <!-- Theme style -->
 <link rel="stylesheet" href="{{asset("assets/LTE/plugins/toastr/toastr.min.css")}}">
@@ -61,7 +57,7 @@
                         <option>4</option>
                         <option>5</option>
                     </select>
-      
+
                 </div>
             </div>
             <div class="text-right año_academico_div bg-1 ">
@@ -520,12 +516,11 @@
     @section("scripts")
 
 
-    <script src="{{asset("assets/LTE/plugins/jquery/jquery.min.js")}}"></script>
     <script src="{{asset("assets/LTE/plugins/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
 
 
-    <script src="{{asset("assets/LTE/plugins/datatables/jquery.dataTables.min.js")}}"></script>
-    <script src="{{asset("assets/LTE/plugins/datatables-responsive/js/dataTables.responsive.min.js")}}"></script>
+    <script src="{{asset("assets/LTE/plugins/datatable/datatables.min.js")}}"></script>
+    <!-- <script src="{{asset("assets/LTE/plugins/datatables-responsive/js/dataTables.responsive.min.js")}}"></script> -->
 
     <script src="{{asset("assets/LTE/plugins/toastr/toastr.min.js")}}"></script>
 
@@ -535,24 +530,26 @@
     <script src="{{asset("assets/js/modules/inscribe.js")}}" type="module"></script>
 
     <script src="{{asset("assets/js/slider.js")}}"></script>
-<!-- <script src="{{asset("js/app.js")}}"></script> -->
+    <!-- <script src="{{asset("js/app.js")}}"></script> -->
 
 
-    <script>
-        $(document).ready(function() {
-            $("table.display").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                'paging': false,
-                "ordering": true,
-                'columnDefs': [{
-                    'orderable': false, // set orderable false for selected columns
-                    'targets': [0, 1], // column index (start from 0)
-                    'content': " ",
-                }]
-            })
-        });
+    <script type="module">
+    //     $(
+    //   `table.display`
+    // ).DataTable({
+    //   responsive: true,
+    //   lengthChange: false,
+    //   autoWidth: false,
+    //   paging: false,
+    //   ordering: true,
+    //   columnDefs: [
+    //     {
+    //       orderable: false, // set orderable false for selected columns
+    //       targets: [0, 1], // column index (start from 0)
+    //       content: "",
+    //     },
+    //   ],
+    // });
     </script>
     <script type="module" src="{{asset("assets/js/modules/secciones.js")}}"></script>
 

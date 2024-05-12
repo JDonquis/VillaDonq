@@ -33,7 +33,6 @@
 
 		 		@yield("main-content")
 
-
 		 </section>	
 
 

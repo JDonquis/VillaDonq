@@ -775,3 +775,28 @@ function addNewSection(year, saveInLocal = true) {
     total_rooms.focus()
   }
 }
+const formInscribe = document.querySelector('form.inscribe');
+console.log(formInscribe)
+formInscribe.onsubmit = (event) =>  {
+  event.preventDefault(); // Prevent default form submission
+  console.log('ayyyyyyyyy');
+  
+  let form = event.target; // Retrieve the form element
+  let formData = new FormData(form); // Serialize form data using FormData
+  console.log(formData)
+  $.ajax({
+    url: 'matricula/estudiante',
+    type: 'POST', // or 'GET' depending on your server setup
+    data: formData,
+    processData: false, // Prevent jQuery from automatically processing the data
+    contentType: false, // Prevent jQuery from automatically setting the content type
+    success: function(response) {
+      // Handle the server's successful response
+      console.log(response);
+    },
+    error: function(xhr, status, error) {
+      // Handle the AJAX request error
+      console.error(error);
+    }
+  });
+};
