@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="{{asset('assets/LTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/LTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/hamburger_css/hamburger.css')}}">
-	<link rel="stylesheet" href="{{ asset('assets/css/workspace/request/index.css') }}">
+	<link rel="stylesheet" href="{{asset('assets/css/workspace/request/index.css') }}">
 
 @endsection()	
 

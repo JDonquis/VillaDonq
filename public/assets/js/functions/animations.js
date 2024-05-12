@@ -3,6 +3,7 @@ const focusFirstInput = (el) => setTimeout(() =>  d.querySelector(el).focus(), 2
 //This function is for open and close the modals : when you click in a trigger_modal class is open the modal with the class of the trigger data-modal atribute and viceverse
 export function openModalDown() {
   const trigger = d.querySelectorAll('.trigger_modal');
+  console.log(trigger)
   const nav_btn = d.querySelector('.trigger_nav')
 
 
@@ -13,11 +14,11 @@ export function openModalDown() {
   function run(t){
     const modal = d.querySelector(`.${t?.getAttribute('data-modal') || 'full_screen_down'}`)
     modal.classList.toggle("full_screen_down")
-
+    console.log(modal)
     if (t?.classList.contains('trigger_nav') || modal.classList.contains('nav_content')){
       nav_btn.classList.toggle("is-active");
       nav_btn.style = "z-index: 1030 !important;";
-      transitionsElements(".nav_content  li", "leftToRight", '', .4);    
+      transitionsElements(".nav_content  li", "leftToRight", '', .1, 0.1);    
     }
 
     // click entrar-btn
@@ -26,14 +27,11 @@ export function openModalDown() {
     }
   }
 
-
   d.addEventListener("keydown", (e) => {
     if (e.keyCode == 27) {
       run()
     }
   });
-
- 
 }
 
 

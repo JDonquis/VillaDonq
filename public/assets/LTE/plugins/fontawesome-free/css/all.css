@@ -7,6 +7,12 @@
 readers do not read off random characters that represent icons */
 /********************************************************************************************************************************************************************************************************************************************************************/
 .fa-trash-can::before {
+  content: '\f2ed';
+}
+.fa-pencil::before {
+  content: '\f303';
+}
+.fa-trash-can::before {
   content: "\f2ed";
 }
 .fa-fa-calendar::before {

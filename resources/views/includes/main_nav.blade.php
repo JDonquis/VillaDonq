@@ -12,7 +12,7 @@
             </a>
             <div class="nav-section">
                 @if(!session()->has('id_user'))
-                <button class="entrar-btn trigger_modal" data-modal="login_form">Entrar</button>
+                <button class="entrar-btn trigger_modal color-white " data-modal="login_form">Entrar</button>
 {{--                 <button class="trigger_nav trigger_modal" data-modal="nav_content">
                     <svg width="34" height="26" viewBox="0 0 34 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path class='path-1' d="M0.5 2C10.9 2 27.1667 2 34 2" stroke-width="3" />

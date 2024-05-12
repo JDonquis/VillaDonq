@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="{{asset("assets/LTE/plugins/fontawesome-free/css/all.css")}}">
     <link rel="stylesheet" href="{{asset("assets/hamburger_css/hamburger.css")}}">
     <link rel="stylesheet" href="{{asset("assets/css/welcome.css")}}">
-   
+	<link rel="stylesheet" href="{{ asset('assets/css/workspace/general.css') }}">
+
     <title>VillaDonq</title>
 </head>  
 

@@ -86,7 +86,6 @@ if (slider_parent.classList.contains('opacity_effect_each'))  opacity_effect_eac
 if (slider_parent.classList.contains('type_form'))  type_form = true
 
 
-
 function translate(direction, times = 1) {
     function move() {
         active_slider = times
@@ -94,9 +93,14 @@ function translate(direction, times = 1) {
             each_slider.forEach(i => i.style.opacity = '0')
             each_slider[active_slider].style.opacity = '1'
         } else {
-            slider_wrap.scrollLeft = each_width * times
+            console.log(slider_wrap)
+            let new_scroll_x_position =  each_width * times
+            slider_wrap.scrollLeft = new_scroll_x_position
+            
         }
-        scroll_x_position = slider_wrap.scrollLeft;
+        // console.log(slider_wrap)
+        scroll_x_position = each_width * times;
+        // console.log({scroll_x_position})
         if(zoom_effect_each == true) {
             // each_slider.forEach(e => e.classList.remove('zoom_effect_act'))
             each_slider[active_slider].classList.add('zoom_effect_act')
