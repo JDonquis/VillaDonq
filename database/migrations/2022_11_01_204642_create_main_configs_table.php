@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInstitutionInfosTable extends Migration
+class CreateMainConfigsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,8 @@ class CreateInstitutionInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('institution_infos', function (Blueprint $table) {
+        Schema::create('main_configs', function (Blueprint $table)
+         {
             $table->id();
             $table->string("name",100);
             $table->string("rif",10);
@@ -22,6 +23,9 @@ class CreateInstitutionInfosTable extends Migration
             $table->string("email",30);
             $table->date("release");
             $table->string("motto",100);
+            $table->integer("regular_inscription_price");
+            $table->integer("new_inscription_price");
+            $table->integer("monthly_payment");
 
             
         });
@@ -34,6 +38,6 @@ class CreateInstitutionInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('institution_infos');
+        Schema::dropIfExists('main_configs');
     }
 }

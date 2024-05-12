@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Models\Institution;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class InstitutionInfo extends Model
+class MainConfig extends Model
 {
-    protected $table = 'institution_infos';
+    use HasFactory;
+
+    protected $table = 'main_configs';
     public $timestamps = false;
     protected $fillable = [
 
@@ -17,11 +19,10 @@ class InstitutionInfo extends Model
         'address',
         'email',
         'release',
-        'motto'
+        'motto',
+        'regular_inscription_price',
+        'new_inscription_price',
+        'monthly_payment'
 
     ];
-    protected $guarded = 'id';
-
-
-
 }

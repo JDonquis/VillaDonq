@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-use DB;
-
-class InstitutionInfoSeeder extends Seeder
+class MainConfigSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +14,7 @@ class InstitutionInfoSeeder extends Seeder
      */
     public function run()
     {
-          $fields = [
+        $fields = [
 
             ['name' => 'VillaDonq',
              'email' => 'villadonq@gmail.com',
@@ -24,13 +23,14 @@ class InstitutionInfoSeeder extends Seeder
              'address' => 'Entre Av.Manaure y Av.Ruiz Pineda',
              'release' => '2002-09-07',
              'motto' => 'La escuela del futuro ya llegó a prestarte a mejor educación',
-
-              ],
+             'regular_inscription_price' => 40,
+             'new_inscription_price' => 45,
+             'monthly_payment' => 35,
+            ]
      
 
          ];   
 
-         DB::table('institution_infos')->insert($fields);
+         DB::table('main_configs')->insert($fields);
     }
-    
 }

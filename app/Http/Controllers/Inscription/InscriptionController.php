@@ -93,7 +93,8 @@ class InscriptionController extends Controller
 
             if($doc_up['required'] == 1)
             {
-                if(!isset($request->$dUp)){
+                if(!isset($request->$dUp))
+                {
 
                     DB::table('request_documents')->where('request_id',$id_request)->delete();
                     Request_s::where('id',$id_request)->delete();

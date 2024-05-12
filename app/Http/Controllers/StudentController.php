@@ -2,44 +2,48 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
+use App\Services\StudentService;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\CreateStudentRequest;
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getMatricula()
+    
+    private StudentService $studentService;
+
+
+    public function __construct()
     {
-        return view('workspace.admin.matricula');
+        $this->studentService = new StudentService;
     }
 
     public function index()
-    {
-        
+    {   
+        // $students = $this->studentService->getAllStudents();
+        return view('workspace.admin.matricula',compact($students));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function store(CreateStudentRequest $request)
+    {   
+        try 
+        {
+            DB::beginTransaction();
+            
+            $studentCreated = $this->studentService->create($request);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+            DB::commit();
+
+            return response()->json(['message' => 'Estudiante inscrito exitosamente', 'new_student' => $studentCreated]);
+
+
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+        }
+
     }
 
     /**
