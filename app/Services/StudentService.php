@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\MainConfig;
 use App\Models\TypeDocument;
 use App\Models\Person\Student;
+use App\Models\Representative;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -33,11 +34,16 @@ class StudentService
         $data = $request->all();
 
         $user = User::where('DNI',$data['rep_DNI'])->first();
-        
+        $representive = Representative::where('user_id',$user->id)->first();
+       
         if(!isset($user->id))
+        {
             $user = $this->createUser($data);
+            $representative = $this->createRepresentative($data,$user->id);
 
-        $student = $this->createStudent($data,$user->id);
+        }
+
+        $student = $this->createStudent($data,$representative->id);
         
         $this->createDocuments($request,$student->id);
 
@@ -53,34 +59,55 @@ class StudentService
         
         $newUser = User::create([
             'type_user_id' => 2,
-            'DNI' => $data['rep_DNI'],
             'name' => $data['rep_name'],
             'last_name' => $data['rep_last_name'],
+            'DNI' => $data['rep_DNI'],
+            'phone_number' => $data['rep_phone_number'],
             'email' => $data['rep_email'] ?? null,
             'password' => Hash::make($data['rep_DNI']),
-            'phone_number' => $data['rep_phone_number'],
-            'address' => $data['rep_address'] ?? null,
-            'state' => $data['rep_state'] ?? null,
-            'city' => $data['rep_city'] ?? null,
+            'address' => $data['address'] ?? null,
+            'state' => $data['state'] ?? null,
+            'city' => $data['city'] ?? null,
         ]);
         
         return $newUser;
     }
-    private function createStudent($data,$userId)
+
+    private function createRepresentative($data, $userId)
+    {
+        $newRepresentative = Representative::create([
+
+            'user_id' => $userId,
+            'profession' => $data['rep_profession'] ?? null,
+            'workplace' => $data['rep_workplace'] ?? null,
+            'second_representative_name' => $data['second_rep_name'] ?? null,
+            'second_representative_last_name' => $data['second_rep_last_name'] ?? null,
+            'second_representative_DNI' => $data['second_rep_DNI'] ?? null,
+            'second_representative_phone_number' => $data['second_rep_phone_number'] ?? null,
+            'second_representative_email' => $data['second_rep_email'] ?? null,
+            'second_representative_profession' => $data['second_rep_profession'] ?? null,
+            'second_representative_workplace' => $data['second_rep_workplace'] ?? null,
+        ]);
+
+        return $newRepresentative;
+    }
+
+    private function createStudent($data,$representativeId)
     {       
         $courseSectionId = DB::table('course_sections')->select('id')->where('course_id',$data['course_id'])->where('section_id',$data['section_id'])->first();
 
         $newStudent = Student::create([
            
-            'user_id' => $userId,
+            'representative_id' => $representativeId,
             'course_section_id' => $courseSectionId,
-            'name' => $data['name'],
-            'last_name' => $data['last_name'],
-            'DNI' => $data['DNI'],
-            'phone_number' => $data['phone_number'] ?? null,
-            'date_birth' => $data['date_birth'],
-            'address' => $data['address'] ?? null,
-            'state' => $data['state'] ?? null,
+            'name' => $data['student_name'],
+            'last_name' => $data['student_last_name'],
+            'date_birth' => $data['student_date_birth'],
+            'email' => $data['student_email'] ?? null,
+            'DNI' => $data['student_DNI'] ?? null,
+            'phone_number' => $data['student_phone_number'] ?? null,
+            'sex' => $data['student_sex'] ?? null,
+            'previous_school' => $data['student_previous_school'] ?? null,
             'photo' => null,
         ]);
 

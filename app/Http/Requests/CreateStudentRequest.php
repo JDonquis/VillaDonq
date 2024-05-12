@@ -25,21 +25,33 @@ class CreateStudentRequest extends FormRequest
     {
         return 
         [
-            'name' => ['required'],
-            'last_name' => ['required'],
-            'DNI' => ['required'],
-            'date_birth' => ['required'],
+            'student_name' => ['required'],
+            'student_last_name' => ['required'],
+            'student_date_birth' => ['required'],
+            'student_email' => ['sometimes'],
+            'student_DNI' => ['sometimes'],
+            'student_phone_number' => ['sometimes'],
+            'student_sex' => ['sometimes'],
+            'student_previous_school' => ['sometimes'],
             'course_id' => ['required'],
             'section_id' => ['required'],
-            'phone_number' => ['sometimes'],
-            'rep_name' => ['sometimes'],
-            'rep_last_name' => ['sometimes'],
+            'state' => ['sometimes'],
+            'city' => ['sometimes'],
+            'address' => ['sometimes'],
+            'rep_name' => ['required'],
+            'rep_last_name' => ['required'],
             'rep_DNI' => ['required'],
             'rep_phone_number' => ['required'],
             'rep_email' => ['sometimes'],
-            'rep_state' => ['sometimes'],
-            'rep_city' => ['sometimes'],
-
+            'rep_profession' => ['sometimes'],
+            'rep_workplace' => ['sometimes'],
+            'second_rep_name' => ['sometimes'],
+            'second_rep_last_name' => ['sometimes'],
+            'second_rep_DNI' => ['sometimes'],
+            'second_rep_phone_number' => ['sometimes'],
+            'second_rep_email' => ['sometimes'],
+            'second_rep_profession' => ['sometimes'],
+            'second_rep_workplace' => ['sometimes'],
 
         ];
     }

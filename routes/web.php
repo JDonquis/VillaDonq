@@ -42,8 +42,11 @@ Route::group([ 'prefix' => 'workspace', 'namespace' => 'Workspace','middleware' 
     
     Route::get('', [WorkspaceController::class,'index'])->name("workspace");
     
-    // Inscription-Workspace
-    
+    // Matricula-Workspace
+        Route::get('matricula', [StudentController::class,'index'])->name("matricula");
+        Route::post('matricula/estudiante', [StudentController::class,'store'])->name("create_student");
+
+
         //Requests 
         
             Route::get('solicitudes', [InscriptionController::class,'requests'])->name("requests");
@@ -63,7 +66,6 @@ Route::group([ 'prefix' => 'workspace', 'namespace' => 'Workspace','middleware' 
             Route::post('inscripciones/configuracion/save', [InscriptionController::class,'save_config'])->name("save_config");
             
         // Inscriptions Local
-            Route::get('matricula', [StudentController::class,'index'])->name("matricula");
             // Route::post('', [InscriptionController::class,'see_documents'])->name("see_documents");
 
 
