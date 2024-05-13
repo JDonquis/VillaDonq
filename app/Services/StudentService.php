@@ -2,14 +2,19 @@
 
 namespace App\Services;
 
+use Exception;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Student;
 use App\Models\MainConfig;
+use App\Models\SchoolLapse;
 use App\Models\TypeDocument;
-use App\Models\Person\Student;
+use App\Models\CourseSection;
 use App\Models\Representative;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\StudentResource;
+use App\Http\Resources\StudentCollection;
 
 class StudentService
 {      
@@ -33,29 +38,64 @@ class StudentService
     {   
         $data = $request->all();
 
-        $user = User::where('DNI',$data['rep_DNI'])->first();
-        $representive = Representative::where('user_id',$user->id)->first();
-       
+        
+        $user = User::where('DNI',$data['rep_DNI'])->first();        
         if(!isset($user->id))
-        {
             $user = $this->createUser($data);
+            
+        
+        $representative = Representative::where('user_id',$user->id)->first();
+
+        if(!isset($representative->id))
             $representative = $this->createRepresentative($data,$user->id);
 
-        }
 
         $student = $this->createStudent($data,$representative->id);
+
+        $student->load('representative.user','course_section.course','course_section.section');
         
-        $this->createDocuments($request,$student->id);
+        
+        // $this->createDocuments($request,$student->id);
 
         $this->createBalance($student->id);
 
-        return $student;
+        return new StudentResource($student);
+
         
+    }
+
+    public function getStudentsPerCourse($courseId)
+    {
+        $courseSectionsIds = null;
+
+        if($courseId != 1)
+            $courseSectionsIds = CourseSection::where('course_id',$courseId)->get()->pluck('id')->toArray();
+        else
+            $courseSectionsIds = CourseSection::pluck('id')->toArray();
+
+        $students = Student::whereIn('course_section_id',$courseSectionsIds)->with('representative.user','course_section.course','course_section.section')->get();
+        $studentsCollection = new StudentCollection($students);
+
+        $studentPerCourseAndSection = [];
+
+        foreach ($studentsCollection as $student)
+        {
+            $sectionId = $student->course_section->section_id;
+            
+            if (!isset($studentPerCourseAndSection[$sectionId])) 
+                $studentPerCourseAndSection[$sectionId] = [];
+            
+                
+            $studentPerCourseAndSection[$sectionId][] = $student;
+        }
+
+
+        return $studentPerCourseAndSection;
     }
 
     private function createUser($data)
     {
-        $password = $data['DNI'];
+        $password = $data['rep_DNI'];
         
         $newUser = User::create([
             'type_user_id' => 2,
@@ -99,7 +139,7 @@ class StudentService
         $newStudent = Student::create([
            
             'representative_id' => $representativeId,
-            'course_section_id' => $courseSectionId,
+            'course_section_id' => $courseSectionId->id,
             'name' => $data['student_name'],
             'last_name' => $data['student_last_name'],
             'date_birth' => $data['student_date_birth'],
@@ -108,13 +148,16 @@ class StudentService
             'phone_number' => $data['student_phone_number'] ?? null,
             'sex' => $data['student_sex'] ?? null,
             'previous_school' => $data['student_previous_school'] ?? null,
-            'photo' => null,
+            'photo' => 'guest.webp',
         ]);
+
+        
+
 
         return $newStudent;
     }
 
-    private function createDocument($request,$studentId)
+    private function createDocuments($request,$studentId)
     {      
 
 
@@ -127,11 +170,8 @@ class StudentService
             if($document['required'] == 1)
             {
                 if(!isset($request->$documentName));
-                {
-                    DB::rollback();
-                    return back()->with( ['message' => 'El '. str_replace('_', ' ',$documentName).' es requerido','continue' => 'OK'] )->withInput();
-
-                }
+                    throw new Exception('El '. str_replace('_', ' ',$documentName).' es requerido',400);
+                
             }
             
             if(!isset($request->$documentName));
@@ -139,10 +179,8 @@ class StudentService
                 
 
             if(!TypeDocument::verifyType($request->$documentName))
-            {
-                DB::rollback();
-                return back()->with( ['message' => 'Formato de '. str_replace('_', ' ',$documentName ).' no valido, Asegurese que el fomato sea pdf, jpg, jpeg, png','continue' => 'OK'] )->withInput();
-            }
+                throw new Exception('Formato de '. str_replace('_', ' ',$documentName ).' no valido, Asegurese que el fomato sea pdf, jpg, jpeg, png',400);
+
 
             $documentNameSaved = Student::saveDocs($request->$documentName, false, $documentName);
             DB::table('document_students')->insert(['document' => $documentNameSaved, 'type_document_id' => $document['id'], 'student_id' => $studentId ]);

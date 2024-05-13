@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             'type_documents',
             'type_users',
             'users',
-            'main_configs'
+            'main_configs',
+            'school_lapses',
 
 
         ]);
@@ -40,7 +41,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TypeDocumentSeeder::class,
             MainConfigSeeder::class,
-
+            SchoolLapseSeeder::class
             
         ]);
     }

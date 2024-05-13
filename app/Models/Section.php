@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Models\Inscriptions;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Inscriptions\Quota;
-use App\Models\Inscriptions\Section;
+use App\Models\Course;
 
-class Course extends Model
-{      
-      
+class Section extends Model
+{
       protected $fillable = ['name'];
       protected $guarded = 'id';
 
@@ -17,11 +15,10 @@ class Course extends Model
       {
         return $this->hasMany(Quota::class,'course_id','id');
       }
-      public function section()
+      public function course()
       {
-          return $this->belongsToMany(Section::class,'course_sections');
+          return $this->belongsToMany(Course::class,'course_sections');
       }
 
 
-                
 }

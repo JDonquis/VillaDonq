@@ -38,24 +38,8 @@ class User extends Authenticatable
 
     protected $guarded = ['id'];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [  'password',  ];
 
-    // 'remember_token',
-
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    // ];
 
     public function type_user()
     {
@@ -73,14 +57,6 @@ class User extends Authenticatable
             'type_user_name' => $type_user[0]['name']
 
         ]);
-        // session([
-
-        //     'id_user' => $this->id,
-        //     'name' => $this->name,
-        //     'last_name' => $this->last_name,
-        //     'type_user_id' => $type_user[0]['id'],
-        //     'type_user_name' => $type_user[0]['name']
-
-        // ]);
+       
     }
 }

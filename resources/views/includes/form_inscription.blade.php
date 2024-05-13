@@ -50,12 +50,12 @@
                 <div class="row w-full mb-3">
                     <div class="col-4">
                         <select name="course_id" id="ins-year">
-                            <option class="h6" value="1">1 año</option>
+                            <option class="h6" value="2">1 año</option>
                         </select>
                     </div>
                     <div class="col-4">
                         <select name="section_id" id="ins-year">
-                            <option class="h6" value="1">Sección A</option>
+                            <option class="h6" value="2">Sección A</option>
                         </select>
                     </div>
                     <div class="col-4">

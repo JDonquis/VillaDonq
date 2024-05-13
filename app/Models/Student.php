@@ -1,16 +1,19 @@
 <?php
 
-namespace App\Models\Person;
+namespace App\Models;
 
 use Illuminate\Support\Str;
+use App\Models\Representative;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use App\Models\CourseSection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Student extends Model
-{
-     protected $fillable = 
-     [
+{      
+    protected $table = 'students';
+
+    protected $fillable = [
         'representative_id',
         'course_section_id',
         'name',
@@ -24,9 +27,17 @@ class Student extends Model
         'photo',
     ];
 
-    protected $guarded = ['id'];
-
     public $timestamps = false;
+
+    public function representative()
+    {
+        return $this->belongsTo(Representative::class);
+    }
+
+    public function course_section()
+    {
+        return $this->belongsTo(CourseSection::class);
+    }
 
     public static function saveDocs($document, $current = false, $documentName)
     {

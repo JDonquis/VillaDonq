@@ -14,14 +14,27 @@ class CourseSeeder extends Seeder
      */
     public function run()
     {
-        $fields = [
+        $fields = 
+        [
+            ['name' => 'Todos' ],
 
             ['name' => '1er Año' ],
             ['name' => '2do Año' ],
             ['name' => '3er Año' ],
             ['name' => '4to Año' ],
             ['name' => '5to Año' ],
-     
+
+            ['name' => '1er Grado' ],
+            ['name' => '2do Grado' ],
+            ['name' => '3er Grado' ],
+            ['name' => '4to Grado' ],
+            ['name' => '5to Grado' ],
+            ['name' => '6to Grado' ],
+
+            ['name' => '1er Nivel' ],
+            ['name' => '2do Nivel' ],
+            ['name' => '3er Nivel' ],
+
 
          ];   
 

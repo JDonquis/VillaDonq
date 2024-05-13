@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\Course;
+use App\Models\Section;
 use Illuminate\Http\Request;
+use App\Models\CourseSection;
 use App\Services\StudentService;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateStudentRequest;
+use App\Http\Resources\CourseSectionCollection;
 
 class StudentController extends Controller
 {
@@ -21,27 +25,32 @@ class StudentController extends Controller
 
     public function index()
     {   
-        // $students = $this->studentService->getAllStudents();
-        return view('workspace.admin.matricula');
+        $courses = Course::all();
+        $course_sections = new CourseSectionCollection(CourseSection::with('section','course')->get());
+        $studentsPerCourse = $this->studentService->getStudentsPerCourse(1);
+        return view('workspace.admin.matricula',['students' => $studentsPerCourse, 'courses' => $courses, 'course_sections' => $course_sections]);
+
     }
 
     public function store(CreateStudentRequest $request)
     {   
+        DB::beginTransaction();
+
         try 
         {
-            DB::beginTransaction();
-            
+   
             $studentCreated = $this->studentService->create($request);
-
             DB::commit();
-
             return response()->json(['message' => 'Estudiante inscrito exitosamente', 'new_student' => $studentCreated]);
 
 
         }
         catch (Exception $e)
-        {
+        {   
+            
             DB::rollback();
+             
+            return response()->json(['message' => $e->getMessage()],400);
         }
 
     }
